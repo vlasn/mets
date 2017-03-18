@@ -14,6 +14,10 @@ router.get("/", function(req,res) {
     return res.json("users endpoint operational - brought to you by Express Router!")
 });
 
+router.get("/sup", (req,res)=>{
+   return res.json("sup")
+});
+
 
 module.exports = router;
 
