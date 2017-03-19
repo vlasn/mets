@@ -1,6 +1,7 @@
 const path = require("path");
 const HWP = require("html-webpack-plugin");
 const Extract = require("extract-text-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
     entry: './src/app.js',
@@ -47,6 +48,9 @@ module.exports = {
             filename: 'app.css',
             disable: false,
             allChunks: true
+        }),
+        new webpack.ProvidePlugin({
+            "React": "react",
         })
     ]
 };
