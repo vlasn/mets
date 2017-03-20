@@ -10,6 +10,8 @@ react-scss-webpack boilerplate.
 Käsud:
 
 `npm run dev` - käivitab webpack-dev-serveri ja hot-reloadingu - ei vaja virtualboxi käivitamist et ainult visuaali kallal tööd teha.
+
 `npm run build` - development build - kompileerib ja bundleb kogu javascripti & cssi kahte faili, ligipääsetav VM-i kaudu.
+
 `npm run prod` - production build - minify + uglify JS & CSS. vt. ka webpack.config.js-is olevaid minificationi käske.
 
