@@ -9,7 +9,8 @@
     "prod": "webpack -p"
   },
   "author": "Veljo Lasn",
-  "license": "",
+  "license": "none",
+  "repository": "https://github.com/vlasn/mets"
   "devDependencies": {
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^2.0.0-rc.0",
