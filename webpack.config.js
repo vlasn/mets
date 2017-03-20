@@ -1,56 +1,49 @@
-const path = require("path");
-const HWP = require("html-webpack-plugin");
-const Extract = require("extract-text-webpack-plugin");
-const webpack = require("webpack");
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var path = require("path");
 
 module.exports = {
     entry: './src/app.js',
     output: {
         path: path.resolve(__dirname, "public"),
-        filename: 'bundle.js'
+        filename: 'app.bundle.js'
     },
     module: {
         rules: [
             {
                 test: /\.scss$/,
-                use: Extract.extract({
+                use: ExtractTextPlugin.extract({
                     fallback: 'style-loader',
                     loader: ['css-loader','sass-loader'],
-                    publicPath: '/public'
+                    publicPath: '/dist'
                 })
             },
             {
                 test: /\.js$/,
-                exclude: /node_modules/,  //if you also use bower
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015', 'react']
-                }
+                exclude: /node_modules/,
+                use: "babel-loader"
             }
         ]
     },
     devServer: {
-        contentBase: path.join(__dirname, "public"),
+        contentBase: path.join(__dirname, "dist"),
         compress: true,
         stats: "errors-only",
         open: true
     },
     plugins: [
-        new HWP({
+        new HtmlWebpackPlugin({
             title: 'Metsahaldur',
-            minify: {
-                collapseWhitespace: false //swap this to true for prod build
-            },
-            hash: false, //Setting this true will force the browser to download the latest built JS bundle, to alleviate caching issues
-            template: 'src/index.html'
+            // minify: {
+            //     collapseWhitespace: true
+            // },
+            hash: true, //force remove caching issues.
+            template: './src/index.html',
         }),
-        new Extract({
+        new ExtractTextPlugin({
             filename: 'app.css',
             disable: false,
             allChunks: true
-        }),
-        new webpack.ProvidePlugin({
-            "React": "react",
         })
     ]
-};
+}

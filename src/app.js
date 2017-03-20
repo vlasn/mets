@@ -1,18 +1,20 @@
 
 const css = require('./app.scss');
 
-import React from "react"
-import ReactDOM from "react-dom"
+import React from "react";
+import ReactDOM from "react-dom";
 
-class Komponent extends React.Component {
-    constructor(props){
-        super(props)
-    }
+import { Component } from "./components/component";
+
+class App extends React.Component {
     render() {
-        return(
-          <h1>Hellooo</h1>
+        return (
+            <div>
+                <h1>Hi</h1>
+                <Component number = {5}/>
+            </div>
         );
     }
 }
 
-ReactDOM.render(<Komponent/>,document.getElementById('root'));
+ReactDOM.render(<App/>, document.getElementById('root'));
