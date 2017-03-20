@@ -2,7 +2,7 @@
  * Created by clstrfck, edited by thetloffline on 20/03/2017.
  */
 import React from "react"
-const css = require('./midaIganes.scss');
+const css = require('./midaiganes.scss');
 
 export class MidaIganes extends React.Component {
     constructor(props) {

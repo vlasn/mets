@@ -2,7 +2,7 @@
  * Created by clstrfck, edited by thetloffline on 20/03/2017.
  */
 import React from "react"
-const css = require('./veelMidagi.scss');
+const css = require('./veelmidagi.scss');
 
 export class VeelMidagi extends React.Component {
 	constructor(props) {

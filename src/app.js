@@ -4,8 +4,8 @@ const css = require('./app.scss');
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { MidaIganes } from "./components/midaIganes";
-import { VeelMidagi } from "./components/veelMidagi";
+import { MidaIganes } from "./components/midaiganes";
+import { VeelMidagi } from "./components/veelmidagi";
 
 class App extends React.Component {
     render() {
