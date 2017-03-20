@@ -10,8 +10,10 @@
   },
   "author": "Veljo Lasn",
   "license": "none",
-  "repository": "https://github.com/vlasn/mets"
+  "repository": "https://github.com/vlasn/mets",
   "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
     "css-loader": "^0.26.1",
     "extract-text-webpack-plugin": "^2.0.0-rc.0",
     "html-webpack-plugin": "^2.26.0",

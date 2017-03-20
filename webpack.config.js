@@ -35,7 +35,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             title: 'Metsahaldur',
             // minify: {
-            //     collapseWhitespace: true
+            //     collapseWhitespace: true // --this is for minifying HTML
             // },
             hash: true, //force remove caching issues.
             template: './src/index.html',
