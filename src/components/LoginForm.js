@@ -3,19 +3,25 @@
  */
 import React from "react"
 
-import {InputField} from "./InputField"
+import InputField from "./InputField"
+import WideButton from "./WideButton"
 
-export class LoginForm extends React.Component{
+const css = require("./LoginForm.scss")
+
+export default class LoginForm extends React.Component{
     constructor(props) {
         super(props)
     }
 
     render(){
         return(
-            <div className="login__form-wrapper">
-                <InputField label = "e-mail" type="text"/>
-                <InputField label = "password" type="password" />
-
+            <div className="LoginForm__wrapper">
+                <InputField labelText = "e-mail" name = "e-mail" type="text"/>
+                <InputField labelText = "password" name = "password" type = "password" />
+                <WideButton name = "button" text = "login"/>
+                <div className="LoginForm__forgot-wrapper">
+                    <a href="#">Unustasin parooli</a>
+                </div>
             </div>
         );
     }
