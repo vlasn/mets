@@ -21,11 +21,26 @@ export default class LoginForm extends React.Component{
             [from]: value
         });
     }
+
+
     handleLogin(e) {
+        //Input validation logic goes here.
        if(!!this.state.email && !!this.state.password) {
-           console.log(`Login logic goes here. State below:`);
-           console.log(this.state);
+           fetch('/api/auth', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json'
+               },
+               body: JSON.stringify({
+                   email: this.state.email,
+                   password: this.state.password
+               })
+           }).then((response) => {
+               //further logic to follow
+                console.log(response);
+           })
        }
+
     }
 
     render(){
