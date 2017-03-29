@@ -40,7 +40,7 @@ export default class LoginForm extends React.Component{
                 response.json().then(
                     json => console.log(json)
                 )
-           })
+           }).catch(error => console.log(`Something's gone wrong! ${error}`))
        }
 
     }
