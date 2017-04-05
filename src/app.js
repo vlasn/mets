@@ -11,9 +11,7 @@ class App extends React.Component {
         return (
             <div className="main__wrapper">
                 <div className="login__wrapper">
-                    <h1 className="login__title">
-                        Logi sisse
-                    </h1>
+
                     <LoginForm>
 
                     </LoginForm>

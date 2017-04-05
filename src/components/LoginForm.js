@@ -7,6 +7,7 @@ import InputField from "./InputField"
 import WideButton from "./WideButton"
 
 const css = require("./LoginForm.scss");
+const axios = require("axios");
 
 export default class LoginForm extends React.Component{
     constructor(props) {
@@ -26,30 +27,24 @@ export default class LoginForm extends React.Component{
     handleLogin(event) {
         //Input validation logic goes here.
        if(!!this.state.email && !!this.state.password) {
-           fetch('/api/auth', {
-               method: 'POST',
-               headers: {
-                   'Content-Type': 'application/json'
-               },
+           axios.post('/api/auth/login', {
                body: JSON.stringify({
                    email: this.state.email,
                    password: this.state.password
                })
-           }).then(response => {
-               //further logic to follow
-                response.json()
-           }).then(
-               json => console.log(json)
-           ).catch(error => console.log(`Something's gone wrong! ${error}`))
+           })
+               .then(response => console.log(response.data))
+               .catch(error => console.log(`Something's gone wrong! ${error}`))
        }
     }
 
     render(){
         return(
             <div className="LoginForm__wrapper">
-                <InputField labelText = "e-mail" name = "email" type="text" updateValue = {this.updateValue}/>
-                <InputField labelText = "password" name = "password" type = "password" updateValue = {this.updateValue}/>
-                <WideButton name = "button" text = "login" loginHandler = {this.handleLogin}/>
+                <h1>Siin on logo</h1>
+                <InputField labelText = "E-mail" name = "email" type="text" updateValue = {this.updateValue}/>
+                <InputField labelText = "Parool" name = "password" type = "password" updateValue = {this.updateValue}/>
+                <WideButton name = "button" text = "logi sisse" loginHandler = {this.handleLogin}/>
                 <div className="LoginForm__forgot-wrapper">
                     <a href="#">Unustasin parooli</a>
                 </div>
