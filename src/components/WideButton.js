@@ -23,7 +23,8 @@ export default class WideButton extends React.Component{
                     name = {this.props.name}
                     onClick={event => this.btnClicked(event)}
                 >
-                    {this.props.text}</button>
+                    {this.props.text}
+                </button>
             </div>
         );
     }
