@@ -6,7 +6,7 @@ import React from "react"
 import InputField from "./InputField"
 import WideButton from "./WideButton"
 
-const css = require("./LoginForm.scss")
+const css = require("./LoginForm.scss");
 
 export default class LoginForm extends React.Component{
     constructor(props) {
@@ -23,7 +23,7 @@ export default class LoginForm extends React.Component{
     }
 
 
-    handleLogin(e) {
+    handleLogin(event) {
         //Input validation logic goes here.
        if(!!this.state.email && !!this.state.password) {
            fetch('/api/auth', {
@@ -35,14 +35,13 @@ export default class LoginForm extends React.Component{
                    email: this.state.email,
                    password: this.state.password
                })
-           }).then((response) => {
+           }).then(response => {
                //further logic to follow
-                response.json().then(
-                    json => console.log(json)
-                )
-           }).catch(error => console.log(`Something's gone wrong! ${error}`))
+                response.json()
+           }).then(
+               json => console.log(json)
+           ).catch(error => console.log(`Something's gone wrong! ${error}`))
        }
-
     }
 
     render(){
