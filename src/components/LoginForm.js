@@ -24,7 +24,10 @@ export default class LoginForm extends React.Component{
     }
 
 
+    //rewrite the above to emit changes to Redux state!
+
     handleLogin(event) {
+        console.log(this.props);
         //Input validation logic goes here.
        if(!!this.state.email && !!this.state.password) {
            axios.post('/api/auth/login', {
@@ -44,7 +47,7 @@ export default class LoginForm extends React.Component{
                 <h1>Siin on logo</h1>
                 <InputField labelText = "E-mail" name = "email" type="text" updateValue = {this.updateValue}/>
                 <InputField labelText = "Parool" name = "password" type = "password" updateValue = {this.updateValue}/>
-                <WideButton name = "button" text = "logi sisse" loginHandler = {this.handleLogin}/>
+                <WideButton name = "button" text = "logi sisse" loginHandler = {this.props.onSubmitLogin}/>
                 <div className="LoginForm__forgot-wrapper">
                     <a href="#">Unustasin parooli</a>
                 </div>

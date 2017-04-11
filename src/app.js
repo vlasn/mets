@@ -4,17 +4,18 @@ const css = require('./app.scss');
 import React from "react";
 import ReactDOM from "react-dom";
 
-import LoginForm from "./components/LoginForm"
+import { Provider } from "react-redux"
+
+import Login from "./components/Login"
+import store from "./store"
 
 class App extends React.Component {
     render() {
         return (
             <div className="main__wrapper">
                 <div className="login__wrapper">
-
-                    <LoginForm>
-
-                    </LoginForm>
+                    <Login>
+                    </Login>
                 </div>
             </div>
         );
@@ -22,4 +23,4 @@ class App extends React.Component {
 }
 
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'));
