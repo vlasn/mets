@@ -8,10 +8,10 @@ const css = require("./InputField.scss")
 export default class InputField extends React.Component{
     constructor(props) {
         super(props);
-        this.handleTextChange = this.handleTextChange.bind(this);
+        this.textChangeHandler = this.textChangeHandler.bind(this);
     }
 
-    handleTextChange(event) {
+    textChangeHandler(event) {
         this.props.updateValue(
             event.target.value, this.props.name
         );
@@ -25,7 +25,7 @@ export default class InputField extends React.Component{
                 <input id={this.props.name}
                        type={this.props.type}
                        className = "InputField__input"
-                       onChange={(event)=>this.handleTextChange(event)}
+                       onChange={(event)=>this.textChangeHandler(event)}
                 />
             </div>
         );

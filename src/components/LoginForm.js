@@ -14,7 +14,7 @@ export default class LoginForm extends React.Component{
         super(props);
         this.state = {};
         this.updateValue = this.updateValue.bind(this);
-        this.handleLogin = this.handleLogin.bind(this)
+        this.loginHandler = this.loginHandler.bind(this)
     }
 
     updateValue(value, from) {
@@ -24,7 +24,7 @@ export default class LoginForm extends React.Component{
     }
 
 
-    handleLogin(event) {
+    loginHandler(event) {
         //Input validation logic goes here.
        if(!!this.state.email && !!this.state.password) {
            axios.post('/api/auth/login', {
@@ -44,7 +44,7 @@ export default class LoginForm extends React.Component{
                 <h1>Siin on logo</h1>
                 <InputField labelText = "E-mail" name = "email" type="text" updateValue = {this.updateValue}/>
                 <InputField labelText = "Parool" name = "password" type = "password" updateValue = {this.updateValue}/>
-                <WideButton name = "button" text = "logi sisse" loginHandler = {this.handleLogin}/>
+                <WideButton name = "button" text = "logi sisse" loginHandler = {this.loginHandler}/>
                 <div className="LoginForm__forgot-wrapper">
                     <a href="#">Unustasin parooli</a>
                 </div>

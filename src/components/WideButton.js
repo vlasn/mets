@@ -15,13 +15,13 @@ export default class WideButton extends React.Component{
         this.props.loginHandler(event);
     }
 
-    render(){
+    render() {
         return(
             <div className = "WideButton__wrapper">
                 <button
                     className = "WideButton__button"
                     name = {this.props.name}
-                    onClick={event => this.btnClicked(event)}
+                    onClick = {event => this.btnClicked(event)}
                 >
                     {this.props.text}
                 </button>
