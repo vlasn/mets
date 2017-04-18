@@ -12,15 +12,17 @@ import store from "./store"
 class App extends React.Component {
     render() {
         return (
+        <Provider store={store}>
             <div className="main__wrapper">
                 <div className="login__wrapper">
                     <Login>
                     </Login>
                 </div>
             </div>
+        </Provider>
         );
     }
 }
 
 
-ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'));
+ReactDOM.render(<App/>, document.getElementById('root'));

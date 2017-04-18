@@ -5,14 +5,13 @@
 import axios from "axios"
 
 export function logIn(email, pass) {
-    //Ajax to be fully implemented below:
     axios.post('/api/auth/login', {
         body: JSON.stringify({
             email: email,
             password: pass
         })
     })
-        .then(response => console.log(response.data))
+        .then(response => console.log(response))
         .catch(error => console.log(`Something's gone wrong! ${error}`));
 
 
@@ -27,6 +26,14 @@ export function logIn(email, pass) {
         type: type,
         payload: payload
     }
+}
 
-    //requires usernameChange and passwordChange, updated while typing!
+export function credentialChange(key, data) {
+    return {
+        type: "LOGIN_CREDS",
+        payload: {
+            key: key,
+            data: data
+        }
+    }
 }

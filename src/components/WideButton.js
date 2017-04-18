@@ -11,8 +11,8 @@ export default class WideButton extends React.Component{
         this.btnClicked = this.btnClicked.bind(this)
     }
 
-    btnClicked(event) {
-        this.props.loginHandler(event);
+    btnClicked() {
+        this.props.loginHandler();
     }
 
     render(){
@@ -21,7 +21,7 @@ export default class WideButton extends React.Component{
                 <button
                     className = "WideButton__button"
                     name = {this.props.name}
-                    onClick={event => this.btnClicked(event)}
+                    onClick={event => this.btnClicked()}
                 >
                     {this.props.text}
                 </button>

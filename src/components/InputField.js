@@ -13,7 +13,7 @@ export default class InputField extends React.Component{
 
     handleTextChange(event) {
         this.props.updateValue(
-            event.target.value, this.props.name
+            this.props.name, event.target.value
         );
     }
 

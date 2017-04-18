@@ -3,15 +3,15 @@
  */
 import React from "react"
 import { connect } from 'react-redux'
-import { logIn } from '../actions/userActions'
+import { logIn, credentialChange } from '../actions/userActions'
 import LoginForm from './LoginForm'
 
 class Login extends React.Component {
     render() {
-        const { onSubmitLogin } = this.props;
+        const { onSubmitLogin, updateValue } = this.props;
         return (
             <div>
-                <LoginForm onSubmitLogin={onSubmitLogin} />
+                <LoginForm onSubmitLogin={onSubmitLogin} updateValue={updateValue} />
             </div>
         )
     }
@@ -20,6 +20,7 @@ class Login extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        updateValue: (key, data) => dispatch(credentialChange(key, data)),
         onSubmitLogin: (id, pass) => dispatch(logIn(id, pass))
     }
 };
@@ -28,8 +29,12 @@ const mapStateToProps = (state) => {
     return {
         loading: state.user.loading,
         loggedIn: state.user.loggedIn,
-        error: state.user.error
+        error: state.user.error,
+        email: state.user.email,
+        password: state.user.password
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps,
+    mapDispatchToProps
+    )(Login);

@@ -3,6 +3,8 @@
  */
 
 export default function reducer( state = {
+    email: "",
+    password: "",
     loading: false,
     loggedIn: false,
     error: null,
@@ -21,11 +23,14 @@ export default function reducer( state = {
         case "LOG_OUT": {
             return {loading: false, loggedIn: false, error: null, details: {}}
         }
+        case "LOGIN_CREDS" : {
+            let key = action.payload.key === "email" ? "email" : "password"
+            return {...state, [key]: action.payload.data}
+        }
         default: {
             return {
                 ...state
             }
         }
-        //Further cases to follow in case user decides to change any of their details online.
     }
 }
