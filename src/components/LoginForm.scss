@@ -7,5 +7,21 @@
   transform: translate(-50%,-50%);
   width: 50%;
   align-content: center;
+  .LoginForm__forgot-wrapper {
+    text-align: center;
+    padding: 10px;
+    .LoginForm__forgot-link {
+      color: black;
+      font-weight: 400;
+      text-decoration: none;
+      &:hover {
+        color: black;
+      }
+    }
+  }
+  .LoginForm__title {
+      text-align: center;
+    margin-bottom: 40px;
+  }
 
 }

@@ -15,7 +15,7 @@ export default class WideButton extends React.Component{
         this.props.loginHandler();
     }
 
-    render(){
+    render() {
         return(
             <div className = "WideButton__wrapper">
                 <button

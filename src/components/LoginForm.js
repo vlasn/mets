@@ -12,6 +12,7 @@ const axios = require("axios");
 export default class LoginForm extends React.Component{
     constructor(props) {
         super(props);
+
     }
 
     loginHandler() {
@@ -19,17 +20,20 @@ export default class LoginForm extends React.Component{
             this.props.email,
             this.props.password
         )
+
     }
 
     render(){
         return(
             <div className="LoginForm__wrapper">
+
                 <h1>Siin on logo</h1>
                 <InputField labelText = "E-mail" name = "email" type="text" updateValue = {this.props.updateValue}/>
                 <InputField labelText = "Parool" name = "password" type = "password" updateValue = {this.props.updateValue}/>
                 <WideButton name = "button" text = "logi sisse" loginHandler = {this.loginHandler.bind(this)}/>
+
                 <div className="LoginForm__forgot-wrapper">
-                    <a href="#">Unustasin parooli</a>
+                    <a href="#" className="LoginForm__forgot-link">Unustasin parooli</a>
                 </div>
             </div>
         );
