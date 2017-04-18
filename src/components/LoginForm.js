@@ -41,12 +41,12 @@ export default class LoginForm extends React.Component{
     render(){
         return(
             <div className="LoginForm__wrapper">
-                <h1>Siin on logo</h1>
+                <h2 className="LoginForm__title">Metsahaldur 2.0</h2>
                 <InputField labelText = "E-mail" name = "email" type="text" updateValue = {this.updateValue}/>
                 <InputField labelText = "Parool" name = "password" type = "password" updateValue = {this.updateValue}/>
-                <WideButton name = "button" text = "logi sisse" loginHandler = {this.loginHandler}/>
+                <WideButton name = "button" text = "Logi sisse" loginHandler = {this.loginHandler}/>
                 <div className="LoginForm__forgot-wrapper">
-                    <a href="#">Unustasin parooli</a>
+                    <a href="#" className="LoginForm__forgot-link">Unustasin parooli</a>
                 </div>
             </div>
         );
