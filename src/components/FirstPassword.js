@@ -12,8 +12,8 @@ import Error from "./Error"
 export default class FirstPassword extends React.Component {
     constructor(props){
         super(props)
-        this.error = null
     }
+
     handleSubmit() {
         this.props.resetPassword(
             this.props.password,
@@ -22,14 +22,7 @@ export default class FirstPassword extends React.Component {
             this.props.email
         )
     }
-    componentDidMount() {
-        console.log(this.props.error);
-        if(this.props.error) {
-            this.error = (
-                <span className = "FirstPassword__error">{this.props.error}</span>
-            )
-        }
-    }
+
     render() {
         return(
            <div>
