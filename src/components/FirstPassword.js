@@ -13,12 +13,11 @@ export default class FirstPassword extends React.Component {
         super(props)
         this.error = null
     }
-    componentWillReceiveProps() {
-        console.log("component will receive props")
-    }
+
     handleSubmit() {
         console.log("Now attempting to submit passwords..");
-        console.log(this.props);
+        console.log("from within Validate: ", this.props)
+
         this.props.newPassword(
             this.props.password,
             this.props.secondaryPass,
@@ -26,6 +25,7 @@ export default class FirstPassword extends React.Component {
             this.props.email
         )
     }
+
     componentDidMount() {
         if(this.props.error) {
             this.error = (

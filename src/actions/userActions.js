@@ -15,7 +15,7 @@ export function logIn(email, pass) {
         .then(response => console.log(response))
         .catch(error => console.log(`Something's gone wrong! ${error}`));
 
-
+    //dummy data to simulate successful login:
     let type = "LOG_IN_SUCCESSFUL",
         payload = {
             name: "Testiv Kasutaja",

@@ -10,6 +10,9 @@ import { passwordChange, credentialChange } from '../actions/userActions'
 import FirstPassword from './FirstPassword'
 
 class Validate extends React.Component {
+    constructor(props) {
+        super(props)
+    }
     render() {
         const { resetPassword, credentialChange } = this.props;
         return (
@@ -29,6 +32,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
+    console.log("state:", state)
     return {
         loading: state.user.loading,
         loggedIn: state.user.loggedIn,
