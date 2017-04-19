@@ -1,0 +1,15 @@
+.Error__wrapper {
+  background: #ffbfa9;
+  border: 1px solid #ff848a;
+  box-sizing: border-box;
+  border-radius: 3px;
+  width: 100%;
+  padding: 5px 10px;
+  display: block;
+  margin-bottom: 10px;
+
+  .Error__text {
+    color: #030303;
+    font-weight: 500;
+  }
+}
