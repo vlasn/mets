@@ -3,23 +3,32 @@ const css = require('./app.scss');
 
 import React from "react";
 import ReactDOM from "react-dom";
-
-import LoginForm from "./components/LoginForm"
+import { Provider } from "react-redux"
+import { BrowserRouter as Router, Link, Route } from "react-router-dom"
+import Login from "./components/Login"
+import store from "./store"
+import Validate from "./components/Validate"
 
 class App extends React.Component {
     render() {
         return (
-            <div className="main__wrapper">
-                <div className="login__wrapper">
+            <Router>
+                <div className="main__wrapper">
+                    <Link to={'/login'}>Login</Link>
+                    <Link to={'/newuser'}>Kasutaja valideerimine</Link>
 
-                    <LoginForm>
-
-                    </LoginForm>
+                    <Route path="/login" component={Login}/>
+                    <Route path="/newuser" component={Validate}/>
+                    <Route path="/" exact={true} render={()=>(<p>Lingid kiireks vaadete vahetamiseks on praegu siin kohal.</p>)}/>
                 </div>
-            </div>
+            </Router>
         );
     }
 }
 
 
-ReactDOM.render(<App/>, document.getElementById('root'));
+ReactDOM.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>,
+    document.getElementById('root'));
