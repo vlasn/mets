@@ -12,7 +12,6 @@ export default function reducer( state = {
     details: {},
     navigateToRoot: false
 }, action) {
-    console.log("reducer got:", action.type, action.payload);
     switch(action.type) {
         case "LOG_IN_ATTEMPT": {
             return { ...state, loading:true}

@@ -15,10 +15,7 @@ export default class FirstPassword extends React.Component {
     }
 
     handleSubmit() {
-        console.log("Now attempting to submit passwords..");
-        console.log("from within Validate: ", this.props)
-
-        this.props.newPassword(
+        this.props.resetPassword(
             this.props.password,
             this.props.secondaryPass,
             this.props.hash,

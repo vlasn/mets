@@ -13,10 +13,9 @@ class Login extends React.Component {
         super(props)
     }
     render() {
-        const { onSubmitLogin, updateValue } = this.props;
         return (
             <div className="login__wrapper">
-                <LoginForm onSubmitLogin={onSubmitLogin} updateValue={updateValue} />
+                <LoginForm {...this.props} />
             </div>
         )
     }

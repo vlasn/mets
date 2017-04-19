@@ -14,10 +14,9 @@ class Validate extends React.Component {
         super(props)
     }
     render() {
-        const { resetPassword, credentialChange } = this.props;
         return (
             <div className="login__wrapper">
-                <FirstPassword newPassword={resetPassword} updateValue={credentialChange} />
+                <FirstPassword {...this.props} />
             </div>
         )
     }
@@ -32,7 +31,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
-    console.log("state:", state)
     return {
         loading: state.user.loading,
         loggedIn: state.user.loggedIn,
