@@ -9,11 +9,13 @@ import { logIn, credentialChange } from '../actions/userActions'
 import LoginForm from './LoginForm'
 
 class Login extends React.Component {
+    constructor(props) {
+        super(props)
+    }
     render() {
-        const { onSubmitLogin, updateValue } = this.props;
         return (
             <div className="login__wrapper">
-                <LoginForm onSubmitLogin={onSubmitLogin} updateValue={updateValue} />
+                <LoginForm {...this.props} />
             </div>
         )
     }

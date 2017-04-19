@@ -5,7 +5,6 @@
 import axios from "axios"
 
 export function logIn(email, pass) {
-    console.log("login actionist: ",email,pass);
     axios.post('/api/auth/login', {
         body: JSON.stringify({
             email: email,
@@ -15,7 +14,7 @@ export function logIn(email, pass) {
         .then(response => console.log(response))
         .catch(error => console.log(`Something's gone wrong! ${error}`));
 
-
+    //dummy data to simulate successful login:
     let type = "LOG_IN_SUCCESSFUL",
         payload = {
             name: "Testiv Kasutaja",
@@ -40,7 +39,6 @@ export function credentialChange(key, data) {
 }
 
 export function passwordChange(first, second, hash, email) {
-    console.log("passwordChange triggered")
     let type = "",
         payload = {};
 
