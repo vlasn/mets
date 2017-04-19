@@ -12,9 +12,24 @@ import Header from "./components/Header"
 
 
 class App extends React.Component {
+
     render() {
+        let headerDummyState = {
+            buttons: [
+                {
+                    text: "avaleht",
+                    theme: "black",
+                    side: "left"
+                }, {
+                    text: "logout",
+                    theme: "green",
+                    side: "right"
+                }
+            ]
+        }
         return (
             <Router>
+
                 <div className="main__wrapper">
                     <Link to={'/login'}>Login</Link>
                     <Link to={'/newuser'}>Kasutaja valideerimine</Link>
@@ -22,7 +37,8 @@ class App extends React.Component {
                     <Route path="/login" component={Login}/>
                     <Route path="/newuser" component={Validate}/>
                     <Route path="/" exact={true} render={()=>(<p>Lingid kiireks vaadete vahetamiseks on praegu siin kohal.</p>)}/>
-                    <Header/>
+
+                    <Header buttons={headerDummyState.buttons}/>
 
                 </div>
             </Router>
