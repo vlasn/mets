@@ -5,11 +5,14 @@
 export default function reducer( state = {
     email: "",
     password: "",
+    secondaryPass: "",
     loading: false,
     loggedIn: false,
     error: null,
-    details: {}
+    details: {},
+    navigateToRoot: false
 }, action) {
+    console.log("reducer got:", action.type, action.payload);
     switch(action.type) {
         case "LOG_IN_ATTEMPT": {
             return { ...state, loading:true}
@@ -24,9 +27,22 @@ export default function reducer( state = {
             return {loading: false, loggedIn: false, error: null, details: {}}
         }
         case "LOGIN_CREDS" : {
-            let key = action.payload.key === "email" ? "email" : "password"
-            return {...state, [key]: action.payload.data}
+            let allowedKeys = ["email", "password", "secondaryPass"];
+            if(allowedKeys.indexOf(action.payload.key) >= 0) {
+                return {...state, [action.payload.key]: action.payload.data}
+            }
+            else break
         }
+        case "VALIDATION_SUCCESS" : {
+            return {...state, error: null, email: null, password: null, secondaryPass: null, navigateToRoot: true}
+        }
+        case "VALIDATION_FAILURE" : {
+            return {...state, error: action.payload}
+        }
+        case "VALIDATION_MISMATCH" : {
+            return {...state, error: action.payload}
+        }
+
         default: {
             return {
                 ...state

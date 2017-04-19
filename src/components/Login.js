@@ -1,6 +1,8 @@
 /**
  * Created by clstrfvck on 12/04/2017.
  */
+//This is a wrapper for the login view/page.
+
 import React from "react"
 import { connect } from 'react-redux'
 import { logIn, credentialChange } from '../actions/userActions'
@@ -10,7 +12,7 @@ class Login extends React.Component {
     render() {
         const { onSubmitLogin, updateValue } = this.props;
         return (
-            <div>
+            <div className="login__wrapper">
                 <LoginForm onSubmitLogin={onSubmitLogin} updateValue={updateValue} />
             </div>
         )

@@ -7,20 +7,22 @@ import InputField from "./InputField"
 import WideButton from "./WideButton"
 
 const css = require("./LoginForm.scss");
-const axios = require("axios");
 
 export default class LoginForm extends React.Component{
     constructor(props) {
         super(props);
-
+        this.state = {
+            items: props
+        }
     }
 
     loginHandler() {
+        console.log(this.state);
+        console.log("props:",this.props)
         this.props.onSubmitLogin(
             this.props.email,
             this.props.password
         )
-
     }
 
     render(){
@@ -30,7 +32,7 @@ export default class LoginForm extends React.Component{
                 <h1>Siin on logo</h1>
                 <InputField labelText = "E-mail" name = "email" type="text" updateValue = {this.props.updateValue}/>
                 <InputField labelText = "Parool" name = "password" type = "password" updateValue = {this.props.updateValue}/>
-                <WideButton name = "button" text = "logi sisse" loginHandler = {this.loginHandler.bind(this)}/>
+                <WideButton name = "button" text = "logi sisse" submitHandler = {this.loginHandler.bind(this)}/>
 
                 <div className="LoginForm__forgot-wrapper">
                     <a href="#" className="LoginForm__forgot-link">Unustasin parooli</a>

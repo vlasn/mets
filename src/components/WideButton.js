@@ -12,7 +12,7 @@ export default class WideButton extends React.Component{
     }
 
     btnClicked() {
-        this.props.loginHandler();
+        this.props.submitHandler();
     }
 
     render() {
