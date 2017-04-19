@@ -20,6 +20,7 @@ export default function reducer( state = {
             return { ...state, loading: false, error: action.payload}
         }
         case "LOG_IN_SUCCESSFUL": {
+            console.log("login successful!");
             return { ...state, loading: false, loggedIn: true, error: null, details: action.payload}
         }
         case "LOG_OUT": {

@@ -11,14 +11,9 @@ const css = require("./LoginForm.scss");
 export default class LoginForm extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {
-            items: props
-        }
     }
 
     loginHandler() {
-        console.log(this.state);
-        console.log("props:",this.props)
         this.props.onSubmitLogin(
             this.props.email,
             this.props.password

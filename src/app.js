@@ -38,8 +38,6 @@ class App extends React.Component {
                     <Route path="/newuser" component={Validate}/>
                     <Route path="/" exact={true} render={()=>(<p>Lingid kiireks vaadete vahetamiseks on praegu siin kohal.</p>)}/>
 
-                    <Header buttons={headerDummyState.buttons}/>
-
                 </div>
             </Router>
         );
