@@ -23,12 +23,10 @@ export default class LoginForm extends React.Component{
     render(){
         return(
             <div className="LoginForm__wrapper">
-
                 <h1>Siin on logo</h1>
                 <InputField labelText = "E-mail" name = "email" type="text" updateValue = {this.props.updateValue}/>
                 <InputField labelText = "Parool" name = "password" type = "password" updateValue = {this.props.updateValue}/>
                 <WideButton name = "button" text = "logi sisse" submitHandler = {this.loginHandler.bind(this)}/>
-
                 <div className="LoginForm__forgot-wrapper">
                     <a href="#" className="LoginForm__forgot-link">Unustasin parooli</a>
                 </div>
