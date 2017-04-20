@@ -7,11 +7,9 @@ import React from "react"
 import { connect } from 'react-redux'
 import { logIn, credentialChange } from '../actions/userActions'
 import LoginForm from './LoginForm'
+import axios from "axios"
 
 class Login extends React.Component {
-    constructor(props) {
-        super(props)
-    }
     render() {
         return (
             <div className="login__wrapper">
@@ -19,13 +17,19 @@ class Login extends React.Component {
             </div>
         )
     }
-
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
         updateValue: (key, data) => dispatch(credentialChange(key, data)),
-        onSubmitLogin: (id, pass) => dispatch(logIn(id, pass))
+        onSubmitLogin: (id, pass) => {
+            dispatch({type: "LOG_IN_ATTEMPT"});
+            axios.post("/api/auth/login", {email: id, password: pass})
+                .then(response => {
+                    dispatch(logIn(response.data))
+                })
+                .catch(err => dispatch(logIn(err)))
+        }
     }
 };
 
@@ -39,6 +43,7 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps,
+export default connect(
+    mapStateToProps,
     mapDispatchToProps
     )(Login);

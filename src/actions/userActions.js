@@ -4,27 +4,13 @@
 
 import axios from "axios"
 
-export function logIn(email, pass) {
-    axios.post('/api/auth/login', {
-        body: JSON.stringify({
-            email: email,
-            password: pass
-        })
-    })
-        .then(response => console.log(response))
-        .catch(error => console.log(`Something's gone wrong! ${error}`));
-
-    //dummy data to simulate successful login:
-    let type = "LOG_IN_SUCCESSFUL",
-        payload = {
-            name: "Testiv Kasutaja",
-            email: "testmets@gmail.com",
-            phone: "58039222"
-        };
-
-    return {
-        type: type,
-        payload: payload
+export function logIn(data) {
+    if(data.status === "accept") {
+        //simulating login latency of 1s to test
+        return({type: "LOG_IN_SUCCESSFUL", payload: data.data})
+    } else {
+        console.log(data);
+        return({type: "LOG_IN_FAILED", payload: data.data.msg})
     }
 }
 
