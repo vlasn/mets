@@ -1,4 +1,3 @@
-
 const css = require('./app.scss');
 
 import React from "react";
@@ -9,6 +8,9 @@ import Login from "./components/Login"
 import store from "./store"
 import Validate from "./components/Validate"
 import Header from "./components/Header"
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 
 
 class App extends React.Component {
@@ -38,7 +40,9 @@ class App extends React.Component {
                     <Route path="/newuser" component={Validate}/>
                     <Route path="/" exact={true} render={()=>(<p>Lingid kiireks vaadete vahetamiseks on praegu siin kohal.</p>)}/>
 
-                    <Header buttons={headerDummyState.buttons}/>
+                    <MuiThemeProvider>
+                    <Header/>
+                    </MuiThemeProvider>
 
                 </div>
             </Router>
