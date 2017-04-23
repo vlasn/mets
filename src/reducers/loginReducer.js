@@ -27,7 +27,7 @@ export default function reducer( state = {
             return {loading: false, loggedIn: false, error: null, details: {}}
         }
         case "LOGIN_CREDS" : {
-            let allowedKeys = ["email", "password", "secondaryPass"];
+            let allowedKeys = ["email", "password"];
             if(allowedKeys.indexOf(action.payload.key) >= 0) {
                 return {...state, [action.payload.key]: action.payload.data}
             }

@@ -17,9 +17,8 @@ export default class FirstPassword extends React.Component {
     handleSubmit() {
         this.props.resetPassword(
             this.props.password,
-            this.props.secondaryPass,
+            this.props.cpassword,
             this.props.hash,
-            this.props.email
         )
     }
 
@@ -29,7 +28,7 @@ export default class FirstPassword extends React.Component {
                <div className = "FirstPassword__wrapper">
                    <h1>Vali endale salasõna</h1>
                    <InputField labelText = "Parool" name = "password" type="password" updateValue = {this.props.credentialChange}/>
-                   <InputField labelText = "Parool uuesti" name = "secondaryPass" type = "password" updateValue = {this.props.credentialChange}/>
+                   <InputField labelText = "Parool uuesti" name = "cpassword" type = "password" updateValue = {this.props.credentialChange}/>
                    {this.props.error ? <Error text = {this.props.error}/> : null}
                    <WideButton name = "button" text = "Mine metsa!" submitHandler = {this.handleSubmit.bind(this)}/>
                </div>

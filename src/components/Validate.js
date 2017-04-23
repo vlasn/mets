@@ -6,7 +6,7 @@
 
 import React from "react"
 import { connect } from 'react-redux'
-import { passwordChange, credentialChange } from '../actions/userActions'
+import { passwordChange, credentialChange } from '../actions/validationActions'
 import FirstPassword from './FirstPassword'
 import axios from "axios"
 
@@ -56,13 +56,12 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.user.loading,
+        loading: state.validation.loading,
         loggedIn: state.user.loggedIn,
-        email: state.user.email,
-        error: state.user.error,
-        password: state.user.password,
-        secondaryPass: state.user.secondaryPass,
-        navigateToRoot: state.user.navigateToRoot
+        error: state.validation.error,
+        password: state.validation.password,
+        cpassword: state.validation.cpassword,
+        navigateToRoot: state.validation.navigateToRoot
     };
 };
 
