@@ -1,11 +1,7 @@
 import React from 'react';
 import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
     from 'material-ui/Table';
-import TextField from 'material-ui/TextField';
-import Toggle from 'material-ui/Toggle';
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 
 const styles = {
     propContainer: {
@@ -19,7 +15,6 @@ const styles = {
     container: {
         //marginTop: '150px',
         //position: 'absolute',
-
     },
 };
 
@@ -56,7 +51,7 @@ const tableData = [
     },
 ];
 
-export default class TableExampleComplex extends React.Component {
+export default class MetsahaldurViewTable extends React.Component {
 
     constructor(props) {
         super(props);
@@ -101,7 +96,6 @@ export default class TableExampleComplex extends React.Component {
                         adjustForCheckbox={this.state.showCheckboxes}
                         enableSelectAll={this.state.enableSelectAll}
                     >
-
                         <TableRow>
                             <TableHeaderColumn tooltip="The ID">ID</TableHeaderColumn>
                             <TableHeaderColumn tooltip="The Name">Name</TableHeaderColumn>
@@ -130,14 +124,9 @@ export default class TableExampleComplex extends React.Component {
                             <TableRowColumn>Name</TableRowColumn>
                             <TableRowColumn>Status</TableRowColumn>
                         </TableRow>
-
                     </TableFooter>
                 </Table>
-
-
             </div>
-
-
         );
     }
 }

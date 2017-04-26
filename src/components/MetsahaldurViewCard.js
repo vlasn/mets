@@ -1,6 +1,6 @@
 import React from 'react';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import Table from "./Table"
+import Table from "./MetsahaldurViewTable"
 import FlatButton from 'material-ui/FlatButton';
 import Divider from 'material-ui/Divider';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -14,7 +14,7 @@ const styles = {
     }
 }
 
-const CardExampleExpandable = () => (
+const MetsahaldurViewCard = () => (
     <MuiThemeProvider>
         <Card style={styles.container}>
             <CardHeader
@@ -39,4 +39,4 @@ const CardExampleExpandable = () => (
     </MuiThemeProvider>
 );
 
-export default CardExampleExpandable;
+export default MetsahaldurViewCard;

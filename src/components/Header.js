@@ -3,7 +3,7 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
-
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 let injectTapEventPlugin = require("react-tap-event-plugin");
@@ -28,9 +28,7 @@ const styles = {
         //position: 'fixed',
         //zIndex: '1',
     },
-
 };
-
 export default class Header extends React.Component {
 
     constructor(props) {

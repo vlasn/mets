@@ -4,8 +4,7 @@
 import React from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Table from "./Table"
-
+import MetahaldurViewTable from "./MetahaldurViewTable"
 
 const styles = {
     headline: {
@@ -14,11 +13,9 @@ const styles = {
         marginBottom: 12,
         fontWeight: 400,
     },
-
-
 };
 
-export default class TabsExampleControlled extends React.Component {
+export default class MetsahaldurViewTab extends React.Component {
 
     constructor(props) {
         super(props);
@@ -52,7 +49,7 @@ export default class TabsExampleControlled extends React.Component {
                     <Tab label="Mets 2" value="b">
                         <div>
                             <h2 style={styles.headline}>Mets 2</h2>
-                            <Table/>
+                            <MetahaldurViewTable/>
 
                         </div>
                     </Tab>

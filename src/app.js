@@ -8,8 +8,8 @@ import Login from "./components/Login"
 import store from "./store"
 import Validate from "./components/Validate"
 import Header from "./components/Header"
-import Table from "./components/Table"
-import Card from "./components/Card"
+import Table from "./components/MetsahaldurViewTable"
+import Card from "./components/MetsahaldurViewCard"
 
 class App extends React.Component {
 
