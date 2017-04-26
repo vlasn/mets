@@ -8,31 +8,20 @@ import Login from "./components/Login"
 import store from "./store"
 import Validate from "./components/Validate"
 import Header from "./components/Header"
-
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-
+import Table from "./components/Table"
+import Card from "./components/Card"
 
 class App extends React.Component {
 
     render() {
-        let headerDummyState = {
-            buttons: [
-                {
-                    text: "avaleht",
-                    theme: "black",
-                    side: "left"
-                }, {
-                    text: "logout",
-                    theme: "green",
-                    side: "right"
-                }
-            ]
-        }
         return (
             <Router>
 
                 <div className="main__wrapper">
+
+
+                    <Header/>
+                    <Card/>
                     <Link to={'/login'}>Login</Link>
                     <Link to={'/newuser'}>Kasutaja valideerimine</Link>
 
@@ -40,9 +29,8 @@ class App extends React.Component {
                     <Route path="/newuser" component={Validate}/>
                     <Route path="/" exact={true} render={()=>(<p>Lingid kiireks vaadete vahetamiseks on praegu siin kohal.</p>)}/>
 
-                    <MuiThemeProvider>
-                    <Header/>
-                    </MuiThemeProvider>
+
+
 
                 </div>
             </Router>
