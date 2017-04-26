@@ -9,7 +9,7 @@ import store from "./store"
 import Validate from "./components/Validate"
 import Header from "./components/Header"
 import Table from "./components/MetsahaldurViewTable"
-import Card from "./components/MetsahaldurViewCard"
+import MetsahaldurViewCard from "./components/MetsahaldurView"
 
 class App extends React.Component {
 
@@ -18,20 +18,13 @@ class App extends React.Component {
             <Router>
 
                 <div className="main__wrapper">
-
-
                     <Header/>
-                    <Card/>
+                    <MetsahaldurViewCard/>
                     <Link to={'/login'}>Login</Link>
                     <Link to={'/newuser'}>Kasutaja valideerimine</Link>
-
                     <Route path="/login" component={Login}/>
                     <Route path="/newuser" component={Validate}/>
                     <Route path="/" exact={true} render={()=>(<p>Lingid kiireks vaadete vahetamiseks on praegu siin kohal.</p>)}/>
-
-
-
-
                 </div>
             </Router>
         );
