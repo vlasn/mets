@@ -27,6 +27,11 @@ module.exports = {
                     presets: ["es2015","react", "stage-0"],
                     plugins: ["babel-plugin-transform-decorators-legacy"]
                 }
+            },
+            {
+                test: /\.css$/,
+                loader: 'style-loader!css-loader',
+                include: /flexboxgrid/
             }
         ]
     },
