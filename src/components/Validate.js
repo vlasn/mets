@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import { passwordChange, credentialChange } from '../actions/validationActions'
 import FirstPassword from './FirstPassword'
 import axios from "axios"
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class Validate extends React.Component {
     constructor(props) {
@@ -17,9 +18,11 @@ class Validate extends React.Component {
 
     render() {
         return (
+            <MuiThemeProvider>
             <div className="login__wrapper">
                 <FirstPassword {...this.props} />
             </div>
+            </MuiThemeProvider>
         )
     }
 }

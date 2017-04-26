@@ -1,8 +1,10 @@
 import React from 'react';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
-import Table from "./MetsahaldurViewTable"
+import MetsahaldurViewTable from "./MetsahaldurViewTable"
 import FlatButton from 'material-ui/FlatButton';
 import Divider from 'material-ui/Divider';
+import MetsahaldurViewTab from "./MetsahaldurViewTab"
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const styles = {
@@ -15,8 +17,9 @@ const styles = {
 }
 
 
-const MetsahaldurViewCard = () => (
+const MetsahaldurView = () => (
     <MuiThemeProvider>
+
         <Card style={styles.container}>
             <CardHeader
                 title="Mets 1"
@@ -32,12 +35,14 @@ const MetsahaldurViewCard = () => (
                         <FlatButton label="Hinnatabel" />
                         <FlatButton label="Metsateatis" />
                         <FlatButton label="Raieluba" />
+
                     </div>
                 <Divider/>
-                <Table/>
+                <MetsahaldurViewTable/>
             </CardText>
         </Card>
+
     </MuiThemeProvider>
 );
 
-export default MetsahaldurViewCard;
+export default MetsahaldurView;
