@@ -67,10 +67,12 @@ export default class Header extends React.Component {
         return (
             <MuiThemeProvider>
                 <div className = "Header__wrapper" style={styles.container}>
-                    <RaisedButton label="Avaleht"
-                                  style={styles.headerButton}
-                                  backgroundColor= "#64DD17"
-                                  labelColor = "white" />
+                    <RaisedButton 
+                        label="Avaleht"
+                        style={styles.headerButton}
+                        backgroundColor= "#64DD17"
+                        labelColor = "white"
+                    />
                     <RaisedButton
                         onTouchTap={this.handleTouchTap}
                         label="Henry"
