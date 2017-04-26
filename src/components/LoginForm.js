@@ -2,12 +2,25 @@
  * Created by clstrfvck on 29/03/2017.
  */
 import React from "react"
-
-import InputField from "./InputField"
-import WideButton from "./WideButton"
 import Error from "./Error"
+import LoginTextField from "./LoginTextField"
+import LoginButton from "./LoginButton"
 
-const css = require("./LoginForm.scss");
+const styles = {
+    container: {
+        display: 'block',
+        boxSizing: 'border-box',
+        position: 'absolute',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%,-50%)',
+        width: '50%',
+        alignContent: 'center',
+    },
+    button: {
+        color: 'white'
+    },
+}
 
 export default class LoginForm extends React.Component{
     constructor(props) {
@@ -24,18 +37,37 @@ export default class LoginForm extends React.Component{
 
     render(){
         return(
-            <div className="LoginForm__wrapper">
+            <div style={styles.container}>
                 <h1>Siin on logo</h1>
                 <form onSubmit={e=>e.preventDefault()}>
-                    <InputField labelText = "E-mail" name = "email" type="text" updateValue = {this.props.updateValue}/>
-                    <InputField labelText = "Parool" name = "password" type = "password" updateValue = {this.props.updateValue}/>
+                    <LoginTextField
+                        hintText = "E-mail"
+                        name = "email" type="text"
+                        updateValue = {this.props.updateValue}
+                        style={styles.button}
+                        backgroundColor= "#00CC33"
+                        hoverColor = "#009933"
+                        fullWidth={true}
+                    />
+                    <LoginTextField
+                        hintText = "Parool"
+                        name = "password"
+                        type = "password"
+                        updateValue = {this.props.updateValue}
+                        fullWidth={true}
+                    />
                     {this.props.error ? <Error text = {this.props.error}/> : null}
-                    <WideButton name = "button" text = "logi sisse" submitHandler = {this.loginHandler.bind(this)}/>
+                    <LoginButton
+                        name = "button"
+                        label="Logi sisse"
+                        labelStyle ={styles.button}
+                        backgroundColor= "#00CC33"
+                        hoverColor = "#009933"
+                        submitHandler = {this.loginHandler.bind(this)}/>
                 </form>
-                <div className="LoginForm__forgot-wrapper">
-                    <a href="#" className="LoginForm__forgot-link">Unustasin parooli</a>
-                </div>
+                <a href="#" className="LoginForm__forgot-link">Unustasin parooli</a>
             </div>
+
         );
     }
 }

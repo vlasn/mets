@@ -54,6 +54,7 @@ export default class FirstPassword extends React.Component {
                    type = "password"
                    fullWidth={true}
                    updateValue = {this.props.credentialChange}
+                   errorText = {this.props.error}
 
                />
                <LoginButton
@@ -63,12 +64,11 @@ export default class FirstPassword extends React.Component {
                    labelStyle ={labelStyles.headerButton}
                    submitHandler = {this.handleSubmit.bind(this)}
                    label="Mine metsa!"
-               />
-               {this.props.error ? <Error text = {this.props.error}/> : null}
 
+               />
            </div>
 
-/*
+        /*
            <div className = "FirstPassword__wrapper">
             <h1>Vali endale salasõna</h1>
         <InputField labelText = "Parool" name = "password" type="password" updateValue = {this.props.credentialChange}/>
@@ -78,6 +78,5 @@ export default class FirstPassword extends React.Component {
         </div>
         */
         )
-
     }
 }

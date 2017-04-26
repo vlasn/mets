@@ -5,7 +5,7 @@ import React from "react"
 
 const css = require("./InputField.scss")
 
-export default class InputField extends React.Component{
+export default class LoginTextFieldInputField extends React.Component{
     constructor(props) {
         super(props);
         this.textChangeHandler = this.textChangeHandler.bind(this);
@@ -25,6 +25,8 @@ export default class InputField extends React.Component{
                        type={this.props.type}
                        className = "InputField__input"
                        onChange={(event)=>this.textChangeHandler(event)}
+                       errorText={this.props.errorText}
+
                 />
             </div>
         );

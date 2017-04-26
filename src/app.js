@@ -18,11 +18,7 @@ class App extends React.Component {
             <Router>
 
                 <div className="main__wrapper">
-
                     <Header/>
-                    <MetsahaldurView/>
-                    <Validate/>
-
                     <Link to={'/login'}>Login</Link>
                     <Link to={'/newuser'}>Kasutaja valideerimine</Link>
                     <Route path="/login" component={Login}/>

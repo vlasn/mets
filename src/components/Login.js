@@ -8,13 +8,19 @@ import { connect } from 'react-redux'
 import { logIn, credentialChange } from '../actions/userActions'
 import LoginForm from './LoginForm'
 import axios from "axios"
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+
 
 class Login extends React.Component {
     render() {
         return (
-            <div className="login__wrapper">
-                <LoginForm {...this.props} />
-            </div>
+            <MuiThemeProvider>
+                <div className="login__wrapper">
+                    <LoginForm {...this.props} />
+                </div>
+            </MuiThemeProvider>
+
         )
     }
 }
