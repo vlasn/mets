@@ -24,6 +24,7 @@ export default class MetsahaldurViewTab extends React.Component {
         };
     }
 
+
     handleChange = (value) => {
         this.setState({
             value: value,

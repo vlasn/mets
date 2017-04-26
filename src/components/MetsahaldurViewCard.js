@@ -14,6 +14,7 @@ const styles = {
     }
 }
 
+
 const MetsahaldurViewCard = () => (
     <MuiThemeProvider>
         <Card style={styles.container}>

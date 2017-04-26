@@ -18,6 +18,7 @@ const styles = {
     },
 };
 
+
 const tableData = [
     {
         name: 'John Smith',
