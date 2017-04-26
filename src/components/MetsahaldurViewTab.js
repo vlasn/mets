@@ -32,45 +32,43 @@ export default class MetsahaldurViewTab extends React.Component {
     render() {
         return (
 
-                <Tabs
-                    value={this.state.value}
-                    onChange={this.handleChange}
-                >
-                    <Tab label="Tab A" value="a">
-                        <div>
-                            <h2 style={styles.headline}>Controllable Tab A</h2>
-                            <p>
-                                afsefawgawg
-                            </p>
-                        </div>
-                    </Tab>
-                    <Tab label="Tab B" value="b">
-                        <div>
-                            <h2 style={styles.headline}>Controllable Tab B</h2>
-                            <p>
-                                aaaaaaaaa
-                            </p>
-                        </div>
-                    </Tab>
-                    <Tab label="Tab D" value="c">
-                        <div>
-                            <h2 style={styles.headline}>Controllable Tab C</h2>
-                            <p>
-                        bbbbbbbbb
-                            </p>
-                        </div>
-                    </Tab>
-                    <Tab label="Tab D" value="d">
-                        <div>
-                            <h2 style={styles.headline}>Controllable Tab D</h2>
-                            <p>
-                                tra
-                            </p>
-                        </div>
-                    </Tab>
-                </Tabs>
-
-
+            <Tabs
+                value={this.state.value}
+                onChange={this.handleChange}
+            >
+                <Tab label="Tab A" value="a">
+                    <div>
+                        <h2 style={styles.headline}>Controllable Tab A</h2>
+                        <p>
+                            1
+                        </p>
+                    </div>
+                </Tab>
+                <Tab label="Tab B" value="b">
+                    <div>
+                        <h2 style={styles.headline}>Controllable Tab B</h2>
+                        <p>
+                            2
+                        </p>
+                    </div>
+                </Tab>
+                <Tab label="Tab D" value="c">
+                    <div>
+                        <h2 style={styles.headline}>Controllable Tab C</h2>
+                        <p>
+                            3
+                        </p>
+                    </div>
+                </Tab>
+                <Tab label="Tab D" value="d">
+                    <div>
+                        <h2 style={styles.headline}>Controllable Tab D</h2>
+                        <p>
+                            4
+                        </p>
+                    </div>
+                </Tab>
+            </Tabs>
         );
     }
 }

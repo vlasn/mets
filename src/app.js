@@ -21,9 +21,7 @@ class App extends React.Component {
 
                     <Header/>
                     <MetsahaldurView/>
-
                     <Validate/>
-
 
                     <Link to={'/login'}>Login</Link>
                     <Link to={'/newuser'}>Kasutaja valideerimine</Link>

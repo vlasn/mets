@@ -4,11 +4,6 @@
 import React from "react"
 import LoginTextField from "./LoginTextField"
 import LoginButton from "./LoginButton"
-
-
-
-
-//const css = require("./FirstPassword.scss")
 import Error from "./Error"
 const styles = {
     container: {
@@ -21,8 +16,6 @@ const styles = {
         width: '50%',
         alignContent: 'center',
     },
-
-
 }
 
 const labelStyles = {
@@ -30,7 +23,6 @@ const labelStyles = {
         color: 'white'
     }
 }
-
 
 export default class FirstPassword extends React.Component {
     constructor(props){
@@ -85,10 +77,7 @@ export default class FirstPassword extends React.Component {
         <WideButton name = "button" text = "Mine metsa!" submitHandler = {this.handleSubmit.bind(this)}/>
         </div>
         */
-
-
         )
-
 
     }
 }

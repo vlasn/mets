@@ -17,7 +17,6 @@ export default class InputField extends React.Component{
         );
     }
 
-
     render(){
         return(
             <div className = "InputField__wrapper">
