@@ -11,9 +11,7 @@ const styles = {
     container: {
         textAlign:'center',
     },
-    button: {
-        textAlign:'left',
-    }
+
 }
 
 
@@ -29,16 +27,7 @@ const MetsahaldurView = () => (
             />
 
             <CardText expandable={true}>
-                <Divider />
-                    <div style={styles.button}>
-                        <FlatButton label="Leping" />
-                        <FlatButton label="Hinnatabel" />
-                        <FlatButton label="Metsateatis" />
-                        <FlatButton label="Raieluba" />
-
-                    </div>
-                <Divider/>
-                <MetsahaldurViewTable/>
+                {/*<MetsahaldurViewTable/>*/}
             </CardText>
         </Card>
 
