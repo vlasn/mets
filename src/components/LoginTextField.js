@@ -29,7 +29,6 @@ export default class LoginTextField extends React.Component{
                        onChange={(event)=>this.textChangeHandler(event)}
                        hintText={this.props.hintText}
                        fullWidth={this.props.fullWidth}
-                       updateValue = {this.props.credentialChange}
                        errorText = {this.props.errorText}
                        underlineFocusStyle={styles.underlineStyle}
                 />
