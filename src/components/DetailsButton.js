@@ -18,6 +18,9 @@ export default class DetailsButton extends React.Component {
                 label = {this.props.label}
                 onTouchTap = {this.clicked.bind(this)}
                 backgroundColor = {this.props.active === this.props.name ? "#00CC33" : null}
+                textColor = {this.props.active === this.props.name ? "#00CC33" : null}
+                style={this.props.active === this.props.name ? {color:'white',} : null}
+                hoverColor={"#00CC33"}
             />
         </MuiThemeProvider>
         )

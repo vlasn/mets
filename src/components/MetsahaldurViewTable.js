@@ -48,7 +48,7 @@ const tableData = [
         kogus: '30',
         summa: '111',
     },
-    
+
 ];
 
 export default class MetsahaldurViewTable extends React.Component {

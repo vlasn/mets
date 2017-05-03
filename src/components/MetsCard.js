@@ -21,14 +21,15 @@ export default class MetsCard extends React.Component {
             <div className="MetsCard__wrapper" >
                 <section className="MetsCard__header" onClick={this.toggle.bind(this)}>
                     <div className="MetsCard__header-button left">
-                        Üks
+                        LEPING-FF-3124486234
                     </div>
                     <div className="MetsCard__header-button middle">
-                        Kaks
+                        3421341:67864234
                     </div>
                     <div className="MetsCard__header-button right">
                         <div className="MetsCard__header-button-flexwrap">
-                            <div className="flex-button-large"> Kolm </div>
+                            <div className="flex-button-large"> Paks must mets
+                            </div>
                             <div className="flex-button-small"> {!this.state.open ? <CaretDown/> : <CaretUp/>}</div>
                         </div>
                     </div>
