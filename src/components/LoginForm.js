@@ -63,7 +63,10 @@ export default class LoginForm extends React.Component{
                         labelStyle ={styles.button}
                         backgroundColor= "#00CC33"
                         hoverColor = "#009933"
-                        submitHandler = {this.loginHandler.bind(this)}/>
+                        submitHandler = {this.loginHandler.bind(this)}
+                        fullWidth={true}
+
+                    />
                 </form>
                 <a href="#" className="LoginForm__forgot-link">Unustasin parooli</a>
             </div>

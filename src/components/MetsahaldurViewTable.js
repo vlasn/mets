@@ -16,41 +16,44 @@ const styles = {
         //marginTop: '150px',
         //position: 'absolute',
     },
+    header: {
+        backgroundColor: '#00CC33',
+        color:'white',
+    },
 };
-
 
 const tableData = [
     {
-        name: 'John Smith',
-        status: 'Employed',
-        selected: true,
+        kuupäev: '11.03.2016',
+        veoseleht: 'Veoseleht 33882',
+        kogus: '30',
+        summa: '111',
+    },
+
+    {
+        kuupäev: '11.03.2016',
+        veoseleht: 'Veoseleht 33882',
+        kogus: '30',
+        summa: '111',
     },
     {
-        name: 'Randal White',
-        status: 'Unemployed',
+        kuupäev: '11.03.2016',
+        veoseleht: 'Veoseleht 33882',
+        kogus: '30',
+        summa: '111',
     },
     {
-        name: 'Stephanie Sanders',
-        status: 'Employed',
-        selected: true,
+        kuupäev: '11.03.2016',
+        veoseleht: 'Veoseleht 33882',
+        kogus: '30',
+        summa: '111',
     },
-    {
-        name: 'Steve Brown',
-        status: 'Employed',
-    },
-    {
-        name: 'Joyce Whitten',
-        status: 'Employed',
-    },
-    {
-        name: 'Samuel Roberts',
-        status: 'Employed',
-    },
-    {
-        name: 'Adam Moore',
-        status: 'Employed',
-    },
+
+
 ];
+
+
+
 
 export default class MetsahaldurViewTable extends React.Component {
 
@@ -59,13 +62,13 @@ export default class MetsahaldurViewTable extends React.Component {
 
         this.state = {
             fixedHeader: true,
-            fixedFooter: true,
-            stripedRows: true,
+            fixedFooter: false,
+            stripedRows: false,
             showRowHover: false,
             selectable: false,
             multiSelectable: false,
             enableSelectAll: false,
-            deselectOnClickaway: true,
+            deselectOnClickaway: false,
             showCheckboxes: false,
             height: '300px',
         };
@@ -83,51 +86,54 @@ export default class MetsahaldurViewTable extends React.Component {
 
     render() {
         return (
-
-            <div style={styles.container}>
-                <Table
-                    height={this.state.height}
-                    fixedHeader={this.state.fixedHeader}
-                    fixedFooter={this.state.fixedFooter}
-                    selectable={this.state.selectable}
-                    multiSelectable={this.state.multiSelectable}
-                >
-                    <TableHeader
-                        displaySelectAll={this.state.showCheckboxes}
-                        adjustForCheckbox={this.state.showCheckboxes}
-                        enableSelectAll={this.state.enableSelectAll}
+            <MuiThemeProvider>
+                <div style={styles.container}>
+                    kogus/tm
+                    summa/€
+                    <Table
+                        height={this.state.height}
+                        fixedHeader={this.state.fixedHeader}
+                        fixedFooter={this.state.fixedFooter}
+                        selectable={this.state.selectable}
+                        multiSelectable={this.state.multiSelectable}
                     >
-                        <TableRow>
-                            <TableHeaderColumn tooltip="The ID">ID</TableHeaderColumn>
-                            <TableHeaderColumn tooltip="The Name">Name</TableHeaderColumn>
-                            <TableHeaderColumn tooltip="The Status">Status</TableHeaderColumn>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody
-                        displayRowCheckbox={this.state.showCheckboxes}
-                        deselectOnClickaway={this.state.deselectOnClickaway}
-                        showRowHover={this.state.showRowHover}
-                        stripedRows={this.state.stripedRows}
-                    >
-                        {tableData.map( (row, index) => (
-                            <TableRow key={index} selected={row.selected}>
-                                <TableRowColumn>{index}</TableRowColumn>
-                                <TableRowColumn>{row.name}</TableRowColumn>
-                                <TableRowColumn>{row.status}</TableRowColumn>
+                        <TableHeader
+                            displaySelectAll={this.state.showCheckboxes}
+                            adjustForCheckbox={this.state.showCheckboxes}
+                            enableSelectAll={this.state.enableSelectAll}
+                        >
+                            <TableRow
+                                style={styles.header}
+                            >
+                                <TableRowColumn>Kuupäev</TableRowColumn>
+                                <TableRowColumn></TableRowColumn>
+                                <TableRowColumn>333</TableRowColumn>
+                                <TableRowColumn>1000€</TableRowColumn>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                    <TableFooter
-                        adjustForCheckbox={this.state.showCheckboxes}
-                    >
-                        <TableRow>
-                            <TableRowColumn>ID</TableRowColumn>
-                            <TableRowColumn>Name</TableRowColumn>
-                            <TableRowColumn>Status</TableRowColumn>
-                        </TableRow>
-                    </TableFooter>
-                </Table>
-            </div>
+                        </TableHeader>
+                        <TableBody
+                            displayRowCheckbox={this.state.showCheckboxes}
+                            deselectOnClickaway={this.state.deselectOnClickaway}
+                            showRowHover={this.state.showRowHover}
+                            stripedRows={this.state.stripedRows}
+                        >
+                            {tableData.map( (row) => (
+                                <TableRow >
+                                    <TableRowColumn>{row.kuupäev}</TableRowColumn>
+                                    <TableRowColumn>{row.veoseleht}</TableRowColumn>
+                                    <TableRowColumn>{row.kogus}</TableRowColumn>
+                                    <TableRowColumn>{row.summa}</TableRowColumn>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                        <TableFooter
+                            adjustForCheckbox={this.state.showCheckboxes}
+                        >
+
+                        </TableFooter>
+                    </Table>
+                </div>
+            </MuiThemeProvider>
         );
     }
 }

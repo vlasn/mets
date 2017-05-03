@@ -34,7 +34,7 @@ const styles = {
         boarderRadius:'0px',
     },
     container: {
-        padding: '1px 0px 50px 0px',
+        padding: '50px',
         textAlign:'center',
         width:'100vw',
         //position: 'fixed',

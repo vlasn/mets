@@ -12,6 +12,7 @@ import Table from "./components/MetsahaldurViewTable"
 import MetsahaldurView from "./components/MetsahaldurView"
 import MetsCard from "./components/MetsCard"
 import DetailsWrapper from "./components/DetailsWrapper";
+import MetsahaldurViewTable from "./components/MetsahaldurViewTable"
 
 class App extends React.Component {
 
@@ -20,14 +21,14 @@ class App extends React.Component {
             <Router>
 
                 <div className="main__wrapper">
-                    <MetsCard>
-                        <DetailsWrapper/>
-                    </MetsCard>
+
                     <Link to={'/login'}>Login</Link>
                     <Link to={'/newuser'}>Kasutaja valideerimine</Link>
                     <Route path="/login" component={Login}/>
                     <Route path="/newuser" component={Validate}/>
                     <Route path="/" exact={true} render={()=>(<p>Lingid kiireks vaadete vahetamiseks on praegu siin kohal.</p>)}/>
+                    <MetsahaldurViewTable/>
+
                 </div>
 
             </Router>
