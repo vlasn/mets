@@ -2,25 +2,61 @@ import React from 'react';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import MetsahaldurViewTable from "./MetsahaldurViewTable"
 import FlatButton from 'material-ui/FlatButton';
-import Divider from 'material-ui/Divider';
-
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 const css = require("./MetsahaldurView.scss")
 
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+const styles = {
+    card: {
+        boxShadow:'1px',
+        border:'1px solid black',
+        borderRadius:'0px',
+        padding:'10px',
+    },
+    cardHeader: {
+        display:'inline',
+    },
+    cardHeaderLeft: {
+        display:'inline',
+        padding:'0',
+        float:'left',
+    },
+    cardHeaderRight: {
+        display:'inline',
+        padding:'0',
+        float:'right',
 
+    },
+
+
+};
 
 
 const MetsahaldurView = () => (
     <div className = "MetsahaldurView__wrapper">
         <MuiThemeProvider>
+            <Card style={styles.card}>
 
-            <Card>
+                <CardHeader
+                    title="Leping"
+                    style={styles.cardHeaderLeft}
+                    actAsExpander={true}
+                />
                 <CardHeader
                     title="Mets 1"
-                    //subtitle="Subtitle"
+                    style={styles.cardHeader}
+                    actAsExpander={true}
+                />
+                <CardHeader
+                    title="Ootel"
+                    style={styles.cardHeaderRight}
                     actAsExpander={true}
                     showExpandableButton={true}
+
                 />
+
+
+
+
                 <CardText expandable={true}>
                     {/*<MetsahaldurViewTable/>*/}
                 </CardText>
