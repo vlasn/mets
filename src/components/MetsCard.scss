@@ -1,10 +1,15 @@
 .MetsCard__wrapper {
-  border: 1px solid black;
+
   display: block;
   width: 100%;
   .MetsCard__header {
+    border: 2px solid black;
     display: flex;
     width: 100%;
+    padding: 10px 0;
+    text-transform: capitalize;
+    font-size: 20px;
+    flex-direction: row;
     .right{
       text-align: right;
     }
@@ -16,9 +21,19 @@
     }
   }
   .MetsCard__header-button {
-    flex-direction: row;
     flex: 1 0 0;
     padding: 0 18px;
+    .MetsCard__header-button-flexwrap {
+      display: flex;
+      width: 100%;
+      flex-direction: row;
+      .flex-button-small {
+        flex: 1 0 0;
+      }
+      .flex-button-large {
+        flex: 3 0 0;
+      }
+    }
   }
   .MetsCard__content {
 

@@ -3,6 +3,7 @@
  */
 import React from "react"
 import DetailsWrapper from "./DetailsWrapper"
+import {CaretDown, CaretUp} from "./Icons"
 const css = require("./MetsCard.scss");
 
 export default class MetsCard extends React.Component {
@@ -26,7 +27,10 @@ export default class MetsCard extends React.Component {
                         Kaks
                     </div>
                     <div className="MetsCard__header-button right">
-                        Kolm
+                        <div className="MetsCard__header-button-flexwrap">
+                            <div className="flex-button-large"> Kolm </div>
+                            <div className="flex-button-small"> {!this.state.open ? <CaretDown/> : <CaretUp/>}</div>
+                        </div>
                     </div>
                 </section>
                 <section className="MetsCard__content">
