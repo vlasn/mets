@@ -10,6 +10,8 @@ import Validate from "./components/Validate"
 import Header from "./components/Header"
 import Table from "./components/MetsahaldurViewTable"
 import MetsahaldurView from "./components/MetsahaldurView"
+import MetsCard from "./components/MetsCard"
+import DetailsWrapper from "./components/DetailsWrapper";
 
 class App extends React.Component {
 
@@ -18,7 +20,9 @@ class App extends React.Component {
             <Router>
 
                 <div className="main__wrapper">
-                    <Header/>
+                    <MetsCard>
+                        <DetailsWrapper/>
+                    </MetsCard>
                     <Link to={'/login'}>Login</Link>
                     <Link to={'/newuser'}>Kasutaja valideerimine</Link>
                     <Route path="/login" component={Login}/>

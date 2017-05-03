@@ -1,0 +1,26 @@
+.MetsCard__wrapper {
+  border: 1px solid black;
+  display: block;
+  width: 100%;
+  .MetsCard__header {
+    display: flex;
+    width: 100%;
+    .right{
+      text-align: right;
+    }
+    .middle {
+      text-align: center;
+    }
+    .left {
+      text-align: left;
+    }
+  }
+  .MetsCard__header-button {
+    flex-direction: row;
+    flex: 1 0 0;
+    padding: 0 18px;
+  }
+  .MetsCard__content {
+
+  }
+}

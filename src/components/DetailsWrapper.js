@@ -1,6 +1,6 @@
 import React from "react"
 import DetailsButton from "./DetailsButton"
-const css = require("./DetailsWrapper.scss")
+const css = require("./DetailsWrapper.scss");
 
 
 export default class DetailsWrapper extends React.Component{
@@ -18,6 +18,7 @@ export default class DetailsWrapper extends React.Component{
             })
         }
     }
+
     Tab(arg) {
         return(`${arg} vaade on siin.`)
     }
@@ -55,6 +56,7 @@ export default class DetailsWrapper extends React.Component{
             <div>
                 {this.state.activeTab===null ? null : this.Tab(this.state.activeTab)}
             </div>
+
 
         </div>
         )
