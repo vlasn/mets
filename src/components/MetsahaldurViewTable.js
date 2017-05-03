@@ -48,12 +48,8 @@ const tableData = [
         kogus: '30',
         summa: '111',
     },
-
-
+    
 ];
-
-
-
 
 export default class MetsahaldurViewTable extends React.Component {
 
@@ -88,8 +84,7 @@ export default class MetsahaldurViewTable extends React.Component {
         return (
             <MuiThemeProvider>
                 <div style={styles.container}>
-                    kogus/tm
-                    summa/€
+
                     <Table
                         height={this.state.height}
                         fixedHeader={this.state.fixedHeader}
@@ -102,6 +97,13 @@ export default class MetsahaldurViewTable extends React.Component {
                             adjustForCheckbox={this.state.showCheckboxes}
                             enableSelectAll={this.state.enableSelectAll}
                         >
+                            <TableRow
+                            >
+                                <TableRowColumn></TableRowColumn>
+                                <TableRowColumn></TableRowColumn>
+                                <TableRowColumn>kogus/tm</TableRowColumn>
+                                <TableRowColumn>summa/€</TableRowColumn>
+                            </TableRow>
                             <TableRow
                                 style={styles.header}
                             >

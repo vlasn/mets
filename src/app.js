@@ -27,7 +27,12 @@ class App extends React.Component {
                     <Route path="/login" component={Login}/>
                     <Route path="/newuser" component={Validate}/>
                     <Route path="/" exact={true} render={()=>(<p>Lingid kiireks vaadete vahetamiseks on praegu siin kohal.</p>)}/>
-                    <MetsahaldurViewTable/>
+                    <MetsCard>
+                        <DetailsWrapper/>
+                        <MetsahaldurViewTable/>
+
+                    </MetsCard>
+
 
                 </div>
 

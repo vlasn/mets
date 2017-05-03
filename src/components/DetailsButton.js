@@ -17,7 +17,7 @@ export default class DetailsButton extends React.Component {
             <FlatButton
                 label = {this.props.label}
                 onTouchTap = {this.clicked.bind(this)}
-                backgroundColor = {this.props.active === this.props.name ? "#009933" : null}
+                backgroundColor = {this.props.active === this.props.name ? "#00CC33" : null}
             />
         </MuiThemeProvider>
         )
