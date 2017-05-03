@@ -3,6 +3,7 @@ import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import MetsahaldurViewTable from "./MetsahaldurViewTable"
 import FlatButton from 'material-ui/FlatButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import DetailsWrapper from "./DetailsWrapper"
 const css = require("./MetsahaldurView.scss")
 
 const styles = {
@@ -54,11 +55,8 @@ const MetsahaldurView = () => (
 
                 />
 
-
-
-
                 <CardText expandable={true}>
-                    {/*<MetsahaldurViewTable/>*/}
+                    <DetailsWrapper/>
                 </CardText>
             </Card>
         </MuiThemeProvider>

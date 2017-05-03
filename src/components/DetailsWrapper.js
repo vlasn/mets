@@ -1,5 +1,6 @@
 import React from "react"
 import DetailsButton from "./DetailsButton"
+const css = require("./DetailsWrapper.scss")
 
 
 export default class DetailsWrapper extends React.Component{
