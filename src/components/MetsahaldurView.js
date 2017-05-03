@@ -12,7 +12,9 @@ const styles = {
         border:'1px solid black',
         borderRadius:'0px',
         padding:'10px',
-    },
+        textTransform: 'uppercase',
+
+},
     cardHeader: {
         display:'inline',
     },
@@ -25,10 +27,7 @@ const styles = {
         display:'inline',
         padding:'0',
         float:'right',
-
     },
-
-
 };
 
 
@@ -43,7 +42,7 @@ const MetsahaldurView = () => (
                     actAsExpander={true}
                 />
                 <CardHeader
-                    title="Mets 1"
+                    title="Kinnistu nimi"
                     style={styles.cardHeader}
                     actAsExpander={true}
                 />
