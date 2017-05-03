@@ -17,6 +17,12 @@ import MetsahaldurViewTable from "./components/MetsahaldurViewTable"
 class App extends React.Component {
 
     render() {
+        let sampleContract = {
+            contractId: "LEPING-FF-3124486234",
+            cadastral: "3421341:67864234",
+            propertyName: "Paks Must Mets",
+            caret: true
+        }
         return (
             <Router>
 
@@ -26,14 +32,12 @@ class App extends React.Component {
                     <Link to={'/newuser'}>Kasutaja valideerimine</Link>
                     <Route path="/login" component={Login}/>
                     <Route path="/newuser" component={Validate}/>
-                    <Route path="/" exact={true} render={()=>(<p>Lingid kiireks vaadete vahetamiseks on praegu siin kohal.</p>)}/>
-                    <MetsCard>
-                        <DetailsWrapper/>
-                        <MetsahaldurViewTable/>
-
-                    </MetsCard>
-
-
+                    <Route path="/" exact={true} render={()=>(
+                        <MetsCard {...sampleContract}>
+                            <DetailsWrapper/>
+                            <MetsahaldurViewTable/>
+                        </MetsCard>)
+                    }/>
                 </div>
 
             </Router>
