@@ -26,6 +26,7 @@ export default class LoginTextField extends React.Component{
                 <TextField id={this.props.name}
                        type={this.props.type}
                        className = "InputField__input"
+                       name = {this.props.name}
                        onChange={(event)=>this.textChangeHandler(event)}
                        hintText={this.props.hintText}
                        fullWidth={this.props.fullWidth}

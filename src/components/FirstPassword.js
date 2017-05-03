@@ -47,7 +47,7 @@ export default class FirstPassword extends React.Component {
                    type = "password"
                    fullWidth={true}
                    updateValue = {this.props.credentialChange}
-
+                   name = "password"
                />
                <LoginTextField
                    hintText="Parool uuesti"
@@ -55,6 +55,7 @@ export default class FirstPassword extends React.Component {
                    fullWidth={true}
                    updateValue = {this.props.credentialChange}
                    errorText = {this.props.error}
+                   name = "cpassword"
 
                />
                <LoginButton
