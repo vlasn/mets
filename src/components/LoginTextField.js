@@ -6,6 +6,10 @@ const styles = {
     underlineStyle: {
         borderColor: '#00CC33',
     },
+
+    floatingLabelFocusStyle:{
+        color: 'black',
+    }
 };
 
 export default class LoginTextField extends React.Component{
@@ -23,7 +27,8 @@ export default class LoginTextField extends React.Component{
     render(){
         return(
             <div>
-                <TextField id={this.props.name}
+                <TextField
+                        id={this.props.name}
                        type={this.props.type}
                        className = "InputField__input"
                        name = {this.props.name}
@@ -32,6 +37,10 @@ export default class LoginTextField extends React.Component{
                        fullWidth={this.props.fullWidth}
                        errorText = {this.props.errorText}
                        underlineFocusStyle={styles.underlineStyle}
+                       floatingLabelText={this.props.floatingLabelText}
+                       floatingLabelFixed={true}
+                        floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+
                 />
             </div>
         );
