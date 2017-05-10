@@ -15,7 +15,7 @@ export default class LoginButton extends React.Component{
 
     render() {
         return(
-            <div className = "WideButton__wrapper">
+            <div>
                 <FlatButton
                     onClick={event => this.btnClicked()}
                     backgroundColor= {this.props.backgroundColor}
@@ -24,7 +24,6 @@ export default class LoginButton extends React.Component{
                     hoverColor={this.props.hoverColor}
                     labelStyle ={this.props.labelStyle}
                     fullWidth={this.props.fullWidth}
-
                 />
                 {this.props.text}
             </div>

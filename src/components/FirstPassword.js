@@ -4,19 +4,7 @@
 import React from "react"
 import LoginTextField from "./LoginTextField"
 import LoginButton from "./LoginButton"
-import Error from "./Error"
-const styles = {
-    container: {
-        display: 'block',
-        boxSizing: 'border-box',
-        position: 'absolute',
-        left: '50%',
-        top: '50%',
-        transform: 'translate(-50%,-50%)',
-        width: '50%',
-        alignContent: 'center',
-    },
-}
+const css = require("./FirstPassword.scss");
 
 const labelStyles = {
     headerButton: {
@@ -39,44 +27,36 @@ export default class FirstPassword extends React.Component {
 
     render() {
         return(
-           <div style={styles.container}>
-
-               <h1>Vali endale salasõna</h1>
+            <div className = "FirstPassword__wrapper">
+               <h1 className="FirstPassword__title">Vali endale salasõna</h1>
                <LoginTextField
                    hintText="Parool"
                    type = "password"
+                   floatingLabelText="Parool"
                    fullWidth={true}
                    updateValue = {this.props.credentialChange}
-
                />
                <LoginTextField
                    hintText="Parool uuesti"
                    type = "password"
+                   floatingLabelText="Parool uuesti"
                    fullWidth={true}
                    updateValue = {this.props.credentialChange}
                    errorText = {this.props.error}
 
                />
-               <LoginButton
-                   style={styles.button}
-                   backgroundColor= "#00CC33"
-                   hoverColor = "#009933"
-                   labelStyle ={labelStyles.headerButton}
-                   submitHandler = {this.handleSubmit.bind(this)}
-                   label="Mine metsa!"
+                <div className="FirstPassword__button">
+                   <LoginButton
+                       backgroundColor= "#00CC33"
+                       hoverColor = "#009933"
+                       labelStyle ={labelStyles.headerButton}
+                       submitHandler = {this.handleSubmit.bind(this)}
+                       label="Mine metsa!"
+                       fullWidth={true}
+                   />
+                </div>
+            </div>
 
-               />
-           </div>
-
-        /*
-           <div className = "FirstPassword__wrapper">
-            <h1>Vali endale salasõna</h1>
-        <InputField labelText = "Parool" name = "password" type="password" updateValue = {this.props.credentialChange}/>
-    <InputField labelText = "Parool uuesti" name = "cpassword" type = "password" updateValue = {this.props.credentialChange}/>
-        {this.props.error ? <Error text = {this.props.error}/> : null}
-        <WideButton name = "button" text = "Mine metsa!" submitHandler = {this.handleSubmit.bind(this)}/>
-        </div>
-        */
         )
     }
 }
