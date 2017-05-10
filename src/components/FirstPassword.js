@@ -28,8 +28,7 @@ export default class FirstPassword extends React.Component {
     render() {
         return(
             <div className = "FirstPassword__wrapper">
-
-               <h1>Vali endale salasõna</h1>
+               <h1 className="FirstPassword__title">Vali endale salasõna</h1>
                <LoginTextField
                    hintText="Parool"
                    type = "password"
