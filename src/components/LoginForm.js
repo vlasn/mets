@@ -5,18 +5,9 @@ import React from "react"
 import Error from "./Error"
 import LoginTextField from "./LoginTextField"
 import LoginButton from "./LoginButton"
+const css = require("./LoginForm.scss");
 
 const styles = {
-    container: {
-        display: 'block',
-        boxSizing: 'border-box',
-        position: 'absolute',
-        left: '50%',
-        top: '50%',
-        transform: 'translate(-50%,-50%)',
-        width: '50%',
-        alignContent: 'center',
-    },
     button: {
         color: 'white'
     },
@@ -37,8 +28,8 @@ export default class LoginForm extends React.Component{
 
     render(){
         return(
-            <div style={styles.container}>
-                <h1>Siin on logo</h1>
+            <div className = "LoginForm__wrapper">
+                <h1 className="LoginForm__title">Metsahaldur 2.0</h1>
                 <form onSubmit={e=>e.preventDefault()}>
                     <LoginTextField
                         hintText = "E-mail"
@@ -48,6 +39,7 @@ export default class LoginForm extends React.Component{
                         backgroundColor= "#00CC33"
                         hoverColor = "#009933"
                         fullWidth={true}
+                        floatingLabelText="Parool uuesti"
                     />
                     <LoginTextField
                         hintText = "Parool"
@@ -55,22 +47,26 @@ export default class LoginForm extends React.Component{
                         type = "password"
                         updateValue = {this.props.updateValue}
                         fullWidth={true}
+                        floatingLabelText="Parool uuesti"
+
                     />
                     {this.props.error ? <Error text = {this.props.error}/> : null}
-                    <LoginButton
-                        name = "button"
-                        label="Logi sisse"
-                        labelStyle ={styles.button}
-                        backgroundColor= "#00CC33"
-                        hoverColor = "#009933"
-                        submitHandler = {this.loginHandler.bind(this)}
-                        fullWidth={true}
-
-                    />
+                    <div className="FirstPassword__button">
+                        <LoginButton
+                            name = "button"
+                            label="Logi sisse"
+                            labelStyle ={styles.button}
+                            backgroundColor= "#00CC33"
+                            hoverColor = "#009933"
+                            submitHandler = {this.loginHandler.bind(this)}
+                            fullWidth={true}
+                        />
+                    </div>
                 </form>
-                <a href="#" className="LoginForm__forgot-link">Unustasin parooli</a>
+                <div className="LoginForm__forgot-wrapper">
+                    <a href="#" className="LoginForm__forgot-link">Unustasin parooli</a>
+                </div>
             </div>
-
         );
     }
 }
