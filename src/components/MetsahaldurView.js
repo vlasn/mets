@@ -42,40 +42,49 @@ const styles = {
     },
 };
 
+const data = {
+    "status":"accept",
+    "msg": "",
+    "data": [
+        { //Lepinguobjekt
+            "estate":"Tagametsa",
+            "status": "active",
+            "contracts":[
+                {
+                    "filename":"leping1.pdf",
+                    "filepath":"filepath",
+                    "datestamp":"00-00-0000",
+                    "author":"Tagametsa Toomas"
+                }
+            ],
+            "prices": {
+                "reference": "some kind of internal MongoDB ref?",
+                "datestamp": "00-00-0000"
+            },
+            "metsateatis?": {
+                "filename":"teatis1.pdf",
+                "filepath":"filepath",
+                "datestamp":"00-00-0000",
+                "author":"Tagametsa Toomas"
+            },
+            "koondakt": {
+                "filename":"akt1.pdf",
+                "filepath":"filepath",
+                "datestamp":"00-00-0000",
+                "author":"Tagametsa Toomas"
+            }
+        }
+    ]
+}
 
-const MetsahaldurView = () => (
-    <div className = "MetsahaldurView__wrapper">
-        <MuiThemeProvider>
-            <Card style={styles.card}>
-
-                <CardHeader
-                    title="Leping"
-                    style={styles.cardHeaderLeft}
-                    actAsExpander={true}
-                />
-                <CardHeader
-                    title="Kinnistu nimi"
-                    style={styles.cardHeader}
-                    actAsExpander={true}
-                />
-                <CardHeader
-                    title="Ootel"
-                    style={styles.cardHeaderRight}
-                    actAsExpander={true}
-                    showExpandableButton={true}
-
-                />
-
-                <CardText
-                    expandable={true}
-                    style={styles.cardText}
-
-                >
-                    <DetailsWrapper/>
-                </CardText>
-            </Card>
-        </MuiThemeProvider>
-    </div>
-);
-
-export default MetsahaldurView;
+export default class MetsahaldurView extends React.Component {
+    render() {
+        return (
+            <div className="MetsahaldurView__wrapper">
+                <MuiThemeProvider>
+                    <DetailsWrapper testData={data.data[0]}/>
+                </MuiThemeProvider>
+            </div>
+        )
+    }
+}

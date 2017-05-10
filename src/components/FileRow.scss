@@ -1,0 +1,26 @@
+.FileRow {
+  padding: 0 20px;
+  &:first-child {
+    margin-top: 10px;
+  }
+  &:last-child {
+    margin-bottom: 10px;
+  }
+}
+.FileRow__wrapper {
+  display: flex;
+  flex-direction: row;
+  padding: 5px 0px;
+  font-size: 1.2rem;
+  border-bottom: 1px dashed grey;
+  margin-bottom: 5px;
+  .FileRow__Icon-wrapper {
+    flex: 0.20 0 0;
+  }
+  .FileRow__filename-wrapper {
+    flex: 5 0 0;
+  }
+  .FileRow__options-wrapper {
+    flex: 1 0 0
+  }
+}

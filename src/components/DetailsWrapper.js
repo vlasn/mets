@@ -1,5 +1,6 @@
 import React from "react"
 import DetailsButton from "./DetailsButton"
+import FileRow from "./FileRow"
 const css = require("./DetailsWrapper.scss");
 
 
@@ -18,14 +19,19 @@ export default class DetailsWrapper extends React.Component{
             })
         }
     }
+    Tab(activeTab) {
+        switch(activeTab) {
+            case "leping": {
 
-    Tab(arg) {
-        return(`${arg} vaade on siin.`)
+            }
+        }
     }
 
+
     render() {
+
         return(
-        <div>
+            <div className="DetailsWrapper__wrapper">
             <DetailsButton
                 name="leping"
                 label="Leping"
@@ -37,24 +43,28 @@ export default class DetailsWrapper extends React.Component{
                 label="Hinnatabel"
                 clicked = {this.switchTab}
                 active = {this.state.activeTab}
-
             />
             <DetailsButton
                 name="teatis"
                 label="Metsateatis"
                 clicked = {this.switchTab}
                 active = {this.state.activeTab}
-
             />
             <DetailsButton
                 name="koondakt"
                 label="Vaata koondakti"
                 clicked = {this.switchTab}
                 active = {this.state.activeTab}
-
             />
             <div>
-                {this.state.activeTab===null ? null : this.Tab(this.state.activeTab)}
+                {this.state.activeTab === 'leping' ? this.props.documents.contracts.map((data)=>{
+                        return <FileRow fileName={data.filename}/>
+                    }) : null}
+                {this.state.activeTab === 'teatis' ?
+                    <FileRow fileName={this.props.documents.metsateatis.filename}/> : null}
+                {this.state.activeTab === 'koondakt' ?
+                    <FileRow fileName={this.props.documents.koondakt.filename}/> : null}
+
             </div>
 
 
