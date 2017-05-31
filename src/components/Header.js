@@ -79,13 +79,13 @@ export default class Header extends React.Component {
         return (
             <MuiThemeProvider>
                 <div className = "Header__wrapper" style={styles.container}>
-                    <FlatButton 
+                    <FlatButton
                         label="Avaleht"
                         style={styles.headerButton}
                         backgroundColor= "black"
                         hoverColor = "#00CC33"
                         labelStyle ={labelStyles.headerButton}
-                        
+
                     />
                     <FlatButton
                         onTouchTap={this.handleTouchTap}
@@ -94,7 +94,7 @@ export default class Header extends React.Component {
                         backgroundColor= "#00CC33"
                         hoverColor = "#009933"
                         labelStyle ={labelStyles.headerButton}
-                        
+
                     />
                     <Popover
                         open={this.state.open}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<title>Modal</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="modal.css">
+<body>
+
+  <div class="wrap">
+    <button class="btn btn-big" id="open">Veoseleht</button>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal-one" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h2>Veoseleht</h2>
+        <h4>Saeveski: Viiratsi Saeveski AS/Viiratsi</h4>
+        <h4>Koostamise kuupäev: 03.05.17</h4>
+        <span class="btn-close" id="close">x</span>
+      </div>
+      <div class="modal-body">
+
+        <table border="1" cellpadding="1" style="width: 800px;">
+          <tbody>
+            <tr style="padding: 0px;">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>KOKKU</td>
+              <td>27€</td>
+            </tr>
+            <tr bgcolor="#00CC33">
+            <td>Toode</td>
+            <td>Diameeter</td>
+            <td>Pikkus</td>
+            <td>Kvaliteet</td>
+            <td>Tihumeetrid</td>
+            <td>Tm/€</td>
+            <td>SUMMA</td>
+            </tr>
+            <tr>
+            <td>MA peenpalk</td>
+            <td>ABC</td>
+            <td>8,0 - 9,9</td>
+            <td>3,1-4,0</td>
+            <td>1</td>
+            <td>27</td>
+            <td>27</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <script>
+    window.addEventListener("DOMContentLoaded", function(){
+      console.log("laetud")
+      document.getElementById("modal-one").style.display = "none";
+      document.getElementById("open").addEventListener("click", function(){
+        document.getElementById("modal-one").style.display = "block";
+      });
+      document.getElementById("close").addEventListener("click", function(){
+        document.getElementById("modal-one").style.display = "none";
+      });
+    })
+
+  </script>
+
+</body>
+</html>
