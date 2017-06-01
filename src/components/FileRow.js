@@ -1,3 +1,6 @@
+/**
+ * Created by henrysavi on 31/05/17.
+ */
 import React from "react"
 import {Download} from "./Icons"
 const css = require("./FileRow.scss")
