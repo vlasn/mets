@@ -7,18 +7,13 @@ import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider"
 import {Close} from "./Icons"
 const css = require("./Dialog.scss");
-
-
 /**
  * Dialog with action buttons. The actions are passed in as an array of React objects,
  * in this example [FlatButtons](/#/components/flat-button).
  *
  * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
  */
-const styles = {
-    closeButton: {
-    },
-}
+
 export default class DialogTest extends React.Component {
     state = {
         open: false,
@@ -51,15 +46,13 @@ export default class DialogTest extends React.Component {
                         modal={false}
                         open={this.state.open}
                         onRequestClose={this.handleClose}
-                        actionsContainerStyle={styles.closeButton}
                         actionsContainerClassName="CloseButton"
-                    >
+
+                >
                         Veoseleht
                     </Dialog>
                 </div>
             </MuiThemeProvider>
-
         );
-
     }
 }

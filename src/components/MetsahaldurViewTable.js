@@ -2,12 +2,11 @@ import React from 'react';
 import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
     from 'material-ui/Table';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import Dialog from "./Dialog"
 const styles = {
     propContainer: {
         width: 200,
         overflow: 'hidden',
-
     },
     propToggleHeader: {
         margin: '20px auto 10px',
@@ -76,11 +75,16 @@ export default class MetsahaldurViewTable extends React.Component {
         });
     };
 
+
+
     handleChange = (event) => {
         this.setState({height: event.target.value});
     };
 
     render() {
+
+
+
         return (
             <MuiThemeProvider>
                 <div style={styles.container}>
@@ -96,8 +100,10 @@ export default class MetsahaldurViewTable extends React.Component {
                             displaySelectAll={this.state.showCheckboxes}
                             adjustForCheckbox={this.state.showCheckboxes}
                             enableSelectAll={this.state.enableSelectAll}
+
                         >
                             <TableRow
+
                             >
                                 <TableRowColumn></TableRowColumn>
                                 <TableRowColumn></TableRowColumn>
@@ -106,6 +112,7 @@ export default class MetsahaldurViewTable extends React.Component {
                             </TableRow>
                             <TableRow
                                 style={styles.header}
+
                             >
                                 <TableRowColumn>Kuupäev</TableRowColumn>
                                 <TableRowColumn></TableRowColumn>
@@ -131,10 +138,10 @@ export default class MetsahaldurViewTable extends React.Component {
                         <TableFooter
                             adjustForCheckbox={this.state.showCheckboxes}
                         >
-
                         </TableFooter>
                     </Table>
-                </div>
+                <Dialog/>
+            </div>
             </MuiThemeProvider>
         );
     }

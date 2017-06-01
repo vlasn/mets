@@ -12,7 +12,6 @@ import Table from "./components/MetsahaldurViewTable"
 import MetsCard from "./components/MetsCard"
 import DetailsWrapper from "./components/DetailsWrapper";
 import MetsahaldurViewTable from "./components/MetsahaldurViewTable"
-import Modal from "./components/Modal"
 import ClientLanding from "./components/ClientLanding"
 
 class App extends React.Component {
@@ -107,15 +106,11 @@ class App extends React.Component {
                     <Route path="/" exact={true} render={()=>(
                         <ClientLanding {...sampleContract}/>)
                     }/>
-                    <Modal/>
-
                 </div>
             </Router>
         );
     }
 }
-
-
 ReactDOM.render(
     <Provider store={store}>
         <App/>
