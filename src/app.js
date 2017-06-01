@@ -105,15 +105,7 @@ class App extends React.Component {
                     <Route path="/login" component={Login}/>
                     <Route path="/newuser" component={Validate}/>
                     <Route path="/" exact={true} render={()=>(
-                        <MetsCard {...sampleContract}>
-                            <DetailsWrapper/>
-                            <MetsahaldurViewTable/>
-                        </MetsCard>)
-
-
-
-                        <ClientLanding {...sampleContract}/>
-                    )
+                        <ClientLanding {...sampleContract}/>)
                     }/>
                     <Modal/>
 
