@@ -18,38 +18,40 @@ export default class DialogTest extends React.Component {
     state = {
         open: false,
     };
+    //No need to have two functions for what you can do with a very simple single one:
+    // handleOpen = () => {
+    //     this.setState({open: true});
+    // };
+    //
+    // handleClose = () => {
+    //     this.setState({open: false});
+    // };
 
-    handleOpen = () => {
-        this.setState({open: true});
-    };
-
-    handleClose = () => {
-        this.setState({open: false});
+    toggleOpen = () => {
+        this.setState({open: !this.state.open})
     };
 
     render() {
 
         const actions = [
             <Close
-                primary={true}
-                onTouchTap={this.handleClose}
+                onTouchTap={this.toggleOpen}
             />,
         ];
 
         return (
             <MuiThemeProvider>
                 <div className="Dialog">
-                    <RaisedButton label="Dialog" onTouchTap={this.handleOpen} />
+                    <RaisedButton label={this.props.buttonText} onTouchTap={this.toggleOpen} />
                     <Dialog
-                        title="Dialog With Actions"
+                        title={this.props.title}
                         actions={actions}
                         modal={false}
                         open={this.state.open}
-                        onRequestClose={this.handleClose}
+                        onRequestClose={this.toggleOpen}
                         actionsContainerClassName="CloseButton"
-
-                >
-                        Veoseleht
+                    >
+                        {this.props.children}
                     </Dialog>
                 </div>
             </MuiThemeProvider>

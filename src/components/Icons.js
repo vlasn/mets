@@ -7,7 +7,8 @@ import React from 'react';
 
 const defaultStyle = {
     padding: 0,
-    margin: "-2px 0 -5px 0"
+    margin: "-2px 0 -5px 0",
+    cursor: "pointer"
 };
 
 export const CaretDown = (props) => (

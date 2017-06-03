@@ -19,14 +19,6 @@ export default class DetailsWrapper extends React.Component{
             })
         }
     }
-    Tab(activeTab) {
-        switch(activeTab) {
-            case "leping": {
-
-            }
-        }
-    }
-
 
     render() {
 
@@ -57,8 +49,8 @@ export default class DetailsWrapper extends React.Component{
                 active = {this.state.activeTab}
             />
             <div>
-                {this.state.activeTab === 'leping' ? this.props.documents.contracts.map((data)=>{
-                        return <FileRow fileName={data.filename}/>
+                {this.state.activeTab === 'leping' ? this.props.documents.contracts.map((data, index)=>{
+                        return <FileRow fileName={data.filename} key={index || data.id}/>
                     }) : null}
                 {this.state.activeTab === 'teatis' ?
                     <FileRow fileName={this.props.documents.metsateatis.filename}/> : null}

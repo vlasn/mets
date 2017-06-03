@@ -13,6 +13,7 @@ import MetsCard from "./components/MetsCard"
 import DetailsWrapper from "./components/DetailsWrapper";
 import MetsahaldurViewTable from "./components/MetsahaldurViewTable"
 import ClientLanding from "./components/ClientLanding"
+import Dialog from './components/Dialog'
 
 class App extends React.Component {
 
@@ -29,12 +30,14 @@ class App extends React.Component {
                     "documents": {
                         "contracts":[
                             {
+                                "id":"a95032kjfqnviue0",
                                 "filename":"leping1.pdf",
                                 "filepath":"filepath",
                                 "datestamp":"00-00-0000",
                                 "author":"Tagametsa Toomas"
                             },
                             {
+                                "id": "a95032kjfqnviue2",
                                 "filename":"leping1_lisa.pdf",
                                 "filepath":"filepath",
                                 "datestamp":"00-00-0000",
@@ -77,7 +80,7 @@ class App extends React.Component {
                             "reference": "some kind of internal MongoDB ref?",
                             "datestamp": "00-00-0000"
                         },
-                        "metsateatis?": {
+                        "metsateatis": {
                             "filename":"teatis1.pdf",
                             "filepath":"filepath",
                             "datestamp":"00-00-0000",
@@ -106,6 +109,12 @@ class App extends React.Component {
                     <Route path="/" exact={true} render={()=>(
                         <ClientLanding {...sampleContract}/>)
                     }/>
+                    <Dialog
+                        title="Dialog with actions"
+                        buttonText="tere"
+                    >
+                        Veoseleht?
+                    </Dialog>
                 </div>
             </Router>
         );
