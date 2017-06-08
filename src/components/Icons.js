@@ -11,18 +11,29 @@ const defaultStyle = {
     cursor: "pointer"
 };
 
+const caretStyle = {
+    padding: 0,
+    margin: "4px 0px -10px 20px",
+    cursor: "pointer"
+};
+const caretViewBox = "0 0 24 26";
+
 export const CaretDown = (props) => (
     <MuiThemeProvider>
-        <SvgIcon {...props} style = {defaultStyle}>
-            <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z" />
+        <SvgIcon {...props} style = {caretStyle} viewBox = {caretViewBox}>
+            <path d="M1.5,0C1.883,0,2.267,0.147,2.56,0.44l9.939,9.939l9.94-9.939c0.586-0.586,1.535-0.586,2.121,0
+        c0.586,0.585,0.586,1.536,0,2.121l-11,11c-0.586,0.586-1.536,0.586-2.122,0l-11-11c-0.586-0.585-0.586-1.536,0-2.121
+        C0.732,0.147,1.116,0,1.5,0z" />
         </SvgIcon>
     </MuiThemeProvider>
 );
 
 export const CaretUp = (props) => (
     <MuiThemeProvider>
-        <SvgIcon {...props} style = {defaultStyle}>
-            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+        <SvgIcon {...props} style = {caretStyle} viewBox = {caretViewBox}>
+            <path d="M23.5,14c-0.384,0-0.768-0.146-1.061-0.439L12.5,3.621l-9.939,9.939c-0.586,0.586-1.535,0.586-2.121,0
+        c-0.586-0.585-0.586-1.536,0-2.121l11-11c0.586-0.586,1.535-0.586,2.121,0l11,11c0.586,0.585,0.586,1.536,0,2.121
+        C24.268,13.854,23.884,14,23.5,14z" />
         </SvgIcon>
     </MuiThemeProvider>
 );
@@ -43,4 +54,20 @@ export const Close = (props) => (
     </MuiThemeProvider>
 );
 
+export const RightArrow = (props) => (
+    <MuiThemeProvider>
+        <SvgIcon {...props} style = {defaultStyle} viewBox='0 0 18 18'>
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+        <path d="M0 0h24v24H0z" fill="none"/>
+        </SvgIcon>
+    </MuiThemeProvider>
+);
 
+export const LeftArrow = (props) => (
+    <MuiThemeProvider>
+        <SvgIcon {...props} style = {defaultStyle} viewBox='0 0 18 18'>
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+        <path d="M0 0h24v24H0z" fill="none"/>
+        </SvgIcon>
+    </MuiThemeProvider>
+);
