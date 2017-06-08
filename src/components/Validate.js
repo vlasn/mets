@@ -6,21 +6,25 @@
 
 import React from "react"
 import { connect } from 'react-redux'
-import { passwordChange, credentialChange } from '../actions/validationActions'
+import { passwordChange, credentialChange, verify } from '../actions/validationActions'
 import FirstPassword from './FirstPassword'
 import axios from "axios"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Redirect from 'react-router-dom'
 
 class Validate extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        if(!props.verified){props.verifyHash(props.match.params.hash); console.log('Verifyin\'')}
     }
 
     render() {
         return (
             <MuiThemeProvider>
             <div className="login__wrapper">
-                <FirstPassword {...this.props} />
+                {this.props.navigateToRoot ?
+                    this.props.history.push("/") :
+                    <FirstPassword {...this.props}/>}
             </div>
             </MuiThemeProvider>
         )
@@ -30,6 +34,19 @@ class Validate extends React.Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         credentialChange: (key, data) => dispatch(credentialChange(key, data)),
+        verifyHash: (hash) => {
+            dispatch({type:"VERIFICATION_ATTEMPT", payload: null});
+            if(hash.length>0) {
+                axios.get('/api/auth/verify/'+hash)
+                    .then(response => {dispatch(verify(response.data))})
+                    .catch(err => {
+                        console.log(err);
+                        dispatch({type: "VERIFICATION_FAILURE", payload: "Something went wrong. Please try again."})
+                    })
+            } else {
+                dispatch({type: "VERIFICATION_FAILURE", payload: "Something went wrong. Please try again."})
+            }
+        },
 
         resetPassword: (first, second, hash) => {
             console.log(first,second,hash);
