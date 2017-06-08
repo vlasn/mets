@@ -39,7 +39,7 @@ export default class LoginForm extends React.Component{
                         backgroundColor= "#00CC33"
                         hoverColor = "#009933"
                         fullWidth={true}
-                        floatingLabelText="Parool uuesti"
+                        floatingLabelText="Meiliaadress"
                     />
                     <LoginTextField
                         hintText = "Parool"

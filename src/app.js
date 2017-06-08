@@ -103,8 +103,8 @@ class App extends React.Component {
                 <div className="main__wrapper">
 
                     <Link to={'/login'}>Login</Link>
-                    <Route path="/login" component={Login}/>
-                    <Route path="/validate/:hash" component={Validate}/>
+                    <Route exact path="/login" component={Login}/>
+                    <Route  exact path="/validate/:hash" component={Validate}/>
                     <Route path="/" exact={true} render={()=>(
                         <ClientLanding {...sampleContract}/>)
                     }/>
