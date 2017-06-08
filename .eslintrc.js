@@ -31,6 +31,9 @@ module.exports = {
         "semi": [
             "error",
             "never"
+        ],
+        "no-unused-vars": [
+            "error", { "varsIgnorePattern": "css" } //As we have the const css defined in nearly every file but never "used"
         ]
     }
 };
