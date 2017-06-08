@@ -4,7 +4,7 @@ module.exports = {
         "commonjs": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -29,7 +29,7 @@ module.exports = {
             "double"
         ],
         "semi": [
-            "error",
+            "warn",
             "never"
         ],
         "no-unused-vars": [

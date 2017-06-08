@@ -135,7 +135,6 @@ export default class MetsahaldurViewTable extends React.Component {
                         >
                         </TableFooter>
                     </Table>
-                <Dialog/>
             </div>
             </MuiThemeProvider>
         );
