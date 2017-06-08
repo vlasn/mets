@@ -1,0 +1,20 @@
+.Footer__element{
+  flex: 3 0 0;
+  text-align: center;
+}
+
+.right-align{
+  text-align: right;
+}
+
+.left-align{
+  text-align: left;
+}
+
+.Footer{
+  display: flex;
+  flex-direction: row;
+  border-top: 2px solid grey;
+  margin-top: 10px;
+  font-size: 12px;
+}
