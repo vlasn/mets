@@ -14,9 +14,18 @@ export function credentialChange(key, data) {
     }
 }
 
+export function verify(data) {
+    let type = data.status === "accept" ? "VERIFICATION_SUCCESS" : "VERIFICATION_FAILURE";
+    let payload = data.msg;
+    return {
+        type: type,
+        payload: payload
+    }
+}
+
 export function passwordChange(data) {
     let type = data.status === "accept" ? "VALIDATION_SUCCESS" : "VALIDATION_FAILURE";
-    let payload = data.data.msg
+    let payload = data.msg;
     return {
         type: type,
         payload: payload

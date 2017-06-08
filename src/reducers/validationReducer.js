@@ -5,17 +5,28 @@
 export default function reducer( state = {
     password: "",
     cpassword: "",
+    hash: "",
     loading: false,
     error: null,
-    navigateToRoot: false
+    navigateToRoot: false,
+    verified: false
 }, action) {
     switch(action.type) {
         case "VALIDATION_CREDS" : {
-            let allowedKeys = ["password", "cpassword"];
+            let allowedKeys = ["password", "cpassword", "hash"];
             if(allowedKeys.indexOf(action.payload.key) >= 0) {
                 return {...state, [action.payload.key]: action.payload.data}
             }
             else break
+        }
+        case "VERIFICATION_ATTEMPT" : {
+            return{...state, verified: false, navigateToRoot: false}
+        }
+        case "VERIFICATION_SUCCESS" : {
+            return{...state, verified: true}
+        }
+        case "VERIFICATION_FAILURE" : {
+            return{...state, verified: false, error: action.payload, navigateToRoot: true}
         }
         case "VALIDATION_ATTEMPT" : {
             return{...state, error: null, loading: true}
