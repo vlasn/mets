@@ -34,6 +34,7 @@ class Validate extends React.Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         credentialChange: (key, data) => dispatch(credentialChange(key, data)),
+
         verifyHash: (hash) => {
             dispatch({type:"VERIFICATION_ATTEMPT", payload: null});
             if(hash.length>0) {
@@ -49,7 +50,7 @@ const mapDispatchToProps = (dispatch) => {
         },
 
         resetPassword: (first, second, hash) => {
-            console.log(first,second,hash);
+            //console.log(first,second,hash);
             dispatch({type: "VALIDATION_ATTEMPT"});
 
             if(first && first === second) {
@@ -78,7 +79,7 @@ const mapStateToProps = (state) => {
     return {
         loading: state.validation.loading,
         loggedIn: state.user.loggedIn,
-        error: state.validation.error,
+        validationError: state.validation.validationError,
         password: state.validation.password,
         cpassword: state.validation.cpassword,
         navigateToRoot: state.validation.navigateToRoot

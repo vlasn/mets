@@ -26,6 +26,7 @@ export function verify(data) {
 export function passwordChange(data) {
     let type = data.status === "accept" ? "VALIDATION_SUCCESS" : "VALIDATION_FAILURE";
     let payload = data.msg;
+    console.log('pwChange', type, payload);
     return {
         type: type,
         payload: payload
