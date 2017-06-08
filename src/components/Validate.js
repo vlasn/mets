@@ -15,16 +15,18 @@ import Redirect from 'react-router-dom'
 class Validate extends React.Component {
     constructor(props) {
         super(props);
-        if(!props.verified){props.verifyHash(props.match.params.hash); console.log('Verifyin\'')}
+    }
+    componentWillMount() {
+        if(!this.props.verified){this.props.verifyHash(this.props.match.params.hash); console.log('Verifyin\'')}
     }
 
     render() {
+
         return (
             <MuiThemeProvider>
             <div className="login__wrapper">
-                {this.props.navigateToRoot ?
-                    this.props.history.push("/") :
-                    <FirstPassword {...this.props}/>}
+                {this.props.navigateToRoot || !this.props.verified ?
+                    this.props.history.push("/") : <FirstPassword {...this.props}/>}
             </div>
             </MuiThemeProvider>
         )
