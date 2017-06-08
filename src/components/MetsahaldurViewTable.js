@@ -4,21 +4,18 @@ import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow,
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Dialog from "./Dialog"
 const styles = {
-    propContainer: {
-        width: 200,
-        overflow: 'hidden',
-    },
-    propToggleHeader: {
-        margin: '20px auto 10px',
-    },
-    container: {
-        //marginTop: '150px',
-        //position: 'absolute',
-    },
     header: {
         backgroundColor: '#00CC33',
         color:'white',
     },
+    table:{
+        tableLayout: 'auto',
+        whiteSpace: 'nowrap'
+    },
+    tableColumnWidth:{
+        width:'100px',
+        minWidth:'100px'
+    }
 };
 
 const tableData = [
@@ -56,7 +53,7 @@ export default class MetsahaldurViewTable extends React.Component {
         super(props);
 
         this.state = {
-            fixedHeader: true,
+            fixedHeader: false,
             fixedFooter: false,
             stripedRows: false,
             showRowHover: false,
@@ -95,15 +92,14 @@ export default class MetsahaldurViewTable extends React.Component {
                         fixedFooter={this.state.fixedFooter}
                         selectable={this.state.selectable}
                         multiSelectable={this.state.multiSelectable}
+                        style={styles.table}
                     >
                         <TableHeader
                             displaySelectAll={this.state.showCheckboxes}
                             adjustForCheckbox={this.state.showCheckboxes}
                             enableSelectAll={this.state.enableSelectAll}
-
                         >
                             <TableRow
-
                             >
                                 <TableRowColumn></TableRowColumn>
                                 <TableRowColumn></TableRowColumn>
@@ -112,7 +108,6 @@ export default class MetsahaldurViewTable extends React.Component {
                             </TableRow>
                             <TableRow
                                 style={styles.header}
-
                             >
                                 <TableRowColumn>Kuupäev</TableRowColumn>
                                 <TableRowColumn></TableRowColumn>
@@ -128,10 +123,10 @@ export default class MetsahaldurViewTable extends React.Component {
                         >
                             {tableData.map( (row) => (
                                 <TableRow >
-                                    <TableRowColumn>{row.kuupäev}</TableRowColumn>
+                                    <TableRowColumn style={styles.tableColumnWidth}>{row.kuupäev}</TableRowColumn>
                                     <TableRowColumn>{row.veoseleht}</TableRowColumn>
-                                    <TableRowColumn>{row.kogus}</TableRowColumn>
-                                    <TableRowColumn>{row.summa}</TableRowColumn>
+                                    <TableRowColumn style={styles.tableColumnWidth}>{row.kogus}</TableRowColumn>
+                                    <TableRowColumn style={styles.tableColumnWidth}>{row.summa}</TableRowColumn>
                                 </TableRow>
                             ))}
                         </TableBody>
