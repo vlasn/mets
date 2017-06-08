@@ -3,6 +3,8 @@ import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
+import Dropdown from './Dropdown'
+const css = require("./Header.scss");
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
@@ -16,31 +18,17 @@ const labelStyles = {
 }
 
 const styles = {
-    headerDropdown: {
-        float: 'right',
-        margin:'10px',
-        padding: '0px 10px 0px 10px',
-        height: '45px',
-        display:'inline-block',
-        boarderRadius:'0px',
-    },
-
     headerButton: {
         float: 'left',
-        margin:'10px',
         padding: '0px 10px 0px 10px',
         height: '45px',
         display:'inline-block',
         boarderRadius:'0px',
     },
-    container: {
-        //padding: '50px',
-        textAlign:'center',
-        width:'100vw',
-        //position: 'fixed',
-        //zIndex: '1',
+    dropdownButton: {
+        display:'block',
+        color:'white'
     },
-
 };
 
 export default class Header extends React.Component {
@@ -78,36 +66,31 @@ export default class Header extends React.Component {
     render() {
         return (
             <MuiThemeProvider>
-                <div className = "Header__wrapper" style={styles.container}>
+                <div className = "Header__wrapper">
                     <FlatButton
                         label="Avaleht"
                         style={styles.headerButton}
                         backgroundColor= "black"
                         hoverColor = "#00CC33"
                         labelStyle ={labelStyles.headerButton}
-
                     />
-                    <FlatButton
-                        onTouchTap={this.handleTouchTap}
-                        label="Henry"
-                        style={styles.headerDropdown}
-                        backgroundColor= "#00CC33"
-                        hoverColor = "#009933"
-                        labelStyle ={labelStyles.headerButton}
+                    <Dropdown>
+                            <FlatButton
+                                label="Logi välja"
+                                style={styles.dropdownButton}
+                                backgroundColor = '#00CC33'
+                                fullWidth={true}
+                                hoverColor = 'black'
+                            />
+                            <FlatButton
+                                label="Seaded"
+                                style={styles.dropdownButton}
+                                backgroundColor = '#00CC33'
+                                fullWidth={true}
+                                hoverColor = 'black'
+                            />
+                    </Dropdown>
 
-                    />
-                    <Popover
-                        open={this.state.open}
-                        anchorEl={this.state.anchorEl}
-                        anchorOrigin={{horizontal: 'left', vertical: 'bottom'}}
-                        targetOrigin={{horizontal: 'left', vertical: 'top'}}
-                        onRequestClose={this.handleRequestClose}
-                    >
-                        <Menu>
-                            <MenuItem primaryText="Seaded" />
-                            <MenuItem primaryText="Logi välja" />
-                        </Menu>
-                    </Popover>
                     <h1>Metsahaldur 2.0</h1>
                 </div>
             </MuiThemeProvider>
