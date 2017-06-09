@@ -1,0 +1,13 @@
+.TestBtn__parent {
+  position: relative;
+  display: inline-block;
+
+  .TestBtn__options {
+    position: absolute;
+    font-size: 0.6rem;
+    color: #767676;
+    top: 18px;
+    right: 0;
+    cursor: pointer;
+  }
+}
