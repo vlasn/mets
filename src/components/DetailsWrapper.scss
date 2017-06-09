@@ -1,6 +1,11 @@
 .DetailsWrapper__wrapper {
-  text-align: left;
-  //border: 2px solid black;
-  border-top: 0;
- 
+	text-align: left;
+	//border: 2px solid black;
+	border-top: 0;
+	.DetailsWrapper__button__background {
+		border: 2px grey solid;
+		margin-top: -2px;
+		margin-right: -4px;
+		//border-top-style: none;
+	}
 }

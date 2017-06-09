@@ -1,4 +1,7 @@
-	.FlatButton--hover:hover {
-		color: white !important;
-	};
- 
+.FlatButton--hover {
+	transition: all 0ms !important;
+}
+.FlatButton--hover:hover {
+	//color: white !important;
+	transition: all 0ms !important;
+};
