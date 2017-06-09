@@ -17,9 +17,12 @@ export default class MetsCard extends React.Component {
     }
 
     render() {
+        let style = {
+            background: this.state.open ? '#2BFFA3' : null
+        };
         return(
             <div className="MetsCard__wrapper" >
-                <section className="MetsCard__header" onClick={this.toggle.bind(this)}>
+                <section className="MetsCard__header"  style={style} onClick={this.toggle.bind(this) }>
                     <div className="MetsCard__header-button left">
                         {this.props.contractId}
                     </div>
