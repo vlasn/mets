@@ -27,7 +27,7 @@ export default class DialogTest extends React.Component {
         const actions = [
             <Close
                 onTouchTap={this.toggleOpen}
-            />,
+            />
         ];
 
         return (
