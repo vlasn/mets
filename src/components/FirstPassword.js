@@ -16,7 +16,7 @@ const labelStyles = {
 export default class FirstPassword extends React.Component {
     constructor(props){
         super(props)
-        console.log('FirstPass:', props)
+        //console.log('FirstPass:', props)
     }
 
     handleSubmit() {
@@ -49,7 +49,7 @@ export default class FirstPassword extends React.Component {
                    errorText = {this.props.error}
 
                />
-                {this.props.error ? <Error>{this.props.error}</Error> : null}
+                {this.props.validationError ? <Error>{this.props.validationError}</Error> : null}
                 <div className="FirstPassword__button">
                    <LoginButton
                        backgroundColor= "#00CC33"
