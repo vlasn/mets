@@ -25,7 +25,7 @@ class Validate extends React.Component {
         return (
             <MuiThemeProvider>
             <div className="login__wrapper">
-                {this.props.navigateToRoot || !this.props.verified ?
+                {this.props.navigateToRoot ?
                     this.props.history.push("/") : <FirstPassword {...this.props}/>}
             </div>
             </MuiThemeProvider>
