@@ -2,3 +2,10 @@
   text-align: center;
   width: 100%;
 }
+.FlatButton--hover {
+	transition: all 0ms !important;
+}
+.FlatButton--hover:hover {
+	color: black !important;
+	transition: all 0ms !important;
+};
