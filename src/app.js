@@ -1,4 +1,4 @@
-const css = require("./app.scss");
+const css = require('./app.scss');
 
 import React from "react";
 import ReactDOM from "react-dom";
@@ -14,6 +14,7 @@ import DetailsWrapper from "./components/DetailsWrapper";
 import MetsahaldurViewTable from "./components/MetsahaldurViewTable"
 import ClientLanding from "./components/ClientLanding"
 import Dialog from './components/Dialog'
+import Dropdown from './components/Dropdown'
 
 class App extends React.Component {
 
@@ -99,21 +100,15 @@ class App extends React.Component {
 
         return (
             <Router>
-
                 <div className="main__wrapper">
-
                     <Link to={'/login'}>Login</Link>
-                    <Route exact path="/login" component={Login}/>
-                    <Route  exact path="/validate/:hash" component={Validate}/>
+                    <Link to={'/newuser'}>Kasutaja valideerimine</Link>
+                    <Route path="/login" component={Login}/>
+                    <Route path="/newuser" component={Validate}/>
+                    <Header/>
                     <Route path="/" exact={true} render={()=>(
                         <ClientLanding {...sampleContract}/>)
                     }/>
-                    <Dialog
-                        title="Dialog with actions"
-                        buttonText="tere"
-                    >
-                        Veoseleht?
-                    </Dialog>
                 </div>
             </Router>
         );
@@ -123,4 +118,4 @@ ReactDOM.render(
     <Provider store={store}>
         <App/>
     </Provider>,
-    document.getElementById("root"));
+    document.getElementById('root'));

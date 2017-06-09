@@ -16,29 +16,22 @@ const styles = {
     cardHeader: {
         display:'inline',
         textTransform: 'uppercase',
-
-
     },
     cardHeaderLeft: {
         display:'inline',
         padding:'0',
         float:'left',
         textTransform: 'uppercase',
-
     },
     cardHeaderRight: {
         display:'inline',
         padding:'0',
-
         float:'right',
         textTransform: 'uppercase',
-
     },
     cardText: {
         textAlign:'left',
         padding:'16 0 16 0',
-
-
     },
 };
 
