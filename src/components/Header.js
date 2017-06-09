@@ -2,6 +2,7 @@ import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
+import { Link } from 'react-router-dom'
 import Dropdown from './Dropdown'
 const css = require("./Header.scss");
 
@@ -26,8 +27,7 @@ const styles = {
     },
     dropdownButton: {
         display:'block',
-        color:'white',
-        height:'45px'
+        color:'white'
     },
 };
 
@@ -35,47 +35,60 @@ export default class Header extends React.Component {
 
     constructor(props) {
         super(props);
-
-        this.state = {
-            open: false,
-        };
+        this.toggle = this.toggle.bind(this)
+        console.log('loggedin: ', this.props.loggedIn)
     }
 
-    handleTouchTap = (event) => {
-        // This prevents ghost click.
-        event.preventDefault();
-
-        this.setState({
-            open: true,
-            anchorEl: event.currentTarget,
-        });
+    logout = () => {
+        this.props.logout();
     };
 
-    handleRequestClose = () => {
-        this.setState({
-            open: false,
-        });
-    };
+    toggle() {
+        this.props.toggleDropdown(this.props.dropdownOpen, this.props.loggedIn);
+    }
+    componentDidMount() {
+        console.log('Logged in: ', this.props.loggedIn)
 
-    handleChange = (value) => {
-        this.setState({
-            value: value,
-        });
-    };
+    }
 
     render() {
         return (
             <MuiThemeProvider>
                 <div className = "Header__wrapper">
-                    <FlatButton
-                        className="FlatButton--hover"
-                        label="Avaleht"
-                        style={styles.headerButton}
-                        backgroundColor= "#333333"
-                        hoverColor = "##7FFFC7"
-                        labelStyle ={labelStyles.headerButton}
-                    />
-                    <Dropdown>
+                    <Link to={"/"}>
+                        <FlatButton
+                            label='Avaleht'
+                            style={styles.headerButton}
+                            backgroundColor= "black"
+                            hoverColor = "#00CC33"
+                            labelStyle ={labelStyles.headerButton}
+                        />
+                    </Link>
+                    <Dropdown
+                        open={this.props.dropdownOpen}
+                        clicked={this.toggle.bind(this)}
+                        display={
+                            this.props.loggedIn === true ? (
+                                <FlatButton
+                                    style={styles.button}
+                                    backgroundColor = {this.props.dropdownOpen ? 'black' : '#00CC33'}
+                                    hoverColor = "black"
+                                    onClick={this.toggle}>
+                                    Nimi
+                                </FlatButton>
+                                ) : (
+                                <Link to="/login">
+                                <FlatButton
+                                    style={styles.button}
+                                    backgroundColor = {this.props.dropdownOpen ? 'black' : '#00CC33'}
+                                    hoverColor = "black"
+                                    onClick={this.handleClick}>
+                                    Logi sisse
+                                </FlatButton>
+                                </Link>
+                                )
+                        }
+                    >
                         <FlatButton
                             className="FlatButton--hover"
                             label="Logi välja"
@@ -83,8 +96,8 @@ export default class Header extends React.Component {
                             backgroundColor = '#333333'
                             fullWidth={true}
                             hoverColor = '#7FFFC7'
-                            disableTouchRipple = 'true'
-                            
+                            disableTouchRipple = {true}
+                            onTouchTap={this.props.logout}
                         />
                         <FlatButton
                             className="FlatButton--hover"
@@ -93,7 +106,7 @@ export default class Header extends React.Component {
                             backgroundColor = '#333333'
                             fullWidth={true}
                             hoverColor = '#7FFFC7'
-                            disableTouchRipple = 'true'
+                            disableTouchRipple = {true}
                         />
                     </Dropdown>
 
