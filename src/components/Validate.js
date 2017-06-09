@@ -15,16 +15,18 @@ import Redirect from 'react-router-dom'
 class Validate extends React.Component {
     constructor(props) {
         super(props);
-        if(!props.verified){props.verifyHash(props.match.params.hash); console.log('Verifyin\'')}
+    }
+    componentWillMount() {
+        if(!this.props.verified){this.props.verifyHash(this.props.match.params.hash); console.log('Verifyin\'')}
     }
 
     render() {
+
         return (
             <MuiThemeProvider>
             <div className="login__wrapper">
-                {this.props.navigateToRoot ?
-                    this.props.history.push("/") :
-                    <FirstPassword {...this.props}/>}
+                {this.props.navigateToRoot || !this.props.verified ?
+                    this.props.history.push("/") : <FirstPassword {...this.props}/>}
             </div>
             </MuiThemeProvider>
         )
@@ -34,6 +36,7 @@ class Validate extends React.Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         credentialChange: (key, data) => dispatch(credentialChange(key, data)),
+
         verifyHash: (hash) => {
             dispatch({type:"VERIFICATION_ATTEMPT", payload: null});
             if(hash.length>0) {
@@ -49,7 +52,7 @@ const mapDispatchToProps = (dispatch) => {
         },
 
         resetPassword: (first, second, hash) => {
-            console.log(first,second,hash);
+            //console.log(first,second,hash);
             dispatch({type: "VALIDATION_ATTEMPT"});
 
             if(first && first === second) {
@@ -78,7 +81,7 @@ const mapStateToProps = (state) => {
     return {
         loading: state.validation.loading,
         loggedIn: state.user.loggedIn,
-        error: state.validation.error,
+        validationError: state.validation.validationError,
         password: state.validation.password,
         cpassword: state.validation.cpassword,
         navigateToRoot: state.validation.navigateToRoot

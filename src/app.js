@@ -1,4 +1,4 @@
-const css = require('./app.scss');
+const css = require("./app.scss");
 
 import React from "react";
 import ReactDOM from "react-dom";
@@ -113,9 +113,8 @@ class App extends React.Component {
                 <div className="main__wrapper">
 
                     <Link to={'/login'}>Login</Link>
-                    <Link to={'/newuser'}>Kasutaja valideerimine</Link>
-                    <Route path="/login" component={Login}/>
-                    <Route path="/newuser" component={Validate}/>
+                    <Route exact path="/login" component={Login}/>
+                    <Route  exact path="/validate/:hash" component={Validate}/>
                     <Route path="/" exact={true} render={()=>(
                         <ClientLanding {...sampleContract}/>)
                     }/>
@@ -134,4 +133,4 @@ ReactDOM.render(
     <Provider store={store}>
         <App/>
     </Provider>,
-    document.getElementById('root'));
+    document.getElementById("root"));

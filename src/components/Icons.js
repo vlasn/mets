@@ -13,9 +13,11 @@ const defaultStyle = {
 
 const caretStyle = {
     padding: 0,
-    margin: "4px 0px -10px 20px",
+    margin: "0px 0px -10px 20px",
     cursor: "pointer"
 };
+
+
 const caretViewBox = "0 0 24 26";
 
 export const CaretDown = (props) => (
@@ -56,7 +58,7 @@ export const Close = (props) => (
 
 export const RightArrow = (props) => (
     <MuiThemeProvider>
-        <SvgIcon {...props} style = {defaultStyle} viewBox='0 0 18 18'>
+        <SvgIcon {...props} style = {defaultStyle} viewBox='0 0 20 20'>
         <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
         <path d="M0 0h24v24H0z" fill="none"/>
         </SvgIcon>
@@ -65,7 +67,7 @@ export const RightArrow = (props) => (
 
 export const LeftArrow = (props) => (
     <MuiThemeProvider>
-        <SvgIcon {...props} style = {defaultStyle} viewBox='0 0 18 18'>
+        <SvgIcon {...props} style = {defaultStyle} viewBox='0 0 20 20'>
         <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
         <path d="M0 0h24v24H0z" fill="none"/>
         </SvgIcon>

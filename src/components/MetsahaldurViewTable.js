@@ -44,7 +44,6 @@ const tableData = [
         kogus: '30',
         summa: '111',
     },
-
 ];
 
 export default class MetsahaldurViewTable extends React.Component {
@@ -72,27 +71,24 @@ export default class MetsahaldurViewTable extends React.Component {
         });
     };
 
-
-
     handleChange = (event) => {
         this.setState({height: event.target.value});
     };
 
     render() {
-
-
-
         return (
             <MuiThemeProvider>
                 <div style={styles.container}>
-
+                    <Dialog/>
                     <Table
                         height={this.state.height}
                         fixedHeader={this.state.fixedHeader}
                         fixedFooter={this.state.fixedFooter}
                         selectable={this.state.selectable}
                         multiSelectable={this.state.multiSelectable}
+                        //TODO
                         style={styles.table}
+                        onCellClick={(row, col, event) => console.log(row, col)}
                     >
                         <TableHeader
                             displaySelectAll={this.state.showCheckboxes}
@@ -122,12 +118,15 @@ export default class MetsahaldurViewTable extends React.Component {
                             stripedRows={this.state.stripedRows}
                         >
                             {tableData.map( (row) => (
-                                <TableRow >
-                                    <TableRowColumn style={styles.tableColumnWidth}>{row.kuupäev}</TableRowColumn>
-                                    <TableRowColumn>{row.veoseleht}</TableRowColumn>
-                                    <TableRowColumn style={styles.tableColumnWidth}>{row.kogus}</TableRowColumn>
-                                    <TableRowColumn style={styles.tableColumnWidth}>{row.summa}</TableRowColumn>
-                                </TableRow>
+                                    <TableRow >
+                                        <TableRowColumn style={styles.tableColumnWidth}>{row.kuupäev}</TableRowColumn>
+                                        <Dialog>
+                                            <TableRowColumn>{row.veoseleht}</TableRowColumn>
+                                        </Dialog>
+                                        <TableRowColumn style={styles.tableColumnWidth}>{row.kogus}</TableRowColumn>
+                                        <TableRowColumn style={styles.tableColumnWidth}>{row.summa}</TableRowColumn>
+                                    </TableRow>
+
                             ))}
                         </TableBody>
                         <TableFooter
@@ -135,7 +134,6 @@ export default class MetsahaldurViewTable extends React.Component {
                         >
                         </TableFooter>
                     </Table>
-                <Dialog/>
             </div>
             </MuiThemeProvider>
         );
