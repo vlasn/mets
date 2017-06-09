@@ -8,6 +8,7 @@ import Login from "./components/Login"
 import store from "./store"
 import Validate from "./components/Validate"
 import Header from "./components/Header"
+import HeaderWrapper from "./components/HeaderWrapper"
 import Table from "./components/MetsahaldurViewTable"
 import MetsCard from "./components/MetsCard"
 import DetailsWrapper from "./components/DetailsWrapper";
@@ -15,6 +16,8 @@ import MetsahaldurViewTable from "./components/MetsahaldurViewTable"
 import ClientLanding from "./components/ClientLanding"
 import Dialog from './components/Dialog'
 import Dropdown from './components/Dropdown'
+import TestBtn from './components/testBtn'
+import History from './components/history'
 
 class App extends React.Component {
 
@@ -109,13 +112,11 @@ class App extends React.Component {
         }
 
         return (
-            <Router>
+            <Router history={History}>
                 <div className="main__wrapper">
-                    <Link to={'/login'}>Login</Link>
-                    <Link to={'/newuser'}>Kasutaja valideerimine</Link>
-                    <Route path="/login" component={Login}/>
-                    <Route path="/newuser" component={Validate}/>
-                    <Header/>
+                    <HeaderWrapper/>
+                    <Route exact={true} path="/login" component={Login}/>
+                    <Route exact path="/validate/:hash" component={Validate}/>
                     <Route path="/" exact={true} render={()=>(
                         <ClientLanding {...sampleContract}/>)
                     }/>
