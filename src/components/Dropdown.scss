@@ -1,7 +1,8 @@
 .Dropdown__wrapper {
-  position: relative;
-  display: inline-block;
-  float: right;
-  .Dropdown__dropdownContent{
-  }
+	position: relative;
+	display: inline-block;
+	float: right;
+	.Dropdown__dropdownContent{
+		height: 45px;
+	}
 }

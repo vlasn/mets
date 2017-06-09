@@ -26,7 +26,8 @@ const styles = {
     },
     dropdownButton: {
         display:'block',
-        color:'white'
+        color:'white',
+        height:'45px'
     },
 };
 
@@ -67,27 +68,33 @@ export default class Header extends React.Component {
             <MuiThemeProvider>
                 <div className = "Header__wrapper">
                     <FlatButton
+                        className="FlatButton--hover"
                         label="Avaleht"
                         style={styles.headerButton}
-                        backgroundColor= "black"
-                        hoverColor = "#00CC33"
+                        backgroundColor= "#333333"
+                        hoverColor = "##7FFFC7"
                         labelStyle ={labelStyles.headerButton}
                     />
                     <Dropdown>
-                            <FlatButton
-                                label="Logi välja"
-                                style={styles.dropdownButton}
-                                backgroundColor = '#00CC33'
-                                fullWidth={true}
-                                hoverColor = 'black'
-                            />
-                            <FlatButton
-                                label="Seaded"
-                                style={styles.dropdownButton}
-                                backgroundColor = '#00CC33'
-                                fullWidth={true}
-                                hoverColor = 'black'
-                            />
+                        <FlatButton
+                            className="FlatButton--hover"
+                            label="Logi välja"
+                            style={styles.dropdownButton}
+                            backgroundColor = '#333333'
+                            fullWidth={true}
+                            hoverColor = '#7FFFC7'
+                            disableTouchRipple = 'true'
+                            
+                        />
+                        <FlatButton
+                            className="FlatButton--hover"
+                            label="Seaded"
+                            style={styles.dropdownButton}
+                            backgroundColor = '#333333'
+                            fullWidth={true}
+                            hoverColor = '#7FFFC7'
+                            disableTouchRipple = 'true'
+                        />
                     </Dropdown>
 
                     <h1>Metsahaldur 2.0</h1>

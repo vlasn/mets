@@ -16,8 +16,9 @@ const styles = {
         height: '45px',
         display:'inline-block',
         boarderRadius:'0px',
-        color: 'white',
-        minWidth:'120px'
+        color: '#333333',
+        minWidth:'120px',
+        background: '#7FFFC7'
     },
 }
 
@@ -38,9 +39,11 @@ export default class Dropdown extends React.Component{
         return(
             <div className="Dropdown__wrapper">
                 <FlatButton
+                    className="FlatButton--hover"
                     style={styles.button}
-                    backgroundColor = {this.state.open ? 'black' : '#00CC33'}
-                    hoverColor = "black"
+                    backgroundColor = {this.state.open ? '#7FFFC7' : '#7FFFC7'}
+                    hoverColor = "#7FFFC7"
+                    disableTouchRipple = 'true'
                     onClick={this.handleClick}>
                     {this.state.open ? 'Erko' : 'Erko'}
                 </FlatButton>

@@ -5,7 +5,7 @@
 	margin-bottom: 17px;
 	.MetsCard__header {
 		cursor: pointer;
-		border: 2px solid grey;
+		border: 2px solid lightgrey;
 		display: flex;
 		width: 100%;
 		padding: 10px 0px 10px 0px;
@@ -24,7 +24,7 @@
 		}
 	}
 	.MetsCard__header:hover {
-		background: #2BFFA3 !important
+		background: #7FFFC7 !important
 	}
 	.MetsCard__header-button {
 		flex: 1 0 0;

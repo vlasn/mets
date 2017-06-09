@@ -18,7 +18,7 @@ export default class MetsCard extends React.Component {
 
     render() {
         let style = {
-            background: this.state.open ? '#2BFFA3' : null
+            background: this.state.open ? '#7FFFC7' : null
         };
         return(
             <div className="MetsCard__wrapper" >
