@@ -13,8 +13,12 @@ export default class FileRow extends React.Component {
         return(
             <div className="FileRow">
                 <div className="FileRow__wrapper">
-                    <div className="FileRow__Icon-wrapper"><Download/></div>
-                    <div className="FileRow__filename-wrapper">{this.props.fileName}</div>
+                    {!this.props.plainText ?
+                        <div className="FileRow__Icon-wrapper"><Download/></div> :
+                        <div className="FileRow__Key-wrapper">{this.props.plainKey}</div>
+                    }
+
+                    <div className="FileRow__filename-wrapper">{this.props.fileName || this.props.plainValue}</div>
                     <div className="FileRow__options-wrapper">{this.props.options}</div>
                 </div>
             </div>
