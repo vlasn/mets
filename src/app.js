@@ -24,8 +24,8 @@ class App extends React.Component {
             "data": [
                 { //Lepinguobjekt
                     "contractId": "LEPING-FF-3124486234",
-                    "cadastral": "3421341:67864234",
                     "propertyName": "Paks Must Mets",
+                    "cadastral": "",
                     "status": "active",
                     "documents": {
                         "contracts":[
@@ -59,13 +59,18 @@ class App extends React.Component {
                             "filepath":"filepath",
                             "datestamp":"00-00-0000",
                             "author":"Tagametsa Toomas"
+                        },
+                        "haldus": {
+                            "projectManager":"Arnold Rüütel",
+                            "metsameister":"Ingrid Rüütel",
+                            "datestamp": "00-00-0000"
                         }
                     }
                 },
                 { //Lepinguobjekt
                     "contractId": "LEPING-FF-3124486234",
-                    "cadastral": "3421341:67864234",
                     "propertyName": "Paks Must Mets",
+                    "cadastral": "",
                     "status": "active",
                     "documents": {
                         "contracts":[
@@ -91,6 +96,11 @@ class App extends React.Component {
                             "filepath":"filepath",
                             "datestamp":"00-00-0000",
                             "author":"Tagametsa Toomas"
+                        },
+                        "haldus": {
+                            "projectManager":"Arnold Rüütel",
+                            "metsameister":"Ingrid Rüütel",
+                            "datestamp": "00-00-0000"
                         }
                     }
                 }
