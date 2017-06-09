@@ -33,19 +33,6 @@ export default function reducer( state = {
             }
             else break
         }
-        case "VALIDATION_ATTEMPT" : {
-            return{...state, error: null, email: null, password: null, secondaryPass: null, loading: true}
-        }
-        case "VALIDATION_SUCCESS" : {
-            return {...state, loading: false, error: null, email: null, password: null, secondaryPass: null, navigateToRoot: true}
-        }
-        case "VALIDATION_FAILURE" : {
-            return {...state, loading: false, error: action.payload}
-        }
-        case "VALIDATION_MISMATCH" : {
-            return {...state, loading: false, error: action.payload}
-        }
-
         default: {
             return {
                 ...state

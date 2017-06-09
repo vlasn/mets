@@ -19,12 +19,3 @@ export function credentialChange(key, data) {
         }
     }
 }
-
-export function passwordChange(data) {
-    let type = data.status === "accept" ? "VALIDATION_SUCCESS" : "VALIDATION_FAILURE";
-    let payload = data.data.msg;
-    return {
-        type: type,
-        payload: payload
-    }
-}

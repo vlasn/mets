@@ -29,7 +29,6 @@ export default class LoginForm extends React.Component{
     render(){
         return(
             <div className = "LoginForm__wrapper">
-                <h1 className="LoginForm__title">Metsahaldur 2.0</h1>
                 <form onSubmit={e=>e.preventDefault()}>
                     <LoginTextField
                         hintText = "E-mail"
