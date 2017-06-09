@@ -4,7 +4,7 @@ module.exports = {
         "commonjs": true,
         "es6": true
     },
-    "extends": "eslint:recommended",
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
     "parserOptions": {
         "ecmaFeatures": {
             "experimentalObjectRestSpread": true,
@@ -29,8 +29,11 @@ module.exports = {
             "double"
         ],
         "semi": [
-            "error",
+            "warn",
             "never"
+        ],
+        "no-unused-vars": [
+            "error", { "varsIgnorePattern": "css" } //As we have the const css defined in nearly every file but never "used"
         ]
     }
 };

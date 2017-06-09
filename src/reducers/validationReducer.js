@@ -7,38 +7,38 @@ export default function reducer( state = {
     cpassword: "",
     hash: "",
     loading: false,
-    error: null,
+    validationError: null,
     navigateToRoot: false,
     verified: false
 }, action) {
     switch(action.type) {
         case "VALIDATION_CREDS" : {
             let allowedKeys = ["password", "cpassword", "hash"];
-            if(allowedKeys.indexOf(action.payload.key) >= 0) {
+            if (allowedKeys.indexOf(action.payload.key) >= 0) {
                 return {...state, [action.payload.key]: action.payload.data}
             }
             else break
         }
         case "VERIFICATION_ATTEMPT" : {
-            return{...state, verified: false, navigateToRoot: false}
+            return{...state, verified: false, navigateToRoot: false, validationError: null}
         }
         case "VERIFICATION_SUCCESS" : {
             return{...state, verified: true}
         }
         case "VERIFICATION_FAILURE" : {
-            return{...state, verified: false, error: action.payload, navigateToRoot: true}
+            return{...state, verified: false, validationError: action.payload, navigateToRoot: true}
         }
         case "VALIDATION_ATTEMPT" : {
-            return{...state, error: null, loading: true}
+            return{...state, validationError: null, loading: true}
         }
         case "VALIDATION_SUCCESS" : {
-            return {...state, loading: false, error: null, password: null, cpassword: null, navigateToRoot: true}
+            return {...state, loading: false, validationError: null, password: null, cpassword: null, navigateToRoot: true}
         }
         case "VALIDATION_FAILURE" : {
-            return {...state, loading: false, error: action.payload}
+            return {...state, loading: false, validationError: action.payload}
         }
         case "VALIDATION_MISMATCH" : {
-            return {...state, loading: false, error: action.payload}
+            return {...state, loading: false, validationError: action.payload}
         }
         default: {
             return {
