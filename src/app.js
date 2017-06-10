@@ -10,7 +10,7 @@ import Validate from "./components/Validate"
 import HeaderWrapper from "./components/HeaderWrapper"
 import ClientLanding from "./components/ClientLanding"
 import History from './components/history'
-import VeoseTable from './components/presentational/VeoselehtTable/Table'
+import VeoseTable from './components/Table'
 
 class App extends React.Component {
 
