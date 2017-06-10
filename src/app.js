@@ -3,20 +3,12 @@ const css = require('./app.scss');
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux"
-import { BrowserRouter as Router, Link, Route } from "react-router-dom"
+import { BrowserRouter as Router, Link, Route } from "react-router-dom/es"
 import Login from "./components/Login"
 import store from "./store"
 import Validate from "./components/Validate"
-import Header from "./components/Header"
 import HeaderWrapper from "./components/HeaderWrapper"
-import Table from "./components/MetsahaldurViewTable"
-import MetsCard from "./components/MetsCard"
-import DetailsWrapper from "./components/DetailsWrapper";
-import MetsahaldurViewTable from "./components/MetsahaldurViewTable"
 import ClientLanding from "./components/ClientLanding"
-import Dialog from './components/Dialog'
-import Dropdown from './components/Dropdown'
-import TestBtn from './components/testBtn'
 import History from './components/history'
 
 class App extends React.Component {

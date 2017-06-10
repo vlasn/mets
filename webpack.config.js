@@ -2,12 +2,21 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require("path");
+var webpack = require('webpack');
 
 module.exports = {
-    entry: './src/app.js',
+    entry:  {
+        app: [
+            path.resolve(__dirname, 'src/app.js'),
+            path.resolve(__dirname, 'src/components/Login.js')
+        ],
+        vendor: [
+            'react', 'react-dom', 'react-router-dom', 'react-redux', 'redux', 'redux-thunk', 'material-ui'
+        ]
+    },
     output: {
         path: path.resolve(__dirname, "public"),
-        filename: 'app.bundle.js',
+        filename: '[name].js',
         publicPath: "/"
     },
     module: {
@@ -42,6 +51,7 @@ module.exports = {
         stats: "errors-only",
         open: true
     },
+
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Metsahaldur',
@@ -55,6 +65,16 @@ module.exports = {
             filename: 'app.css',
             disable: false,
             allChunks: true
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: "vendor",
+
+            // filename: "vendor.js"
+            // (Give the chunk a different name)
+
+            minChunks: Infinity,
+            // (with more entries, this ensures that no other module
+            //  goes into the vendor chunk)
         })
     ]
 }
