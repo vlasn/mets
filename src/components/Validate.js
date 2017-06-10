@@ -40,7 +40,7 @@ const mapDispatchToProps = (dispatch) => {
         verifyHash: (hash) => {
             dispatch({type:"VERIFICATION_ATTEMPT", payload: null});
             if(hash.length>0) {
-                axios.get('/api/auth/verify/'+hash)
+                axios.get('/api/user/verify/'+hash)
                     .then(response => {dispatch(verify(response.data))})
                     .catch(err => {
                         console.log(err);
@@ -56,7 +56,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({type: "VALIDATION_ATTEMPT"});
 
             if(first && first === second) {
-                axios.post('/api/auth/validate', {
+                axios.post('/api/user/validate', {
                     password: first,
                     cpassword: second,
                     hash: hash
