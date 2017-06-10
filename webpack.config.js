@@ -67,14 +67,8 @@ module.exports = {
             allChunks: true
         }),
         new webpack.optimize.CommonsChunkPlugin({
-            name: "vendor",
-
-            // filename: "vendor.js"
-            // (Give the chunk a different name)
-
+            names: ["vendor","manifest"],
             minChunks: Infinity,
-            // (with more entries, this ensures that no other module
-            //  goes into the vendor chunk)
         })
     ]
 }
