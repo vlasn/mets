@@ -1,0 +1,70 @@
+.Table__wrapper {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+
+  //Mixins:
+  $borderColor: #9c9c9c;
+  $headerBgColor: #34b83a;
+  $hoverColor: #fffede;
+  $borderThickness: 1px;
+  $cellPadding: 10px 15px;
+
+  //Some structural stuff for the table itself
+  .Table {
+    border: 0;
+    width:100%;
+    table-layout: fixed;
+    .Table__column {
+      width: 15%;
+      &.wide {
+        width: 55%;
+      }
+      &.narrow {
+        width: 15%;
+      }
+    }
+    .Table__header {
+      background-color: $headerBgColor;
+      color: white;
+    }
+  }
+
+  //Handling of all border-related hijinks
+  td {
+    padding: $cellPadding;
+    text-align: center;
+  }
+  tr:nth-child(1) {
+    td{
+      border-top: $borderThickness*2 solid $borderColor;
+    }
+  }
+  tr:last-child{
+    td {
+      border-bottom: $borderThickness*2 solid $borderColor;
+    }
+  }
+  .TableRow__column{
+    border: $borderThickness solid $borderColor;
+    &.left {
+      text-align: left;
+    }
+    &:first-child {
+      border-left: $borderThickness*2 solid $borderColor;
+    }
+    &:last-child {
+      border-right: $borderThickness*2 solid $borderColor;
+    }
+  }
+
+  //Handling of hover bg color & cursor style
+  .TableRow {
+    &:hover {
+      background-color: $hoverColor;
+      cursor: pointer;
+    }
+  }
+
+
+}

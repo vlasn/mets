@@ -10,6 +10,7 @@ import Validate from "./components/Validate"
 import HeaderWrapper from "./components/HeaderWrapper"
 import ClientLanding from "./components/ClientLanding"
 import History from './components/history'
+import VeoseTable from './components/presentational/VeoselehtTable/Table'
 
 class App extends React.Component {
 
@@ -102,6 +103,33 @@ class App extends React.Component {
                 }
             ]
         }
+        let tableData = [
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 33882',
+                kogus: '30',
+                summa: '1421',
+            },
+
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 33882',
+                kogus: '23',
+                summa: '11',
+            },
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 33882',
+                kogus: '30',
+                summa: '41',
+            },
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 33882',
+                kogus: '30',
+                summa: '7',
+            },
+        ];
 
         return (
             <Router history={History}>
@@ -109,9 +137,10 @@ class App extends React.Component {
                     <HeaderWrapper/>
                     <Route exact={true} path="/login" component={Login}/>
                     <Route exact path="/validate/:hash" component={Validate}/>
-                    <Route path="/" exact={true} render={()=>(
+                    {/*<Route path="/" exact={true} render={()=>(
                         <ClientLanding {...sampleContract}/>)
-                    }/>
+                    }/>*/}
+                    <VeoseTable tableData = {tableData}/>
                 </div>
             </Router>
         );
