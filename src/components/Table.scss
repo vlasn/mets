@@ -6,9 +6,10 @@
   //Mixins:
   $borderColor: #9c9c9c;
   $headerBgColor: #34b83a;
-  $hoverColor: #fffede;
-  $borderThickness: 1px;
+  $hoverColor: #fffede; //Color for clickable table rows on hover
+  $borderThickness: 1px; //Note - this appears as double of the value given here due to the adjacency of table
   $cellPadding: 10px 15px;
+  $narrowCellWidth: 12%; //Width of each of the three narrower cells.
 
   //Some structural stuff for the table itself
   .Table {
@@ -16,12 +17,9 @@
     width:100%;
     table-layout: fixed;
     .Table__column {
-      width: 15%;
+      width: $narrowCellWidth;
       &.wide {
-        width: 55%;
-      }
-      &.narrow {
-        width: 15%;
+        width: 100%-($narrowCellWidth*3);
       }
     }
     .Table__header {
