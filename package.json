@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --hot",
-    "build": "webpack -d",
+    "build": "webpack -d --watch",
     "prod": "webpack -p",
     "lint": "eslint src/"
   },
