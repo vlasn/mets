@@ -13,13 +13,18 @@ class HeaderWrapper extends React.Component {
     constructor(props) {
         super(props)
     }
-    componentWillMount() {
-
-    }
     logout() {
         this.props.logout();
         this.props.toggleDropdown(true,false);
         history.push("/")
+    }
+    returnName() {
+        if(this.props.loggedIn) {
+            console.log(this.props.details.personal_data)
+            return this.props.details.personal_data.nimi.split(" ")[0]
+        } else {
+            return('Valikud')
+        }
     }
     render() {
         return (
@@ -28,7 +33,8 @@ class HeaderWrapper extends React.Component {
                     this.props.navigateToRoot ?
                         <Redirect to="/"/> : null
                 }
-                <Header {...this.props} logout={this.logout.bind(this)} />
+                <Header {...this.props} logout={this.logout.bind(this)}
+                        nameToDisplay={this.returnName.bind(this)} />
             </div>
         )
     }
@@ -42,8 +48,6 @@ const mapDispatchToProps = (dispatch) => {
         },
         toggleDropdown: (currentlyOpen, loggedIn) => {
             dispatch(toggleDropdown(currentlyOpen,loggedIn))
-            console.log(3, currentlyOpen, loggedIn)
-
         }
     }
 };
@@ -53,7 +57,8 @@ const mapStateToProps = (state) => {
         loggedIn: state.user.loggedIn,
         details: state.user.details,
         navigateToRoot: state.user.navigateToRoot,
-        dropdownOpen: state.ui.dropdownOpen
+        dropdownOpen: state.ui.dropdownOpen,
+        roles: state.user.roles
     };
 };
 

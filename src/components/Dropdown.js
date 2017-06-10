@@ -36,7 +36,6 @@ export default class Dropdown extends React.Component{
 
     handleClick() {
        this.props.clicked()
-        console.log(1)
     }
 
     render(){

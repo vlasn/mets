@@ -27,7 +27,8 @@ const styles = {
     },
     dropdownButton: {
         display:'block',
-        color:'white'
+        color:'white',
+        textDecoration:'none'
     },
 };
 
@@ -36,7 +37,6 @@ export default class Header extends React.Component {
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this)
-        console.log('loggedin: ', this.props.loggedIn)
     }
 
     logout = () => {
@@ -45,10 +45,6 @@ export default class Header extends React.Component {
 
     toggle() {
         this.props.toggleDropdown(this.props.dropdownOpen, this.props.loggedIn);
-    }
-    componentDidMount() {
-        console.log('Logged in: ', this.props.loggedIn)
-
     }
 
     render() {
@@ -70,16 +66,16 @@ export default class Header extends React.Component {
                         display={
                             this.props.loggedIn === true ? (
                                 <FlatButton
-                                    style={styles.button}
+                                    style={styles.dropdownButton}
                                     backgroundColor = {this.props.dropdownOpen ? 'black' : '#00CC33'}
                                     hoverColor = "black"
                                     onClick={this.toggle}>
-                                    Nimi
+                                    {this.props.nameToDisplay()}
                                 </FlatButton>
                                 ) : (
                                 <Link to="/login">
                                 <FlatButton
-                                    style={styles.button}
+                                    style={styles.dropdownButton}
                                     backgroundColor = {this.props.dropdownOpen ? 'black' : '#00CC33'}
                                     hoverColor = "black"
                                     onClick={this.handleClick}>

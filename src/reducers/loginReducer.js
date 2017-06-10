@@ -10,7 +10,8 @@ export default function reducer( state = {
     loggedIn: false,
     error: null,
     details: {},
-    navigateToRoot: false
+    navigateToRoot: false,
+    roles: []
 }, action) {
     switch(action.type) {
         case "LOG_IN_ATTEMPT": {
