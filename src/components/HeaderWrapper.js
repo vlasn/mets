@@ -6,7 +6,6 @@ import { connect } from 'react-redux'
 import { toggleDropdown } from '../actions/uiActions'
 import { Redirect } from 'react-router-dom'
 import Header from "./Header"
-import axios from "axios"
 import history from './history'
 
 class HeaderWrapper extends React.Component {
@@ -29,10 +28,6 @@ class HeaderWrapper extends React.Component {
     render() {
         return (
             <div className="login__wrapper">
-                {
-                    this.props.navigateToRoot ?
-                        <Redirect to="/"/> : null
-                }
                 <Header {...this.props} logout={this.logout.bind(this)}
                         nameToDisplay={this.returnName.bind(this)} />
             </div>

@@ -13,7 +13,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
 class Login extends React.Component {
+    componentWillUpdate(){
+    }
     render() {
+        this.props.navigateToRoot ? this.props.history.push('/') : null
         return (
             <MuiThemeProvider>
                 <div className="login__wrapper">
@@ -45,7 +48,8 @@ const mapStateToProps = (state) => {
         loggedIn: state.user.loggedIn,
         error: state.user.error,
         email: state.user.email,
-        password: state.user.password
+        password: state.user.password,
+        navigateToRoot: state.user.navigateToRoot
     };
 };
 
