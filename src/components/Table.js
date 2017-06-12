@@ -10,7 +10,7 @@ export default class Table extends Component {
     constructor(props) {
         super(props)
         this.tableMetaData = {kogus:0,summa:0}
-        this.entriesPerPage = 11;
+        this.entriesPerPage = 5;
         this.splitRows = this.splitRows.bind(this)
         this.pages = [];
     }
@@ -27,13 +27,14 @@ export default class Table extends Component {
         this.splitRows();
 
     }
+
     splitRows() {
-        let pageCount = Math.ceil(this.props.tableData.length/this.entriesPerPage);
+        let pageCount = Math.ceil(this.props.tableData.length/this.entriesPerPage)
         for(let i=0;i<pageCount; i++){
-            let tableLength = this.props.tableData.length;
+            let tableLength = this.props.tableData.length
             let perPage = tableLength<this.entriesPerPage ? tableLength : this.entriesPerPage
-            let max = tableLength < (i+1)*perPage ? tableLength % (perPage*i) : perPage;
-            let temp = this.props.tableData.slice(i*perPage, (i*perPage)+max);
+            let max = tableLength < (i+1)*perPage ? tableLength % (perPage*i) : perPage
+            let temp = this.props.tableData.slice(i*perPage, (i*perPage)+max)
             this.pages.push(temp)
         }
     }

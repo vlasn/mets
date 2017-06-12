@@ -3,6 +3,7 @@
   font-size: 100%;
   .Pagination__number {
     margin: 0 5px;
+    cursor:pointer;
     &:last-of-type {
       margin-right: 2px;
     }
@@ -10,5 +11,5 @@
 }
 
 .Pagination-active{
-  color: rgb(0, 204, 51);
+  color: #00CC33;
 }
