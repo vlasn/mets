@@ -1,21 +1,3 @@
-.InputField__wrapper {
-	box-sizing: border-box;
-	.InputField__label{
-		display: block;
-	}
-	.InputField__input{
-		box-sizing: border-box;
-		display: block;
-		text-align: center;
-		width: 100%;
-		max-width: 50vw;
-		height: 40px;
-		font-size: 1.1rem;
-		margin-bottom: 15px;
-		border: none;
-		border-bottom: 1px solid black;
-		&:focus {
-			outline: none;
-		}
-	}
-}
+ .InputField__wrapper{
+
+ }
