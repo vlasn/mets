@@ -10,7 +10,6 @@ import Validate from "./components/Validate"
 import HeaderWrapper from "./components/HeaderWrapper"
 import ClientLanding from "./components/ClientLanding"
 import History from './components/history'
-import VeoseTable from './components/Table'
 
 class App extends React.Component {
 
@@ -137,10 +136,9 @@ class App extends React.Component {
                     <HeaderWrapper/>
                     <Route exact={true} path="/login" component={Login}/>
                     <Route exact path="/validate/:hash" component={Validate}/>
-                    {/*<Route path="/" exact={true} render={()=>(
+                    <Route path="/" exact={true} render={()=>(
                         <ClientLanding {...sampleContract}/>)
-                    }/>*/}
-                    <VeoseTable tableData = {tableData}/>
+                    }/>
                 </div>
             </Router>
         );
