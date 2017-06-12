@@ -4,9 +4,9 @@
   box-sizing: border-box;
 
   //Mixins:
-  $borderColor: #9c9c9c;
-  $headerBgColor: #34b83a;
-  $hoverColor: #fffede; //Color for clickable table rows on hover
+  $borderColor: #f9f9f9;
+  $headerBgColor: #9BFCD3;
+  $hoverColor: #f9f9f9; //Color for clickable table rows on hover
   $borderThickness: 1px; //Note - this appears as double of the value given here due to the adjacency of table
   $cellPadding: 10px 15px;
   $narrowCellWidth: 12%; //Width of each of the three narrower cells.
@@ -16,6 +16,9 @@
     border: 0;
     width:100%;
     table-layout: fixed;
+    th{
+      padding: 15px;
+    }
     .Table__column {
       width: $narrowCellWidth;
       &.wide {
@@ -24,7 +27,7 @@
     }
     .Table__header {
       background-color: $headerBgColor;
-      color: white;
+      color: black;
     }
   }
 
@@ -49,10 +52,10 @@
       text-align: left;
     }
     &:first-child {
-      border-left: $borderThickness*2 solid $borderColor;
+      border-left: $borderThickness*0 solid $borderColor;
     }
     &:last-child {
-      border-right: $borderThickness*2 solid $borderColor;
+      border-right: $borderThickness*0 solid $borderColor;
     }
   }
 

@@ -1,8 +1,9 @@
 .Pagination{
+  padding: 15px;
   text-align: center;
   font-size: 100%;
   .Pagination__number {
-    margin: 0 5px;
+    margin: 0px 5px;
     cursor:pointer;
     &:last-of-type {
       margin-right: 2px;
@@ -11,5 +12,5 @@
 }
 
 .Pagination-active{
-  color: #00CC33;
+  color: #9BFCD3;
 }
