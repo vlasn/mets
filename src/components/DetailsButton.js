@@ -15,7 +15,7 @@ export default class DetailsButton extends React.Component {
     render() {
         let style = {
             height: '45px',
-            color: this.props.active === this.props.name ? 'white' : null // Siia k'iks teine v2rv veel
+            //color: this.props.active === this.props.name ? 'white' : null, // Siia k'iks teine v2rv veel
         };
         return(
         <MuiThemeProvider>
@@ -23,10 +23,11 @@ export default class DetailsButton extends React.Component {
                 className ="FlatButton--hover"
                 label = {this.props.label}
                 onTouchTap = {this.clicked.bind(this)}
-                backgroundColor = {this.props.active === this.props.name ? "#00CC33" : null}
-                color = {this.props.active === this.props.name ? "#00CC33" : null}
+                backgroundColor = {this.props.active === this.props.name ? "#7FFFC7" : null}
+                color = {this.props.active === this.props.name ? "#7FFFC7" : null}
                 style={style}
-                hoverColor={"#00CC33"}
+                hoverColor={"#7FFFC7"}
+                disableTouchRipple={true}
             />
         </MuiThemeProvider>
         )

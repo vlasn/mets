@@ -10,7 +10,8 @@ export default function reducer( state = {
     loggedIn: false,
     error: null,
     details: {},
-    navigateToRoot: false
+    navigateToRoot: false,
+    roles: []
 }, action) {
     switch(action.type) {
         case "LOG_IN_ATTEMPT": {
@@ -21,7 +22,7 @@ export default function reducer( state = {
         }
         case "LOG_IN_SUCCESSFUL": {
             console.log("login successful!");
-            return { ...state, loading: false, loggedIn: true, error: null, details: action.payload}
+            return { ...state, loading: false, loggedIn: true, error: null, details: action.payload, navigateToRoot:true}
         }
         case "LOG_OUT": {
             return {loading: false, loggedIn: false, error: null, details: {}}
@@ -33,19 +34,6 @@ export default function reducer( state = {
             }
             else break
         }
-        case "VALIDATION_ATTEMPT" : {
-            return{...state, error: null, email: null, password: null, secondaryPass: null, loading: true}
-        }
-        case "VALIDATION_SUCCESS" : {
-            return {...state, loading: false, error: null, email: null, password: null, secondaryPass: null, navigateToRoot: true}
-        }
-        case "VALIDATION_FAILURE" : {
-            return {...state, loading: false, error: action.payload}
-        }
-        case "VALIDATION_MISMATCH" : {
-            return {...state, loading: false, error: action.payload}
-        }
-
         default: {
             return {
                 ...state

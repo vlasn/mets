@@ -4,9 +4,11 @@ import { combineReducers } from "redux"
 import user from "./loginReducer"
 import documents from "./documentsReducer"
 import validation from "./validationReducer"
+import ui from "./uiReducer"
 
 export default combineReducers({
+    ui,
     user,
     documents,
-    validation
+    validation,
 })

@@ -1,13 +1,14 @@
 body {
   font-family: 'Open Sans', sans-serif;
-    background-color: white;
-    p {
-        color: black;
-    }
-    h1 {
-    	font-size: 2em;
-    	color: Black;
+  min-width: 960px;
+  background-color: white;
+  p {
+      color: black;
+  }
+  h1 {
+      font-size: 2em;
+      color: Black;
 
-    }
-  padding: 50px;
+  }
+  //padding: 50px;
 }

@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --hot",
-    "build": "webpack -d",
-    "prod": "webpack -p"
+    "build": "webpack -d --watch",
+    "prod": "webpack -p",
+    "lint": "eslint src/"
   },
   "author": "Veljo Lasn",
   "license": "none",

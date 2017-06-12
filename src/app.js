@@ -1,19 +1,16 @@
-const css = require("./app.scss");
+const css = require('./app.scss');
 
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux"
-import { BrowserRouter as Router, Link, Route } from "react-router-dom"
+import { BrowserRouter as Router, Link, Route } from "react-router-dom/es"
 import Login from "./components/Login"
 import store from "./store"
 import Validate from "./components/Validate"
-import Header from "./components/Header"
-import Table from "./components/MetsahaldurViewTable"
-import MetsCard from "./components/MetsCard"
-import DetailsWrapper from "./components/DetailsWrapper";
-import MetsahaldurViewTable from "./components/MetsahaldurViewTable"
+import HeaderWrapper from "./components/HeaderWrapper"
 import ClientLanding from "./components/ClientLanding"
-import Dialog from './components/Dialog'
+import History from './components/history'
+import VeoseTable from './components/Table'
 
 class App extends React.Component {
 
@@ -24,8 +21,8 @@ class App extends React.Component {
             "data": [
                 { //Lepinguobjekt
                     "contractId": "LEPING-FF-3124486234",
-                    "cadastral": "3421341:67864234",
                     "propertyName": "Paks Must Mets",
+                    "cadastral": "",
                     "status": "active",
                     "documents": {
                         "contracts":[
@@ -59,13 +56,18 @@ class App extends React.Component {
                             "filepath":"filepath",
                             "datestamp":"00-00-0000",
                             "author":"Tagametsa Toomas"
+                        },
+                        "haldus": {
+                            "projectManager":"Arnold Rüütel",
+                            "metsameister":"Ingrid Rüütel",
+                            "datestamp": "00-00-0000"
                         }
                     }
                 },
                 { //Lepinguobjekt
                     "contractId": "LEPING-FF-3124486234",
-                    "cadastral": "3421341:67864234",
                     "propertyName": "Paks Must Mets",
+                    "cadastral": "",
                     "status": "active",
                     "documents": {
                         "contracts":[
@@ -91,29 +93,54 @@ class App extends React.Component {
                             "filepath":"filepath",
                             "datestamp":"00-00-0000",
                             "author":"Tagametsa Toomas"
+                        },
+                        "haldus": {
+                            "projectManager":"Arnold Rüütel",
+                            "metsameister":"Ingrid Rüütel",
+                            "datestamp": "00-00-0000"
                         }
                     }
                 }
             ]
         }
+        let tableData = [
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 33882',
+                kogus: '30',
+                summa: '1421',
+            },
+
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 33882',
+                kogus: '23',
+                summa: '11',
+            },
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 33882',
+                kogus: '30',
+                summa: '41',
+            },
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 33882',
+                kogus: '30',
+                summa: '7',
+            },
+        ];
 
         return (
-            <Router>
-
+            <Router history={History}>
                 <div className="main__wrapper">
-
-                    <Link to={'/login'}>Login</Link>
-                    <Route exact path="/login" component={Login}/>
-                    <Route  exact path="/validate/:hash" component={Validate}/>
-                    <Route path="/" exact={true} render={()=>(
+                    <HeaderWrapper/>
+                    <Route exact={true} path="/login" component={Login}/>
+                    <Route exact path="/validate/:hash" component={Validate}/>
+                    {/*<Route path="/" exact={true} render={()=>(
                         <ClientLanding {...sampleContract}/>)
-                    }/>
-                    <Dialog
-                        title="Dialog with actions"
-                        buttonText="tere"
-                    >
-                        Veoseleht?
-                    </Dialog>
+                    }/>*/}
+                    <VeoseTable tableData = {tableData}/>
                 </div>
             </Router>
         );
@@ -123,4 +150,4 @@ ReactDOM.render(
     <Provider store={store}>
         <App/>
     </Provider>,
-    document.getElementById("root"));
+    document.getElementById('root'));

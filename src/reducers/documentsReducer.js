@@ -9,7 +9,7 @@ export default function reducer( state={
 }, action) {
     switch(action.type) {
         case "FETCH_DOCUMENTS":{
-            return {...state, loading: true}
+            return {...state, loading: true, error: null}
         }
         case "FETCH_DOCUMENTS_FAILED": {
             return {...state, loading: false, error: action.payload}
