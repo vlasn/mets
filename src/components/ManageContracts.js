@@ -1,7 +1,7 @@
 import React from "react"
 import MetsCard from "./MetsCard"
 import DetailsWrapper from "./DetailsWrapper";
-import MetsahaldurViewTable from "./MetsahaldurViewTable";
+import VeoseTable from './Veoselehed'
 
 
 export default class ClientLanding extends React.Component {
@@ -12,12 +12,10 @@ export default class ClientLanding extends React.Component {
     render() {
         return(
             <div>
-
-                {this.props.data.map(data => {
+                {this.props.data.map((data,index) => {
                     return(
-                        <MetsCard{...data} caret={true}>
-                            <DetailsWrapper documents = {data.documents}/>
-                            <MetsahaldurViewTable/>
+                        <MetsCard{...data} key={index}>
+                            <DetailsWrapper documents = {data.documents} />
                         </MetsCard>
                     )
                     })

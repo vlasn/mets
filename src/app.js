@@ -8,9 +8,8 @@ import Login from "./components/Login"
 import store from "./store"
 import Validate from "./components/Validate"
 import HeaderWrapper from "./components/HeaderWrapper"
-import ClientLanding from "./components/ClientLanding"
 import History from './components/history'
-import VeoseTable from './components/Table'
+import ManageContracts from "./components/ManageContracts"
 
 class App extends React.Component {
 
@@ -68,7 +67,7 @@ class App extends React.Component {
                     "contractId": "LEPING-FF-3124486234",
                     "propertyName": "Paks Must Mets",
                     "cadastral": "",
-                    "status": "active",
+                    "status": "pending",
                     "documents": {
                         "contracts":[
                             {
@@ -106,26 +105,76 @@ class App extends React.Component {
         let tableData = [
             {
                 kuupäev: '11.03.2016',
-                veoseleht: 'Veoseleht 33882',
+                veoseleht: 'Veoseleht 33klrnqjykbnqy882',
                 kogus: '30',
                 summa: '1421',
             },
 
             {
                 kuupäev: '11.03.2016',
-                veoseleht: 'Veoseleht 33882',
+                veoseleht: 'Veoseleht 33mkrleny882',
                 kogus: '23',
                 summa: '11',
             },
             {
                 kuupäev: '11.03.2016',
-                veoseleht: 'Veoseleht 33882',
+                veoseleht: 'Veoseleht 338gmnkflnw82',
                 kogus: '30',
                 summa: '41',
             },
             {
                 kuupäev: '11.03.2016',
-                veoseleht: 'Veoseleht 33882',
+                veoseleht: 'Veoseleht 338jgireaojy82',
+                kogus: '30',
+                summa: '7',
+            },
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 3jgflakhlm3882',
+                kogus: '30',
+                summa: '1421',
+            },
+
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 33arhja;882',
+                kogus: '23',
+                summa: '11',
+            },
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 33grarjraj882',
+                kogus: '30',
+                summa: '41',
+            },
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 33gdsaryuae882',
+                kogus: '30',
+                summa: '7',
+            },
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 3gdsHRru3882',
+                kogus: '30',
+                summa: '1421',
+            },
+
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 3adsafas82',
+                kogus: '23',
+                summa: '1',
+            },
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 338fsafsadsa82',
+                kogus: '30',
+                summa: '41',
+            },
+            {
+                kuupäev: '11.03.2016',
+                veoseleht: 'Veoseleht 33fhsddjtkaj882',
                 kogus: '30',
                 summa: '7',
             },
@@ -137,10 +186,12 @@ class App extends React.Component {
                     <HeaderWrapper/>
                     <Route exact={true} path="/login" component={Login}/>
                     <Route exact path="/validate/:hash" component={Validate}/>
-                    {/*<Route path="/" exact={true} render={()=>(
-                        <ClientLanding {...sampleContract}/>)
-                    }/>*/}
-                    <VeoseTable tableData = {tableData}/>
+                    <Route path="/"
+                        exact={true}
+                        render={()=>(
+                            <ManageContracts {...sampleContract} tableData={tableData}/>)
+                        }
+                    />
                 </div>
             </Router>
         );
