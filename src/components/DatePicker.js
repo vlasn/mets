@@ -14,10 +14,7 @@ export default class DatePicker extends React.Component {
               DateTimeFormat={Intl.DateTimeFormat}
               mode="landscape"
               locale="et-EE"
-              textFieldStyle={{textAlign: 'center' }}
-              style={{ width: '600px' }}
               cancelLabel="Loobu"
-              className="Muudan"
               />
 
         )
