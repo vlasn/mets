@@ -1,6 +1,12 @@
 .Pagination{
   text-align: center;
   font-size: 100%;
+  .Pagination__number {
+    margin: 0 5px;
+    &:last-of-type {
+      margin-right: 2px;
+    }
+  }
 }
 
 .Pagination-active{
