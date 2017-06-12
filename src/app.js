@@ -11,6 +11,7 @@ import HeaderWrapper from "./components/HeaderWrapper"
 import History from './components/history'
 import ManageContracts from "./components/ManageContracts"
 
+
 class App extends React.Component {
 
     render() {
@@ -192,6 +193,7 @@ class App extends React.Component {
                             <ManageContracts {...sampleContract} tableData={tableData}/>)
                         }
                     />
+
                 </div>
             </Router>
         );
