@@ -9,7 +9,7 @@ import store from "./store"
 import Validate from "./components/Validate"
 import HeaderWrapper from "./components/HeaderWrapper"
 import History from './components/history'
-import VeoseTable from './components/Veoselehed'
+import ManageContracts from "./components/ManageContracts"
 
 class App extends React.Component {
 
@@ -67,7 +67,7 @@ class App extends React.Component {
                     "contractId": "LEPING-FF-3124486234",
                     "propertyName": "Paks Must Mets",
                     "cadastral": "",
-                    "status": "active",
+                    "status": "pending",
                     "documents": {
                         "contracts":[
                             {
@@ -186,10 +186,12 @@ class App extends React.Component {
                     <HeaderWrapper/>
                     <Route exact={true} path="/login" component={Login}/>
                     <Route exact path="/validate/:hash" component={Validate}/>
-                    {/*<Route path="/" exact={true} render={()=>(
-                        <ClientLanding {...sampleContract}/>)
-                    }/>*/}
-                    <VeoseTable tableData = {tableData}/>
+                    <Route path="/"
+                        exact={true}
+                        render={()=>(
+                            <ManageContracts {...sampleContract} tableData={tableData}/>)
+                        }
+                    />
                 </div>
             </Router>
         );
