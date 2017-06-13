@@ -4,23 +4,30 @@
 import React from "react"
 import InputField from "./InputField"
 import InputFieldOptions from "./InputFieldOptions"
-
-
 const css = require("./AddClient.scss");
-
-
 
 export default class AddClent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            Katastritunnus:[1],
-            Kliendi_esindaja:[1]
+            Katastritunnus:[0],
+            Kliendi_esindaja:[0],
+            value : "",
+            name:""
         }
-        //let args= this.state
-
         this.addToArray=this.addToArray.bind(this)
         this.removeFromArray=this.removeFromArray.bind(this)
+        this.updateValue = this.updateValue.bind(this);
+    }
+
+    updateValue(name,value){
+        console.log("child"+name,value)
+        this.setState({
+            value: value,
+            name: name
+        });
+        console.log(this.state.value)
+        console.log(this.state.name)
     }
 
     addToArray(index,arrayName) {
@@ -33,8 +40,6 @@ export default class AddClent extends React.Component {
     }
 
     removeFromArray(index,arrayName) {
-        //console.log(this.state.Katastritunnus)
-
         if (this.state[arrayName].length > 1) {
             this.state[arrayName].splice( this.state[arrayName].indexOf(index), 1 )
             console.log(this.state[arrayName])
@@ -46,12 +51,13 @@ export default class AddClent extends React.Component {
     }
 
     render() {
-
         return(
+
             <div className="AddClient__wrapper">
                 <form onSubmit={e=>e.preventDefault()}>
                     <InputField floatingLabelText={"Kinnistu nimi"} hintText={"Mingi Nimi"}/>
                     {this.state.Katastritunnus.map((row,index)=>{
+                        console.log(index)
                         return(<InputFieldOptions
                             index={index}
                             key ={index}
@@ -60,7 +66,8 @@ export default class AddClent extends React.Component {
                             add={this.addToArray}
                             remove={this.removeFromArray}
                             fromArray={"Katastritunnus"}
-
+                            updateValue = {this.updateValue}
+                            name={"InputFieldOptions"+index}
                         />)
                     })}
                     {this.state.Kliendi_esindaja.map((row,index)=>{
