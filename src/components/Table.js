@@ -59,7 +59,7 @@ export default class Table extends Component {
                         </tr>
                     </thead>
                     <tbody>
-                    <tr className="Table__header">
+                    <tr className={`Table__header ${this.props.status ? this.props.status : 'default'}`}>
                         <td className="TableRow__column"> Kuupäev</td>
                         <td className="TableRow__column"/>
                         <td className="TableRow__column">{this.tableMetaData.kogus}</td>

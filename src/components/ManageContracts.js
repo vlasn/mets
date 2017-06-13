@@ -44,7 +44,7 @@ export default class ClientLanding extends React.Component {
                     return(
                         <MetsCard{...data} key={index}>
                             <DetailsWrapper documents = {data.documents} />
-                            <VeoseTable tableData = {this.props.tableData} key=""/>
+                            <VeoseTable tableData = {this.props.tableData} status={data.status}/>
                         </MetsCard>
                     )
                     })
