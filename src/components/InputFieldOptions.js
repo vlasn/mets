@@ -40,7 +40,7 @@ export default class InputFieldOptions extends React.Component {
                     </MuiThemeProvider>
 
                     <div className="InputFieldOptions__options">
-                        <span onClick={() => this.props.add(this.props.index,this.props.fromArray)}>Lisa </span>
+                        <span onClick={() => this.props.add(this.props.index+1,this.props.fromArray)}>Lisa </span>
                         /
                         <span onClick={() => this.props.remove(this.props.index, this.props.fromArray)}> kustuta</span>
                     </div>

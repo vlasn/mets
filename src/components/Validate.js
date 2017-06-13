@@ -56,9 +56,13 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({type: "VALIDATION_ATTEMPT"});
 
             if(first && first === second) {
+                let crypto = require('crypto');
+                let passhash = crypto.createHash('sha512').update(first).digest('hex');
+                let cpasshash = crypto.createHash('sha512').update(second).digest('hex');
+
                 axios.post('/api/user/validate', {
-                    password: first,
-                    cpassword: second,
+                    password: passhash,
+                    cpassword: cpasshash,
                     hash: hash
                 })
                     .then(response => {
