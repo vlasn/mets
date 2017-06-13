@@ -33,7 +33,10 @@ const mapDispatchToProps = (dispatch) => {
         updateValue: (key, data) => dispatch(credentialChange(key, data)),
         onSubmitLogin: (id, pass) => {
             dispatch({type: "LOG_IN_ATTEMPT"});
-            axios.post("/api/user/login", {email: id, password: pass})
+
+            let passhash = require('crypto').createHash('sha512').update(pass).digest('hex');
+
+            axios.post("/api/user/login", {email: id, password: passhash})
                 .then(response => {
                     dispatch(logIn(response.data))
                 })
