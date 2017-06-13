@@ -17,9 +17,10 @@ export default class InputFieldOptions extends React.Component {
     //this.props.remove
     //this.props.key
     //AddClient
-    
+
 
     render() {
+      console.log('inputi seest: ', this.props)
         return(
             <div className="InputFieldOptions__wrapper">
                 <div className="InputFieldOptions__parent" >
@@ -28,11 +29,13 @@ export default class InputFieldOptions extends React.Component {
                         <InputField
                             floatingLabelFixed={true}
                             hintText={this.props.hintText}
-                            fullWidth={this.props.fullWidth}
+                            fullWidth={true}
                             errorText = {this.props.errorText}
-                            //underlineFocusStyle={styles.underlineStyle}
+                            underlineFocusStyle={this.props.underLineFocusStyle ? this.props.underlineFocusStyle:null}
+                            floatingLabelFocusStyle={this.props.floatingLabelFocusStyle ? this.props.floatingLabelFocusStyle:null}
                             floatingLabelText={this.props.floatingLabelText}
                             //floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                            style={this.props.style}
                         />
                     </MuiThemeProvider>
 
