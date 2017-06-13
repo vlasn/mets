@@ -5,10 +5,7 @@ import React from "react"
 import InputField from "./InputField"
 import InputFieldOptions from "./InputFieldOptions"
 
-
 const css = require("./AddClient.scss");
-
-
 
 export default class AddClent extends React.Component {
     constructor(props) {
@@ -36,6 +33,7 @@ export default class AddClent extends React.Component {
         //console.log(this.state.Katastritunnus)
 
         if (this.state[arrayName].length > 1) {
+            console.log(this.state[arrayName].indexOf(index), index);
             this.state[arrayName].splice( this.state[arrayName].indexOf(index), 1 )
             console.log(this.state[arrayName])
             this.setState({
