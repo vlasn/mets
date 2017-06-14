@@ -13,6 +13,7 @@ import ManageContracts from "./components/ManageContracts"
 import AddClient from "./components/containers/NewClient"
 import Footer from "./components/Footer"
 
+import Filter from "./components/containers/Filter"
 
 
 class App extends React.Component {
@@ -188,6 +189,7 @@ class App extends React.Component {
             <Router history={History}>
                 <div className="main__wrapper">
                     <HeaderWrapper/>
+                    <Filter/>
                     <Route exact={true} path="/login" component={Login}/>
                     <Route exact path="/validate/:hash" component={Validate}/>
                     <Route path="/"
