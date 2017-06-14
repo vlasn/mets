@@ -24,6 +24,9 @@ export default class InputFieldOptions extends React.Component {
     //AddClient
 
     render() {
+
+        //console.log("options: "+JSON.stringify(this.props))
+
         return(
             <div className="InputFieldOptions__wrapper">
                 <div className="InputFieldOptions__parent" >
@@ -43,9 +46,9 @@ export default class InputFieldOptions extends React.Component {
                     </MuiThemeProvider>
 
                     <div className="InputFieldOptions__options">
-                        <span onClick={() => this.props.add(this.props.index,this.props.fromArray)}>Lisa </span>
+                        <span onClick={() => this.props.add(this.props.fromArray+this.props.timestamp,this.props.fromArray)}>Lisa </span>
                         /
-                        <span onClick={() => this.props.remove(this.props.index, this.props.fromArray)}> kustuta</span>
+                        <span onClick={() => this.props.remove(this.props.fromArray+this.props.timestamp,this.props.fromArray)}> kustuta</span>
                     </div>
                 </div>
             </div>
