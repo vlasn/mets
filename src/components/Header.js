@@ -28,7 +28,9 @@ const styles = {
     dropdownButton: {
         display:'block',
         color:'white',
-        textDecoration:'none'
+        textDecoration:'none',
+        padding: '0px 20px 0px 20px',
+        height: '45px'
     },
 };
 
