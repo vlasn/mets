@@ -61,7 +61,7 @@ export default class DetailsWrapper extends React.Component{
                     (<div><FileRow plainText plainKey="Projektijuht:" plainValue={this.props.documents.haldus.projectManager}/>
                         <FileRow plainText plainKey="Metsameister:" plainValue={this.props.documents.haldus.metsameister}/></div>) : null}
                 {this.state.activeTab === 'leping' ? this.props.documents.contracts.map((data, index)=>{
-                    return <FileRow fileName={data.filename} key={index || data.id}/>
+                    return <FileRow fileName={data.filename} key={index}/>
                 }) : null}
                 {this.state.activeTab === 'teatis' ?
                     <FileRow fileName={this.props.documents.metsateatis.filename}/> : null}

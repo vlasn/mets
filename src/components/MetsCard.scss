@@ -1,8 +1,47 @@
 .MetsCard__wrapper {
 
+	$activeColor: #9bfcd3;
+	$pendingColor: #f9ece0;
+	$expiredColor: #e4e4e4;
+	$doneColor: #f9f9f9;
+
 	display: block;
 	width: 100%;
 	margin-bottom: 17px;
+	.status- {
+		&active {
+			&:hover {
+				background-color: $activeColor;
+			}
+			&.open{
+				background-color: $activeColor;
+			}
+		}
+		&pending {
+			&:hover {
+				background-color: $pendingColor;
+			}
+			&.open{
+				background-color: $pendingColor;
+			}
+		}
+		&expired {
+			&:hover {
+				background-color: $expiredColor;
+			}
+			&.open{
+				background-color: $expiredColor;
+			}
+		}
+		&done {
+			&:hover {
+				background-color: $doneColor;
+			}
+			&.open{
+				background-color: $doneColor;
+			}
+		}
+	}
 	.MetsCard__header {
 		cursor: pointer;
 		border: 2px solid lightgrey;
@@ -24,7 +63,7 @@
 		}
 	}
 	.MetsCard__header:hover {
-		background: #7FFFC7 !important
+		//background: #9BFCD3 !important
 	}
 	.MetsCard__header-button {
 		flex: 1 0 0;

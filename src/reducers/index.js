@@ -5,10 +5,12 @@ import user from "./loginReducer"
 import documents from "./documentsReducer"
 import validation from "./validationReducer"
 import ui from "./uiReducer"
+import clientManagement from "./clientManagement"
 
 export default combineReducers({
     ui,
     user,
     documents,
     validation,
+    clientManagement
 })

@@ -20,7 +20,7 @@ export default class DetailsButton extends React.Component {
         return(
         <MuiThemeProvider>
             <FlatButton
-                className ="FlatButton--hover"
+                className ={`FlatButton--hover ${this.props.active===this.props.name ? 'active':''}`}
                 label = {this.props.label}
                 onTouchTap = {this.clicked.bind(this)}
                 backgroundColor = {this.props.active === this.props.name ? "#7FFFC7" : null}

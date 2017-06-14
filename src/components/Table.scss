@@ -4,18 +4,26 @@
   box-sizing: border-box;
 
   //Mixins:
-  $borderColor: #9c9c9c;
-  $headerBgColor: #34b83a;
-  $hoverColor: #fffede; //Color for clickable table rows on hover
+  $borderColor: #f9f9f9;
+  $headerBgColor: #9BFCD3;
+  $hoverColor: #f9f9f9; //Color for clickable table rows on hover
   $borderThickness: 1px; //Note - this appears as double of the value given here due to the adjacency of table
   $cellPadding: 10px 15px;
   $narrowCellWidth: 12%; //Width of each of the three narrower cells.
+
+  $activeColor: #9bfcd3;
+  $pendingColor: #f9ece0;
+  $expiredColor: #e4e4e4;
+  $doneColor: #f9f9f9;
 
   //Some structural stuff for the table itself
   .Table {
     border: 0;
     width:100%;
     table-layout: fixed;
+    th{
+      padding: 15px;
+    }
     .Table__column {
       width: $narrowCellWidth;
       &.wide {
@@ -23,8 +31,22 @@
       }
     }
     .Table__header {
-      background-color: $headerBgColor;
-      color: white;
+      &.active {
+        background-color: $activeColor;
+      }
+      &.pending {
+        background-color: $pendingColor;
+      }
+      &.expired {
+        background-color: $expiredColor;
+      }
+      &.done{
+        background-color: $doneColor;
+      }
+      &.default {
+        background-color: $headerBgColor;
+      }
+      color: black;
     }
   }
 
@@ -49,10 +71,10 @@
       text-align: left;
     }
     &:first-child {
-      border-left: $borderThickness*2 solid $borderColor;
+      border-left: $borderThickness*0 solid $borderColor;
     }
     &:last-child {
-      border-right: $borderThickness*2 solid $borderColor;
+      border-right: $borderThickness*0 solid $borderColor;
     }
   }
 

@@ -7,6 +7,7 @@ import InputFieldOptions from "./InputFieldOptions"
 const css = require("./AddClient.scss");
 
 export default class AddClient extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -44,14 +45,10 @@ export default class AddClient extends React.Component {
     }
 
     removeFromArray(name,arrayName) {
-
-        this.forceUpdate()
-
         let checkContent = (item)=>{
             //console.log(item.name, name);
             return (item.name !== name)
         };
-
         let newArr = this.state[arrayName].filter((item)=>checkContent(item));
         //console.log('V6rdlus remove:',this.state[arrayName], newArr)
 

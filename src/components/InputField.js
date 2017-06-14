@@ -1,6 +1,8 @@
 import React from "react"
 import TextField from 'material-ui/TextField';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+const css = require("./InputField.scss");
+
 
 const styles = {
     underlineStyle: {
@@ -25,7 +27,7 @@ export default class InputField extends React.Component{
                     <TextField
                         name={this.props.name}
                         hintText={this.props.hintText}
-                        fullWidth={this.props.fullWidth}
+                        fullWidth={true}
                         errorText = {this.props.errorText}
                         underlineFocusStyle={styles.underlineStyle}
                         floatingLabelText={this.props.floatingLabelText}

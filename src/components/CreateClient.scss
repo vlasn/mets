@@ -1,0 +1,38 @@
+.Heading{
+  display: flex;
+  flex-direction: row;
+  padding: 0px 0px 0px 30px;
+  border-bottom: 1px dashed grey;
+  margin-bottom: 15px;
+  margin-top: 50px;
+}
+
+.Textfield{
+  text-align: center;
+  width: 35%;
+  margin: auto;
+}
+
+.Big__button{
+  margin: auto;
+  text-align: center;
+  padding-top: 40px;
+  display: inline-block;
+  width: 100%;
+}
+
+.Text{
+  padding-left: 10px;
+  color: #A4A4A4;
+  font-size: 79%;
+  margin-bottom: auto;
+}
+
+.choiceButtons{
+  padding-left: 20px ;
+}
+
+form{
+  padding-top: 40px;
+}
+
