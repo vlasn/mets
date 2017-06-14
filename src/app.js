@@ -10,6 +10,8 @@ import Validate from "./components/Validate"
 import HeaderWrapper from "./components/HeaderWrapper"
 import History from './components/history'
 import ManageContracts from "./components/ManageContracts"
+import AddClient from "./components/containers/NewClient"
+
 
 
 class App extends React.Component {
@@ -190,10 +192,11 @@ class App extends React.Component {
                     <Route path="/"
                         exact={true}
                         render={()=>(
-                            <ManageContracts {...sampleContract} tableData={tableData}/>)
+                           <ManageContracts {...sampleContract} tableData={tableData}/>
+                        )
                         }
                     />
-
+                    <Route exact path="/new_client" component={AddClient}/>
                 </div>
             </Router>
         );
