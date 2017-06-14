@@ -14,13 +14,14 @@ const labelStyles = {
 const styles = {
     regularbutton: {
         //float: 'left',
-        width: "161px",
+        width: "160px",
         display:'inline-block',
         boarderRadius:'0px',
         margin: "10px",
     },
-    longbutton: {
-        width: "330px",
+    widebutton: {
+        width: "390px",
+        
     },
     underlineStyle: {
         borderColor: '#00CC33',
@@ -67,7 +68,7 @@ export default class NewClient extends React.Component {
         return (
             <MuiThemeProvider>
                 <div>
-                    <div className="Heading">Loo klient</div>
+                    <div className="Heading"><h1>Loo klient</h1></div>
                     {/* Switch */}
                     <SwitchPersonType switchType={this.props.changePersonType} activeTab={this.props.activeTab}/>
                     {/*View logic:*/}
@@ -145,7 +146,7 @@ export default class NewClient extends React.Component {
                             backgroundColor="#00CC33"
                             hoverColor="#00CC33"
                             labelStyle={labelStyles.headerButton}
-                            style={styles.longbutton}
+                            style={styles.widebutton}
                             onTouchTap={()=>this.props.onSubmit({...this.props.details, type: this.props.activeTab})}
                         />
                     </div>
