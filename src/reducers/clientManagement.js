@@ -13,8 +13,18 @@ export default function reducer( state = {
             vatDutyNumber: "",
             contact: "",
             address: ""
+        },
+    },
+    cards: {
+        filter: {
+            statusFilterOpen: false,
+            personFilterOpen: false,
+            statusFilterOption: '',
+            personFilterOption: '',
+            searchTerm: ''
         }
     }
+
 }, action) {
 
     switch(action.type) {
@@ -44,6 +54,57 @@ export default function reducer( state = {
                 return {...state}
             }
         }
+        //Filter bits
+        case "TOGGLE_FILTER_DROPDOWN" : {
+            return {
+                ...state,
+                cards: {
+                    ...state.cards,
+                    filter: {
+                        ...state.cards.filter,
+                        [action.payload+'FilterOpen']: !state.cards.filter[action.payload+'FilterOpen']
+                    }
+                }
+            }
+        }
+        case "PERSON_FILTER_OPTION" : {
+            return{
+                ...state,
+                cards: {
+                    ...state.cards,
+                    filter: {
+                        ...state.cards.filter,
+                        personFilterOption: action.payload
+                    }
+                }
+            }
+        }
+        case "FILTER_SEARCH_TERM" : {
+            return{
+                ...state,
+                cards: {
+                    ...state.cards,
+                    filter: {
+                        ...state.cards.filter,
+                        searchTerm: action.payload
+                    }
+                }
+            }
+        }
+
+        case "STATUS_FILTER_OPTION" : {
+            return{
+                ...state,
+                cards: {
+                    ...state.cards,
+                    filter: {
+                        ...state.cards.filter,
+                        statusFilterOption: action.payload
+                    }
+                }
+            }
+        }
+
         default: {
             return {
                 ...state
