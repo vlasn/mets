@@ -11,6 +11,7 @@ import HeaderWrapper from "./components/HeaderWrapper"
 import History from './components/history'
 import ManageContracts from "./components/ManageContracts"
 import AddClient from "./components/containers/NewClient"
+import Footer from "./components/Footer"
 
 
 
@@ -197,6 +198,7 @@ class App extends React.Component {
                         }
                     />
                     <Route exact path="/new_client" component={AddClient}/>
+                    <Footer/>
                 </div>
             </Router>
         );
