@@ -12,15 +12,19 @@ const css = require('./CardFilter.scss')
 export default class Filter extends Component {
     constructor(props) {
         super(props);
-        this.state = ({
-            statusFilterOpen: false,
-            personFilterOpen: false,
-            statusFilterOption: '',
-            personFilterOption: ''
-        })
         this.personFilterOption = this.personFilterOption.bind(this)
         this.statusFilterOption = this.statusFilterOption.bind(this)
         this.onSearch = this.onSearch.bind(this)
+        this.statusOptions = [
+            {status: 'active', label:'Aktiivne'},
+            {status: 'pending', label:'Ootel'},
+            {status: 'expired', label: 'Aegunud'},
+            {status: 'done', label:'Tehtud'},
+        ]
+        this.personOptions = [
+            {status: 'Jaagup', label:'Jaagup Jaloviin'},
+            {status: 'Väino', label:'Väino Viigipuu'},
+        ]
 
     }
 
@@ -63,20 +67,17 @@ export default class Filter extends Component {
                             toggle={this.props.toggleDropdown}
                             applied={this.props.filter.personFilterOption}
                         >
-                            <DropdownOption
-                                status="Vello"
-                                activeOption={this.props.filter.personFilterOption}
-                                onClick={this.personFilterOption}
-                            >
-                                Vello Veskimets
-                            </DropdownOption>
-                            <DropdownOption
-                                status="Jaanus"
-                                activeOption={this.props.filter.personFilterOption}
-                                onClick={this.personFilterOption}
-                            >
-                                Jaanus Jalakas
-                            </DropdownOption>
+                            {this.personOptions.map((row, index)=>{
+                                return (
+                                    <DropdownOption
+                                        key={index}
+                                        status={row.status}
+                                        activeOption={this.props.filter.personFilterOption}
+                                        onClick={this.personFilterOption}>
+                                        {row.label}
+                                    </DropdownOption>
+                                )
+                            })}
                         </Dropdown>
                     </div>
                     <div className="Filter__buttons-cell">
@@ -87,34 +88,17 @@ export default class Filter extends Component {
                             toggle={this.props.toggleDropdown}
                             applied={this.props.filter.statusFilterOption}
                         >
-                            <DropdownOption
-                                status="active"
-                                activeOption={this.props.filter.statusFilterOption}
-                                onClick={this.statusFilterOption}
-                            >
-                                Aktiivne
-                            </DropdownOption>
-                            <DropdownOption
-                                status="pending"
-                                activeOption={this.props.filter.statusFilterOption}
-                                onClick={this.statusFilterOption}
-                            >
-                                Ootel
-                            </DropdownOption>
-                            <DropdownOption
-                                status="expired"
-                                activeOption={this.props.filter.statusFilterOption}
-                                onClick={this.statusFilterOption}
-                            >
-                                Aegunud
-                            </DropdownOption>
-                            <DropdownOption
-                                status="done"
-                                activeOption={this.props.filter.statusFilterOption}
-                                onClick={this.statusFilterOption}
-                            >
-                                Tehtud
-                            </DropdownOption>
+                            {this.statusOptions.map((row, index)=>{
+                                return (
+                                    <DropdownOption
+                                        key={index}
+                                        status={row.status}
+                                        activeOption={this.props.filter.statusFilterOption}
+                                        onClick={this.statusFilterOption}>
+                                        {row.label}
+                                    </DropdownOption>
+                                )
+                            })}
 
                         </Dropdown>
                     </div>
