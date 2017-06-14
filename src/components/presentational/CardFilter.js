@@ -29,7 +29,7 @@ export default class Filter extends Component {
     }
 
     onSearch(value) {
-        this.props.updateSearchTerm(value)
+        this.props.updateSearchTerm(value, this.props.filter)
     }
     toggleDropdown(label) {
         this.props.toggleDropdown(label);
@@ -61,27 +61,6 @@ export default class Filter extends Component {
                 <section className="Filter__buttons">
                     <div className="Filter__buttons-cell">
                         <Dropdown
-                            open={this.props.filter.personFilterOpen}
-                            label="Metsameister"
-                            name="person"
-                            toggle={this.props.toggleDropdown}
-                            applied={this.props.filter.personFilterOption}
-                        >
-                            {this.personOptions.map((row, index)=>{
-                                return (
-                                    <DropdownOption
-                                        key={index}
-                                        status={row.status}
-                                        activeOption={this.props.filter.personFilterOption}
-                                        onClick={this.personFilterOption}>
-                                        {row.label}
-                                    </DropdownOption>
-                                )
-                            })}
-                        </Dropdown>
-                    </div>
-                    <div className="Filter__buttons-cell">
-                        <Dropdown
                             open={this.props.filter.statusFilterOpen}
                             label="Staatus"
                             name="status"
@@ -100,6 +79,27 @@ export default class Filter extends Component {
                                 )
                             })}
 
+                        </Dropdown>
+                    </div>
+                    <div className="Filter__buttons-cell">
+                        <Dropdown
+                            open={this.props.filter.personFilterOpen}
+                            label="Vali metsameister"
+                            name="person"
+                            toggle={this.props.toggleDropdown}
+                            applied={this.props.filter.personFilterOption}
+                        >
+                            {this.personOptions.map((row, index)=>{
+                                return (
+                                    <DropdownOption
+                                        key={index}
+                                        status={row.status}
+                                        activeOption={this.props.filter.personFilterOption}
+                                        onClick={this.personFilterOption}>
+                                        {row.label}
+                                    </DropdownOption>
+                                )
+                            })}
                         </Dropdown>
                     </div>
                 </section>

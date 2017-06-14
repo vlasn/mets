@@ -23,7 +23,8 @@ export default function reducer( state = {
             personFilterOption: '',
             searchTerm: ''
         }
-    }
+    },
+    contracts: []
 
 }, action) {
 
@@ -102,6 +103,14 @@ export default function reducer( state = {
                         statusFilterOption: action.payload
                     }
                 }
+            }
+        }
+
+        //search
+        case "SEARCH_COMPLETE" : {
+            return {
+                ...state,
+                contracts: action.payload
             }
         }
 

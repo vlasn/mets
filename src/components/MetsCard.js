@@ -15,6 +15,9 @@ export default class MetsCard extends React.Component {
     toggle() {
         this.setState({open: !this.state.open})
     }
+    componentWillMount(){
+        console.log('mc: ',this.props)
+    }
 
     translateStatus(status){
         switch(status) {
@@ -44,10 +47,10 @@ export default class MetsCard extends React.Component {
                     onClick={this.toggle.bind(this)}
                 >
                     <div className="MetsCard__header-button left">
-                        {this.props.contractId}
+                        {this.props.contractId||'Andmebaasis pole ID-sid?!'}
                     </div>
                     <div className="MetsCard__header-button middle">
-                        {this.props.propertyName}
+                        {this.props.propertyName||this.props.katastritunnused[0].tunnus}
                     </div>
                     <div className="MetsCard__header-button right">
                         <div className="MetsCard__header-button-flexwrap">
