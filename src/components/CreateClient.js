@@ -39,7 +39,6 @@ const SwitchPersonType = (props) => {
     };
     return(
         <div style={{display: 'block', width: '100%'}}>
-        <div className="Small__button">
             <FlatButton
                 label='Juriidiline isik'
                 backgroundColor={props.activeTab=='juridicalPerson'?"#00CC33":"#868686"}
@@ -57,7 +56,6 @@ const SwitchPersonType = (props) => {
                 onTouchTap={()=>onSwitch('privatePerson')}
             />
             </div>
-        </div>
     )
 };
 
