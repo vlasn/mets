@@ -1,8 +1,10 @@
 .InputFieldOptions__wrapper {
   .InputFieldOptions__parent {
+  width: 100%;
   position: relative;
   display: inline-block;
     .InputFieldOptions__options {
+      width: 42%;
       position: absolute;
       font-size: 0.6rem;
       color: #767676;

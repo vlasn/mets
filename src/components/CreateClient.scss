@@ -1,8 +1,8 @@
 .Heading{
   display: flex;
   flex-direction: row;
-  padding: 4px 0px 8px 0px;
-  font-size: 1.2rem;
+  padding: 4px 0px 20px 0px;
+
   border-bottom: 1px dashed grey;
   margin-bottom: 5px;
   margin-top: 100px;
@@ -17,7 +17,7 @@
 .Big__button{
   margin: auto;
   text-align: center;
-  padding-top: 7px;
+  padding-top: 40px;
   display: inline-block;
   width: 100%;
 }
@@ -28,3 +28,8 @@
   font-size: 79%;
   margin-bottom: auto;
 }
+
+form{
+  padding-top: 40px;
+}
+
