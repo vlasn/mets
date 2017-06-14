@@ -71,7 +71,7 @@ export default class AddClient extends React.Component {
                     {this.state.Katastritunnus.map((row,index)=>{
                         return(<InputFieldOptions
                             index={index}
-                            key ={index}
+                            key ={row.name}
                             floatingLabelText={"Katastritunnus"}
                             hintText={"23124234"}
                             add={this.addToArray}
@@ -85,7 +85,7 @@ export default class AddClient extends React.Component {
                     {this.state.Kliendi_esindaja.map((row,index)=>{
                         return(<InputFieldOptions
                             index={index}
-                            key ={index}
+                            key ={row.name}
                             floatingLabelText={"Kliendi esindaja"}
                             hintText={"Vello Veskimets juunior"}
                             add={this.addToArray}
