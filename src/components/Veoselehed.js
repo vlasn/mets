@@ -1,11 +1,9 @@
 /**
  * Created by clstrfvck on 12/04/2017.
  */
-//This is a wrapper for the login view/page.
 
 import React from "react"
 import { connect } from 'react-redux'
-import { logIn, credentialChange } from '../actions/userActions'
 import Table from './Table'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
