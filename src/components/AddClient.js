@@ -11,9 +11,7 @@ export default class AddClient extends React.Component {
         super(props);
         this.state = {
             Katastritunnus:[{value:"", name:"Katastritunnus0"}],
-            Kliendi_esindaja:[0],
-            //value : "",
-            //name:""
+            Kliendi_esindaja:[{value:"", name:"Kliendi_esindaja0"}],
         }
         this.addToArray=this.addToArray.bind(this)
         this.removeFromArray=this.removeFromArray.bind(this)
@@ -33,49 +31,34 @@ export default class AddClient extends React.Component {
             ...this.state,
             Katastritunnus: newKat
         });
-        console.log(this.state)
+        //console.log(this.state)
     }
 
     addToArray(timestamp,fromArray) {
-        //let timestamp = Date.now()
-        //console.log(timestamp)
-        //let hash = require('crypto').createHash('sha256').update(Math.random()).digest('hex').substring(0, 8);
-        //console.log(hash)
-        /*
-        console.log("tahan"+index)
-        console.log("tahan2"+fromArray)
-        let name = [fromArray]+(index+1)
-        console.log("tahan3"+name)
-        */
-         //[this.props.fromArray]+(this.props.index+1),this.props.fromArray
         let newArr = [...this.state[fromArray], {value: "", name: timestamp}]
         this.setState({
             ...this.state,
             [fromArray]: newArr
         });
-        console.log("omg:"+JSON.stringify(this.state[fromArray]))
-        //console.log(this.state[arrayName].indexOf)
-
+        //console.log("omg:"+JSON.stringify(this.state[fromArray]))
     }
 
     removeFromArray(name,arrayName) {
-        //console.log("name: "+timestamp)
-        //console.log("fromarray: "+fromArray)
 
+        this.forceUpdate()
 
         let checkContent = (item)=>{
-            console.log(item.name, name);
+            //console.log(item.name, name);
             return (item.name !== name)
         };
 
         let newArr = this.state[arrayName].filter((item)=>checkContent(item));
-        console.log('V6rdlus remove:',this.state[arrayName], newArr)
+        //console.log('V6rdlus remove:',this.state[arrayName], newArr)
 
         this.setState({
             ...this.state,
             [arrayName]: newArr
         })
-
     }
 
     render() {
@@ -86,7 +69,6 @@ export default class AddClient extends React.Component {
                 <form onSubmit={e=>e.preventDefault()}>
                     <InputField floatingLabelText={"Kinnistu nimi"} hintText={"Mingi Nimi"}/>
                     {this.state.Katastritunnus.map((row,index)=>{
-                        console.log(index)
                         return(<InputFieldOptions
                             index={index}
                             key ={index}
@@ -96,7 +78,8 @@ export default class AddClient extends React.Component {
                             remove={this.removeFromArray}
                             fromArray={"Katastritunnus"}
                             updateValue = {this.updateValue}
-                            timestamp={Date.now()}
+                            name={row.name}
+                            value={row.value}
                         />)
                     })}
                     {this.state.Kliendi_esindaja.map((row,index)=>{
@@ -108,7 +91,9 @@ export default class AddClient extends React.Component {
                             add={this.addToArray}
                             remove={this.removeFromArray}
                             fromArray={"Kliendi_esindaja"}
-
+                            updateValue = {this.updateValue}
+                            name={row.name}
+                            value={row.value}
                         />)
                     })}
                     <InputField floatingLabelText={"Projekti juht"} hintText={"Projekti Juhan"}/>
