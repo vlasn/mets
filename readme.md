@@ -1,5 +1,5 @@
-#### Metsahaldur
-# Serveri setup
+# Metsahaldur
+## Isikliku testserveri setup:
 
 Alustuseks, installi omale VirtualBox ja sinna sisse vaikeseadetega Ubuntu Server 16.04.
 Kui installatsioon lõppenud, sule virtuaalmasin. Lisa jagatud kaust - esmalt virtualBoxi pool - settings, shared folders, add. Read-only ja auto mount. 
