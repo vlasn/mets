@@ -15,21 +15,15 @@ const styles = {
 export default class InputField extends React.Component{
     constructor(props) {
         super(props);
-        this.textChangeHandler = this.textChangeHandler.bind(this);
     }
 
-    textChangeHandler(event) {
-        this.props.updateValue(
-            this.props.name, event.target.value
-        );
-    }
 
     render(){
         return(
             <MuiThemeProvider>
                 <div className = "InputField__wrapper">
                     <TextField
-                        onChange={(event)=>this.textChangeHandler(event)}
+                        name={this.props.name}
                         hintText={this.props.hintText}
                         fullWidth={this.props.fullWidth}
                         errorText = {this.props.errorText}
@@ -37,6 +31,7 @@ export default class InputField extends React.Component{
                         floatingLabelText={this.props.floatingLabelText}
                         floatingLabelFixed={true}
                         floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                        onChange={this.props.onChange ? (event)=>this.props.onChange(event) : null}
                     />
                 </div>
             </MuiThemeProvider>
