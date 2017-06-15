@@ -33,9 +33,10 @@ export default class InputFieldOptions extends React.Component {
                             floatingLabelFixed={true}
                             name = {this.props.name}
                             hintText={this.props.hintText}
-                            fullWidth={this.props.fullWidth}
+                            fullWidth={true}
                             errorText = {this.props.errorText}
-                            //underlineFocusStyle={styles.underlineStyle}
+                            underlineFocusStyle={this.props.underLineFocusStyle ? this.props.underlineFocusStyle:null}
+                            floatingLabelFocusStyle={this.props.floatingLabelFocusStyle ? this.props.floatingLabelFocusStyle:null}
                             floatingLabelText={this.props.floatingLabelText}
                             //floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
                             onChange={this.textChangeHandler.bind(this)}

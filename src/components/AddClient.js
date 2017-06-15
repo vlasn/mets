@@ -4,9 +4,11 @@
 import React from "react"
 import InputField from "./InputField"
 import InputFieldOptions from "./InputFieldOptions"
+
 const css = require("./AddClient.scss");
 
 export default class AddClient extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -44,10 +46,7 @@ export default class AddClient extends React.Component {
     }
 
     removeFromArray(name,arrayName) {
-
-        this.forceUpdate()
-
-        let checkContent = (item)=>{
+       let checkContent = (item)=>{
             //console.log(item.name, name);
             return (item.name !== name)
         };
@@ -59,6 +58,7 @@ export default class AddClient extends React.Component {
             ...this.state,
             [arrayName]: newArr
         })
+
     }
 
     render() {

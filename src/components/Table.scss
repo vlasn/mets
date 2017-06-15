@@ -11,6 +11,11 @@
   $cellPadding: 10px 15px;
   $narrowCellWidth: 12%; //Width of each of the three narrower cells.
 
+  $activeColor: #9bfcd3;
+  $pendingColor: #f9ece0;
+  $expiredColor: #e4e4e4;
+  $doneColor: #f9f9f9;
+
   //Some structural stuff for the table itself
   .Table {
     border: 0;
@@ -26,7 +31,21 @@
       }
     }
     .Table__header {
-      background-color: $headerBgColor;
+      &.active {
+        background-color: $activeColor;
+      }
+      &.pending {
+        background-color: $pendingColor;
+      }
+      &.expired {
+        background-color: $expiredColor;
+      }
+      &.done{
+        background-color: $doneColor;
+      }
+      &.default {
+        background-color: $headerBgColor;
+      }
       color: black;
     }
   }
