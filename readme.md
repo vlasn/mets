@@ -1,4 +1,33 @@
-# Metsahaldur
+# Metsahaldur 
+:squirrel: :gun:
+
+Projekt on loodud  Tallinna Ülikooli **Digitehnoloogiate instituudis**, tarkvaraarenduse praktika suvetöö raames. 
+
+Metsahalduri veebilehekülg on loodud Metsahaldur OÜ tarbeks ning mõeldud kasutamiseks Metsahaldur OÜ töötajatele ning klientidele. Veebilehestiku eesmärk on muuta metsa haldamine metsahalduri firma jaoks lihtsaks ja veebipõhiseks. Rakendus lihtsustab Metsahaldur OÜ klientide ja ettevõtte vahelist andmevahetust. Veebilehega kaotatakse ära vajadus käsitisi andmete  sisestamiseks ja haldamiseks. Rakendus hõlbustab suuresti metsahalduri töötajate töövoogu. 
+
+## Kasutatud tehnoloogiad
+### Front end
+* List siia
+*
+### Back end
+* List siia
+*
+
+## Projekti panustasid
+###### Meie tiim: 
+* Greg Nesselmann
+* Henry Savi
+* Karoliina Roots
+* Toomas Thetloff
+* Veljo Lasn
+
+###### Tiimiväline abi: 
+* Erko Soolmann
+* Romil Robtsenkov
+
+## Litsents
+Tarkvara kasutab MIT litsentsi
+
 ## Isikliku testserveri setup:
 
 Alustuseks, installi omale VirtualBox ja sinna sisse vaikeseadetega Ubuntu Server 16.04.
