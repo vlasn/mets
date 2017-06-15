@@ -12,13 +12,16 @@ export default class ClientLanding extends React.Component {
         //mounted, searching..
         this.props.searchTriggered(this.props.filter)
     }
+    componentDidUpdate(){
+        {this.props.searchRequired ? this.props.searchTriggered(this.props.filter):null}
+    }
 
     render() {
         return(
             <div>
                 {this.props.data.map((data,index) => {
                     return(
-                        <MetsCard{...data} key={index}>
+                        <MetsCard{...data} key={data._id}>
                             <DetailsWrapper documents = {data.documents} />
                             <VeoseTable tableData = {tableData} status={data.status}/>
                         </MetsCard>

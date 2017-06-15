@@ -27,7 +27,7 @@ const styles = {
     },
     dropdownButton: {
         display:'block',
-        color:'white',
+        color:'black',
         textDecoration:'none',
         padding: '0px 20px 0px 20px',
         height: '45px'
@@ -58,7 +58,7 @@ export default class Header extends React.Component {
                             label='Avaleht'
                             style={styles.headerButton}
                             backgroundColor= "black"
-                            hoverColor = "#00CC33"
+                            hoverColor = "#9BFCD3"
                             labelStyle ={labelStyles.headerButton}
                         />
                     </Link>
@@ -69,7 +69,7 @@ export default class Header extends React.Component {
                             this.props.loggedIn === true ? (
                                 <FlatButton
                                     style={styles.dropdownButton}
-                                    backgroundColor = {this.props.dropdownOpen ? 'black' : '#00CC33'}
+                                    backgroundColor = {this.props.dropdownOpen ? 'black' : '#9BFCD3'}
                                     hoverColor = "black"
                                     onClick={this.toggle}>
                                     {this.props.nameToDisplay()}
@@ -78,7 +78,7 @@ export default class Header extends React.Component {
                                 <Link to="/login">
                                 <FlatButton
                                     style={styles.dropdownButton}
-                                    backgroundColor = {this.props.dropdownOpen ? 'black' : '#00CC33'}
+                                    backgroundColor = {this.props.dropdownOpen ? 'black' : '#9BFCD3'}
                                     hoverColor = "black"
                                     onClick={this.handleClick}>
                                     Logi sisse
@@ -93,7 +93,7 @@ export default class Header extends React.Component {
                             style={styles.dropdownButton}
                             backgroundColor = '#333333'
                             fullWidth={true}
-                            hoverColor = '#7FFFC7'
+                            hoverColor = '#9BFCD3'
                             disableTouchRipple = {true}
                             onTouchTap={this.props.logout}
                         />
@@ -103,7 +103,7 @@ export default class Header extends React.Component {
                             style={styles.dropdownButton}
                             backgroundColor = '#333333'
                             fullWidth={true}
-                            hoverColor = '#7FFFC7'
+                            hoverColor = '#9BFCD3'
                             disableTouchRipple = {true}
                         />
                     </Dropdown>

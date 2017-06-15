@@ -8,6 +8,7 @@
 	display: block;
 	width: 100%;
 	margin-bottom: 17px;
+	box-sizing: border-box;
 	.status- {
 		&active {
 			&:hover {
@@ -43,6 +44,7 @@
 		}
 	}
 	.MetsCard__header {
+		box-sizing: border-box;
 		cursor: pointer;
 		border: 2px solid lightgrey;
 		display: flex;

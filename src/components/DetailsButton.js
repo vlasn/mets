@@ -23,10 +23,10 @@ export default class DetailsButton extends React.Component {
                 className ={`FlatButton--hover ${this.props.active===this.props.name ? 'active':''}`}
                 label = {this.props.label}
                 onTouchTap = {this.clicked.bind(this)}
-                backgroundColor = {this.props.active === this.props.name ? "#7FFFC7" : null}
-                color = {this.props.active === this.props.name ? "#7FFFC7" : null}
+                backgroundColor = {this.props.active === this.props.name ? "#9BFCD3" : null}
+                color = {this.props.active === this.props.name ? "#9BFCD3" : null}
                 style={style}
-                hoverColor={"#7FFFC7"}
+                hoverColor={"#9BFCD3"}
                 disableTouchRipple={true}
             />
         </MuiThemeProvider>

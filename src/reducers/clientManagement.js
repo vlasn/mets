@@ -24,7 +24,8 @@ export default function reducer( state = {
             searchTerm: ''
         }
     },
-    contracts: []
+    contracts: [],
+    searchRequired: false
 
 }, action) {
 
@@ -110,7 +111,20 @@ export default function reducer( state = {
         case "SEARCH_COMPLETE" : {
             return {
                 ...state,
-                contracts: action.payload
+                contracts: action.payload,
+                searchRequired: false
+            }
+        }
+        case "SEARCH_TRIGGERED" : {
+            return {
+                ...state,
+                searchRequired: false
+            }
+        }
+        case "SEARCH_QUEUED" : {
+            return {
+                ...state,
+                searchRequired: true
             }
         }
 
