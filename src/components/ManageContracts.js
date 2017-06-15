@@ -1,6 +1,6 @@
 import React from "react"
 import MetsCard from "./MetsCard"
-import DetailsWrapper from "./DetailsWrapper";
+import DetailsWrapper from "./presentational/DetailsWrapper";
 import VeoseTable from './Veoselehed'
 
 

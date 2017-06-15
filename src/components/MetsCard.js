@@ -2,7 +2,7 @@
  * Created by clstrfvck on 03/05/2017.
  */
 import React from "react"
-import DetailsWrapper from "./DetailsWrapper"
+import DetailsWrapper from "./presentational/DetailsWrapper"
 import {CaretDown, CaretUp} from "./Icons"
 const css = require("./MetsCard.scss");
 
@@ -47,10 +47,10 @@ export default class MetsCard extends React.Component {
                     onClick={this.toggle.bind(this)}
                 >
                     <div className="MetsCard__header-button left">
-                        {this.props.contractId||'Andmebaasis pole ID-sid?!'}
+                        {this.props.esindajad[0]||'Esindaja nimi puudub!'}
                     </div>
                     <div className="MetsCard__header-button middle">
-                        {this.props.propertyName||this.props.katastritunnused[0].tunnus}
+                        {this.props.propertyName||this.props.katastritunnused[0].nimi}
                     </div>
                     <div className="MetsCard__header-button right">
                         <div className="MetsCard__header-button-flexwrap">
