@@ -46,7 +46,7 @@ const SwitchPersonType = (props) => {
                 hoverColor="#9BFCD3"
                 labelStyle={labelStyles.headerButton}
                 style={styles.regularbutton}
-                onTouchTap={()=>onSwitch('juridicalPerson')}
+                onClick={()=>onSwitch('juridicalPerson')}
             />
             <FlatButton
                 label='Eraisik'
@@ -54,7 +54,7 @@ const SwitchPersonType = (props) => {
                 hoverColor="#9BFCD3"
                 labelStyle={labelStyles.headerButton}
                 style={styles.regularbutton}
-                onTouchTap={()=>onSwitch('privatePerson')}
+                onClick={()=>onSwitch('privatePerson')}
             />
             </div>
         </div>
@@ -67,6 +67,7 @@ export default class NewClient extends React.Component {
     }
 
     render(){
+        console.log(this.props.errors.email)
         return (
             <MuiThemeProvider>
                 <div>
@@ -96,6 +97,7 @@ export default class NewClient extends React.Component {
                                     label="E-posti aadress"
                                     name="email"
                                     onChange={this.props.onFieldValueChange}
+                                    errorText={this.props.errors.email}
                                 />
                                 <TextField
                                     label="Kontakt"
@@ -149,7 +151,7 @@ export default class NewClient extends React.Component {
                             hoverColor="#9BFCD3"
                             labelStyle={labelStyles.headerButton}
                             style={styles.widebutton}
-                            onTouchTap={()=>this.props.onSubmit({...this.props.details, type: this.props.activeTab})}
+                            onClick={()=>this.props.onSubmit({...this.props.details, type: this.props.activeTab})}
                         />
                     </div>
                     </form>
