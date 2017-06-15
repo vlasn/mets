@@ -67,16 +67,13 @@ export default function reducer( state = {
             }
         }
         case "CREATION_FIELD_ERROR":{
-            console.log(action.payload)
-            let newErrorObjects =
-            console.log(newErrorObjects)
             return {
                 ...state,
                 creation: {
                     ...state.creation,
                     errors: {
                         ...state.creation.errors,
-                        ...action.payload.forEach(n=>({[n.key]:n.error}))
+                        ...action.payload
                     }
                 }
             }

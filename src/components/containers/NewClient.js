@@ -38,19 +38,12 @@ const mapDispatchToProps = (dispatch) => {
         onSubmit(details){
 
             let emailValidation = /\S+@\S+\.\S+/
-            let errors = []
+            let errors = {}
 
             dispatch({type: 'CREATION_ATTEMPT'})
 
             if(!emailValidation.test(details.email))  {
-                errors.push({key: "email", error: 'Sisesta korrektne email'})
-                // dispatch({
-                //     type: "CREATION_FIELD_ERROR",
-                //     payload: {
-                //         key: "email",
-                //         email: "Sisesta korrektne email"
-                //     }
-                // })
+                errors.email = 'Oih';
             }
             /*
             if(details.name<3)  {
@@ -135,7 +128,7 @@ const mapDispatchToProps = (dispatch) => {
                 }
 
             }*/
-            if(errors.length<1){
+            if(Object.keys(errors).length<1){
                 axios.post('/api/user/create', {
                     email: details.email,
                     personal_data: {
@@ -162,6 +155,7 @@ const mapDispatchToProps = (dispatch) => {
                         dispatch({type: 'CREATION_FAILURE', payload: error})
                     })
             } else {
+                console.log('dispatching')
                 dispatch({
                     type: "CREATION_FIELD_ERROR",
                     payload: errors
