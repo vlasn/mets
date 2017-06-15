@@ -1,6 +1,6 @@
 import React from "react"
 import MetsCard from "./MetsCard"
-import DetailsWrapper from "./DetailsWrapper";
+import DetailsWrapper from "./presentational/DetailsWrapper";
 import VeoseTable from './Veoselehed'
 
 
@@ -22,7 +22,7 @@ export default class ClientLanding extends React.Component {
                 {this.props.data.map((data,index) => {
                     return(
                         <MetsCard{...data} key={data._id}>
-                            <DetailsWrapper documents = {data.documents} />
+                            <DetailsWrapper {...data} />
                             <VeoseTable tableData = {tableData} status={data.status}/>
                         </MetsCard>
                     )
