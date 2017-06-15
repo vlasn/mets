@@ -24,7 +24,7 @@ const styles = {
         
     },
     underlineStyle: {
-        borderColor: '#00CC33',
+        borderColor: '#9BFCD3',
     },
     floatingLabelFocusStyle:{
         color: 'black',
@@ -42,16 +42,16 @@ const SwitchPersonType = (props) => {
         <div className="choiceButtons">
             <FlatButton
                 label='Juriidiline isik'
-                backgroundColor={props.activeTab=='juridicalPerson'?"#00CC33":"#868686"}
-                hoverColor="#00CC33"
+                backgroundColor={props.activeTab=='juridicalPerson'?"#9BFCD3":"#868686"}
+                hoverColor="#9BFCD3"
                 labelStyle={labelStyles.headerButton}
                 style={styles.regularbutton}
                 onTouchTap={()=>onSwitch('juridicalPerson')}
             />
             <FlatButton
                 label='Eraisik'
-                backgroundColor={props.activeTab=='privatePerson'?"#00CC33":"#868686"}
-                hoverColor="#00CC33"
+                backgroundColor={props.activeTab=='privatePerson'?"#9BFCD3":"#868686"}
+                hoverColor="#9BFCD3"
                 labelStyle={labelStyles.headerButton}
                 style={styles.regularbutton}
                 onTouchTap={()=>onSwitch('privatePerson')}
@@ -145,8 +145,8 @@ export default class NewClient extends React.Component {
                     <div className="Big__button">
                         <FlatButton
                             label='Loo klient'
-                            backgroundColor="#00CC33"
-                            hoverColor="#00CC33"
+                            backgroundColor="#9BFCD3"
+                            hoverColor="#9BFCD3"
                             labelStyle={labelStyles.headerButton}
                             style={styles.widebutton}
                             onTouchTap={()=>this.props.onSubmit({...this.props.details, type: this.props.activeTab})}
