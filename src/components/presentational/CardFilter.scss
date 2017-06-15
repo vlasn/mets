@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   padding: 5px 0px 5px 15px;
+
   .Filter__searchbar-wrapper {
     flex: 1 0 0;
   }
@@ -27,17 +28,18 @@
       padding: 0;
       background-color: white;
       width: 200px;
-      box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
       display: flex;
       flex-direction: column;
       box-sizing: border-box;
       transition-duration: 0.1s;
+      box-shadow: none;
     }
     .DropdownOption__wrapper {
       width: 100%;
       flex: 1 0 0;
       padding: 5px;
       box-sizing: border-box;
+
       &:hover {
         background-color: #e2e2e2;
       }
