@@ -3,7 +3,7 @@ const css = require('./app.scss');
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux"
-import { BrowserRouter as Router, Link, Route } from "react-router-dom/es"
+import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom/es"
 import Login from "./components/Login"
 import store from "./store"
 import Validate from "./components/Validate"
@@ -23,19 +23,21 @@ class App extends React.Component {
             <Router history={History}>
                 <div className="main__wrapper">
                     <HeaderWrapper/>
-                    <Route exact={true} path="/login" component={Login}/>
-                    <Route exact path="/validate/:hash" component={Validate}/>
-                    <Route path="/"
-                        exact={true}
-                        render={()=>(
-                            <section>
-                                <Filter/>
-                                <Contracts/>
-                            </section>
-                        )
-                        }
-                    />
-                    <Route exact path="/new_client" component={AddClient}/>
+                    <Switch>
+                        <Route exact={true} path="/login" component={Login}/>
+                        <Route exact path="/validate/:hash" component={Validate}/>
+                        <Route path="/"
+                            exact={true}
+                            render={()=>(
+                                <section>
+                                    <Filter/>
+                                    <Contracts/>
+                                </section>
+                            )
+                            }
+                        />
+                        <Route exact path="/new_client" component={AddClient}/>
+                    </Switch>
                     <Footer/>
                 </div>
             </Router>

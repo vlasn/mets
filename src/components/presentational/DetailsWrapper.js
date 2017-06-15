@@ -60,12 +60,21 @@ export default class DetailsWrapper extends React.Component{
                 {/*Haldusvaade*/}
                 {this.state.activeTab === 'haldus' ?
                    DetailsTab([
-                       {key: "Loomise kuupäev: ", value: this.props.created_timestamp.split("T")[0]},
-                       {key: "Projektijuht: ", value: this.props.projektijuht},
-                       {key: "Metsameister: ", value: this.props.metsameister},
-                       {key: "Kontakt: ", value: this.props.kontakt},
-                       {key: "E-post: ", value: this.props.esindajad[0]},
-                       {key: "Katastritunnus: ", value: this.props.katastritunnused.map(n=>n.tunnus).toString()}, //Üks või mitu?
+                       {key: "Loomise kuupäev: ", value: this.props.created_timestamp.split("T")[0],
+                           name: 'creation_date'},
+                       {key: "Projektijuht: ", value: this.props.projektijuht,
+                           name: 'projektijuht'},
+                       {key: "Metsameister: ", value: this.props.metsameister,
+                           name: 'metsameister'},
+                       {key: "Kontakt: ", value: this.props.kontakt,
+                           name: 'eeee'}, //Puudu?!
+
+                       {key: "E-post: ", value: this.props.esindajad.join(', '),
+                           name: 'esindajad', editable: this.props.esindajad},
+
+                       {key: "Katastritunnus: ", value: this.props.katastritunnused.map(n=>n.tunnus).join(', '),
+                            name: 'katastritunnused', editable: this.props.katastritunnused},
+
                        {key: "Raie teostamine: ", value: this.props.raie_teostamine},
                        {key: "Metsamaterjali väljaviimine: ", value: this.props.materjali_viimine},
                        {key: "Raidmete väljaviimine: ", value: this.props.raidmete_viimine},
@@ -98,12 +107,16 @@ export default class DetailsWrapper extends React.Component{
     }
 }
 const DetailsTab = (data=[], nonFileRow = false) => {
-    let createNonFileRow = n => <FileRow key={n.key} plainText plainKey={n.key} plainValue={n.value||<Missing/>}/>
+    let createNonFileRow = n => (
+        <FileRow key={n.key} plainText plainKey={n.key} plainValue={n.value||<Missing/>} name={n.name} editable={n.editable||false}/>
+    )
     let createDocumentRow = n => <FileRow fileName={n.filename} key={n.filename}/>
     return nonFileRow===false ? (data.map(createNonFileRow)) : (data.map(createDocumentRow))
 };
 const Missing = () => <span className="FileRow__missing-value">Puudub</span>;
+
 const EmptyTab = () =>
     <div className="DetailsWrapper__missing-data-tab">
         <div className="DetailsWrapper__upload-link">Lisa fail..</div>
     </div>
+//const prettyPrint = (arr) => arr.reduce((acc, val, index)=>{acc+=(index<1||index==arr.length-1?'':' ,')+val},'');
