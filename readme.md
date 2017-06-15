@@ -5,7 +5,7 @@ Projekt on loodud  Tallinna Ülikooli **Digitehnoloogiate instituudis**, tarkvar
 
 Metsahalduri veebilehekülg on loodud Metsahaldur OÜ tarbeks ning mõeldud kasutamiseks Metsahaldur OÜ töötajatele ning klientidele. Veebilehestiku eesmärk on muuta metsa haldamine metsahalduri firma jaoks lihtsaks ja veebipõhiseks. Rakendus lihtsustab Metsahaldur OÜ klientide ja ettevõtte vahelist andmevahetust. Veebilehega kaotatakse ära vajadus käsitisi andmete  sisestamiseks ja haldamiseks. Rakendus hõlbustab suuresti metsahalduri töötajate töövoogu. 
 
-## Kasutatud tehnoloogid
+## Kasutatud tehnoloogiad
 ### Front end
 * List siia
 *
@@ -27,8 +27,6 @@ Metsahalduri veebilehekülg on loodud Metsahaldur OÜ tarbeks ning mõeldud kasu
 
 ## Litsents
 Tarkvara kasutab MIT litsentsi
-
-
 
 ## Isikliku testserveri setup:
 
