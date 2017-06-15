@@ -12,7 +12,7 @@ import History from './components/history'
 import Contracts from "./components/containers/Contracts"
 import AddClient from "./components/containers/NewClient"
 import Footer from "./components/Footer"
-
+import Add from "./components/AddClient"
 import Filter from "./components/containers/Filter"
 
 
@@ -34,6 +34,7 @@ class App extends React.Component {
                         }
                     />
                     <Route exact path="/new_client" component={AddClient}/>
+                    <Add/>
                     <Footer/>
                 </div>
             </Router>
