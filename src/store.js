@@ -10,7 +10,7 @@ import reducer from "./reducers"
 
 export default createStore(reducer,
     //the two arguments below to be removed in production build
-    compose(applyMiddleware(thunk)),
-    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 
 );

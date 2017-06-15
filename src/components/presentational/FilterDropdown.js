@@ -8,7 +8,7 @@ const translations = {
     active: "Aktiivne",
     pending: "Ootel",
     expired: "Aegunud",
-    done: "Lõpetatud",
+    done: "Tehtud",
 }
 
 export const Dropdown = (props)=>{

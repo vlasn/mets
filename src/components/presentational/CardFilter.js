@@ -30,6 +30,7 @@ export default class Filter extends Component {
 
     onSearch(value) {
         this.props.updateSearchTerm(value, this.props.filter)
+        this.props.queueSearch()
     }
     toggleDropdown(label) {
         this.props.toggleDropdown(label);
@@ -43,10 +44,12 @@ export default class Filter extends Component {
     statusFilterOption(status){
         this.props.statusFilterOption(status)
         this.props.toggleDropdown('status')
+        this.props.queueSearch()
     }
     personFilterOption(person) {
         this.props.personFilterOption(person)
         this.props.toggleDropdown('person')
+        this.props.queueSearch()
     }
 
     render() {

@@ -9,12 +9,12 @@ class Contracts extends Component {
         super(props)
     }
     render(){
-        //Will need to provide a
         return(<ContractCards {...this.props}/>)
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+    console.log(ownProps)
     return{
         searchTriggered(opt){
             // statusFilterOption: '',
@@ -33,9 +33,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
                 })
                 .catch(console.log)
 
-        },
-        searchWithFilter(){
-
         }
     }
 }
@@ -44,6 +41,7 @@ const mapStateToProps = (state) => {
     return {
         filter: state.clientManagement.cards.filter,
         data: state.clientManagement.contracts,
+        searchRequired: state.clientManagement.searchRequired
         //data: sampleContract.data
     }
 }

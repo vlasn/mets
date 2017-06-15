@@ -9,5 +9,5 @@ export function toggleDropdown(currentlyOpen, loggedIn) {
 }
 
 export function search(opt) {
-    return axios.get(`/api/contract/fetch?cadastre=${opt.searchTerm}&metsameister=${opt.personFilterOption}&status=${opt.statusFilterOption||'pending'}`)
+    return axios.get(`/api/contract/fetch?cadastre=${opt.searchTerm}&metsameister=${opt.personFilterOption}&status=${opt.statusFilterOption}`)
 }

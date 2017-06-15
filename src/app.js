@@ -23,13 +23,15 @@ class App extends React.Component {
             <Router history={History}>
                 <div className="main__wrapper">
                     <HeaderWrapper/>
-                    <Filter/>
                     <Route exact={true} path="/login" component={Login}/>
                     <Route exact path="/validate/:hash" component={Validate}/>
                     <Route path="/"
                         exact={true}
                         render={()=>(
-                           <Contracts/>
+                            <section>
+                                <Filter/>
+                                <Contracts/>
+                            </section>
                         )
                         }
                     />

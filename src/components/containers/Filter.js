@@ -43,6 +43,11 @@ const mapDispatchToProps = (dispatch) => {
                 type: "FILTER_SEARCH_TERM",
                 payload: term
             })
+        },
+        queueSearch() {
+            dispatch({
+                type: "SEARCH_QUEUED"
+            })
         }
     }
 }
