@@ -57,16 +57,38 @@ export default class DetailsWrapper extends React.Component{
                 />
             </div>
             <div>
+                {/*Haldusvaade*/}
                 {this.state.activeTab === 'haldus' ?
-                    (<div><FileRow plainText plainKey="Projektijuht:" plainValue={this.props.documents.haldus.projectManager}/>
-                        <FileRow plainText plainKey="Metsameister:" plainValue={this.props.documents.haldus.metsameister}/></div>) : null}
-                {this.state.activeTab === 'leping' ? this.props.documents.contracts.map((data, index)=>{
-                    return <FileRow fileName={data.filename} key={index}/>
-                }) : null}
+                   DetailsTab([
+                       {key: "Loomise kuupäev: ", value: this.props.created_timestamp.split("T")[0]},
+                       {key: "Projektijuht: ", value: this.props.projektijuht},
+                       {key: "Metsameister: ", value: this.props.metsameister},
+                       {key: "Kontakt: ", value: this.props.kontakt},
+                       {key: "E-post: ", value: this.props.esindajad[0]},
+                       {key: "Katastritunnus: ", value: this.props.katastritunnused.map(n=>n.tunnus).toString()}, //Üks või mitu?
+                       {key: "Raie teostamine: ", value: this.props.raie_teostamine},
+                       {key: "Metsamaterjali väljaviimine: ", value: this.props.materjali_viimine},
+                       {key: "Raidmete väljaviimine: ", value: this.props.raidmete_viimine},
+
+                   ]) : null
+                }
+                {/*Lepinguvaade*/}
+                {this.state.activeTab === 'leping' ?
+                    this.props.documents.contracts ?
+                        this.props.documents.contracts.map(DetailsTab) : <EmptyTab/>
+                    : null}
                 {this.state.activeTab === 'teatis' ?
-                    <FileRow fileName={this.props.documents.metsateatis.filename}/> : null}
+                    this.props.documents.metsateatis ?
+                        this.props.documents.metsateatis.map(DetailsTab) : <EmptyTab/>
+                    : null}
+                {this.state.activeTab === 'hinnatabel' ?
+                    this.props.documents.hinnatabel ?
+                        this.props.documents.hinnatabel.map(DetailsTab) : <EmptyTab/>
+                    : null}
                 {this.state.activeTab === 'koondakt' ?
-                    <FileRow fileName={this.props.documents.koondakt.filename}/> : null}
+                    this.props.documents.koondakt ?
+                        this.props.documents.koondakt.map(DetailsTab) : <EmptyTab/>
+                    : null}
 
             </div>
 
@@ -75,3 +97,13 @@ export default class DetailsWrapper extends React.Component{
         )
     }
 }
+const DetailsTab = (data=[], nonFileRow = false) => {
+    let createNonFileRow = n => <FileRow key={n.key} plainText plainKey={n.key} plainValue={n.value||<Missing/>}/>
+    let createDocumentRow = n => <FileRow fileName={n.filename} key={n.filename}/>
+    return nonFileRow===false ? (data.map(createNonFileRow)) : (data.map(createDocumentRow))
+};
+const Missing = () => <span className="FileRow__missing-value">Puudub</span>;
+const EmptyTab = () =>
+    <div className="DetailsWrapper__missing-data-tab">
+        <div className="DetailsWrapper__upload-link">Lisa fail..</div>
+    </div>

@@ -22,7 +22,7 @@ export default class ClientLanding extends React.Component {
                 {this.props.data.map((data,index) => {
                     return(
                         <MetsCard{...data} key={data._id}>
-                            <DetailsWrapper documents = {data.documents} />
+                            <DetailsWrapper {...data} />
                             <VeoseTable tableData = {tableData} status={data.status}/>
                         </MetsCard>
                     )

@@ -9,4 +9,22 @@ box-sizing: border-box;
 		margin-right: 0px;
 		//border-top-style: none;
 	}
+	.DetailsWrapper__missing-data-tab {
+      font-size: 1.5em;
+      color: #8a8a8a;
+      font-weight: 300;
+      text-align: center;
+      padding: 5px 40px;
+
+      .DetailsWrapper__upload-link {
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        border: 2px dashed #ffffff;
+        &:hover {
+          border-color: #bcbcbc;
+        }
+      }
+    }
 }
