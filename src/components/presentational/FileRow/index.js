@@ -26,8 +26,7 @@ export default class FileRow extends React.Component {
         wasBeingEdited && newValue ? this.wasUpdated(newValue):null//this.props.finishedEditing(this.props.)
     }
     wasUpdated(v) {
-        console.log('Ready for Redux: '+v)
-        //this.props.returnValue(val)
+        this.props.change(this.props.name, v);
     }
 
     render() {
@@ -45,7 +44,7 @@ export default class FileRow extends React.Component {
                         <div className="FileRow__editables-wrapper">
                             <EditableValue
                                 editables={this.props.editable||false}
-                                returnValues={console.log}
+                                returnValues={this.wasUpdated}
                                 stop={this.toggleBeingEdited}
                             />
                         </div>

@@ -15,6 +15,9 @@ export default class ClientLanding extends React.Component {
     componentDidUpdate(){
         {this.props.searchRequired ? this.props.searchTriggered(this.props.filter):null}
     }
+    onContractRowUpdate(contractId, key, value){
+        this.props.contractRowUpdated(contractId,key,value)
+    }
 
     render() {
         return(
@@ -22,7 +25,7 @@ export default class ClientLanding extends React.Component {
                 {this.props.data.map((data,index) => {
                     return(
                         <MetsCard{...data} key={data._id}>
-                            <DetailsWrapper {...data} />
+                            <DetailsWrapper {...data} updateRow={this.onContractRowUpdate.bind(this)} />
                             <VeoseTable tableData = {tableData} status={data.status}/>
                         </MetsCard>
                     )

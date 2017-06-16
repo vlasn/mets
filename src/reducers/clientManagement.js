@@ -149,6 +149,12 @@ export default function reducer( state = {
                 searchRequired: true
             }
         }
+        case "REFRESH_CONTRACT" : {
+            return({
+                ...state,
+                contracts: state.contracts.map(c => c._id === action.payload._id ? action.payload : c)
+            })
+        }
 
         default: {
             return {

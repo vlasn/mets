@@ -9,11 +9,9 @@ export default class DetailsWrapper extends React.Component{
         super(props)
         this.state={
             activeTab:null,
-            katastritunnused: [],
-            esindajad: []
         }
         this.switchTab = this.switchTab.bind(this)
-        this.onChangeSets = this.onChangeSets.bind(this)
+        this.updateRow = this.updateRow.bind(this)
     }
     switchTab(tab) {
         if(this.state.activeTab === tab) {
@@ -24,25 +22,11 @@ export default class DetailsWrapper extends React.Component{
             })
         }
     }
-    onChangeSets(set,prevV,currV, action){
-        let oldArr = this.state[set]
-        let newArr = false
-        if(action === 'remove') {
-            newArr = oldArr.filter(({key,val})=>(val!==prevV))
-        } else if(action === 'replace') {
-            newArr = oldArr.map(({key,val})=>({key: key, val: val == prevV ? currV : val}))
-        } else if(action === 'add') {
-            oldArr.push({key: uuid(), val: currV})
-            newArr = oldArr
-        }
-        this.setState({
-            ...this.state,
-            [set]:newArr
-        })
+    updateRow(key,value){
+        this.props.updateRow(this.props._id,key,value)
     }
 
     render() {
-
         return(
             <div className="DetailsWrapper__wrapper">
             <div className="DetailsWrapper__button__background">
@@ -82,7 +66,7 @@ export default class DetailsWrapper extends React.Component{
                 {this.state.activeTab === 'haldus' ?
                    DetailsTab([
                        {key: "Loomise kuupäev: ", value: this.props.created_timestamp.split("T")[0],
-                           name: 'creation_date'},
+                           name: 'creation_date', protect: true},
                        {key: "Projektijuht: ", value: this.props.projektijuht,
                            name: 'projektijuht'},
                        {key: "Metsameister: ", value: this.props.metsameister,
@@ -100,7 +84,7 @@ export default class DetailsWrapper extends React.Component{
                        {key: "Metsamaterjali väljaviimine: ", value: this.props.materjali_viimine},
                        {key: "Raidmete väljaviimine: ", value: this.props.raidmete_viimine},
 
-                   ], false,this.onChangeSets) : null
+                   ],false,this.updateRow) : null
                 }
                 {/*Lepinguvaade*/}
                 {this.state.activeTab === 'leping' ?
@@ -127,10 +111,10 @@ export default class DetailsWrapper extends React.Component{
         )
     }
 }
-const DetailsTab = (data=[], nonFileRow = false, changeFunc) => {
+const DetailsTab = (data=[], nonFileRow = false, callback) => {
     let createNonFileRow = n => (
         <FileRow key={n.key} plainText plainKey={n.key} plainValue={n.value||<Missing/>}
-                 name={n.name} editable={n.editable||false} changes={changeFunc}/>
+                 name={n.name} editable={n.editable||false} change={callback}/>
     )
     let createDocumentRow = n => <FileRow fileName={n.filename} key={n.filename}/>
     return nonFileRow===false ? (data.map(createNonFileRow)) : (data.map(createDocumentRow))

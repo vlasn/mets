@@ -65,12 +65,11 @@ export default class EditableValue extends Component {
     }
     submitText(e){
         if(e.key==='Enter'){
-            this.props.stop()
+            this.props.stop(e.target.value)
         }
     }
 
     render(){
-        console.log('rendeur: '+ this.state.editables)
         if(this.state.editables){
             return(
                 <div>

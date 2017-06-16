@@ -15,9 +15,6 @@ export default class MetsCard extends React.Component {
     toggle() {
         this.setState({open: !this.state.open})
     }
-    componentWillMount(){
-        console.log('mc: ',this.props)
-    }
 
     translateStatus(status){
         switch(status) {
