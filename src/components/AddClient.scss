@@ -1,3 +1,31 @@
 .AddClient__wrapper{
 text-align: center;
+  .Heading{
+    display: flex;
+    flex-direction: row;
+    padding: 4px 0px 8px 0px;
+    font-size: 1.2rem;
+    border-bottom: 1px dashed grey;
+    margin-bottom: 5px;
+    margin-top: 50px;
+  }
+  .Calendar{
+    flex: 1 0 0;
+    text-align: center;
+
+  }
+  .DocumentsHeading{
+    display: block;
+    //flex-direction: row;
+    padding: 4px 0px 8px 0px;
+    font-size: 1.2rem;
+    border-bottom: 1px dashed grey;
+    margin-bottom: 5px;
+    margin-top: 50px;
+  }
+  .Big__button{
+    width: 500px;
+    margin: auto;
+    text-align: center;
+  }
 }

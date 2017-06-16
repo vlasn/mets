@@ -2,6 +2,7 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 const css = require("./AddDocuments.scss");
+import ReactFileReader from 'react-file-reader';
 
 const labelStyles = {
     headerButton: {
@@ -26,45 +27,88 @@ const styles = {
     },
 };
 
-const documents = () => (
-  <MuiThemeProvider>
-  <div>
-      <div className="Heading">Lisa dokumendid</div>
-      <div className="Short__button">
-      <FlatButton
-          label='Leping'
-          backgroundColor= "#868686"
-          hoverColor = "#00CC33"
-          labelStyle ={labelStyles.headerButton}
-          style={styles.regularbutton}
-      />
-      <FlatButton
-          label='Metsateatis'
-          backgroundColor= "#868686"
-          hoverColor = "#00CC33"
-          labelStyle ={labelStyles.headerButton}
-          style={styles.regularbutton}
-      />
-      <FlatButton
-          label='Muu'
-          backgroundColor= "#868686"
-          hoverColor = "#00CC33"
-          labelStyle ={labelStyles.headerButton}
-          style={styles.regularbutton}
-      />
+export default class AddDocuments extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            files:[]
+        }
+        this.handleFiles=this.handleFiles.bind(this)
+    }
 
-    </div>
-    <div className="Big__button">
-      <FlatButton
-          label='Loo leping'
-          backgroundColor= "#00CC33"
-          hoverColor = "#00CC33"
-          labelStyle ={labelStyles.headerButton}
-          style={styles.longbutton}
-      /><br/><br/>
-    </div>
-  </div>
-  </MuiThemeProvider>
-);
+    handleFiles = files => {
+        console.log(files)
+        let newFiles = []
 
-export default documents
+        for(let i = 0; i<files.length; i++) {
+            newFiles.push(files[i])
+        }
+
+        this.setState({
+            ...this.state,
+            files:[...this.state.files, ...newFiles]
+        })
+    }
+
+
+
+    render() {
+
+        return(
+
+            <MuiThemeProvider>
+                <div className="AddDocuments__wrapper">
+                    <div className="AddDocuments__buttons-wrapper">
+
+                        <div className="Heading">Lisa dokumendid</div>
+
+                        <div className="Buttons">
+                            <ReactFileReader handleFiles={this.handleFiles}>
+                                <FlatButton
+                                    label='Leping'
+                                    backgroundColor= "#868686"
+                                    hoverColor = "#00CC33"
+                                    labelStyle ={labelStyles.headerButton}
+                                    style={styles.regularbutton}
+                                />
+                            </ReactFileReader>
+                            <ReactFileReader handleFiles={this.handleFiles}>
+                                <FlatButton
+                                    label='Metsateatis'
+                                    backgroundColor= "#868686"
+                                    hoverColor = "#00CC33"
+                                    labelStyle ={labelStyles.headerButton}
+                                    style={styles.regularbutton}
+                                />
+                            </ReactFileReader>
+                            <ReactFileReader handleFiles={this.handleFiles}>
+                                <FlatButton
+                                    label='Muu'
+                                    backgroundColor= "#868686"
+                                    hoverColor = "#00CC33"
+                                    labelStyle ={labelStyles.headerButton}
+                                    style={styles.regularbutton}
+                                />
+                            </ReactFileReader>
+                        </div>
+
+                        <div className="Big__button">
+                            <FlatButton
+                            label='Loo leping'
+                            backgroundColor= "#00CC33"
+                            hoverColor = "#00CC33"
+                            labelStyle ={labelStyles.headerButton}
+                            style={styles.longbutton}
+                            />
+                        </div>
+
+                    </div>
+                    <div className="Uploads__wrapper">
+                    {this.state.files.map((row)=><span className="Uploads">{row.name}</span>)}
+                    </div>
+                </div>
+
+            </MuiThemeProvider>
+        )
+    }r
+}

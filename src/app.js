@@ -10,7 +10,9 @@ import Validate from "./components/Validate"
 import HeaderWrapper from "./components/HeaderWrapper"
 import History from './components/history'
 import Contracts from "./components/containers/Contracts"
-import AddClient from "./components/containers/NewClient"
+import NewClient from "./components/containers/NewClient"
+import AddClient from "./components/AddClient"
+
 import Footer from "./components/Footer"
 
 import Filter from "./components/containers/Filter"
@@ -36,7 +38,9 @@ class App extends React.Component {
                             )
                             }
                         />
-                        <Route exact path="/new_client" component={AddClient}/>
+                        <Route exact path="/new_client" component={NewClient}/>
+                        <Route exact path="/add_client" component={AddClient}/>
+
                     </Switch>
                     <Footer/>
                 </div>

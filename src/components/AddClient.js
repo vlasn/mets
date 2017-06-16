@@ -4,9 +4,40 @@
 import React from "react"
 import InputField from "./InputField"
 import InputFieldOptions from "./InputFieldOptions"
+import AddDocuments from "./AddDocuments"
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import DatePicker from './DatePicker';
+import FlatButton from 'material-ui/FlatButton';
+
+
 const css = require("./AddClient.scss");
+const labelStyles = {
+    headerButton: {
+        color: 'white'
+    }
+}
+
+const styles = {
+    regularbutton: {
+        float: 'left',
+        width: "161px",
+        display:'inline-block',
+        boarderRadius:'0px',
+        margin: "10px",
+    },
+    longbutton: {
+        float: 'left',
+        padding: '0px 50px 0px 50px',
+        display:'inline-block',
+        boarderRadius:'0px',
+        width: "400px",
+    }
+
+};
+
 
 export default class AddClient extends React.Component {
+
 
     constructor(props) {
         super(props);
@@ -96,6 +127,31 @@ export default class AddClient extends React.Component {
                     <InputField floatingLabelText={"Projekti juht"} hintText={"Projekti Juhan"}/>
                     <InputField floatingLabelText={"Metsameister"} hintText={"Meistri Mees"}/>
                 </form>
+                <MuiThemeProvider>
+                    <div>
+                        <div className="Heading">Lisa kuupäevad</div>
+
+                        <div className="Calendar" >
+                            <DatePicker
+                                floating="Raie"
+                                DateTimeFormat={Intl.DateTimeFormat}
+                                locale="et-EE"
+                            />
+                            <DatePicker
+                                floating="Väljavedu"
+                                DateTimeFormat={Intl.DateTimeFormat}
+                                locale="et-EE"
+                            />
+
+                            <DatePicker
+                                floating="Raidmete väljavedu"
+                                DateTimeFormat={Intl.DateTimeFormat}
+                                locale="et-EE"
+                            />
+                        </div>
+                    </div>
+                </MuiThemeProvider>
+                <AddDocuments/>
             </div>
         )
     }
