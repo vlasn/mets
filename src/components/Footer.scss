@@ -14,6 +14,10 @@
 }
 
 .Footer{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: flex;
   flex-direction: row;
   border-top: 2px solid #F2F2F2;

@@ -6,7 +6,7 @@ const css = require("./InputField.scss");
 
 const styles = {
     underlineStyle: {
-        borderColor: '#00CC33',
+        borderColor: '#9BFCD3',
     },
 
     floatingLabelFocusStyle:{

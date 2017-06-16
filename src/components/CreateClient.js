@@ -42,17 +42,17 @@ const SwitchPersonType = (props) => {
         <div className="choiceButtons">
             <FlatButton
                 label='Juriidiline isik'
-                backgroundColor={props.activeTab=='juridicalPerson'?"#9BFCD3":"#868686"}
+                backgroundColor={props.activeTab=='juridicalPerson'?"#9BFCD3":"#ececec"}
                 hoverColor="#9BFCD3"
-                labelStyle={labelStyles.headerButton}
+                
                 style={styles.regularbutton}
                 onClick={()=>onSwitch('juridicalPerson')}
             />
             <FlatButton
                 label='Eraisik'
-                backgroundColor={props.activeTab=='privatePerson'?"#9BFCD3":"#868686"}
+                backgroundColor={props.activeTab=='privatePerson'?"#9BFCD3":"#ececec"}
                 hoverColor="#9BFCD3"
-                labelStyle={labelStyles.headerButton}
+                
                 style={styles.regularbutton}
                 onClick={()=>onSwitch('privatePerson')}
             />
@@ -149,7 +149,7 @@ export default class NewClient extends React.Component {
                             label='Loo klient'
                             backgroundColor="#9BFCD3"
                             hoverColor="#9BFCD3"
-                            labelStyle={labelStyles.headerButton}
+                           
                             style={styles.widebutton}
                             onClick={()=>this.props.onSubmit({...this.props.details, type: this.props.activeTab})}
                         />
