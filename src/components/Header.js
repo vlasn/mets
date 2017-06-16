@@ -55,11 +55,12 @@ export default class Header extends React.Component {
                 <div className = "Header__wrapper">
                     <Link to={"/"}>
                         <FlatButton
+                            className="HomeButton--hover"
                             label='Avaleht'
                             style={styles.headerButton}
                             backgroundColor= "black"
                             hoverColor = "#9BFCD3"
-                            labelStyle ={labelStyles.headerButton}
+                            
                         />
                     </Link>
                     <Dropdown
@@ -67,7 +68,8 @@ export default class Header extends React.Component {
                         clicked={this.toggle.bind(this)}
                         display={
                             this.props.loggedIn === true ? (
-                                <FlatButton
+                                <FlatButton 
+                                    className="FlatButton--style"
                                     style={styles.dropdownButton}
                                     backgroundColor = {this.props.dropdownOpen ? 'black' : '#9BFCD3'}
                                     hoverColor = "black"
@@ -77,6 +79,7 @@ export default class Header extends React.Component {
                                 ) : (
                                 <Link to="/login">
                                 <FlatButton
+                                    className="FlatButton--style"
                                     style={styles.dropdownButton}
                                     backgroundColor = {this.props.dropdownOpen ? 'black' : '#9BFCD3'}
                                     hoverColor = "black"

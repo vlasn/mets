@@ -27,6 +27,7 @@ const _Input = (props) => {
             floatingLabelFixed={true}
             fullWidth={true}
             onChange={onChange}
+            errorText={props.errorText}
         />
     )
 }

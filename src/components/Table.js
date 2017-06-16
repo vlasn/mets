@@ -13,6 +13,9 @@ export default class Table extends Component {
         this.entriesPerPage = 5;
         this.splitRows = this.splitRows.bind(this)
         this.pages = [];
+        this.state = {
+            currentPage: 1
+        }
     }
 
     componentWillMount() {
@@ -26,6 +29,18 @@ export default class Table extends Component {
             }, {kogus:0, summa:0});
         this.splitRows();
 
+    }
+    numberClicked(number) {
+        this.setState({currentPage: number})
+    }
+    arrowClicked(current, total, dir) {
+        console.log(current,total,dir);
+        let currentPage = current
+        let totalCount = total //placeholder
+        let newPage = dir === 'left' ? currentPage-1 : currentPage +1;
+        if(newPage >= 1 && newPage <= totalCount) {
+            this.setState({currentPage: newPage})
+        }
     }
 
     splitRows() {
@@ -65,7 +80,7 @@ export default class Table extends Component {
                         <td className="TableRow__column">{this.tableMetaData.kogus}</td>
                         <td className="TableRow__column">{this.tableMetaData.summa}</td></tr>
                         {
-                            this.pages[this.props.currentPage-1].map((row, index) => {
+                            this.pages[this.state.currentPage-1].map((row, index) => {
                             return (
                                 <TableRow
                                     key={index}
@@ -73,7 +88,7 @@ export default class Table extends Component {
                                     veoseleht={row.veoseleht}
                                     kogus={row.kogus}
                                     summa={row.summa}
-                                    handleClick={this.handleRowClick}
+                                    handleClick={this.handleRowClick.bind(this)}
                                 />
                             )
                         })}
@@ -82,9 +97,9 @@ export default class Table extends Component {
                 {this.pages.length>1 ?
                 <Pagination
                     totalCount={this.pages.length}
-                    currentlyActive={this.props.currentPage}
-                    arrowClicked={this.props.arrowClicked}
-                    numberClicked={this.props.numberClicked}
+                    currentlyActive={this.state.currentPage}
+                    arrowClicked={this.arrowClicked.bind(this)}
+                    numberClicked={this.numberClicked.bind(this)}
                 /> : null}
             </div>
         )

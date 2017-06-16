@@ -14,6 +14,16 @@ export default function reducer( state = {
             contact: "",
             address: ""
         },
+        errors: {
+            name: "",
+            personalId: "",
+            documentId: "",
+            companyRegistration: "",
+            email: "",
+            vatDutyNumber: "",
+            contact: "",
+            address: ""
+        }
     },
     cards: {
         filter: {
@@ -54,6 +64,18 @@ export default function reducer( state = {
             } else {
                 console.log('??');
                 return {...state}
+            }
+        }
+        case "CREATION_FIELD_ERROR":{
+            return {
+                ...state,
+                creation: {
+                    ...state.creation,
+                    errors: {
+                        ...state.creation.errors,
+                        ...action.payload
+                    }
+                }
             }
         }
         //Filter bits

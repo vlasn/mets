@@ -12,7 +12,6 @@ const translations = {
 }
 
 export const Dropdown = (props)=>{
-
     return(
         <div className="FilterDropdown__wrapper">
             <div className="FilterDropdown__header">
@@ -27,7 +26,7 @@ export const Dropdown = (props)=>{
                     }
                 </FlatBtn>
             </div>
-            {props.open ? (<div className="FilterDropdown__content">
+            {props.open ? (<div className="FilterDropdown__content" >
                 {props.children}
             </div>):null}
         </div>

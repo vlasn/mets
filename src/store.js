@@ -8,9 +8,9 @@ import thunk from "redux-thunk"
 
 import reducer from "./reducers"
 
-export default createStore(reducer,
-    //the two arguments below to be removed in production build
-    applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 
-);
+let createStoreWithMiddleware = applyMiddleware(thunk)(createStore)
+
+let store = createStoreWithMiddleware(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+
+export default store

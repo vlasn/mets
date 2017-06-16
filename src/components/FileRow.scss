@@ -18,14 +18,28 @@
     flex: 0.25 0 0;
   }
   .FileRow__Key-wrapper {
-    flex: 0.75 0 0;
-    text-align: right;
+    flex: 2 0 0;
+    text-align: left;
     padding-right: 20px;
   }
   .FileRow__filename-wrapper {
     flex: 5 0 0;
   }
   .FileRow__options-wrapper {
-    flex: 1 0 0
+    flex: 1 0 0;
+    padding: 0 20px 0 0;
+    text-align: right;
+  }
+  .FileRow__missing-value {
+    color: #bcbcbc;
+  }
+  .FileRow__options {
+    @extend .FileRow__missing-value;
+    cursor: pointer;
+  }
+  .FileRow__editables-wrapper {
+    @extend .FileRow__filename-wrapper;
+    overflow: hidden;
+    text-align: left;
   }
 }

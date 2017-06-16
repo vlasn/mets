@@ -8,11 +8,12 @@
 
 .Textfield{
   text-align: center;
-  width: 35%;
+  width: 390px;
   margin: auto;
 }
 
 .Big__button{
+  color: black;
   margin: auto;
   text-align: center;
   padding-top: 40px;
@@ -28,7 +29,12 @@
 }
 
 .choiceButtons{
-  padding-left: 20px ;
+  color: white;
+  padding-left: 20px;
+  
+}
+.choiceButtons:hover {
+  color: black;
 }
 
 form{
