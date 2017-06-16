@@ -10,7 +10,7 @@
 .FileRow__wrapper {
   display: flex;
   flex-direction: row;
-  padding: 4px 0px 8px 0px;
+  padding: 4px 0px 5px 0px;
   font-size: 1.0rem;
   border-bottom: 1px solid lightgrey;
   margin-bottom: 5px;
@@ -23,6 +23,7 @@
     padding-right: 20px;
   }
   .FileRow__filename-wrapper {
+    height: 27px;
     flex: 5 0 0;
   }
   .FileRow__options-wrapper {
@@ -39,7 +40,16 @@
   }
   .FileRow__editables-wrapper {
     @extend .FileRow__filename-wrapper;
-    overflow: hidden;
+    //overflow: hidden;
     text-align: left;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  .FileRow__editables-chip {
+    //a ton of !importants here to override MUI style.
+    background-color: #cacaca !important;
+    display: inline-flex;
+    flex: 1 0 0;
   }
 }
