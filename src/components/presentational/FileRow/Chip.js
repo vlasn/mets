@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from "react"
-import {Close} from "../Icons"
+import {Close} from "../../Icons"
 const css = require('./Chip.scss')
 
 export default class EditableChip extends Component {

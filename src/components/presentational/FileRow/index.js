@@ -2,11 +2,10 @@
  * Created by henrysavi on 31/05/17.
  */
 import React from "react"
-import {Download} from "./Icons"
-import { prettyPrint } from "../Utilities"
-import EditableValue from "./presentational/EditableValue"
+import {Download} from "../../Icons"
+import { prettyPrint } from "../../../Utilities"
+import EditableValue from "./EditableValue"
 const css = require("./FileRow.scss")
-import Mui from 'material-ui/styles/MuiThemeProvider';
 
 export default class FileRow extends React.Component {
     constructor(props) {
