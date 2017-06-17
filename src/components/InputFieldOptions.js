@@ -5,6 +5,8 @@ const css = require("./InputFieldOptions.scss");
 import React from "react";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import InputField from "./InputField"
+import {uuid} from "../Utilities"
+
 
 export default class InputFieldOptions extends React.Component {
     constructor(props) {
@@ -20,7 +22,7 @@ export default class InputFieldOptions extends React.Component {
   
     render() {
         //console.log("options: "+JSON.stringify(this.props))
-
+        console.log(uuid())
         return(
             <div className="InputFieldOptions__wrapper">
                 <div className="InputFieldOptions__parent" >
@@ -42,7 +44,7 @@ export default class InputFieldOptions extends React.Component {
                     </MuiThemeProvider>
 
                     <div className="InputFieldOptions__options">
-                        <span onClick={() => this.props.add(Date.now().toString(),this.props.fromArray)}>Lisa</span>
+                        <span onClick={() => this.props.add(uuid,this.props.fromArray)}>Lisa</span>
                         {this.props.name !== "Katastritunnus0" && this.props.name !== "Kliendi_esindaja0" ?
                             <span onClick={() => this.props.remove(this.props.name,this.props.fromArray)}> / kustuta</span>
                             :
