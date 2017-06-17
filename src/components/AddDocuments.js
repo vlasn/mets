@@ -36,6 +36,7 @@ export default class AddDocuments extends React.Component {
         this.handleFiles=this.handleFiles.bind(this)
     }
 
+    //uplaodimine
     handleFiles = files => {
         console.log(files)
         let newFiles = []
@@ -51,17 +52,11 @@ export default class AddDocuments extends React.Component {
     }
 
 
-
     render() {
-
         return(
-
-            <MuiThemeProvider>
                 <div className="AddDocuments__wrapper">
                     <div className="AddDocuments__buttons-wrapper">
-
                         <div className="Heading">Lisa dokumendid</div>
-
                         <div className="Buttons">
                             <ReactFileReader handleFiles={this.handleFiles}>
                                 <FlatButton
@@ -91,24 +86,11 @@ export default class AddDocuments extends React.Component {
                                 />
                             </ReactFileReader>
                         </div>
-
-                        <div className="Big__button">
-                            <FlatButton
-                            label='Loo leping'
-                            backgroundColor= "#00CC33"
-                            hoverColor = "#00CC33"
-                            labelStyle ={labelStyles.headerButton}
-                            style={styles.longbutton}
-                            />
-                        </div>
-
                     </div>
                     <div className="Uploads__wrapper">
                     {this.state.files.map((row)=><span className="Uploads">{row.name}</span>)}
                     </div>
                 </div>
-
-            </MuiThemeProvider>
         )
-    }r
+    }
 }
