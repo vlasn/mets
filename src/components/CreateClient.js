@@ -82,16 +82,19 @@ export default class NewClient extends React.Component {
                                     label="Nimi"
                                     name="name"
                                     onChange={this.props.onFieldValueChange}
+                                    errorText={this.props.errors.name}
                                 />
                                 <TextField
                                     label="Isikukood"
                                     name="personalId"
                                     onChange={this.props.onFieldValueChange}
+                                    errorText={this.props.errors.personalId}
                                 />
                                 <TextField
                                     label="Dokumendi number"
                                     name="documentId"
                                     onChange={this.props.onFieldValueChange}
+                                    errorText={this.props.errors.documentId}
                                 />
                                 <TextField
                                     label="E-posti aadress"
@@ -103,11 +106,13 @@ export default class NewClient extends React.Component {
                                     label="Kontakt"
                                     name="contact"
                                     onChange={this.props.onFieldValueChange}
+                                    errorText={this.props.errors.contact}
                                 />
                                 <TextField
                                     label="Aadress"
                                     name="address"
                                     onChange={this.props.onFieldValueChange}
+                                    errorText={this.props.errors.address}
                                 />
                             </div>
                         ) : (
@@ -116,31 +121,37 @@ export default class NewClient extends React.Component {
                                     label="Nimi"
                                     name="name"
                                     onChange={this.props.onFieldValueChange}
+                                    errorText={this.props.errors.name}
                                 />
                                 <TextField
                                     label="Reg nr"
                                     name="companyRegistration"
                                     onChange={this.props.onFieldValueChange}
+                                    errorText={this.props.errors.companyRegistration}
                                 />
                                 <TextField
                                     label="E-posti aadress"
                                     name="email"
                                     onChange={this.props.onFieldValueChange}
+                                    errorText={this.props.errors.email}
                                 />
                                 <TextField
                                     label="KMKNR"
                                     name="vatDutyNumber"
                                     onChange={this.props.onFieldValueChange}
+                                    errorText={this.props.errors.vatDutyNumber}
                                 />
                                 <TextField
                                     label="Kontakt"
                                     name="contact"
                                     onChange={this.props.onFieldValueChange}
+                                    errorText={this.props.errors.contact}
                                 />
                                 <TextField
                                     label="Aadress"
                                     name="address"
                                     onChange={this.props.onFieldValueChange}
+                                    errorText={this.props.errors.address}
                                 />
                             </div>
                         )}
