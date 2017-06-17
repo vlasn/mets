@@ -1,0 +1,59 @@
+$iconWidth: 25%;
+
+.PriceListDropdown__wrapper {
+  display: block;
+  box-sizing: border-box;
+  padding: 0;
+  .PriceListDropdown__clickables {
+    height: 40px;
+    overflow: hidden;
+    background-color: white;
+    cursor: pointer;
+    border-bottom: 2px solid #e4e4e4;
+    transition: 0.1s;
+    box-sizing: border-box;
+    &:hover {
+      background-color: #fcfcfc;
+      .PriceListDropdown__text {
+        background-color: #fcfcfc;
+      }
+    }
+    &.open {
+      border-color: #b8b8b8;
+    }
+  }
+  .PriceListDropdown__option-wrapper {
+    background-color: #f9f9f9;
+    cursor: pointer;
+    height: 23px;
+    padding: 4px 20px;
+    &:hover {
+      background-color: #e9eded;
+    }
+  }
+
+  .PriceListDropdown__text {
+    display: inline-block;
+    margin: 0;
+    padding: 3px 0 0 20px;
+    border: 0;
+    outline: none;
+    font-size: 1em;
+    height: 40px;;
+    width: 100% - $iconWidth;
+    box-sizing: border-box;
+    transition: 0.1s;
+  }
+  .PriceListDropdown__icon {
+    @extend .PriceListDropdown__text;
+    width: $iconWidth;
+    height: 33px;
+    padding: 2px 0 0 0;
+  }
+  .PriceListDropdown__content {
+    max-height: 50vh;
+    overflow-x: scroll;
+    position: absolute;
+    min-width: 200px;
+  }
+}

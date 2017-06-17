@@ -12,13 +12,16 @@ import History from './components/history'
 import Contracts from "./components/containers/Contracts"
 import NewClient from "./components/containers/NewClient"
 import AddClient from "./components/AddClient"
-
-import Footer from "./components/Footer"
-
+import PriceListEditor from "./components/containers/PriceListEditor"
 import Filter from "./components/containers/Filter"
 
 
 class App extends React.Component {
+
+    getQuery() {
+        fetch('http://neti.ee')
+            .then(console.log)
+    }
 
     render() {
         return (
@@ -28,21 +31,20 @@ class App extends React.Component {
                     <Switch>
                         <Route exact={true} path="/login" component={Login}/>
                         <Route exact path="/validate/:hash" component={Validate}/>
-                        <Route path="/"
+                        {/*<Route path="/"
                             exact={true}
-                            render={()=>(
+                            render={/*()=>(
                                 <section>
                                     <Filter/>
                                     <Contracts/>
                                 </section>
                             )
-                            }
-                        />
+                            */}
+                        />*/}
                         <Route exact path="/new_client" component={NewClient}/>
                         <Route exact path="/add_client" component={AddClient}/>
-
                     </Switch>
-                    <Footer/>
+                    <PriceListEditor/>
                 </div>
             </Router>
         );
