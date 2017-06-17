@@ -26,6 +26,7 @@ export default class FileRow extends React.Component {
         wasBeingEdited && newValue ? this.wasUpdated(newValue):null//this.props.finishedEditing(this.props.)
     }
     wasUpdated(v) {
+        console.log('going to submit: ',this.props.name,v)
         this.props.change(this.props.name, v);
     }
 
@@ -38,7 +39,7 @@ export default class FileRow extends React.Component {
                         <div className="FileRow__Key-wrapper">{this.props.plainKey}</div>
                     }
                     {!this.state.isBeingEdited ?
-                        <div className="FileRow__filename-wrapper">
+                        <div className="FileRow__filename-wrapper" onDoubleClick={this.toggleBeingEdited}>
                             {this.props.fileName || prettyPrint(this.props.plainValue)}
                         </div> :
                         <div className="FileRow__editables-wrapper">
