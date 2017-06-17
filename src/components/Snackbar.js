@@ -52,7 +52,7 @@ export default class SnackbarExampleSimple extends React.Component {
             bodyStyle={styles.element}
             open={this.state.open}
             message="LEPINGU LOOMINE ÕNNESTUS!"
-            autoHideDuration={4000}
+            autoHideDuration={3000}
             onRequestClose={this.handleRequestClose}
             contentStyle={{fontSize: '25px', textAlign: 'center', padding: "17px", lineHeight: "30px"}}
           />

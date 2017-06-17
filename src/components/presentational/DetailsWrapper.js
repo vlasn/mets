@@ -71,14 +71,14 @@ export default class DetailsWrapper extends React.Component{
                            name: 'projektijuht'},
                        {key: "Metsameister: ", value: this.props.metsameister,
                            name: 'metsameister'},
-                       {key: "Kontakt: ", value: this.props.kontakt,
-                           name: 'eeee'}, //Puudu?!
+                    /*{key: "Kontakt: ", value: this.props.kontakt,
+                           name: 'eeee'}, //Puudu?!*/
 
                        {key: "E-post: ", value: this.props.esindajad.join(', '),
                            name: 'esindajad', editable: this.props.esindajad},
 
-                       {key: "Katastritunnus: ", value: this.props.katastritunnused.map(n=>n.tunnus).join(', '),
-                            name: 'katastritunnused', editable: this.props.katastritunnused.map(n=>n.tunnus)},
+                       {key: "Katastritunnus: ", value: this.props.kinnistu.katastritunnused.join(', '),
+                            name: 'katastritunnused', editable: this.props.kinnistu.katastritunnused},
 
                        {key: "Raie teostamine: ", value: this.props.raie_teostamine},
                        {key: "Metsamaterjali väljaviimine: ", value: this.props.materjali_viimine},
@@ -103,10 +103,7 @@ export default class DetailsWrapper extends React.Component{
                     this.props.documents.koondakt ?
                         this.props.documents.koondakt.map(DetailsTab) : <EmptyTab/>
                     : null}
-
             </div>
-
-
         </div>
         )
     }

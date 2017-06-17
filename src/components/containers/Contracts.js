@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import { search } from "../../actions/uiActions"
 import { updateContractRow } from "../../actions/contractActions"
 import ContractCards from "../ManageContracts"
-import Snackbar from "../Snackbar"
-import axios from "axios"
 
 class Contracts extends Component {
     constructor(props){

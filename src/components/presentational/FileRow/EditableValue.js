@@ -41,7 +41,7 @@ export default class EditableValue extends Component {
             ...this.state,
             editables: newArr
         })
-        this.returnEditables(newArr)
+        //this.returnEditables(newArr)
 
     }
     removeEditable(rVal) {
@@ -91,7 +91,7 @@ export default class EditableValue extends Component {
         } else {
             return(
                 <input type="text" className="FileRow__editable-input-field"
-                       onChange={(e)=>this.returnEditables(e.target.value)} onKeyPress={e=>this.submitText(e)}/>
+                        onKeyPress={e=>this.submitText(e)}/>
             )
         }
     }

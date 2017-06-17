@@ -47,7 +47,7 @@ export default class MetsCard extends React.Component {
                         {this.props.esindajad[0]||'Esindaja nimi puudub!'}
                     </div>
                     <div className="MetsCard__header-button middle">
-                        {this.props.propertyName||this.props.katastritunnused[0].nimi}
+                        {this.props.propertyName||this.props.kinnistu.nimi}
                     </div>
                     <div className="MetsCard__header-button right">
                         <div className="MetsCard__header-button-flexwrap">

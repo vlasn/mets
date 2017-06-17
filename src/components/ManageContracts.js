@@ -20,11 +20,12 @@ export default class ClientLanding extends React.Component {
     }
 
     render() {
+        console.log('renderist:', this.props.data)
         return(
             <div>
                 {this.props.data.map((data,index) => {
                     return(
-                        <MetsCard{...data} key={data._id}>
+                        <MetsCard {...data} key={data._id}>
                             <DetailsWrapper {...data} updateRow={this.onContractRowUpdate.bind(this)} />
                             <VeoseTable tableData = {tableData} status={data.status}/>
                         </MetsCard>
