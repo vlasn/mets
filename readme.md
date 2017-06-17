@@ -85,6 +85,7 @@ server {
       expires 1y;
       access_log off;
       add_header Cache-Control "public";
+      sendfile off;
     }
 
     # Any route containing a file extension
