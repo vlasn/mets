@@ -3,7 +3,7 @@
  */
 import React, {Component} from "react"
 import { connect } from "react-redux"
-import Dropdown from "./PriceFormDropdown"
+import PriceFormDropdown from "./PriceFormDropdown"
 const css = require('./PriceListTable.scss') // to be moved to PriceListRow.scss?
 
 export default class Row extends Component{
@@ -22,15 +22,16 @@ export default class Row extends Component{
             <div className="PriceListTable__editable-row">
                 <div className="PriceListTable__editable-column key">
                     <div className="PriceListTable__key-wrapper">
-                        {this.props._key || 'Missing _key!'}
+                        {this.props.ownKey || 'Missing ownKey!'}
                     </div>
                 </div>
                 <div className="PriceListTable__editable-column dropdown">
-                    <Dropdown
-                        name={this.props.name}
+                    <PriceFormDropdown
+                        name={this.props.pListKey}
                         prevValue={this.props.prevValue}
                         getOpts={this.props.getOpts}
                         returnValue={this.props.returnValue}
+                        options={this.props.foundOpts}
                     />
                 </div>
                 <div className="PriceListTable__editable-column value">

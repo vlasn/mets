@@ -3,28 +3,29 @@ import axios from "axios"
 import data from "./exampleResponses/exampleImportResult"
 
 export const getOptions = (fieldKey) => {
-    return axios.get('/api/pricelist/')
+    return (dispatch) => {
+        dispatch({
+            type: "PRICEFORM_FETCHING_KEY",
+            payload: true
+        })
+        axios.get(`/api/import/fieldOpts/${fieldKey}`)
+            .then(({data}) => {
+                dispatch({
+                    type: "PRICEFORM_FETCHING_KEY",
+                    payload: false
+                })
+                if(data.status === 'accept' && data.data.length>0) {
+                    dispatch({
+                        type: "PRICEFORM_UPDATE_KEYS",
+                        payload: {key: fieldKey, options: data.data}
+                    })
+                }
+            })
+            .catch(console.log)
+    }
 }
 
-export const fauxGetOptions = (fieldKey) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(()=>{
-            resolve({
-                data: [
-                    'MA',
-                   'KU',
-                   'HB',
-                    'LM',
-                    'KU/MA',
-                    'KS',
-                    'Okaspuu',
-                    'Lehtpuu',
-                    'LV'
-                ]
-            })
-        }, 500)
-    })
-}
+
 
 export const importRequest = () => {
     return (dispatch) => {

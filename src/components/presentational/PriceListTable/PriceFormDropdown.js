@@ -15,7 +15,7 @@ class Dropdown extends Component {
             filter: '',
             focus: false,
         }
-        this.getOwnOpts = this.getOwnOpts.bind(this)
+        //this.getOwnOpts = this.getOwnOpts.bind(this)
         this.returnSelectedValue = this.returnSelectedValue.bind(this)
         this.updateFilterTerm = this.updateFilterTerm.bind(this)
         this.toggle = this.toggle.bind(this)
@@ -26,19 +26,25 @@ class Dropdown extends Component {
      *  Required props:[name, prevValue, getOwnOps(name), returnValue(name, value)]
      */
 
+    //
+    //
+    componentDidMount(){
+        if(this.props.options.length===0) this.props.getOpts(this.props.name)
+    }
+
     toggle(o) {
         //pass in 'force' to force close
-        if(this.state.options.length===0) this.getOwnOpts()
 
         let prev = this.state.open
+        let opts = this.state.options
+
         this.setState({
             ...this.state,
+            options: opts.length==0 ? this.props.options.map(i=>({value: i, key: uuid()})) : opts,
             open: o == 'force' ? false : !this.state.open,
         }, prev ? this.Input.blur() : null)
 
     }
-
-
 
     updateFilterTerm(event) {
         //Listen to value change and pass it to state for as a keyword to filter options by
@@ -50,7 +56,7 @@ class Dropdown extends Component {
     filterOption({value}, against) {
         //predicate expression to check for pre-fix match against search term
         if(against){
-            return value.indexOf(against)>=0
+            return value.search(new RegExp(against, "i"))>=0
         } else {
             return true
         }
@@ -74,18 +80,18 @@ class Dropdown extends Component {
         this.props.returnValue(this.props.name, value)
     }
 
-    getOwnOpts() {
-        //currently simulating async request
-        //options: this.props.getOpts(this.props.name) that returns an array.
-        //key generation will be handled in map function below.
-        setTimeout(()=>{
-            let sampleOptions = ['foo','bar', 'baz', 'qux','foo','bar', 'baz', 'qux','foo','bar', 'baz', 'qux']
-            this.setState({
-                ...this.state,
-                options: sampleOptions.map(i=>({value: i, key: uuid()}))
-            })
-        }, 300)
-    }
+    // getOwnOpts() {
+    //     //currently simulating async request
+    //     //options: this.props.getOpts(this.props.name) that returns an array.
+    //     //key generation will be handled in map function below.
+    //     setTimeout(()=>{
+    //         let sampleOptions = ['foo','bar', 'baz', 'qux','foo','bar', 'baz', 'qux','foo','bar', 'baz', 'qux']
+    //         this.setState({
+    //             ...this.state,
+    //             options: sampleOptions.map(i=>({value: i, key: uuid()}))
+    //         })
+    //     }, 300)
+    // }
 
     render(){
         return(
@@ -145,7 +151,7 @@ const uuid = () => {
 }
 Dropdown.propTypes = {
     name: PropTypes.string,
-    prevValue: PropTypes.string,
+    prevValue: PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
     returnValues: PropTypes.func,
     getOpts: PropTypes.func
 }

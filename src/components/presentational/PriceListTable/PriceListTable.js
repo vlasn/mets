@@ -3,6 +3,7 @@
  */
 import React, {Component} from "react"
 import EditableRow from "./PriceFormRow"
+import PriceListForm from "./PriceListForm"
 
 //For table generation automagic:
 const tableHeaders = [
@@ -19,7 +20,7 @@ const tableHeaders = [
 ]
 
 //..Because screw using standardized key literals in the database, right...?
-const cellKeys = {
+export const cellKeys = {
     tarnekoht: "tarnekoht",
     veoseleheNr: "Elvise VL nr",
     veoseleheKp: "veoselehe kuupäev",
@@ -40,7 +41,7 @@ class Table extends Component {
     render() {
         console.log(this.props)
         return (
-            <table>
+            <table style={{width: "100%"}}>
                 <thead>
                 <tr>
                     {tableHeaders.map(header => <td key={uuid()}>{header}</td>)}
@@ -54,7 +55,7 @@ class Table extends Component {
                                 return (
                                     <tr key={key}>
                                         <td colSpan={tableHeaders.length}>
-                                            <EditableRow  cols={cellKeys} {...item}/>
+                                            <PriceListForm/>
                                         </td>
                                     </tr>
                                 )
