@@ -33,18 +33,18 @@ class App extends React.Component {
                         <Route exact path="/validate/:hash" component={Validate}/>
                         {/*<Route path="/"
                             exact={true}
-                            render={/*()=>(
+                            render={()=>(
                                 <section>
                                     <Filter/>
                                     <Contracts/>
                                 </section>
                             )
-                            */}
+                            }
                         />*/}
                         <Route exact path="/new_client" component={NewClient}/>
                         <Route exact path="/add_client" component={AddClient}/>
                     </Switch>
-                    <PriceListEditor/>
+                    {<PriceListEditor/>}
                 </div>
             </Router>
         );
