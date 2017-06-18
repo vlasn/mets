@@ -2,7 +2,7 @@
  * Created by clstrfvck on 18/06/2017.
  */
 import React, {Component} from "react"
-import EditableRow from "./PriceListRow"
+import EditableRow from "./PriceFormRow"
 
 //For table generation automagic:
 const tableHeaders = [

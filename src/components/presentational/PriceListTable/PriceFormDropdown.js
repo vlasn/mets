@@ -3,7 +3,7 @@
  */
 import React, {Component} from "react"
 import PropTypes from "prop-types"
-const css = require("./PriceListDropdown.scss")
+const css = require("./PriceFormDropdown.scss")
 import { CaretDown, CaretUp } from "../../Icons"
 
 class Dropdown extends Component {
