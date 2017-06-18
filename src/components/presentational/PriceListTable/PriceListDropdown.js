@@ -26,10 +26,11 @@ class Dropdown extends Component {
      *  Required props:[name, prevValue, getOwnOps(name), returnValue(name, value)]
      */
 
-    toggle(v) {
+    toggle(o) {
+        //pass in 'force' to force close
         this.setState({
             ...this.state,
-            open: v=='force' ? false : !this.state.open,
+            open: o == 'force' ? false : !this.state.open,
         })
         if(this.state.options.length===0) this.getOwnOpts()
     }
@@ -38,7 +39,7 @@ class Dropdown extends Component {
         //Listen to value change and pass it to state for as a keyword to filter options by
         this.setState({
             filter: event.target.value.length>0 ? event.target.value : false
-        }, console.log(this.state))
+        })
     }
 
     filterOption({value}, against) {
@@ -59,7 +60,6 @@ class Dropdown extends Component {
     }
 
     returnSelectedValue(value) {
-        console.log('returning '+value);
         this.setState({
             ...this.state,
             filter: value,
@@ -89,7 +89,6 @@ class Dropdown extends Component {
                            placeholder={this.props.prevValue || 'prevvalue?!?'}
                            onKeyPress={this.kPress}
                            onChange={this.updateFilterTerm}
-                           onBlur={()=>this.toggle('force')}
                            value={this.state.filter}
                            ref={(input) => {this.Input = input}}
                     />
