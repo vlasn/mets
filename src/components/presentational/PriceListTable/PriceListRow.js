@@ -2,6 +2,7 @@
  * Created by clstrfvck on 18/06/2017.
  */
 import React, {Component} from "react"
+import { connect } from "react-redux"
 import Dropdown from "./PriceListDropdown"
 const css = require('./PriceListTable.scss') // to be moved to PriceListRow.scss?
 

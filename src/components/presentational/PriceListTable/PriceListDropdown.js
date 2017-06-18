@@ -20,7 +20,6 @@ class Dropdown extends Component {
         this.updateFilterTerm = this.updateFilterTerm.bind(this)
         this.toggle = this.toggle.bind(this)
         this.kPress = this.kPress.bind(this)
-        this.onBlur = this.onBlur.bind(this)
     }
 
     /**

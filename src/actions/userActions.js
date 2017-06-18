@@ -19,3 +19,7 @@ export function credentialChange(key, data) {
         }
     }
 }
+
+//set cookie on login
+//check cookie on each reload / in each view
+//redirect to login and devalidate redux store if cookie session is invalid or something
