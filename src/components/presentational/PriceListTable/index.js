@@ -13,9 +13,7 @@ export default class PriceListTable extends Component {
         console.log(arguments)
     }
     getOpts(){
-        return setTimeout(()=>{
-            return ['foo','bar', 'baz', 'qux','foo','bar', 'baz', 'qux','foo','bar', 'baz', 'qux']
-        }, 300)
+        // fetch options & branch them into Redux
     }
     render(){
         return(

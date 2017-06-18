@@ -20,6 +20,7 @@ class Dropdown extends Component {
         this.updateFilterTerm = this.updateFilterTerm.bind(this)
         this.toggle = this.toggle.bind(this)
         this.kPress = this.kPress.bind(this)
+        this.onBlur = this.onBlur.bind(this)
     }
 
     /**
@@ -28,12 +29,17 @@ class Dropdown extends Component {
 
     toggle(o) {
         //pass in 'force' to force close
+        if(this.state.options.length===0) this.getOwnOpts()
+
+        let prev = this.state.open
         this.setState({
             ...this.state,
             open: o == 'force' ? false : !this.state.open,
-        })
-        if(this.state.options.length===0) this.getOwnOpts()
+        }, prev ? this.Input.blur() : null)
+
     }
+
+
 
     updateFilterTerm(event) {
         //Listen to value change and pass it to state for as a keyword to filter options by
@@ -60,12 +66,13 @@ class Dropdown extends Component {
     }
 
     returnSelectedValue(value) {
+        console.log(value)
         this.setState({
             ...this.state,
             filter: value,
+            open: false
         })
         this.props.returnValue(this.props.name, value)
-        this.toggle();
     }
 
     getOwnOpts() {
