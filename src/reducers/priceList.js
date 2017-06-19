@@ -7,7 +7,10 @@ export default function reducer( state = {
     conflictsResolved: false,
     foundOptionsByKeys: {},
     mismatches: {},
-    currentlyBeingEdited: false
+    currentlyBeingEdited: false,
+    currentlyEditedOpts: {
+        _id: false
+    }
 }, action) {
     switch(action.type) {
         case "PRICELIST_LOADING" : {
@@ -43,6 +46,28 @@ export default function reducer( state = {
                     [action.payload.key]: [...action.payload.options]
                 }
             }
+        }
+
+        case "PRICEFORM_EDITS_BUNDLE" : {
+            if(state.currentlyEditedOpts._id === action.payload._id){
+                return {
+                    ...state,
+                    currentlyEditedOpts: {
+                        ...state.currentlyEditedOpts,
+                        [action.payload.key]: action.payload.value
+                    }
+                }
+            } else {
+                return {
+                    ...state,
+                    currentlyEditedOpts: {
+                        ...state.currentlyEditedOpts,
+                        _id: action.payload._id,
+                        [action.payload.key]: action.payload.value
+                    }
+                }
+            }
+
         }
 
         default : {

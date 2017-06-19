@@ -41,7 +41,6 @@ class Dropdown extends Component {
                 open: o == 'force' ? false : !this.state.open,
             }, prev ? this.Input.blur() : null)
         :null
-
     }
 
     updateFilterTerm(event) {
@@ -76,25 +75,30 @@ class Dropdown extends Component {
     }
 
     returnSelectedValue(value) {
-        console.log(value)
         this.setState({
             ...this.state,
             filter: value,
             open: false
         })
-        this.props.returnValue(this.props.name, value)
+        let key = this.props.extra ? this.props.extra : this.props.dbKey
+        this.props.returnValue(key, value)
     }
 
     render(){
         return(
             <div className="PriceListDropdown__wrapper">
-                <div className={`PriceListDropdown__clickables ${this.state.open ? 'open' : null}`} onClick={this.toggle}>
-                    <input className="PriceListDropdown__text"
-                           placeholder={this.props.prevValue || 'prevvalue?!?'}
-                           onKeyPress={this.kPress}
-                           onChange={this.updateFilterTerm}
-                           value={this.state.filter}
-                           ref={(input) => {this.Input = input}}
+                <div
+                    className={`PriceListDropdown__clickables
+                        ${this.state.open ? 'open' : ''} ${this.props.enum ?'':' padding-fix'}`}
+                    onClick={this.toggle}
+                >
+                    <input
+                        className="PriceListDropdown__text"
+                        placeholder={this.props.prevValue || 'prevvalue?!?'}
+                        onKeyPress={this.kPress}
+                        onChange={this.updateFilterTerm}
+                        value={this.state.filter}
+                        ref={(input) => {this.Input = input}}
                     />
 
                     <div className='PriceListDropdown__icon'>
@@ -150,7 +154,7 @@ const uuid = () => {
 Dropdown.propTypes = {
     name: PropTypes.string,
     prevValue: PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
-    returnValues: PropTypes.func,
+    returnValue: PropTypes.func,
     getOpts: PropTypes.func
 }
 

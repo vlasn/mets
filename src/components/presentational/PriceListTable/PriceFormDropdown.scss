@@ -21,6 +21,11 @@ $iconWidth: 25%;
     &.open {
       border-color: #b8b8b8;
     }
+    &.padding-fix {
+      .PriceListDropdown__text {
+        margin-top: -7px;
+      }
+    }
   }
   .PriceListDropdown__option-wrapper {
     background-color: #f9f9f9;

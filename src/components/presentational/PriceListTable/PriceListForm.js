@@ -3,7 +3,7 @@
  */
 import React, {Component} from "react"
 import { connect } from "react-redux"
-import { getOptions } from "../../../actions/priceListActions"
+import { getOptions, addToBundle, submitBundle } from "../../../actions/priceListActions"
 
 //import {cellKeys} from "./PriceListTable"
 //Duplicate declaration because Webpack couldn't find the object from the other file. :|
@@ -33,7 +33,8 @@ const FormValueMap = [
     {ownKey: "Veoselehe kp", dbKey: cellKeys.veoseleheKp, pListKey: "Veoselehe kuupäev", enum: false }, /*TODO - type date*/
     {ownKey: "Puuliik", dbKey: cellKeys.puuliik, pListKey: "Puuliik", enum: true },
     {ownKey: "Kvaliteet", dbKey: cellKeys.kvaliteet, pListKey: "Kvaliteet", enum: true },
-    {ownKey: "Hinnagrupi võti", dbKey: cellKeys.hinnagrupp, pListKey: "???", enum: true  }, /*TODO - loogika?*/
+    {ownKey: "Hinnagrupp (min)", dbKey: cellKeys.hinnagrupp, pListKey: "Diameeter_min", enum: true, extra:"priceGrpMin"  },
+    {ownKey: "Hinnagrupi (max)", dbKey: cellKeys.hinnagrupp, pListKey: "Diameeter_max", enum: true,  extra:"priceGrpMax"},
     {ownKey: "Arvestusmaht", dbKey: cellKeys.maht, pListKey: "Arvestusmaht", enum: false },
     {ownKey: "Katastritunnus", dbKey: cellKeys.katastritunnus, pListKey: "Katastritunnus", enum: false },
     {ownKey: "Sortiment", dbKey: false, pListKey: "Sortiment", enum: true },
@@ -47,10 +48,20 @@ class PriceListForm extends Component {
     constructor(props) {
         super(props)
         //receives the whole price list row object from parent as ownProps
+        this.bundle = this.bundle.bind(this)
+        this.submitBundle = this.submitBundle.bind(this)
+    }
+    bundle(key, value){
+        this.props.addToBundle(this.props.currentlyBeingEdited,key,value)
+    }
+    submitBundle() {
+        this.props.submitBundle(
+            this.props.mismatches[this.props.currentlyBeingEdited],
+            this.props.currentlyEditedOpts
+        )
     }
 
     render(){
-        console.log(this.props)
         return(
             <section>
                 {FormValueMap.map(row => (
@@ -60,19 +71,36 @@ class PriceListForm extends Component {
                         ownKey={row.ownKey}
                         prevValue={this.props.mismatches[this.props.currentlyBeingEdited][row.dbKey] || "-"}
                         getOpts={this.props.getOptions}
+                        dbKey={row.dbKey}
                         foundOpts={
                             this.props.foundOpts.hasOwnProperty(row.pListKey) ?
                                 this.props.foundOpts[row.pListKey] :
                                 []
                         }
                         enum={row.enum}
-                        returnValue={console.log}
+                        extra={row.extra || false}
+                        returnValue={this.bundle}
                     />
                     )
                 )}
+                <div className="PriceForm__buttons-wrapper">
+                    <PFormButton
+                        click={this.submitBundle}
+                    >
+                        Muuda mõõteraporti rida
+                    </PFormButton>
+                    <PFormButton disabled >Lisa hinnatabelisse uus toode</PFormButton>
+                </div>
             </section>
         )
     }
+}
+const PFormButton = (props) => {
+    return (
+        <div className="PFormButton__wrapper">
+            <button className={`PFormButton ${props.disabled ? 'disabled' : ''}`} onClick={props.click}>{props.children}</button>
+        </div>
+    )
 }
 
 const mapStateToProps = function(state){
@@ -81,10 +109,11 @@ const mapStateToProps = function(state){
         loading: state.priceList.loading,
         error: state.priceList.error,
         currentlyBeingEdited: state.priceList.currentlyBeingEdited,
-        foundOpts: state.priceList.foundOptionsByKeys
+        foundOpts: state.priceList.foundOptionsByKeys,
+        currentlyEditedOpts: state.priceList.currentlyEditedOpts
     }
 }
 
 
 
-export default connect(mapStateToProps, {getOptions})(PriceListForm)
+export default connect(mapStateToProps, {getOptions, addToBundle, submitBundle})(PriceListForm)
