@@ -18,11 +18,6 @@ import Filter from "./components/containers/Filter"
 
 class App extends React.Component {
 
-    getQuery() {
-        fetch('http://neti.ee')
-            .then(console.log)
-    }
-
     render() {
         return (
             <Router history={History}>

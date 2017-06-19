@@ -46,13 +46,14 @@ class Dropdown extends Component {
     updateFilterTerm(event) {
         //Listen to value change and pass it to state for as a keyword to filter options by
         this.setState({
-            filter: event.target.value.length>0 ? event.target.value : false
+            filter: event.target.value.length>0 ? event.target.value : ''
         })
     }
 
     filterOption({value}, against) {
         //predicate expression to check for pre-fix match against search term
         if(against){
+            if(typeof(value)!=='string') value=value.toString();
             return value.search(new RegExp(against, "i"))>=0
         } else {
             return true
