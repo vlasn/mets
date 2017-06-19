@@ -22,6 +22,7 @@ export default class DatePicker extends React.Component {
               locale="et-EE"
               cancelLabel="Loobu"
               textFieldStyle={styles.date}
+              onChange={(x, date)=>this.props.change(this.props.name,date)}
               />
 
         )

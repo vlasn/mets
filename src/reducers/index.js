@@ -6,8 +6,8 @@ import documents from "./documentsReducer"
 import validation from "./validationReducer"
 import ui from "./uiReducer"
 import clientManagement from "./clientManagement"
-import editContract from "./editContract"
-import priceList from "./priceList"
+import contractManagement from "./contractManagment"
+
 
 export default combineReducers({
     ui,
@@ -15,6 +15,5 @@ export default combineReducers({
     documents,
     validation,
     clientManagement,
-    editContract,
-    priceList
+    contractManagement
 })

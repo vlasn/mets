@@ -33,7 +33,7 @@ export default class InputField extends React.Component{
                         floatingLabelText={this.props.floatingLabelText}
                         floatingLabelFixed={true}
                         floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                        onChange={this.props.onChange ? (event)=>this.props.onChange(event) : null}
+                        onChange={(event)=>this.props.change(this.props.name,event.target.value)}
                     />
                 </div>
             </MuiThemeProvider>
