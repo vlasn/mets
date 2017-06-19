@@ -117,3 +117,4 @@ const mapStateToProps = function(state){
 
 
 export default connect(mapStateToProps, {getOptions, addToBundle, submitBundle})(PriceListForm)
+

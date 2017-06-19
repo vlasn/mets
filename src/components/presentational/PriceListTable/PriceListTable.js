@@ -2,7 +2,7 @@
  * Created by clstrfvck on 18/06/2017.
  */
 import React, {Component} from "react"
-import EditableRow from "./PriceFormRow"
+import { uuid } from "../../../Utilities"
 import PriceListForm from "./PriceListForm"
 const css = require("./PriceListTable.scss")
 
@@ -34,6 +34,19 @@ export const cellKeys = {
     katastritunnus: "Katastritunnus",
 }
 
+export const percentages = [
+    13.406,
+    12.747,
+    12.857,
+    6.703,
+    8.681,
+    11.868,
+    6.483,
+    5.604,
+    5.714,
+    15.93
+]
+
 class Table extends Component {
     //Need to instantiate component here to properly propagate props changes..
     constructor(props) {
@@ -44,7 +57,15 @@ class Table extends Component {
             <table className="PTable__wrapper" cellSpacing={0}>
                 <thead>
                     <tr className="PTable__header">
-                        {tableHeaders.map(header => <td className="PTable__header-cell" key={uuid()}>{header}</td>)}
+                        {tableHeaders.map((header, index) =>
+                            <td
+                                className="PTable__header-cell"
+                                style={{width: `${percentages[index]}%`}}
+                                key={uuid()}
+                            >
+                                {header}
+                            </td>
+                        )}
                     </tr>
                 </thead>
                 <tbody>
@@ -53,9 +74,13 @@ class Table extends Component {
                             let item = this.props.items[key];
                             if (key === this.props.currentlyBeingEdited) {
                                 return (
+
                                     <tr key={key}>
                                         <td className="PTable__form-cell" colSpan={tableHeaders.length}>
-                                            <PriceListForm/>
+                                            <table className="PTable__inline-table" >
+                                                <WideRow key={key} {...item} selector={this.props.selector}/>
+                                            </table>
+                                            <div className="PTable__form-wrap"><PriceListForm/></div>
                                         </td>
                                     </tr>
                                 )
@@ -73,7 +98,15 @@ class Table extends Component {
 //Automagic intensifies
 const WideRow = (props) => (
     <tr onClick={()=>props.selector(props._id)} className="PTable__content-row">
-        {Object.keys(cellKeys).map(key => <td className="PTable__content-cell" key={uuid()}>{props[cellKeys[key]]}</td>)}
+        {Object.keys(cellKeys).map((key, index) => (
+            <td
+                className="PTable__content-cell"
+                width={`${percentages[index]}%`}
+                key={uuid()}
+            >
+                {props[cellKeys[key]]}
+            </td>)
+        )}
     </tr>
 )
 
@@ -81,19 +114,9 @@ export default Table
 
 
 
+const widths = [
+    122,116,117,61,79,108,59,51,52,145
+]
 
-// TODO - export from Utils.js after merge with master
-const uuid = () => {
-    let i, random;
-    let uuid = '';
-    for (i = 0; i < 32; i++) {
-        random = Math.random() * 16 | 0;
-        if (i === 8 || i === 12 || i === 16 || i === 20) {
-            uuid += '-';
-        }
 
-        uuid += (i === 12 ? 4 : (i === 16 ? (random & 3 | 8) : random)).toString(16);
-    }
 
-    return uuid;
-}

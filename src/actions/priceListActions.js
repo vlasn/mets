@@ -15,9 +15,15 @@ export const getOptions = (fieldKey) => {
                     payload: false
                 })
                 if(data.status === 'accept' && data.data.length>0) {
+                    if(typeof(data[0])==='number') data.data = data.data.map(v => v.toString())
                     dispatch({
                         type: "PRICEFORM_UPDATE_KEYS",
-                        payload: {key: fieldKey, options: data.data.sort()}
+                        payload: {
+                            key: fieldKey,
+                            options: data.data.sort().map(v=>
+                                typeof(v) ==='string' ? v.trim() : v.toString().trim()
+                            )
+                        }
                     })
                 }
             })

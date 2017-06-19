@@ -2,6 +2,7 @@
  * Created by clstrfvck on 17/06/2017.
  */
 import React, {Component} from "react"
+import { uuid } from "../../../Utilities"
 import PropTypes from "prop-types"
 const css = require("./PriceFormDropdown.scss")
 import { CaretDown, CaretUp } from "../../Icons"
@@ -11,78 +12,88 @@ class Dropdown extends Component {
         super(props)
         this.state = {
             open: false,
-            options: [],
-            filter: '',
-            focus: false,
+            confirmedMatch: false,
+            searchTerm: ''
         }
-        this.returnSelectedValue = this.returnSelectedValue.bind(this)
-        this.updateFilterTerm = this.updateFilterTerm.bind(this)
         this.toggle = this.toggle.bind(this)
-        this.kPress = this.kPress.bind(this)
+        this.updateSearchTerm = this.updateSearchTerm.bind(this)
+        this.searchFilter = this.searchFilter.bind(this)
+        this.confirmMatch = this.confirmMatch.bind(this)
     }
+    /** PROPS */
+    //this.props.prevValue - previous value
+    //this.props.name
+    //this.props.pListkey - from pricelist table
+    //this.props.getOpts(pLkey) - function to fetch own opts by pLkey
+    //this.props.options - array - own options
+    //this.props.dbKey - string from response
+    //this.props.enum - bool for dropdown
+    //this.props.returnValue(key, value) - function to return values
+    //this.props.extra={this.props.extra} priceGrpMin || priceGrpMax || false - either prevValue.split("-")[0 || 1]
+
+    /** STATE */
+    //this.state.open - bool - whether dropdown is open or not
+    //this.state.confirmedMatch - false || string, confirmed prevValue against props
+    //this.state.appliedFilter - string - '' || 'searchterm' to filter options by
+
+
 
     componentDidMount(){
-        this.props.enum ?
-            this.props.options.length===0 ?
-                this.props.getOpts(this.props.name) :
-                null
-        : this.setState({...this.state, filter: this.props.prevValue})
-    }
-
-    toggle(o) {
-        //pass in 'force' to force close
-
-        let prev = this.state.open
-        let opts = this.state.options
-        this.props.enum ?
-            this.setState({
-                ...this.state,
-                options: opts.length==0 ? this.props.options.map(i=>({value: i, key: uuid()})) : opts,
-                open: o == 'force' ? false : !this.state.open,
-            }, prev ? this.Input.blur() : null)
-        :null
-    }
-
-    updateFilterTerm(event) {
-        //Listen to value change and pass it to state for as a keyword to filter options by
-        this.setState({
-            filter: event.target.value.length>0 ? event.target.value : ''
-        })
-    }
-
-    filterOption({value}, against) {
-        //predicate expression to check for pre-fix match against search term
-        if(against){
-            if(typeof(value)!=='string') value=value.toString();
-            return value.search(new RegExp(against, "i"))>=0
-        } else {
-            return true
-        }
-    }
-
-    kPress(event) {
-        if(event.key === 'Enter'){
-            if (this.props.enum) {
-                if(this.state.options.map(n=>n.value).indexOf(event.target.value)>=0){
-                    this.returnSelectedValue(event.target.value)
-                    this.Input.blur()
-                }
+        if (this.props.enum) {
+            if (this.props.options.length<1) {
+                this.props.getOpts(this.props.name)
             } else {
-                this.returnSelectedValue(event.target.value)
-                this.Input.blur()
+                this.componentWillReceiveProps(this.props) //forcing cWRP to re-validate matches in case opts already exist
             }
-
+        } else {
+            if(this.props.prevValue.length>0) {
+                this.confirmMatch(this.props.prevValue)
+            }
         }
     }
 
-    returnSelectedValue(value) {
+    componentWillReceiveProps(newProps) {
+       if (!this.state.confirmedMatch &&
+           newProps.options.indexOf(this.props.prevValue)>=0
+       )
+       {
+           this.setState({...this.state, confirmedMatch: this.props.prevValue}, () => {
+               this.confirmMatch(this.props.prevValue)
+           })
+       }
+    }
+
+    toggle() {
         this.setState({
             ...this.state,
-            filter: value,
-            open: false
+            open: !this.state.open
         })
-        let key = this.props.extra ? this.props.extra : this.props.dbKey
-        this.props.returnValue(key, value)
+    }
+
+    updateSearchTerm({key, target}) {
+        if(key !== 'Enter') {
+            this.setState({
+                ...this.state,
+                searchTerm: target.value
+            })
+        } else {
+
+        }
+    }
+
+    searchFilter(value, term) {
+        if(typeof(value)!=='string') value=value.toString();
+        return value.search(new RegExp(term, "i"))>=0
+    }
+
+    confirmMatch(value) {
+        if(typeof(value)!=='string') value = value.toString()
+        if(value=='') return
+        this.setState({...this.state, confirmedMatch: value, open: false}, ()=>{
+            this.FilterInput.value = value //set value of filter field
+            this.props.updateInput(value) //set value of adjacent text field
+            this.props.returnValue(this.props.dbKey, value) //dispatch to reducer
+        })
     }
 
     render(){
@@ -95,11 +106,9 @@ class Dropdown extends Component {
                 >
                     <input
                         className="PriceListDropdown__text"
-                        placeholder={this.props.prevValue || 'prevvalue?!?'}
-                        onKeyPress={this.kPress}
-                        onChange={this.updateFilterTerm}
-                        value={this.state.filter}
-                        ref={(input) => {this.Input = input}}
+                        placeholder={'—'}
+                        ref={(input) => { {this.FilterInput = input; }}}
+                        onChange={this.updateSearchTerm}
                     />
 
                     <div className='PriceListDropdown__icon'>
@@ -114,9 +123,11 @@ class Dropdown extends Component {
                 </div>
                 {this.state.open ?
                     <div className="PriceListDropdown__content">
-                        {this.state.options === [] ? <PriceListDropdownContent loading={true} /> : null}
-                        {this.state.options.filter((v)=>this.filterOption(v, this.state.filter)).map(n =>
-                            <PriceListDropdownContent value={n.value} key={n.key} click={this.returnSelectedValue}/>)}
+                        {
+                            this.props.options.filter((v)=>this.searchFilter(v,this.state.searchTerm)).map(n =>
+                                <PriceListDropdownContent value={n} key={n} click={this.confirmMatch}/>
+                            )
+                        }
                     </div> :
                     null}
             </div>
@@ -127,31 +138,14 @@ export const PriceListDropdownContent = props => {
     return (
         <div
             className={
-                `PriceListDropdown__option-wrapper
-                ${props.loading ? 'option-loading ':null}
-                ${props.more ? 'option-more': null}`
+                `PriceListDropdown__option-wrapper`
             }
-            onClick={()=>props.click(props.value)}>
-            {props.loading ? 'Laen...' : props.more ? "Veel.." : props.value}
+            onClick={()=>props.click(props.value)}
+        >
+            {props.value}
         </div>)
 }
 
-
-///to be imported from Utils module once in sync with master:
-const uuid = () => {
-    var i, random;
-    var uuid = '';
-    for (i = 0; i < 32; i++) {
-        random = Math.random() * 16 | 0;
-        if (i === 8 || i === 12 || i === 16 || i === 20) {
-            uuid += '-';
-        }
-
-        uuid += (i === 12 ? 4 : (i === 16 ? (random & 3 | 8) : random)).toString(16);
-    }
-
-    return uuid;
-}
 Dropdown.propTypes = {
     name: PropTypes.string,
     prevValue: PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
@@ -161,4 +155,10 @@ Dropdown.propTypes = {
 
 export default Dropdown
 
+//input field == parempoolne text input.
+
+// filtrinputi kuvatav väärtus ei tohi toorel kujul kuhugi jõuda - jõuab valiku väärtus.
+// Muutmise vaates peab olema näha tabeli päis (KEY) ja rida (VALUES), mida muudetakse. Muudetav sisu kuvatakse vastava rea alla.
+// filterinputti saab sisestada ainult neid väärtusi, mis on andmebaasis (hinnatabelis) olemas.
+// Input field'i saab sisestada väärtusi, mis ei ole andmebaasis (hinnatabelis).
 

@@ -2,9 +2,8 @@
  * Created by clstrfvck on 18/06/2017.
  */
 import React, {Component} from "react"
-import { connect } from "react-redux"
 import PriceFormDropdown from "./PriceFormDropdown"
-const css = require('./PriceList.scss') // to be moved to PriceListRow.scss?
+const css = require('./PriceList.scss')
 
 export default class Row extends Component{
     constructor(props) {
@@ -21,10 +20,13 @@ export default class Row extends Component{
     }
 
     checkExtras(input, extra=false) {
-       let returnable = extra ?
-           input.split("-")[extra==='priceGrpMin' ? 0 : 1] :
-           input
-        return typeof(input)!=='string' ? returnable.toString() : input
+        if(extra){
+            input = input.split("-")[extra==='priceGrpMin' ? 0 : 1]
+        }
+        return typeof(input)!=='string' ? input.toString() : input
+    }
+    updateInput(val) {
+        this.CustomValue.value = val
     }
 
     render(){
@@ -45,13 +47,14 @@ export default class Row extends Component{
                         options={this.props.foundOpts}
                         enum={this.props.enum}
                         extra={this.props.extra}
+                        updateInput={this.updateInput.bind(this)}
                     />
                 </div>
                 <div className="PriceListTable__editable-column value">
                     <input
                         className="PriceListTable__editable-input"
                         type="text"
-                        placeholder={this.props.prevValue}
+                        placeholder={this.checkExtras(this.props.prevValue, this.props.extra)}
                         ref={(input) => {this.CustomValue = input} }
                         onKeyPress={this.kPress}
                     />
