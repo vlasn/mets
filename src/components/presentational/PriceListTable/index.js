@@ -4,7 +4,7 @@
 import React, {Component} from "react"
 import { connect } from "react-redux"
 import { importRequest, selectEditable } from "../../../actions/priceListActions"
-const css = require("./PriceListTable.scss")
+const css = require("./PriceList.scss")
 import EditableRow from "./PriceFormRow"
 import Table from "./PriceListTable"
 

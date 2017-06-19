@@ -17,7 +17,7 @@ export const getOptions = (fieldKey) => {
                 if(data.status === 'accept' && data.data.length>0) {
                     dispatch({
                         type: "PRICEFORM_UPDATE_KEYS",
-                        payload: {key: fieldKey, options: data.data}
+                        payload: {key: fieldKey, options: data.data.sort()}
                     })
                 }
             })

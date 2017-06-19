@@ -4,6 +4,7 @@
 import React, {Component} from "react"
 import EditableRow from "./PriceFormRow"
 import PriceListForm from "./PriceListForm"
+const css = require("./PriceListTable.scss")
 
 //For table generation automagic:
 const tableHeaders = [
@@ -39,13 +40,12 @@ class Table extends Component {
         super(props)
     }
     render() {
-        console.log(this.props)
         return (
-            <table style={{width: "100%"}}>
+            <table className="PTable__wrapper" cellSpacing={0}>
                 <thead>
-                <tr>
-                    {tableHeaders.map(header => <td key={uuid()}>{header}</td>)}
-                </tr>
+                    <tr className="PTable__header">
+                        {tableHeaders.map(header => <td className="PTable__header-cell" key={uuid()}>{header}</td>)}
+                    </tr>
                 </thead>
                 <tbody>
                     {
@@ -54,7 +54,7 @@ class Table extends Component {
                             if (key === this.props.currentlyBeingEdited) {
                                 return (
                                     <tr key={key}>
-                                        <td colSpan={tableHeaders.length}>
+                                        <td className="PTable__form-cell" colSpan={tableHeaders.length}>
                                             <PriceListForm/>
                                         </td>
                                     </tr>
@@ -72,8 +72,8 @@ class Table extends Component {
 
 //Automagic intensifies
 const WideRow = (props) => (
-    <tr onClick={()=>props.selector(props._id)}>
-        {Object.keys(cellKeys).map(key => <td key={uuid()}>{props[cellKeys[key]]}</td>)}
+    <tr onClick={()=>props.selector(props._id)} className="PTable__content-row">
+        {Object.keys(cellKeys).map(key => <td className="PTable__content-cell" key={uuid()}>{props[cellKeys[key]]}</td>)}
     </tr>
 )
 

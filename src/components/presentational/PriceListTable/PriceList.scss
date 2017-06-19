@@ -1,0 +1,66 @@
+.PriceListTable__wrapper{
+
+  .PriceListTable__above {
+
+  }
+  .PriceListTable__content {
+    padding: 0 25px;
+  }
+  .PriceListTable__editable-wrapper {
+
+  }
+  .PriceListTable__editable-row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+  }
+  .PriceListTable__editable-column{
+    padding: 0;
+    box-sizing: border-box;
+
+    &.key {
+      flex: 0.8 0 0;
+      padding: 3px 35px 0 0;
+      height: 40px;
+      box-sizing: border-box;
+      overflow: hidden;
+
+      .PriceListTable__key-wrapper {
+        padding: 8px 20px;
+        height: 40px;
+        box-sizing: border-box;
+      }
+    }
+    &.dropdown {
+      flex: 1 0 0;
+      height: 40px;
+      padding-right: 35px;
+    }
+    &.value {
+      flex: 1.75 0 0;
+      height: 40px;
+      background-color: #c4c4c4;
+
+      .PriceListTable__editable-input {
+        margin: 0;
+        padding: 4px 0 0 20px;
+        border: 0;
+        outline: none;
+        font-size: 1em;
+        height: 40px;
+        width: 100%;
+        border-bottom: 2px solid #e4e4e4;
+        box-sizing: border-box;
+        transition: 0.1s;
+        &:focus {
+          border-color: #b8b8b8;
+        }
+        &:hover {
+          background-color: #fcfcfc;
+        }
+      }
+    }
+  }
+
+}

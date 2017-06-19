@@ -4,7 +4,7 @@
 import React, {Component} from "react"
 import { connect } from "react-redux"
 import PriceFormDropdown from "./PriceFormDropdown"
-const css = require('./PriceListTable.scss') // to be moved to PriceListRow.scss?
+const css = require('./PriceList.scss') // to be moved to PriceListRow.scss?
 
 export default class Row extends Component{
     constructor(props) {
@@ -32,6 +32,7 @@ export default class Row extends Component{
                         getOpts={this.props.getOpts}
                         returnValue={this.props.returnValue}
                         options={this.props.foundOpts}
+                        enum={this.props.enum}
                     />
                 </div>
                 <div className="PriceListTable__editable-column value">
