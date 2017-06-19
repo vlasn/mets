@@ -21,7 +21,7 @@ export const getOptions = (fieldKey) => {
                     })
                 }
             })
-            .catch(console.log)
+            .catch(console.log) // needs error handling
     }
 }
 
@@ -45,6 +45,7 @@ export const importRequest = () => {
                     })
                 }
             })
+            .catch(console.log) // needs error handling
     }
 }
 
@@ -89,6 +90,7 @@ export const submitBundle = (prevValues, editedValues) => {
 
                 }
             })
+            .catch(console.log) // needs error handling
     }
 }
 
