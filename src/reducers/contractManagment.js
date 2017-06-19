@@ -7,24 +7,24 @@ export default function reducer( state = {
         submitted: false,
         error: null,
         contractDetails: {
-            propertyName: "",
-            cadastreId: "",
-            customerRepresentative: "",
-            projectManager: "",
+            dates: {
+                cuts: "",
+                export: "",
+                cutsExport: ""
+            },
             forestMaster: "",
-            cuts: "",
-            export: "",
-            cutsExport: "",
+            propertyName: "",
+            projectManager: "",
         },
         errors: {
-            propertyName: "",
-            cadastreId: "",
-            customerRepresentative: "",
-            projectManager: "",
+            dates: {
+                cuts: "",
+                export: "",
+                cutsExport: ""
+            },
             forestMaster: "",
-            cuts: "",
-            export: "",
-            cutsExport: ""
+            propertyName: "",
+            projectManager: "",
         }
     },
 

@@ -44,7 +44,6 @@ const SwitchPersonType = (props) => {
                 label='Juriidiline isik'
                 backgroundColor={props.activeTab=='juridicalPerson'?"#9BFCD3":"#ececec"}
                 hoverColor="#9BFCD3"
-                
                 style={styles.regularbutton}
                 onClick={()=>onSwitch('juridicalPerson')}
             />
@@ -52,7 +51,6 @@ const SwitchPersonType = (props) => {
                 label='Eraisik'
                 backgroundColor={props.activeTab=='privatePerson'?"#9BFCD3":"#ececec"}
                 hoverColor="#9BFCD3"
-                
                 style={styles.regularbutton}
                 onClick={()=>onSwitch('privatePerson')}
             />
@@ -67,7 +65,6 @@ export default class NewClient extends React.Component {
     }
 
     render(){
-        console.log(this.props.errors.email)
         return (
             <MuiThemeProvider>
                 <div>

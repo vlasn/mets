@@ -13,16 +13,9 @@ export default class InputFieldOptions extends React.Component {
         super(props);
     }
 
-    textChangeHandler(event) {
-        //console.log("my life is changing and i dont like it")
-        this.props.updateValue(
-            this.props.name, event.target.value
-        );
-    }
-  
     render() {
         //console.log("options: "+JSON.stringify(this.props))
-        console.log(uuid())
+        //console.log(uuid())
         return(
             <div className="InputFieldOptions__wrapper">
                 <div className="InputFieldOptions__parent" >
@@ -38,13 +31,14 @@ export default class InputFieldOptions extends React.Component {
                             floatingLabelFocusStyle={this.props.floatingLabelFocusStyle ? this.props.floatingLabelFocusStyle:null}
                             floatingLabelText={this.props.floatingLabelText}
                             //floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                            onChange={this.textChangeHandler.bind(this)}
+                            change={this.props.updateValue.bind(this)}
                             value={this.props.value}
+
                         />
                     </MuiThemeProvider>
 
                     <div className="InputFieldOptions__options">
-                        <span onClick={() => this.props.add(uuid,this.props.fromArray)}>Lisa</span>
+                        <span onClick={() => this.props.add(uuid(),this.props.fromArray)}>Lisa</span>
                         {this.props.name !== "Katastritunnus0" && this.props.name !== "Kliendi_esindaja0" ?
                             <span onClick={() => this.props.remove(this.props.name,this.props.fromArray)}> / kustuta</span>
                             :

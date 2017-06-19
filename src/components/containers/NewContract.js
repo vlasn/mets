@@ -6,9 +6,9 @@ import { connect } from 'react-redux'
 import axios from "axios"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Redirect from 'react-router-dom'
-import AddClient from '../AddClient'
+import AddContract from '../AddContract'
 
-class AddNewClient extends React.Component {
+class NewContract extends React.Component {
     constructor(props){
         super(props)
 
@@ -16,7 +16,7 @@ class AddNewClient extends React.Component {
 
     render(){
         return(
-            <AddClient{...this.props}/>
+            <AddContract{...this.props}/>
         )
     }
 }
@@ -24,6 +24,7 @@ class AddNewClient extends React.Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         onFieldValueChange(source, value) {
+            //console.log(arguments)
             dispatch({
                 type: 'CONTRACT_CREATION_CHANGE_FIELD_VALUE',
                 payload: {
@@ -33,24 +34,39 @@ const mapDispatchToProps = (dispatch) => {
             })
         },
         onSubmit(contractDetails){
-            //console.log(contractDetails)
+            console.log("kõik",contractDetails)
+            console.log("esindajad",contractDetails.esindajad)
+
+
             let errors = {}
+
 
             dispatch({type: 'CONTRACT_CREATION_ATTEMPT'})
 
+
             if(Object.keys(errors).length<1){
                 axios.post('/api/contract/create', {
-                    contractDetails: {
-                        kinnistu_nimi: contractDetails.propertyName,
-                        katastritunnus: contractDetails.cadastreId,
-                        kliendi_esindaja: contractDetails.customerRepresentative,
-                        projekti_juht: contractDetails.projectManager,
-                        metsameister: contractDetails.forestMaster,
-                        raie: contractDetails.cuts,
-                        valjavedu: contractDetails.export,
+                    email: "hensav@tlu.ee",
+                    hinnatabel: {
+                        snapshot: "tere olen hinnatabel"
+                    },
+                    contract_creator: "String",
+
+                    metsameister: contractDetails.forestMaster,
+                    dates: {
+                        raielopetamine: contractDetails.cuts,
+                        väljavedu: contractDetails.export,
                         raidmete_valjavedu: contractDetails.cutsExport
-                    }
+                    },
+
+                     projektijuht: contractDetails.projectManager,
+
+                     kinnistu: {
+                         nimi: contractDetails.kinnistu.nimi,
+                         katastritunnused: contractDetails.kinnistu.katastritunnused
+                     }
                 })
+
                     .then(({data})=>{
                         if(data.status === 'accept') {
                             dispatch({type: 'CONTRACT_CREATION_SUCCESS', payload: data.msg})
@@ -86,4 +102,4 @@ const mapStateToProps = (state) => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(AddNewClient);
+)(NewContract);

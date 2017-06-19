@@ -35,7 +35,7 @@ const styles = {
 };
 
 
-export default class AddClient extends React.Component {
+export default class AddContract extends React.Component {
 
 
     constructor(props) {
@@ -56,7 +56,7 @@ export default class AddClient extends React.Component {
     // }
 
     updateValue(name,value){
-        //console.log("lisaname:"+ name)
+        //console.log("lisaname:",name,value)
 
         let newKat = this.state.Katastritunnus.map(item=>{
             if(item.name === name){
@@ -100,7 +100,7 @@ export default class AddClient extends React.Component {
     }
 
     render() {
-        //console.log(this.props.onSubmit)
+        console.log(this.state.Katastritunnus)
         return(
 
             <div className="AddClient__wrapper">
@@ -108,6 +108,8 @@ export default class AddClient extends React.Component {
                         floatingLabelText={"Kinnistu nimi"}
                         hintText={"Mingi Nimi"}
                         name="propertyName"
+                        change={this.props.onFieldValueChange}
+
                     />
 
                     {this.state.Katastritunnus.map((row,index)=>{
@@ -121,10 +123,7 @@ export default class AddClient extends React.Component {
                             fromArray={"Katastritunnus"}
                             updateValue = {this.updateValue}
                             name={row.name}
-
                             value={row.value}
-                            onChange={this.props.onFieldValueChange}
-
                         />)
                     })}
                     {this.state.Kliendi_esindaja.map((row,index)=>{
@@ -138,21 +137,19 @@ export default class AddClient extends React.Component {
                             fromArray={"Kliendi_esindaja"}
                             updateValue = {this.updateValue}
                             name={row.name}
-
                             value={row.value}
-                            onChange={this.props.onFieldValueChange}
                         />)
                     })}
                     <InputField
                         floatingLabelText={"Projekti juht"}
                         hintText={"Projekti Juhan"}
-                        onChange={this.props.onFieldValueChange}
+                        change={this.props.onFieldValueChange}
                         name="projectManager"
                     />
                     <InputField
                         floatingLabelText={"Metsameister"}
                         hintText={"Meistri Mees"}
-                        onChange={this.props.onFieldValueChange}
+                        change={this.props.onFieldValueChange}
                         name="forestMaster"
                     />
                 <MuiThemeProvider>
@@ -164,21 +161,21 @@ export default class AddClient extends React.Component {
                                 floating="Raie"
                                 DateTimeFormat={Intl.DateTimeFormat}
                                 locale="et-EE"
-                                onChange={this.props.onFieldValueChange}
+                                change={this.props.onFieldValueChange}
                                 name="cuts"
                             />
                             <DatePicker
                                 floating="Väljavedu"
                                 DateTimeFormat={Intl.DateTimeFormat}
                                 locale="et-EE"
-                                onChange={this.props.onFieldValueChange}
+                                change={this.props.onFieldValueChange}
                                 name="export"
                             />
                             <DatePicker
                                 floating="Raidmete väljavedu"
                                 DateTimeFormat={Intl.DateTimeFormat}
                                 locale="et-EE"
-                                onChange={this.props.onFieldValueChange}
+                                change={this.props.onFieldValueChange}
                                 name="cutsExport"
                             />
                         </div>
@@ -191,7 +188,14 @@ export default class AddClient extends React.Component {
                                 hoverColor = "#00CC33"
                                 labelStyle ={labelStyles.headerButton}
                                 style={styles.longbutton}
-                                onClick={()=>this.props.onSubmit({...this.props.contractDetails})}
+                                onClick={()=>this.props.onSubmit({
+                                    ...this.props.contractDetails,
+                                    kinnistu: {
+                                        nimi: this.props.contractDetails.propertyName,
+                                        katastritunnused: [...this.state.Katastritunnus.map(n=>n.value)]
+                                    },
+                                    esindajad:[...this.state.Kliendi_esindaja.map(n=>n.value)]
+                                })}
                             />
                         </div>
                     </div>

@@ -47,7 +47,7 @@ const mapStateToProps = (state) => {
         filter: state.clientManagement.cards.filter,
         data: state.clientManagement.contracts,
         searchRequired: state.clientManagement.searchRequired,
-        contractRowLoading: state.editContract.contractRowLoading
+        // contractRowLoading: state.editContract.contractRowLoading
     }
 }
 

@@ -11,8 +11,9 @@ import HeaderWrapper from "./components/HeaderWrapper"
 import History from './components/history'
 import Contracts from "./components/containers/Contracts"
 import NewClient from "./components/containers/NewClient"
-import AddClient from "./components/AddClient"
-import PriceListEditor from "./components/containers/PriceListEditor"
+import NewContract from "./components/containers/NewContract"
+import Footer from "./components/Footer"
+
 import Filter from "./components/containers/Filter"
 
 
@@ -26,7 +27,7 @@ class App extends React.Component {
                     <Switch>
                         <Route exact={true} path="/login" component={Login}/>
                         <Route exact path="/validate/:hash" component={Validate}/>
-                        {/*<Route path="/"
+                        <Route path="/"
                             exact={true}
                             render={()=>(
                                 <section>
@@ -35,11 +36,11 @@ class App extends React.Component {
                                 </section>
                             )
                             }
-                        />*/}
+                        />
                         <Route exact path="/new_client" component={NewClient}/>
-                        <Route exact path="/add_client" component={AddClient}/>
+                        <Route exact path="/add_contract" component={NewContract}/>
+
                     </Switch>
-                    {<PriceListEditor/>}
                 </div>
             </Router>
         );

@@ -14,6 +14,8 @@ class NewClient extends React.Component {
     }
 
     render(){
+        console.log("trakytll: "+source)
+
         return(
             <CreateClient{...this.props}/>
         )
@@ -26,7 +28,8 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({type: 'CREATION_CHANGE_PERSON_TYPE', payload: personType});
             console.log('dispatched person type change')
         },
-        onFieldValueChange(source, value) {
+
+    onFieldValueChange(source, value) {
             dispatch({
                 type: 'CREATION_CHANGE_FIELD_VALUE',
                 payload: {
