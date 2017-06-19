@@ -15,21 +15,18 @@ class Dropdown extends Component {
             filter: '',
             focus: false,
         }
-        //this.getOwnOpts = this.getOwnOpts.bind(this)
         this.returnSelectedValue = this.returnSelectedValue.bind(this)
         this.updateFilterTerm = this.updateFilterTerm.bind(this)
         this.toggle = this.toggle.bind(this)
         this.kPress = this.kPress.bind(this)
     }
 
-    /**
-     *  Required props:[name, prevValue, getOwnOps(name), returnValue(name, value)]
-     */
-
-    //
-    //
     componentDidMount(){
-        if(this.props.options.length===0) this.props.getOpts(this.props.name)
+        this.props.enum ?
+            this.props.options.length===0 ?
+                this.props.getOpts(this.props.name) :
+                null
+        : this.setState({...this.state, filter: this.props.prevValue})
     }
 
     toggle(o) {
@@ -37,12 +34,13 @@ class Dropdown extends Component {
 
         let prev = this.state.open
         let opts = this.state.options
-
-        this.setState({
-            ...this.state,
-            options: opts.length==0 ? this.props.options.map(i=>({value: i, key: uuid()})) : opts,
-            open: o == 'force' ? false : !this.state.open,
-        }, prev ? this.Input.blur() : null)
+        this.props.enum ?
+            this.setState({
+                ...this.state,
+                options: opts.length==0 ? this.props.options.map(i=>({value: i, key: uuid()})) : opts,
+                open: o == 'force' ? false : !this.state.open,
+            }, prev ? this.Input.blur() : null)
+        :null
 
     }
 
@@ -61,12 +59,19 @@ class Dropdown extends Component {
             return true
         }
     }
+
     kPress(event) {
         if(event.key === 'Enter'){
-            if(this.state.options.map(n=>n.value).indexOf(event.target.value)>=0){
+            if (this.props.enum) {
+                if(this.state.options.map(n=>n.value).indexOf(event.target.value)>=0){
+                    this.returnSelectedValue(event.target.value)
+                    this.Input.blur()
+                }
+            } else {
                 this.returnSelectedValue(event.target.value)
                 this.Input.blur()
             }
+
         }
     }
 
@@ -79,19 +84,6 @@ class Dropdown extends Component {
         })
         this.props.returnValue(this.props.name, value)
     }
-
-    // getOwnOpts() {
-    //     //currently simulating async request
-    //     //options: this.props.getOpts(this.props.name) that returns an array.
-    //     //key generation will be handled in map function below.
-    //     setTimeout(()=>{
-    //         let sampleOptions = ['foo','bar', 'baz', 'qux','foo','bar', 'baz', 'qux','foo','bar', 'baz', 'qux']
-    //         this.setState({
-    //             ...this.state,
-    //             options: sampleOptions.map(i=>({value: i, key: uuid()}))
-    //         })
-    //     }, 300)
-    // }
 
     render(){
         return(
@@ -106,7 +98,13 @@ class Dropdown extends Component {
                     />
 
                     <div className='PriceListDropdown__icon'>
-                        {this.state.open ? <CaretUp/>:<CaretDown/>}
+                        {
+                            this.props.enum ?
+                                this.state.open ?
+                                    <CaretUp/>:<CaretDown/>
+                            :null
+
+                        }
                     </div>
                 </div>
                 {this.state.open ?
@@ -157,3 +155,5 @@ Dropdown.propTypes = {
 }
 
 export default Dropdown
+
+

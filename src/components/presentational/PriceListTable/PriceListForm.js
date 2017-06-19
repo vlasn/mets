@@ -28,17 +28,17 @@ const FormValueMap = [
     //A few issues here, highlighted by the ???-s. Some values missing from the mismatch object, half values missing
     //from the price list -> impossible to use provided endpoint to populate dropdown values...
 
-    {ownKey: "Tarnekoht", dbKey: cellKeys.tarnekoht, pListKey: "Tarnekoht" },
-    {ownKey: "Veoselehe nr", dbKey: cellKeys.veoseleheNr, pListKey: "???" }, //Kas seda saab üldse hinnatabelist?
-    {ownKey: "Veoselehe kuupäev", dbKey: cellKeys.veoseleheKp, pListKey: "???" }, //Kas seda saab üldse hinnatabelist?
-    {ownKey: "Puuliik", dbKey: cellKeys.puuliik, pListKey: "Puuliik" },
-    {ownKey: "Kvaliteet", dbKey: cellKeys.kvaliteet, pListKey: "Kvaliteet" },
-    {ownKey: "Hinnagrupi võti", dbKey: cellKeys.hinnagrupp, pListKey: "???" }, //Hinnatabelist puudu?
-    {ownKey: "Arvestusmaht", dbKey: cellKeys.maht, pListKey: "???" }, //Hinnatabelist puudu?
-    {ownKey: "Katastritunnus", dbKey: cellKeys.katastritunnus, pListKey: "???" }, //Ka hinnatabelist puudu
-    {ownKey: "Sortiment", dbKey: "????", pListKey: "Sortiment" },
-    {ownKey: "Pikkus min", dbKey: "????", pListKey: "Pikkus_min" },
-    {ownKey: "Pikkus max", dbKey: "????", pListKey: "Pikkus_max" }
+    {ownKey: "Tarnekoht", dbKey: cellKeys.tarnekoht, pListKey: "Sihtkoht", enum: true },
+    {ownKey: "Veoselehe nr", dbKey: cellKeys.veoseleheNr, pListKey: "Veoselehe Nr", enum: false },
+    {ownKey: "Veoselehe kp", dbKey: cellKeys.veoseleheKp, pListKey: "Veoselehe kuupäev", enum: false }, /*TODO - type date*/
+    {ownKey: "Puuliik", dbKey: cellKeys.puuliik, pListKey: "Puuliik", enum: true },
+    {ownKey: "Kvaliteet", dbKey: cellKeys.kvaliteet, pListKey: "Kvaliteet", enum: true },
+    {ownKey: "Hinnagrupi võti", dbKey: cellKeys.hinnagrupp, pListKey: "???", enum: true  }, /*TODO - loogika?*/
+    {ownKey: "Arvestusmaht", dbKey: cellKeys.maht, pListKey: "Arvestusmaht", enum: false },
+    {ownKey: "Katastritunnus", dbKey: cellKeys.katastritunnus, pListKey: "Katastritunnus", enum: false },
+    {ownKey: "Sortiment", dbKey: false, pListKey: "Sortiment", enum: true },
+    {ownKey: "Pikkus min", dbKey: false, pListKey: "Pikkus_min", enum: true },
+    {ownKey: "Pikkus max", dbKey: false, pListKey: "Pikkus_max", enum: true }
 
 ]
 
@@ -58,12 +58,14 @@ class PriceListForm extends Component {
                         key={row.ownKey}
                         pListKey={row.pListKey}
                         ownKey={row.ownKey}
-                        prevValue={this.props.mismatches[this.props.currentlyBeingEdited][row.dbKey]||'objektist puudu'}
+                        prevValue={this.props.mismatches[this.props.currentlyBeingEdited][row.dbKey] || "-"}
                         getOpts={this.props.getOptions}
-                        foundOpts={this.props.foundOpts.hasOwnProperty(row.pListKey) ?
-                            this.props.foundOpts[row.pListKey] :
-                            []
+                        foundOpts={
+                            this.props.foundOpts.hasOwnProperty(row.pListKey) ?
+                                this.props.foundOpts[row.pListKey] :
+                                []
                         }
+                        enum={row.enum}
                         returnValue={console.log}
                     />
                     )
