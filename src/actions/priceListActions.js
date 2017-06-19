@@ -25,8 +25,6 @@ export const getOptions = (fieldKey) => {
     }
 }
 
-
-
 export const importRequest = () => {
     return (dispatch) => {
         dispatch({
@@ -49,12 +47,54 @@ export const importRequest = () => {
             })
     }
 }
+
 export const selectEditable = (id) => {
     return (dispatch) => {
         dispatch({type: "PRICELIST_SELECT_EDITABLE", payload: id})
     }
 }
 
+export const addToBundle = (_id, key, value) => {
+    return (dispatch) => {
+        dispatch({
+            type: "PRICEFORM_EDITS_BUNDLE",
+            payload: {
+                _id, key, value
+            }
+
+        })
+    }
+}
+
+export const submitBundle = (prevValues, editedValues) => {
+    let priceGrpKey= "hinna gr  \"võti\""
+
+    let pgMin = editedValues.priceGrpMin || false
+    let pgMax = editedValues.priceGrpMax || false
+
+    return (dispatch) => {
+        console.log(Object.keys(prevValues), Object.keys(editedValues))
+        let bundle = {
+            ...prevValues,
+            ...editedValues,
+            [priceGrpKey]:  pgMin && pgMax ? `${pgMin}-${pgMax}` : prevValues[priceGrpKey]
+        }
+        console.log(bundle)
+        axios.post('/api/import/xlsx/update', {
+            ...bundle
+        })
+            .then(({data}) => {
+                console.log(data);
+                if(data.status == 'accept') {
+
+                }
+            })
+    }
+}
+
+
+
+///Dummydata:
 const fauxImportRequest = () => {
     return new Promise((resolve, reject) => {
         setTimeout(resolve(data), 1500)

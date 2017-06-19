@@ -11,12 +11,22 @@ export default class Row extends Component{
         super(props)
         this.kPress = this.kPress.bind(this)
     }
+
     kPress(event) {
         if(event.key ==='Enter') {
-            this.props.returnValue(this.props.name, event.target.value, true)
+            console.log('row:', this.props)
+            this.props.returnValue(this.props.name, event.target.value)
             this.CustomValue.blur()
         }
     }
+
+    checkExtras(input, extra=false) {
+       let returnable = extra ?
+           input.split("-")[extra==='priceGrpMin' ? 0 : 1] :
+           input
+        return typeof(input)!=='string' ? returnable.toString() : input
+    }
+
     render(){
         return (
             <div className="PriceListTable__editable-row">
@@ -28,11 +38,13 @@ export default class Row extends Component{
                 <div className="PriceListTable__editable-column dropdown">
                     <PriceFormDropdown
                         name={this.props.pListKey}
-                        prevValue={this.props.prevValue}
+                        prevValue={this.checkExtras(this.props.prevValue, this.props.extra)}
                         getOpts={this.props.getOpts}
+                        dbKey={this.props.dbKey}
                         returnValue={this.props.returnValue}
                         options={this.props.foundOpts}
                         enum={this.props.enum}
+                        extra={this.props.extra}
                     />
                 </div>
                 <div className="PriceListTable__editable-column value">

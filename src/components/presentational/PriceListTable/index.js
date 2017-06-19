@@ -23,7 +23,6 @@ class PriceListTable extends Component {
             <div className="PriceListTable__wrapper">
                 <div className="PriceListTable__above">{this.props.loading ? 'loading' : null}</div>
                 <div className="PriceListTable__content">
-                    Siia tekib paljude tulpadega tabel:
                     <Table items = {this.props.mismatches}
                            currentlyBeingEdited = {this.props.currentlyBeingEdited}
                            selector = {this.props.selectEditable}
