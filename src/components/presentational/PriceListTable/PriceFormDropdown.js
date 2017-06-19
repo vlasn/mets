@@ -2,7 +2,6 @@
  * Created by clstrfvck on 17/06/2017.
  */
 import React, {Component} from "react"
-import { uuid } from "../../../Utilities"
 import PropTypes from "prop-types"
 const css = require("./PriceFormDropdown.scss")
 import { CaretDown, CaretUp } from "../../Icons"
@@ -13,7 +12,7 @@ class Dropdown extends Component {
         this.state = {
             open: false,
             confirmedMatch: false,
-            searchTerm: ''
+            searchTerm: ""
         }
         this.toggle = this.toggle.bind(this)
         this.updateSearchTerm = this.updateSearchTerm.bind(this)
@@ -43,7 +42,8 @@ class Dropdown extends Component {
             if (this.props.options.length<1) {
                 this.props.getOpts(this.props.name)
             } else {
-                this.componentWillReceiveProps(this.props) //forcing cWRP to re-validate matches in case opts already exist
+                //forcing cWRP to check matches in case opts already exist
+                this.componentWillReceiveProps(this.props)
             }
         } else {
             if(this.props.prevValue.length>0) {
@@ -53,42 +53,42 @@ class Dropdown extends Component {
     }
 
     componentWillReceiveProps(newProps) {
-       if (!this.state.confirmedMatch &&
+        if (!this.state.confirmedMatch &&
            newProps.options.indexOf(this.props.prevValue)>=0
-       )
-       {
-           this.setState({...this.state, confirmedMatch: this.props.prevValue}, () => {
-               this.confirmMatch(this.props.prevValue)
-           })
-       }
+        )
+        {
+            this.setState({...this.state, confirmedMatch: this.props.prevValue}, () => {
+                this.confirmMatch(this.props.prevValue)
+            })
+        }
     }
 
     toggle() {
-        this.setState({
-            ...this.state,
-            open: !this.state.open
-        })
+        if(this.props.enum) {
+            this.setState({
+                ...this.state,
+                open: !this.state.open
+            })
+        }
     }
 
     updateSearchTerm({key, target}) {
-        if(key !== 'Enter') {
+        if(key !== "Enter") {
             this.setState({
                 ...this.state,
                 searchTerm: target.value
             })
-        } else {
-
-        }
+        } //further logic to follow, one day.
     }
 
     searchFilter(value, term) {
-        if(typeof(value)!=='string') value=value.toString();
+        if(typeof(value)!=="string") value=value.toString()
         return value.search(new RegExp(term, "i"))>=0
     }
 
     confirmMatch(value) {
-        if(typeof(value)!=='string') value = value.toString()
-        if(value=='') return
+        if(typeof(value)!=="string") value = value.toString()
+        if(value=="") return
         this.setState({...this.state, confirmedMatch: value, open: false}, ()=>{
             this.FilterInput.value = value //set value of filter field
             this.props.updateInput(value) //set value of adjacent text field
@@ -101,17 +101,17 @@ class Dropdown extends Component {
             <div className="PriceListDropdown__wrapper">
                 <div
                     className={`PriceListDropdown__clickables
-                        ${this.state.open ? 'open' : ''} ${this.props.enum ?'':' padding-fix'}`}
+                        ${this.state.open ? "open" : ""} ${this.props.enum ?"":" padding-fix"}`}
                     onClick={this.toggle}
                 >
                     <input
                         className="PriceListDropdown__text"
-                        placeholder={'—'}
-                        ref={(input) => { {this.FilterInput = input; }}}
+                        placeholder={"—"}
+                        ref={(input) => { {this.FilterInput = input }}}
                         onChange={this.updateSearchTerm}
                     />
 
-                    <div className='PriceListDropdown__icon'>
+                    <div className="PriceListDropdown__icon">
                         {
                             this.props.enum ?
                                 this.state.open ?
@@ -137,9 +137,7 @@ class Dropdown extends Component {
 export const PriceListDropdownContent = props => {
     return (
         <div
-            className={
-                `PriceListDropdown__option-wrapper`
-            }
+            className={"PriceListDropdown__option-wrapper"}
             onClick={()=>props.click(props.value)}
         >
             {props.value}
@@ -147,10 +145,18 @@ export const PriceListDropdownContent = props => {
 }
 
 Dropdown.propTypes = {
-    name: PropTypes.string,
-    prevValue: PropTypes.oneOfType([PropTypes.string,PropTypes.number]),
-    returnValue: PropTypes.func,
-    getOpts: PropTypes.func
+    name: PropTypes.string.isRequired,
+    prevValue: PropTypes.oneOfType([PropTypes.string,PropTypes.number]).isRequired,
+    returnValue: PropTypes.func.isRequired,
+    getOpts: PropTypes.func,
+    enum: PropTypes.bool.isRequired,
+    options: PropTypes.array.isRequired,
+    updateInput: PropTypes.func,
+    dbKey: PropTypes.oneOfType([PropTypes.string,PropTypes.bool]).isRequired,
+}
+PriceListDropdownContent.propTypes = {
+    click: PropTypes.func,
+    value: PropTypes.oneOfType([PropTypes.string,PropTypes.number]).isRequired,
 }
 
 export default Dropdown

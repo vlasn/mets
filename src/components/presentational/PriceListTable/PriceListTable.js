@@ -44,7 +44,7 @@ export const percentages = [
     6.483,
     5.604,
     5.714,
-    15.93
+    15.82
 ]
 
 class Table extends Component {
@@ -78,7 +78,9 @@ class Table extends Component {
                                     <tr key={key}>
                                         <td className="PTable__form-cell" colSpan={tableHeaders.length}>
                                             <table className="PTable__inline-table" >
-                                                <WideRow key={key} {...item} selector={this.props.selector}/>
+                                                <tbody>
+                                                    <WideRow key={key} {...item} selector={this.props.selector}/>
+                                                </tbody>
                                             </table>
                                             <div className="PTable__form-wrap"><PriceListForm/></div>
                                         </td>
@@ -111,12 +113,6 @@ const WideRow = (props) => (
 )
 
 export default Table
-
-
-
-const widths = [
-    122,116,117,61,79,108,59,51,52,145
-]
 
 
 
