@@ -4,6 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import InputFieldOptions from './InputFieldOptions';
 import InputField from './InputField';
+import Dropdown from './Dropdown';
 
 const css = require("./CreateClient.scss");
 
@@ -15,14 +16,20 @@ const labelStyles = {
 
 const styles = {
     regularbutton: {
-        float: 'left',
-        width: "161px",
-        display:'inline-block',
-        boarderRadius:'0px',
-        margin: "10px",
+      width: "160px",
+      display:'inline-block',
+      boarderRadius:'0px',
+      margin: "10px",
     },
     longbutton: {
-        width: "330px",
+        width: "390px",
+    },
+    dropdownButton: {
+        display:'block',
+        color:'black',
+        textDecoration:'none',
+        padding: '0px 20px 0px 20px',
+        height: '45px'
     },
 };
 
@@ -30,29 +37,22 @@ const CreateTable = () => (
 <MuiThemeProvider>
   <div>
       <div className="Heading">Loo hinnatabel</div>
-      <div><p className="Text">Vali piirkond</p></div>
+      <div><p className="Text">Vali piirkond ja tariif</p></div>
       <FlatButton
           label='Põhja-Eesti'
-          backgroundColor= "#868686"
-          hoverColor = "#00CC33"
+          backgroundColor= "#9BFCD3"
+          hoverColor = "#9BFCD3"
           labelStyle ={labelStyles.headerButton}
           style={styles.regularbutton}
       />
       <FlatButton
-          label='Lõuna-Eesti'
-          backgroundColor= "#868686"
-          hoverColor = "#00CC33"
+          label='Tariif 1'
+          backgroundColor= "#9BFCD3"
+          hoverColor = "#9BFCD3"
           labelStyle ={labelStyles.headerButton}
           style={styles.regularbutton}
       />
-      <FlatButton
-          label='Muu'
-          backgroundColor= "#868686"
-          hoverColor = "#00CC33"
-          labelStyle ={labelStyles.headerButton}
-          style={styles.regularbutton}
-      />
-      <div className= "Textfield">
+      <div className= "InputField">
         <InputField
           floatingLabelText={"Kinnistunimi"}
         />
@@ -74,33 +74,12 @@ const CreateTable = () => (
           floatingLabelText={"Muu"}
         />
       </div>
-      <div><p className="Text">Vali veotariif</p></div>
-      <FlatButton
-          label='Tariif 1'
-          backgroundColor= "#868686"
-          hoverColor = "#00CC33"
-          labelStyle ={labelStyles.headerButton}
-          style={styles.regularbutton}
-      />
-      <FlatButton
-          label='Tariif 2'
-          backgroundColor= "#868686"
-          hoverColor = "#00CC33"
-          labelStyle ={labelStyles.headerButton}
-          style={styles.regularbutton}
-      />
-      <FlatButton
-          label='Muu'
-          backgroundColor= "#868686"
-          hoverColor = "#00CC33"
-          labelStyle ={labelStyles.headerButton}
-          style={styles.regularbutton}
-      />
+
         <div className="Big__button">
           <FlatButton
               label='Genereeri hinnatabeli eelvaade'
-              backgroundColor= "#00CC33"
-              hoverColor = "#00CC33"
+              backgroundColor= "#9BFCD3"
+              hoverColor = "#9BFCD3"
               labelStyle ={labelStyles.headerButton}
               style={styles.longbutton}
           />

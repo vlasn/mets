@@ -6,7 +6,7 @@
   margin-bottom: 15px;
 }
 
-.Textfield{
+.Textfield, .InputField{
   text-align: center;
   width: 390px;
   margin: auto;
@@ -31,7 +31,7 @@
 .choiceButtons{
   color: white;
   padding-left: 20px;
-  
+
 }
 .choiceButtons:hover {
   color: black;
@@ -40,4 +40,3 @@
 form{
   padding-top: 40px;
 }
-
