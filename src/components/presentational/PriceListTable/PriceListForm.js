@@ -3,7 +3,7 @@
  */
 import React, {Component} from "react"
 import { connect } from "react-redux"
-import { getOptions, addToBundle, submitBundle } from "../../../actions/priceListActions"
+import { getOptions, addToBundle, submitBundle,addNewPriceListItem } from "../../../actions/priceListActions"
 //import {cellKeys} from "./PriceListTable"
 //Duplicate declaration because Webpack couldn't find the object from the other file. :|
 export const cellKeys = {
@@ -54,6 +54,7 @@ class PriceListForm extends Component {
         //receives the whole price list row object from parent as ownProps
         this.bundle = this.bundle.bind(this)
         this.submitBundle = this.submitBundle.bind(this)
+        this.submitNewItem = this.submitNewItem.bind(this)
     }
     bundle(key, value){
         this.props.addToBundle(this.props.currentlyBeingEdited,key,value)
@@ -64,6 +65,9 @@ class PriceListForm extends Component {
             this.props.currentlyEditedOpts,
             this.props.okToSubmitBundle
         )
+    }
+    submitNewItem() {
+        this.props.addNewPriceListItem(this.props.currentlyEditedOpts, )
     }
 
     render(){
@@ -88,13 +92,36 @@ class PriceListForm extends Component {
                     />
                     )
                 )}
+                {this.props.allowNew ? (
+                    AdditionalValueMap.map(row=>(
+                        <Row
+                            key={row.ownKey}
+                            ownKey={row.ownKey}
+                            pListKey={row.pListKey}
+                            prevValue={"-"}
+                            getOpts={this.props.getOptions}
+                            dbKey={row.dbKey||row.pListKey}
+                            foundOpts={
+                                this.props.foundOpts[row.pListKey]||[]
+                            }
+                            enum={row.enum}
+                            extra={false}
+                            returnValue={this.bundle}
+                        />
+                    ))
+                    ):null}
                 <div className="PriceForm__buttons-wrapper">
                     <PFormButton
                         click={this.submitBundle}
                     >
                         Muuda mõõteraporti rida
                     </PFormButton>
-                    <PFormButton disabled >Lisa hinnatabelisse uus toode</PFormButton>
+                    <PFormButton
+                        disabled={!this.props.allowNew}
+                        click={this.submitNewItem}
+                    >
+                        Lisa hinnatabelisse uus toode
+                    </PFormButton>
                 </div>
             </section>
         )
@@ -116,11 +143,13 @@ const mapStateToProps = function(state){
         currentlyBeingEdited: state.priceList.currentlyBeingEdited,
         foundOpts: state.priceList.foundOptionsByKeys,
         currentlyEditedOpts: state.priceList.currentlyEditedOpts,
-        okToSubmitBundle: state.priceList.okToSubmitBundle
+        okToSubmitBundle: state.priceList.okToSubmitBundle,
+        allowNew: state.priceList.allowNewPriceListItem,
+        currentParent: state.priceList.currentParent
     }
 }
 
 
 
-export default connect(mapStateToProps, {getOptions, addToBundle, submitBundle})(PriceListForm)
+export default connect(mapStateToProps, {getOptions, addToBundle, submitBundle, addNewPriceListItem})(PriceListForm)
 

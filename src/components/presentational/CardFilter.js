@@ -22,7 +22,7 @@ export default class Filter extends Component {
             {status: 'done', label:'Tehtud'},
         ]
         this.personOptions = [
-            {status: 'Jaagup', label:'Jaagup Jaloviin'},
+            {status: 'Jaagup', label:'Jaagup Jalakas'},
             {status: 'Väino', label:'Väino Viigipuu'},
         ]
 

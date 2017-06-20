@@ -3,7 +3,7 @@
  */
 import React, {Component} from "react"
 import { connect } from "react-redux"
-import { fetchSinglePricelist, selectEditable } from "../../../actions/priceListActions"
+import { fetchSinglePricelist, selectEditable, transmitParent } from "../../../actions/priceListActions"
 const css = require("./PriceList.scss")
 import Table from "./PriceListTable"
 
@@ -12,11 +12,11 @@ class PriceListTable extends Component {
         super(props)
     }
     componentWillMount() {
-        console.log('plTable:', this.props);
         if(!this.props.match.params.id) {
             this.props.history.push("/")
         } else {
             this.props.fetchSinglePricelist(this.props.match.params.id)
+            this.props.transmitParent(this.props.match.params.id)
         }
 
     }
@@ -50,4 +50,4 @@ const mapStateToProps = function(state, ownProps) {
     }
 }
 
-export default connect(mapStateToProps, { fetchSinglePricelist, selectEditable })(PriceListTable)
+export default connect(mapStateToProps, { fetchSinglePricelist, selectEditable, transmitParent })(PriceListTable)

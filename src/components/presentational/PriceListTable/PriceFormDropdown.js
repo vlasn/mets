@@ -155,7 +155,7 @@ Dropdown.propTypes = {
     enum: PropTypes.bool.isRequired,
     options: PropTypes.array.isRequired,
     updateInput: PropTypes.func,
-    dbKey: PropTypes.oneOfType([PropTypes.string,PropTypes.bool]).isRequired,
+    dbKey: PropTypes.oneOfType([PropTypes.string,PropTypes.bool]),
 }
 PriceListDropdownContent.propTypes = {
     click: PropTypes.func,
