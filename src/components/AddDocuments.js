@@ -3,6 +3,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 const css = require("./AddDocuments.scss");
 import ReactFileReader from 'react-file-reader';
+import {uuid} from "../Utilities"
+
 
 const labelStyles = {
     headerButton: {
@@ -31,65 +33,84 @@ export default class AddDocuments extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            files:[]
+            // contract:[],
+            // forestNotice:[]
         }
-        this.handleFiles=this.handleFiles.bind(this)
+        // this.handleContractFiles=this.handleContractFiles.bind(this)
+        // this.handleNoticeFiles=this.handleNoticeFiles.bind(this)
+
     }
 
-    //uplaodimine
-    handleFiles = files => {
-        console.log(files)
-        let newFiles = []
-
-        for(let i = 0; i<files.length; i++) {
-            newFiles.push(files[i])
-        }
-
-        this.setState({
-            ...this.state,
-            files:[...this.state.files, ...newFiles]
-        })
-    }
+    // //uplaodimine
+    // handleContractFiles = contract => {
+    //     console.log(contract)
+    //     let newFiles = []
+    //
+    //     for(let i = 0; i<contract.length; i++) {
+    //         newFiles.push(contract[i])
+    //     }
+    //     this.setState({
+    //         ...this.state,
+    //         contract:[...this.state.forestNotice, ...newFiles]
+    //     })
+    // }
+    // handleNoticeFiles = forestNotice => {
+    //     console.log(forestNotice)
+    //     let newFiles = []
+    //
+    //     for(let i = 0; i<forestNotice.length; i++) {
+    //         newFiles.push(forestNotice[i])
+    //     }
+    //     this.setState({
+    //         ...this.state,
+    //         forestNotice:[...this.state.forestNotice, ...newFiles]
+    //     })
+    // }
 
 
     render() {
+        console.log(this.state)
+
         return(
                 <div className="AddDocuments__wrapper">
                     <div className="AddDocuments__buttons-wrapper">
                         <div className="Heading">Lisa dokumendid</div>
                         <div className="Buttons">
-                            <ReactFileReader handleFiles={this.handleFiles}>
+                            <ReactFileReader
+                                handleFiles={this.props.handleContractFiles}
+                                multipleFiles={true}
+                                fileTypes=".pdf"
+                            >
                                 <FlatButton
                                     label='Leping'
                                     backgroundColor= "#868686"
                                     hoverColor = "#00CC33"
                                     labelStyle ={labelStyles.headerButton}
                                     style={styles.regularbutton}
+                                    id={uuid()}
+                                    name="contract"
                                 />
                             </ReactFileReader>
-                            <ReactFileReader handleFiles={this.handleFiles}>
+                            <ReactFileReader
+                                handleFiles={this.props.handleNoticeFiles}
+                                multipleFiles={true}
+                                id={uuid()}
+                                fileTypes=".pdf"
+                            >
                                 <FlatButton
                                     label='Metsateatis'
                                     backgroundColor= "#868686"
                                     hoverColor = "#00CC33"
                                     labelStyle ={labelStyles.headerButton}
                                     style={styles.regularbutton}
+                                    id={uuid()}
+                                    name="forestNotice"
                                 />
                             </ReactFileReader>
-                            <ReactFileReader handleFiles={this.handleFiles}>
-                                <FlatButton
-                                    label='Muu'
-                                    backgroundColor= "#868686"
-                                    hoverColor = "#00CC33"
-                                    labelStyle ={labelStyles.headerButton}
-                                    style={styles.regularbutton}
-                                />
-                            </ReactFileReader>
+
                         </div>
                     </div>
-                    <div className="Uploads__wrapper">
-                    {this.state.files.map((row)=><span className="Uploads">{row.name}</span>)}
-                    </div>
+
                 </div>
         )
     }

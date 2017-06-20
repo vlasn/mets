@@ -39,7 +39,7 @@ export default class InputFieldOptions extends React.Component {
 
                     <div className="InputFieldOptions__options">
                         <span onClick={() => this.props.add(uuid(),this.props.fromArray)}>Lisa</span>
-                        {this.props.name !== "Katastritunnus0" && this.props.name !== "Kliendi_esindaja0" ?
+                        {this.props.name !== "Katastritunnus" && this.props.name !== "Kliendi_esindaja" ?
                             <span onClick={() => this.props.remove(this.props.name,this.props.fromArray)}> / kustuta</span>
                             :
                             null

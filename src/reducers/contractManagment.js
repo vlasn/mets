@@ -7,21 +7,17 @@ export default function reducer( state = {
         submitted: false,
         error: null,
         contractDetails: {
-            dates: {
-                cuts: "",
-                export: "",
-                cutsExport: ""
-            },
+            cuts: "",
+            export: "",
+            cutsExport: "",
             forestMaster: "",
             propertyName: "",
             projectManager: "",
         },
         errors: {
-            dates: {
-                cuts: "",
-                export: "",
-                cutsExport: ""
-            },
+            cuts: "",
+            export: "",
+            cutsExport: "",
             forestMaster: "",
             propertyName: "",
             projectManager: "",

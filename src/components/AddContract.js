@@ -41,23 +41,47 @@ export default class AddContract extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            Katastritunnus:[{value:"", name:"Katastritunnus0"}],
-            Kliendi_esindaja:[{value:"", name:"Kliendi_esindaja0"}],
+            Katastritunnus:[{value:"", name:"Katastritunnus"}],
+            Kliendi_esindaja:[{value:"", name:"Kliendi_esindaja"}],
+            contract:[],
+            forestNotice:[]
         }
         this.addToArray=this.addToArray.bind(this)
         this.removeFromArray=this.removeFromArray.bind(this)
-        this.updateValue = this.updateValue.bind(this);
-        //this.onSubmit= this.onSubmit.bind(this);
+        this.updateKatastritunnus = this.updateKatastritunnus.bind(this);
+        this.updateKliendiesindaja = this.updateKliendiesindaja.bind(this);
+
+
+        this.handleContractFiles=this.handleContractFiles.bind(this)
+         this.handleNoticeFiles=this.handleNoticeFiles.bind(this)
+    }
+    handleContractFiles = contract => {
+        console.log(contract)
+        let newFiles = []
+
+        for(let i = 0; i<contract.length; i++) {
+            newFiles.push(contract[i])
+        }
+        this.setState({
+            ...this.state,
+            contract:[...this.state.forestNotice, ...newFiles]
+        })
+    }
+    handleNoticeFiles = forestNotice => {
+        console.log(forestNotice)
+        let newFiles = []
+
+        for(let i = 0; i<forestNotice.length; i++) {
+            newFiles.push(forestNotice[i])
+        }
+        this.setState({
+            ...this.state,
+            forestNotice:[...this.state.forestNotice, ...newFiles]
+        })
     }
 
-    // onSubmit(){
-    //     let katastritunnused = this.state.Katastritunnus.map(item=>item.value)
-    //     console.log(katastritunnused)
-    // }
-
-    updateValue(name,value){
-        //console.log("lisaname:",name,value)
-
+    updateKatastritunnus(name,value){
+        console.log("lisaname:",name,value)
         let newKat = this.state.Katastritunnus.map(item=>{
             if(item.name === name){
                 return {name: item.name, value: value}
@@ -68,7 +92,21 @@ export default class AddContract extends React.Component {
             ...this.state,
             Katastritunnus: newKat
         });
-        //console.log(this.state)
+
+    }
+    updateKliendiesindaja(name,value){
+        console.log("lisaname:",name,value)
+        let newKat2 = this.state.Kliendi_esindaja.map(item=>{
+            if(item.name === name){
+                return {name: item.name, value: value}
+            }
+            else {return item}
+        })
+        this.setState({
+            ...this.state,
+            Kliendi_esindaja: newKat2
+        });
+
     }
 
 
@@ -100,7 +138,7 @@ export default class AddContract extends React.Component {
     }
 
     render() {
-        console.log(this.state.Katastritunnus)
+        console.log(this.state)
         return(
 
             <div className="AddClient__wrapper">
@@ -121,7 +159,7 @@ export default class AddContract extends React.Component {
                             add={this.addToArray}
                             remove={this.removeFromArray}
                             fromArray={"Katastritunnus"}
-                            updateValue = {this.updateValue}
+                            updateValue = {this.updateKatastritunnus}
                             name={row.name}
                             value={row.value}
                         />)
@@ -135,7 +173,7 @@ export default class AddContract extends React.Component {
                             add={this.addToArray}
                             remove={this.removeFromArray}
                             fromArray={"Kliendi_esindaja"}
-                            updateValue = {this.updateValue}
+                            updateValue = {this.updateKliendiesindaja}
                             name={row.name}
                             value={row.value}
                         />)
@@ -180,7 +218,14 @@ export default class AddContract extends React.Component {
                             />
                         </div>
                         </div>
-                        <AddDocuments/>
+
+                        <AddDocuments
+                            handleContractFiles= {this.handleContractFiles}
+                            handleNoticeFiles= {this.handleNoticeFiles}/>
+                        <div className="Uploads__wrapper">
+                            {this.state.contract.map((row)=><span className="Uploads">{row.name}</span>)}
+                            {this.state.forestNotice.map((row)=><span className="Uploads">{row.name}</span>)}
+                        </div>
                         <div className="Big__button">
                             <FlatButton
                                 label='Loo leping'
@@ -194,7 +239,11 @@ export default class AddContract extends React.Component {
                                         nimi: this.props.contractDetails.propertyName,
                                         katastritunnused: [...this.state.Katastritunnus.map(n=>n.value)]
                                     },
-                                    esindajad:[...this.state.Kliendi_esindaja.map(n=>n.value)]
+                                    esindajad:[...this.state.Kliendi_esindaja.map(n=>n.value)],
+                                    documents: {
+                                        contract: [this.state.contract],
+                                        forestNotice: [this.state.forestNotice]
+                                    }
                                 })}
                             />
                         </div>

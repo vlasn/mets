@@ -34,8 +34,9 @@ const mapDispatchToProps = (dispatch) => {
             })
         },
         onSubmit(contractDetails){
-            console.log("kõik",contractDetails)
-            console.log("esindajad",contractDetails.esindajad)
+            // console.log("kõik",contractDetails)
+            // console.log("kinnistu objekt",contractDetails.kinnistu)
+            console.log("documents:",contractDetails.documents.forestNotice)
 
 
             let errors = {}
@@ -46,25 +47,26 @@ const mapDispatchToProps = (dispatch) => {
 
             if(Object.keys(errors).length<1){
                 axios.post('/api/contract/create', {
-                    email: "hensav@tlu.ee",
+                    email: contractDetails.esindajad,
+                    //esindajad:contractDetails.esindajad,
                     hinnatabel: {
                         snapshot: "tere olen hinnatabel"
                     },
                     contract_creator: "String",
-
                     metsameister: contractDetails.forestMaster,
                     dates: {
                         raielopetamine: contractDetails.cuts,
                         väljavedu: contractDetails.export,
                         raidmete_valjavedu: contractDetails.cutsExport
                     },
+                    projektijuht: contractDetails.projectManager,
+                    kinnistu: {
+                        nimi: contractDetails.kinnistu.nimi,
+                        katastritunnused: contractDetails.kinnistu.katastritunnused
+                    },
+                    leping:contractDetails.documents.contract,
+                    metsateatis:contractDetails.documents.forestNotice
 
-                     projektijuht: contractDetails.projectManager,
-
-                     kinnistu: {
-                         nimi: contractDetails.kinnistu.nimi,
-                         katastritunnused: contractDetails.kinnistu.katastritunnused
-                     }
                 })
 
                     .then(({data})=>{
