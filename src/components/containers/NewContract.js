@@ -36,50 +36,80 @@ const mapDispatchToProps = (dispatch) => {
         onSubmit(contractDetails){
             // console.log("kõik",contractDetails)
             // console.log("kinnistu objekt",contractDetails.kinnistu)
-            console.log("documents:",contractDetails.documents.forestNotice)
-
-
+            console.log("uploads:",contractDetails.documents.forestNotice[0][0])
             let errors = {}
-
-
             dispatch({type: 'CONTRACT_CREATION_ATTEMPT'})
+            let object = {
+                email: contractDetails.esindajad,
+                esindajad:contractDetails.esindajad,
+                hinnatabel: {
+                    snapshot: "tere olen hinnatabel"
+                },
+                contract_creator: "String",
+                metsameister: contractDetails.forestMaster,
+                dates: {
+                    raielopetamine: contractDetails.cuts,
+                    väljavedu: contractDetails.export,
+                    raidmete_valjavedu: contractDetails.cutsExport
+                },
+                projektijuht: contractDetails.projectManager,
+                kinnistu: {
+                    nimi: contractDetails.kinnistu.nimi,
+                    katastritunnused: contractDetails.kinnistu.katastritunnused
+                },
+                //leping:contractDetails.documents.contract[0][0],
+                //metsateatis:contractDetails.documents.forestNotice[0][0]
+            };
+            console.log("objekt",object)
 
+            let objectToFormData = function(obj, form, namespace) {
+                let fd = form || new FormData();
+                let formKey;
+                for(let property in obj) {
+                    if(obj.hasOwnProperty(property)) {
+                        if(namespace) {
+                            formKey = namespace + '[' + property + ']';
+                        } else {
+                            formKey = property;
+                        }
+                        // if the property is an object, but not a File,
+                        // use recursivity.
+                        if(typeof obj[property] === 'object' && !(obj[property] instanceof File)) {
+                            objectToFormData(obj[property], fd, property);
+                        } else {
+                            // if it's a string or a File object
+                            fd.append(formKey, obj[property]);
+                        }
+                    }
+                }
+                return fd;
+            };
+
+            let formData = objectToFormData(object);
+            formData.append('metsateatis', contractDetails.documents.forestNotice[0][0]);
+            formData.append('leping', contractDetails.documents.contract[0][0]);
 
             if(Object.keys(errors).length<1){
-                axios.post('/api/contract/create', {
-                    email: contractDetails.esindajad,
-                    //esindajad:contractDetails.esindajad,
-                    hinnatabel: {
-                        snapshot: "tere olen hinnatabel"
-                    },
-                    contract_creator: "String",
-                    metsameister: contractDetails.forestMaster,
-                    dates: {
-                        raielopetamine: contractDetails.cuts,
-                        väljavedu: contractDetails.export,
-                        raidmete_valjavedu: contractDetails.cutsExport
-                    },
-                    projektijuht: contractDetails.projectManager,
-                    kinnistu: {
-                        nimi: contractDetails.kinnistu.nimi,
-                        katastritunnused: contractDetails.kinnistu.katastritunnused
-                    },
-                    leping:contractDetails.documents.contract,
-                    metsateatis:contractDetails.documents.forestNotice
 
+                fetch('/api/contract/create', {
+                    method: 'POST',
+                    body: formData
                 })
-
-                    .then(({data})=>{
-                        if(data.status === 'accept') {
-                            dispatch({type: 'CONTRACT_CREATION_SUCCESS', payload: data.msg})
-                        } else {
-                            dispatch({type: 'CONTRACT_CREATION_FAILURE', payload: data.msg})
-                        }
+                    .then(r => r.json())
+                    .then(data => {
+                        console.log(data)
                     })
-                    .catch(error => {
-                        console.log(error);
-                        dispatch({type: 'CONTRACT_CREATION_FAILURE', payload: error})
-                    })
+                    // .then(({data})=>{
+                    //     if(data.status === 'accept') {
+                    //         dispatch({type: 'CONTRACT_CREATION_SUCCESS', payload: data.msg})
+                    //     } else {
+                    //         dispatch({type: 'CONTRACT_CREATION_FAILURE', payload: data.msg})
+                    //     }
+                    // })
+                    // .catch(error => {
+                    //     console.log(error);
+                    //     dispatch({type: 'CONTRACT_CREATION_FAILURE', payload: error})
+                    // })
             } else {
                 console.log('dispatching')
                 dispatch({

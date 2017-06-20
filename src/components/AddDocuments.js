@@ -80,6 +80,7 @@ export default class AddDocuments extends React.Component {
                                 handleFiles={this.props.handleContractFiles}
                                 multipleFiles={false}
                                 fileTypes=".pdf"
+                                name="leping"
                             >
                                 <FlatButton
                                     label='Leping'
@@ -88,7 +89,7 @@ export default class AddDocuments extends React.Component {
                                     labelStyle ={labelStyles.headerButton}
                                     style={styles.regularbutton}
                                     id={uuid()}
-                                    name="contract"
+                                    name="leping"
                                 />
                             </ReactFileReader>
                             <ReactFileReader
@@ -96,6 +97,8 @@ export default class AddDocuments extends React.Component {
                                 multipleFiles={false}
                                 id={uuid()}
                                 fileTypes=".pdf"
+                                name="metsateatis"
+
                             >
                                 <FlatButton
                                     label='Metsateatis'
@@ -104,7 +107,7 @@ export default class AddDocuments extends React.Component {
                                     labelStyle ={labelStyles.headerButton}
                                     style={styles.regularbutton}
                                     id={uuid()}
-                                    name="forestNotice"
+                                    name="metsateatis"
                                 />
                             </ReactFileReader>
 
