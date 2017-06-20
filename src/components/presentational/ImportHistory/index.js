@@ -3,7 +3,7 @@
  */
 import React, { Component } from "react"
 import { connect } from "react-redux"
-import { fetchImportedPriceLists } from "../../../actions/priceListActions"
+import { fetchImportedPriceLists, submitXlsx } from "../../../actions/priceListActions"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import FlatButton from 'material-ui/FlatButton'
 const css = require("./ImportHistory.scss")
@@ -27,9 +27,27 @@ class ImportHistory extends Component{
         console.log("importhistory:", this.props)
         this.props.imports.length<1 ? this.props.fetchImportedPriceLists() : null
     }
+
+    componentWillReceiveProps(newProps) {
+        if(newProps.redirectToResolve) {
+            this.props.history.push("/import/"+newProps.currentlyBeingEdited)
+        }
+    }
+
     navigateToImport(id) {
         console.log("navigating to import"+id)
         this.props.history.push("/import/"+id)
+    }
+
+    attemptUpload() {
+        let formData = new FormData
+        let files = this.fileInput.files
+        for (var key in files) {
+            if (files.hasOwnProperty(key) && files[key] instanceof File) {
+                formData.append('file', files[key]);
+            }
+        }
+        this.props.submitXlsx(formData)
     }
 
     render() {
@@ -49,12 +67,11 @@ class ImportHistory extends Component{
                 )}
                 <MuiThemeProvider>
                 <div className="Big__button">
-                    <FlatButton
-                        label='Impordi mõõteraport'
-                        backgroundColor="#9BFCD3"
-                        hoverColor="#9BFCD3"
-                        style={styles.Big__button}
-                    />
+                    <input
+                        type="file"
+                        name="file"
+                        ref={(input) => {this.fileInput = input}}
+                        onChange={this.attemptUpload.bind(this)}/>
                 </div>
                 </MuiThemeProvider>
 
@@ -64,8 +81,10 @@ class ImportHistory extends Component{
 }
 const mapStateToProps = (state, ownProps) => {
     return {
-        imports: state.priceList.imports
+        imports: state.priceList.imports,
+        redirectToResolve: state.priceList.redirectToResolve,
+        currentlyBeingEdited: state.priceList.currentlyBeingEdited
     }
 }
 
-export default connect(mapStateToProps, { fetchImportedPriceLists })(ImportHistory)
+export default connect(mapStateToProps, { fetchImportedPriceLists, submitXlsx })(ImportHistory)
