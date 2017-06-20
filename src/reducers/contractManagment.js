@@ -21,6 +21,8 @@ export default function reducer( state = {
             forestMaster: "",
             propertyName: "",
             projectManager: "",
+            email:"",
+            cadastre:""
         }
     },
 
