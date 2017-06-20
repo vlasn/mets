@@ -23,6 +23,7 @@ export default class DatePicker extends React.Component {
               cancelLabel="Loobu"
               textFieldStyle={styles.date}
               onChange={(x, date)=>this.props.change(this.props.name,date)}
+              errorText = {this.props.errorText}
               />
 
         )

@@ -109,8 +109,6 @@ export default class AddContract extends React.Component {
 
     }
 
-
-
     addToArray(timestamp,fromArray) {
         let newArr = [...this.state[fromArray], {value: "", name: timestamp}]
         this.setState({
@@ -147,7 +145,7 @@ export default class AddContract extends React.Component {
                         hintText={"Mingi Nimi"}
                         name="propertyName"
                         change={this.props.onFieldValueChange}
-
+                        errorText={this.props.errors.propertyName}
                     />
 
                     {this.state.Katastritunnus.map((row,index)=>{
@@ -162,6 +160,7 @@ export default class AddContract extends React.Component {
                             updateValue = {this.updateKatastritunnus}
                             name={row.name}
                             value={row.value}
+                            errorText={this.props.errors.cadastre}
                         />)
                     })}
                     {this.state.Kliendi_esindaja.map((row,index)=>{
@@ -169,13 +168,14 @@ export default class AddContract extends React.Component {
                             index={index}
                             key ={row.name}
                             floatingLabelText={"Kliendi esindaja"}
-                            hintText={"Vello Veskimets juunior"}
+                            hintText={"vello.veskimets@gmail.com"}
                             add={this.addToArray}
                             remove={this.removeFromArray}
                             fromArray={"Kliendi_esindaja"}
                             updateValue = {this.updateKliendiesindaja}
                             name={row.name}
                             value={row.value}
+                            errorText={this.props.errors.email}
                         />)
                     })}
                     <InputField
@@ -183,12 +183,16 @@ export default class AddContract extends React.Component {
                         hintText={"Projekti Juhan"}
                         change={this.props.onFieldValueChange}
                         name="projectManager"
+                        errorText={this.props.errors.projectManager}
+
                     />
                     <InputField
                         floatingLabelText={"Metsameister"}
                         hintText={"Meistri Mees"}
                         change={this.props.onFieldValueChange}
                         name="forestMaster"
+                        errorText={this.props.errors.forestMaster}
+
                     />
                 <MuiThemeProvider>
                     <div>
@@ -201,6 +205,7 @@ export default class AddContract extends React.Component {
                                 locale="et-EE"
                                 change={this.props.onFieldValueChange}
                                 name="cuts"
+                                errorText={this.props.errors.cuts}
                             />
                             <DatePicker
                                 floating="Väljavedu"
@@ -208,6 +213,7 @@ export default class AddContract extends React.Component {
                                 locale="et-EE"
                                 change={this.props.onFieldValueChange}
                                 name="export"
+                                errorText={this.props.errors.export}
                             />
                             <DatePicker
                                 floating="Raidmete väljavedu"
@@ -215,13 +221,14 @@ export default class AddContract extends React.Component {
                                 locale="et-EE"
                                 change={this.props.onFieldValueChange}
                                 name="cutsExport"
+                                errorText={this.props.errors.cutsExport}
                             />
                         </div>
                         </div>
-
                         <AddDocuments
                             handleContractFiles= {this.handleContractFiles}
-                            handleNoticeFiles= {this.handleNoticeFiles}/>
+                            handleNoticeFiles= {this.handleNoticeFiles}
+                        />
                         <div className="Uploads__wrapper">
                             {this.state.contract.map((row)=><span className="Uploads">{row.name}</span>)}
                             {this.state.forestNotice.map((row)=><span className="Uploads">{row.name}</span>)}
