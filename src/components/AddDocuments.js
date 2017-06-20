@@ -78,7 +78,7 @@ export default class AddDocuments extends React.Component {
                         <div className="Buttons">
                             <ReactFileReader
                                 handleFiles={this.props.handleContractFiles}
-                                multipleFiles={true}
+                                multipleFiles={false}
                                 fileTypes=".pdf"
                             >
                                 <FlatButton
@@ -93,7 +93,7 @@ export default class AddDocuments extends React.Component {
                             </ReactFileReader>
                             <ReactFileReader
                                 handleFiles={this.props.handleNoticeFiles}
-                                multipleFiles={true}
+                                multipleFiles={false}
                                 id={uuid()}
                                 fileTypes=".pdf"
                             >
