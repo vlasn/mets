@@ -4,8 +4,6 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { fetchImportedPriceLists, submitXlsx } from "../../../actions/priceListActions"
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import FlatButton from 'material-ui/FlatButton'
 const css = require("./ImportHistory.scss")
 
 const styles = {
@@ -65,16 +63,18 @@ class ImportHistory extends Component{
 
                     </div>
                 )}
-                <MuiThemeProvider>
                 <div className="Big__button">
+                    <label htmlFor="file">
+                        <div className="ImportHistory__button">+  Impordi uus mõõteraport</div>
+                    </label>
                     <input
+                        id="file"
                         type="file"
                         name="file"
+                        className="hide"
                         ref={(input) => {this.fileInput = input}}
                         onChange={this.attemptUpload.bind(this)}/>
                 </div>
-                </MuiThemeProvider>
-
             </div>
         )
     }
