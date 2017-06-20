@@ -24,6 +24,7 @@ class ImportHistory extends Component{
     render() {
         return(
             <div className="ImportHistory__wrapper">
+                Mõõteraportid
                 {this.props.imports.map(row =>
                     <div
                         key={row._id}
@@ -32,6 +33,7 @@ class ImportHistory extends Component{
                     >
                         <div className="ImportHistory__id">{row._id}</div>
                         <div className="ImportHistory__status">{row.status}</div>
+                        nupu wrapper ja nupp siia!
                     </div>
                 )}
             </div>
