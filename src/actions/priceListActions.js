@@ -1,7 +1,5 @@
 import axios from "axios"
 
-import data from "./exampleResponses/exampleImportResult"
-
 export const getOptions = (fieldKey) => {
     return (dispatch) => {
         dispatch({
@@ -81,10 +79,11 @@ export const importRequest = (importId) => {
                     payload: false
                 });
                 if(data.status == 'accept' && data.data.unmatched.length>0) {
+                    console.log("fired import unmatches request for"+importId)
 
                     dispatch({
                         type: "PRICELIST_MISMATCHES",
-                        payload: data
+                        payload: data.data
                     })
                 }
             })
@@ -149,13 +148,4 @@ export const submitBundle = (prevValues, editedValues) => {
             })
         }
     }
-}
-
-
-
-///Dummydata:
-const fauxImportRequest = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(resolve(data), 1500)
-    })
 }

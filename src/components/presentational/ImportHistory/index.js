@@ -36,7 +36,7 @@ class ImportHistory extends Component{
 
                     </div>
                 )}
-                nupu wrapper ja nupp siia!
+
             </div>
         )
     }
