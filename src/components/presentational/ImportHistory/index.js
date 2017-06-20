@@ -47,6 +47,7 @@ class ImportHistory extends Component{
 
                     </div>
                 )}
+<<<<<<< HEAD
                 <MuiThemeProvider>
                 <div className="Big__button">
                     <FlatButton
@@ -57,6 +58,9 @@ class ImportHistory extends Component{
                     />
                 </div>
                 </MuiThemeProvider>
+=======
+
+>>>>>>> d6e2ff6da67cda25d9a1ae2f63d767297f7b03ff
             </div>
         )
     }
@@ -67,4 +71,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps, {fetchImportedPriceLists})(ImportHistory)
+export default connect(mapStateToProps, { fetchImportedPriceLists })(ImportHistory)

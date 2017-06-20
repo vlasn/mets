@@ -27,14 +27,15 @@ export default function reducer( state = {
             }
         }
         case "PRICELIST_MISMATCHES" : {
-            let newMismatches = action.payload.data.unmatched.reduce((acc, val)=>{ acc[val._id] = val; return acc },{})
+            console.log(action.payload);
+            let newMismatches = action.payload.unmatched.reduce((acc, val)=>{ acc[val._id] = val; return acc },{})
             return {
                 ...state,
                 mismatches: newMismatches,
                 meta: {
                     _id: action.payload._id,
-                    matches: action.payload.data.matched.length,
-                    mismatches: action.payload.data.unmatched.length,
+                    matches: action.payload.matched.length,
+                    mismatches: action.payload.unmatched.length,
                 }
             }
         }
