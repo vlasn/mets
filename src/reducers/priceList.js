@@ -7,6 +7,11 @@ export default function reducer( state = {
     conflictsResolved: false,
     foundOptionsByKeys: {},
     mismatches: {},
+    meta: {
+        _id: "",
+        matches: 0,
+        mismatches: 0,
+    },
     currentlyBeingEdited: false,
     currentlyEditedOpts: {
         _id: false
@@ -21,10 +26,15 @@ export default function reducer( state = {
         }
 
         case "PRICELIST_MISMATCHES" : {
-            let newMismatches = action.payload.reduce((acc, val)=>{ acc[val._id] = val; return acc },{})
+            let newMismatches = action.payload.data.unmatched.reduce((acc, val)=>{ acc[val._id] = val; return acc },{})
             return {
                 ...state,
-                mismatches: newMismatches
+                mismatches: newMismatches,
+                meta: {
+                    _id: action.payload._id,
+                    matches: action.payload.data.matched.length,
+                    mismatches: action.payload.data.unmatched.length,
+                }
             }
         }
 

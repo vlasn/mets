@@ -37,12 +37,13 @@ const FormValueMap = [
     {ownKey: "Hinnagrupi (max)", dbKey: cellKeys.hinnagrupp, pListKey: "Diameeter_max", enum: true,  extra:"priceGrpMax"},
     {ownKey: "Arvestusmaht", dbKey: cellKeys.maht, pListKey: "Arvestusmaht", enum: false },
     {ownKey: "Katastritunnus", dbKey: cellKeys.katastritunnus, pListKey: "Katastritunnus", enum: false },
+
+]
+const AdditionalValueMap = [
     {ownKey: "Sortiment", dbKey: false, pListKey: "Sortiment", enum: true },
     {ownKey: "Pikkus min", dbKey: false, pListKey: "Pikkus_min", enum: true },
     {ownKey: "Pikkus max", dbKey: false, pListKey: "Pikkus_max", enum: true }
-
 ]
-
 
 class PriceListForm extends Component {
     constructor(props) {

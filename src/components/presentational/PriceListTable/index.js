@@ -5,19 +5,13 @@ import React, {Component} from "react"
 import { connect } from "react-redux"
 import { importRequest, selectEditable } from "../../../actions/priceListActions"
 const css = require("./PriceList.scss")
-import EditableRow from "./PriceFormRow"
 import Table from "./PriceListTable"
 
 class PriceListTable extends Component {
     constructor(props) {
         super(props)
     }
-    onReturnedValue() {
-        console.log(arguments)
-    }
-    getOpts(){
-        // fetch options & branch them into Redux
-    }
+
     render(){
         return(
             <div className="PriceListTable__wrapper">
@@ -47,4 +41,4 @@ const mapStateToProps = function(state, ownProps) {
     }
 }
 
-export default connect(mapStateToProps, {importRequest, selectEditable })(PriceListTable)
+export default connect(mapStateToProps, { importRequest, selectEditable })(PriceListTable)

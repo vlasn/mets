@@ -38,16 +38,16 @@ export const importRequest = () => {
             payload: true
         })
         fauxImportRequest() //axios.post....etc
-            .then(({status, data})=> {
+            .then((data)=> {
                 dispatch({
                     type: "PRICELIST_LOADING",
                     payload: false
                 });
-                if(status == 'accept' && data.unmatched.length>0) {
+                if(data.status == 'accept' && data.data.unmatched.length>0) {
 
                     dispatch({
                         type: "PRICELIST_MISMATCHES",
-                        payload: data.unmatched
+                        payload: data
                     })
                 }
             })
