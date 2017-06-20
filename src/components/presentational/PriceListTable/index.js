@@ -11,18 +11,24 @@ class PriceListTable extends Component {
     constructor(props) {
         super(props)
     }
+    componentWillMount() {
+        if(!this.props.match.params.id) {
+            this.props.history.push("/")
+        } else {
+            this.props.importRequest(this.props.match.params.id)
+        }
 
+    }
     render(){
         return(
             <div className="PriceListTable__wrapper">
-                <div className="PriceListTable__above">{this.props.loading ? 'loading' : null}</div>
+                <div className="PriceListTable__above">Siia tuleb tekst?</div>
                 <div className="PriceListTable__content">
                     <Table items = {this.props.mismatches}
                            currentlyBeingEdited = {this.props.currentlyBeingEdited}
                            selector = {this.props.selectEditable}
                     />
                 </div>
-                <button onClick={this.props.importRequest}>click</button>
             </div>
         )
     }

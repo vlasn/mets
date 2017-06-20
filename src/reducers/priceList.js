@@ -5,6 +5,7 @@
 export default function reducer( state = {
     loading: false,
     conflictsResolved: false,
+    imports: [],
     foundOptionsByKeys: {},
     mismatches: {},
     matches: [],
@@ -96,6 +97,13 @@ export default function reducer( state = {
                 ...state,
                 matches: [...state.matches, action.payload],
                 mismatches: shCopy
+            }
+        }
+
+        case "PRICELIST_IMPORT_HISTORY" : {
+            return{
+                ...state,
+                imports: action.payload
             }
         }
 

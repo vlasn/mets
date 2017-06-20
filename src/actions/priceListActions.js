@@ -31,13 +31,50 @@ export const getOptions = (fieldKey) => {
     }
 }
 
-export const importRequest = () => {
+export const fetchImportedPriceLists = () => {
     return (dispatch) => {
         dispatch({
             type: "PRICELIST_LOADING",
             payload: true
         })
-        fauxImportRequest() //axios.post....etc
+        axios.get("/api/import/fetch")
+            .then((response)=> {
+                dispatch({
+                    type: "PRICELIST_LOADING",
+                    payload: false
+                })
+                if(response.data.status === 'accept'){
+                    console.log(response)
+
+                    dispatch({
+                        type: "PRICELIST_IMPORT_HISTORY",
+                        payload: response.data.data
+                    })
+
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                dispatch({
+                    type: "PRICELIST_LOADING",
+                    payload: false
+                })
+                dispatch({
+                    type: "PRICELIST_ERROR",
+                    error: error
+                })
+            })
+
+    }
+}
+
+export const importRequest = (importId) => {
+    return (dispatch) => {
+        dispatch({
+            type: "PRICELIST_LOADING",
+            payload: true
+        })
+        axios.get("/api/import/fetch?id="+importId)
             .then((data)=> {
                 dispatch({
                     type: "PRICELIST_LOADING",

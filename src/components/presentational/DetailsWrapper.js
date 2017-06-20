@@ -27,6 +27,7 @@ export default class DetailsWrapper extends React.Component{
     }
 
     render() {
+        console.log('detailsview:', this.props)
         return(
             <div className="DetailsWrapper__wrapper">
             <div className="DetailsWrapper__button__background">
@@ -88,7 +89,7 @@ export default class DetailsWrapper extends React.Component{
                 }
                 {/*Lepinguvaade*/}
                 {this.state.activeTab === 'leping' ?
-                    this.props.documents.contracts ?
+                    this.props.documents && this.props.documents.contracts ?
                         this.props.documents.contracts.map(DetailsTab) : <EmptyTab/>
                     : null}
                 {this.state.activeTab === 'teatis' ?
@@ -119,23 +120,8 @@ const DetailsTab = (data=[], nonFileRow = false, callback) => {
 
 const Missing = () => <span className="FileRow__missing-value">Puudub</span>;
 
-const EmptyTab = () =>
+const EmptyTab = () => (
     <div className="DetailsWrapper__missing-data-tab">
         <div className="DetailsWrapper__upload-link">Lisa fail..</div>
     </div>
-
-//const prettyPrint = (arr) => arr.reduce((acc, val, index)=>{acc+=(index<1||index==arr.length-1?'':' ,')+val},'');
-const uuid = () => {
-    var i, random;
-    var uuid = '';
-    for (i = 0; i < 32; i++) {
-        random = Math.random() * 16 | 0;
-        if (i === 8 || i === 12 || i === 16 || i === 20) {
-            uuid += '-';
-        }
-
-        uuid += (i === 12 ? 4 : (i === 16 ? (random & 3 | 8) : random)).toString(16);
-    }
-
-    return uuid;
-}
+)
