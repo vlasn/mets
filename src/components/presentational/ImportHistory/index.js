@@ -4,7 +4,18 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { fetchImportedPriceLists } from "../../../actions/priceListActions"
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import FlatButton from 'material-ui/FlatButton'
 const css = require("./ImportHistory.scss")
+
+const styles = {
+    Big__button: {
+        display:'inline-block',
+        boarderRadius:'0px',
+        width: "840px",
+        height: "40px"
+    }
+}
 
 class ImportHistory extends Component{
     constructor(props) {
@@ -24,7 +35,7 @@ class ImportHistory extends Component{
     render() {
         return(
             <div className="ImportHistory__wrapper">
-                Mõõteraportid
+                <h1>Mõõteraportid</h1>
                 {this.props.imports.map(row =>
                     <div
                         key={row._id}
@@ -36,6 +47,16 @@ class ImportHistory extends Component{
 
                     </div>
                 )}
+                <MuiThemeProvider>
+                <div className="Big__button">
+                    <FlatButton
+                        label='Impordi mõõteraport'
+                        backgroundColor="#9BFCD3"
+                        hoverColor="#9BFCD3"
+                        style={styles.Big__button}
+                    />
+                </div>
+                </MuiThemeProvider>
 
             </div>
         )
@@ -47,4 +68,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps, {fetchImportedPriceLists})(ImportHistory)
+export default connect(mapStateToProps, { fetchImportedPriceLists })(ImportHistory)
