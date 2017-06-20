@@ -48,7 +48,6 @@ export const fetchImportedPriceLists = () => {
                         type: "PRICELIST_IMPORT_HISTORY",
                         payload: response.data.data
                     })
-
                 }
             })
             .catch(error => {
@@ -62,22 +61,22 @@ export const fetchImportedPriceLists = () => {
                     error: error
                 })
             })
-
     }
 }
 
-export const importRequest = (importId) => {
+export const fetchSinglePricelist = (importId) => {
     return (dispatch) => {
         dispatch({
             type: "PRICELIST_LOADING",
             payload: true
         })
         axios.get("/api/import/fetch?id="+importId)
-            .then((data)=> {
+            .then(({data})=> {
                 dispatch({
                     type: "PRICELIST_LOADING",
                     payload: false
                 });
+                console.log(Object.keys(data.data));
                 if(data.status == 'accept' && data.data.unmatched.length>0) {
                     console.log("fired import unmatches request for"+importId)
 

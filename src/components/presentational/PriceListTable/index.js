@@ -3,7 +3,7 @@
  */
 import React, {Component} from "react"
 import { connect } from "react-redux"
-import { importRequest, selectEditable } from "../../../actions/priceListActions"
+import { fetchSinglePricelist, selectEditable } from "../../../actions/priceListActions"
 const css = require("./PriceList.scss")
 import Table from "./PriceListTable"
 
@@ -15,7 +15,7 @@ class PriceListTable extends Component {
         if(!this.props.match.params.id) {
             this.props.history.push("/")
         } else {
-            this.props.importRequest(this.props.match.params.id)
+            this.props.fetchSinglePricelist(this.props.match.params.id)
         }
 
     }
@@ -47,4 +47,4 @@ const mapStateToProps = function(state, ownProps) {
     }
 }
 
-export default connect(mapStateToProps, { importRequest, selectEditable })(PriceListTable)
+export default connect(mapStateToProps, { fetchSinglePricelist, selectEditable })(PriceListTable)

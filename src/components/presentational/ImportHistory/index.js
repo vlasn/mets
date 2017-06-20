@@ -47,4 +47,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-export default connect(mapStateToProps, {fetchImportedPriceLists})(ImportHistory)
+export default connect(mapStateToProps, { fetchImportedPriceLists })(ImportHistory)
