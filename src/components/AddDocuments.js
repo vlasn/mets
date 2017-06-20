@@ -74,7 +74,7 @@ export default class AddDocuments extends React.Component {
         return(
                 <div className="AddDocuments__wrapper">
                     <div className="AddDocuments__buttons-wrapper">
-                        <div className="Heading">Lisa dokumendid</div>
+                        <div className="Heading"><h1>Lisa dokumendid</h1></div>
                         <div className="Buttons">
                             <ReactFileReader
                                 handleFiles={this.props.handleContractFiles}
@@ -85,7 +85,7 @@ export default class AddDocuments extends React.Component {
                                 <FlatButton
                                     label='Leping'
                                     backgroundColor= "#868686"
-                                    hoverColor = "#00CC33"
+                                    hoverColor = "#9bfcd3"
                                     labelStyle ={labelStyles.headerButton}
                                     style={styles.regularbutton}
                                     id={uuid()}
@@ -101,9 +101,10 @@ export default class AddDocuments extends React.Component {
 
                             >
                                 <FlatButton
+                                className="buttonHover"
                                     label='Metsateatis'
                                     backgroundColor= "#868686"
-                                    hoverColor = "#00CC33"
+                                    hoverColor = "#9bfcd3"
                                     labelStyle ={labelStyles.headerButton}
                                     style={styles.regularbutton}
                                     id={uuid()}

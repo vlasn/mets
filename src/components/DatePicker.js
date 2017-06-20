@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const styles ={
     date:{
-        width: "65%"
+        width: "100%"
     }
 }
 export default class DatePicker extends React.Component {
