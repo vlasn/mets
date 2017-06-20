@@ -107,6 +107,38 @@ export const addToBundle = (_id, key, value) => {
     }
 }
 
+export const submitXlsx = (formData) => {
+    return (dispatch) => {
+        dispatch({
+            type: "XLSX_UPLOAD_ATTEMPT",
+            payload: true
+        })
+        let headers =  new Headers();
+        headers.set('Accept', 'application/json');
+        let fetchOptions = {
+            method: 'POST',
+            headers,
+            body: formData
+        };
+
+        fetch('/api/import/xlsx/new', fetchOptions)
+            .then(res => res.json())
+            .then(res => {
+                dispatch({
+                    type: "XLSX_UPLOAD_ATTEMPT",
+                    payload: false
+                })
+                if(res.status === 'accept') {
+                    dispatch({
+                        type: "XLSX_UPLOAD_SUCCESSFUL",
+                        payload: res.data,
+                    })
+                }
+            })
+            .catch(console.log)
+    }
+}
+
 export const submitBundle = (prevValues, editedValues) => {
     let priceGrpKey= "hinna gr  \"võti\""
 

@@ -12,6 +12,7 @@ class PriceListTable extends Component {
         super(props)
     }
     componentWillMount() {
+        console.log('plTable:', this.props);
         if(!this.props.match.params.id) {
             this.props.history.push("/")
         } else {
@@ -22,7 +23,7 @@ class PriceListTable extends Component {
     render(){
         return(
             <div className="PriceListTable__wrapper">
-                <div className="PriceListTable__above">Siia tuleb tekst?</div>
+                <div className="PriceListTable__above">{this.props.meta.filename||"Faili nimi puudub"}</div>
                 <div className="PriceListTable__content">
                     <Table items = {this.props.mismatches}
                            currentlyBeingEdited = {this.props.currentlyBeingEdited}
@@ -43,7 +44,9 @@ const mapStateToProps = function(state, ownProps) {
         mismatches: state.priceList.mismatches,
         loading: state.priceList.loading,
         error: state.priceList.error,
-        currentlyBeingEdited: state.priceList.currentlyBeingEdited
+        currentlyBeingEdited: state.priceList.currentlyBeingEdited,
+        currentlyEditedName: state.priceList.currentlyEditedName,
+        meta: state.priceList.meta
     }
 }
 

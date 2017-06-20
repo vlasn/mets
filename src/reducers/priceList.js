@@ -5,14 +5,17 @@
 export default function reducer( state = {
     loading: false,
     conflictsResolved: false,
+    redirectToResolve: false,
     imports: [],
     foundOptionsByKeys: {},
+    currentlyEditedName: '',
     mismatches: {},
     matches: [],
     meta: {
         _id: "",
         matches: 0,
         mismatches: 0,
+        filename: ''
     },
     currentlyBeingEdited: false,
     currentlyEditedOpts: {
@@ -36,7 +39,9 @@ export default function reducer( state = {
                     _id: action.payload._id,
                     matches: action.payload.matched.length,
                     mismatches: action.payload.unmatched.length,
-                }
+                    name: action.payload.filename || 'Failinimi puudub'
+                },
+                redirectToResolve: true
             }
         }
 
@@ -97,7 +102,7 @@ export default function reducer( state = {
             return {
                 ...state,
                 matches: [...state.matches, action.payload],
-                mismatches: shCopy
+                mismatches: shCopy,
             }
         }
 
@@ -105,6 +110,21 @@ export default function reducer( state = {
             return{
                 ...state,
                 imports: action.payload
+            }
+        }
+
+        case "XLSX_UPLOAD_SUCCESSFUL" : {
+            let needsResolving = action.payload.unmatched.length>0
+            return {
+                ...state,
+                currentlyBeingEdited: needsResolving ? action.payload._id : state.currentlyBeingEdited,
+                redirectToResolve: needsResolving
+            }
+        }
+        case "XLSX_UPLOAD_FAILED" : {
+            return {
+                ...state,
+                currentlyBeingEdited: false,
             }
         }
 

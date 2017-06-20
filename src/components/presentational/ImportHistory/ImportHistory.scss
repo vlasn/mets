@@ -32,7 +32,18 @@
 	.id {
 		
 	}
+	.ImportHistory__button {
+		padding: 10px 30px;
+		&:hover {
+			background-color: #7FFFC7;
+		}
+	}
+	.hide {
+		display: none;
+	}
+
 .Big__button {
 	margin-bottom: 50px;
+	text-align: center;
 }
 }
