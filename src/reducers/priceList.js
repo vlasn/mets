@@ -9,6 +9,7 @@ export default function reducer( state = {
     imports: [],
     foundOptionsByKeys: {},
     currentlyEditedName: '',
+    currentParent: 0,
     mismatches: {},
     matches: [],
     meta: {
@@ -18,6 +19,7 @@ export default function reducer( state = {
         filename: ''
     },
     currentlyBeingEdited: false,
+    allowNewPriceListItem: false,
     currentlyEditedOpts: {
         _id: false,
     }
@@ -106,6 +108,13 @@ export default function reducer( state = {
             }
         }
 
+        case "PRICELIST_MATCH_REJECTED" : {
+            return {
+                ...state,
+                    allowNewPriceListItem: true
+            }
+        }
+
         case "PRICELIST_IMPORT_HISTORY" : {
             return{
                 ...state,
@@ -125,6 +134,23 @@ export default function reducer( state = {
             return {
                 ...state,
                 currentlyBeingEdited: false,
+            }
+        }
+
+        case "PRICELIST_ADD_SUCCESSFUL" : {
+            let shCopy = Object.assign({}, state.mismatches)
+            delete shCopy[state.currentlyBeingEdited]
+            return {
+                ...state,
+                currentlyBeingEdited: false,
+                mismatches: shCopy
+            }
+        }
+
+        case "TRANSMIT_PARENT" : {
+            return {
+                ...state,
+                currentParent: action.payload
             }
         }
 
