@@ -2,7 +2,7 @@
 :squirrel: :gun:
 
 <p align="center">
-  <img src="Ekraanipilt.png" width="350"/>
+  <img src="http://www.tlu.ee/~kroots/Ekraanipilt.png"/>
 </p>
 
 Projekt on loodud  Tallinna Ülikooli **Digitehnoloogiate instituudis**, tarkvaraarenduse praktika suvetöö raames. 
