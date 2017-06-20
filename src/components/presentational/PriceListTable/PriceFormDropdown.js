@@ -78,7 +78,9 @@ class Dropdown extends Component {
                 ...this.state,
                 searchTerm: target.value
             })
-        } //further logic to follow, one day.
+        } else if(this.props.enum===false) {
+            this.confirmMatch(target.value)
+        }
     }
 
     searchFilter(value, term) {
@@ -91,8 +93,9 @@ class Dropdown extends Component {
         if(value=="") return
         this.setState({...this.state, confirmedMatch: value, open: false}, ()=>{
             this.FilterInput.value = value //set value of filter field
+            this.FilterInput.blur()
             this.props.updateInput(value) //set value of adjacent text field
-            this.props.returnValue(this.props.dbKey, value) //dispatch to reducer
+            this.props.returnValue(this.props.extra||this.props.dbKey, value) //dispatch to reducer
         })
     }
 

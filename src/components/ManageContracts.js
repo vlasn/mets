@@ -27,7 +27,11 @@ export default class ClientLanding extends React.Component {
                     return(
                         <MetsCard {...data} key={data._id}>
                             <DetailsWrapper {...data} updateRow={this.onContractRowUpdate.bind(this)} />
-                            <VeoseTable tableData = {tableData} status={data.status}/>
+                            <VeoseTable
+                                cadastral={data.kinnistu.katastritunnused}
+                                contractId={data._id}
+                                status={data.status}
+                            />
                         </MetsCard>
                     )
                     })
@@ -36,82 +40,3 @@ export default class ClientLanding extends React.Component {
         )
     }
 }
-
-//Dummy data just to have something displayed in the tables for now
-const tableData = [
-    {
-        kuupäev: '11.03.2016',
-        veoseleht: 'Veoseleht 33klrnqjykbnqy882',
-        kogus: '30',
-        summa: '1421',
-    },
-
-    {
-        kuupäev: '11.03.2016',
-        veoseleht: 'Veoseleht 33mkrleny882',
-        kogus: '23',
-        summa: '11',
-    },
-    {
-        kuupäev: '11.03.2016',
-        veoseleht: 'Veoseleht 338gmnkflnw82',
-        kogus: '30',
-        summa: '41',
-    },
-    {
-        kuupäev: '11.03.2016',
-        veoseleht: 'Veoseleht 338jgireaojy82',
-        kogus: '30',
-        summa: '7',
-    },
-    {
-        kuupäev: '11.03.2016',
-        veoseleht: 'Veoseleht 3jgflakhlm3882',
-        kogus: '30',
-        summa: '1421',
-    },
-
-    {
-        kuupäev: '11.03.2016',
-        veoseleht: 'Veoseleht 33arhja;882',
-        kogus: '23',
-        summa: '11',
-    },
-    {
-        kuupäev: '11.03.2016',
-        veoseleht: 'Veoseleht 33grarjraj882',
-        kogus: '30',
-        summa: '41',
-    },
-    {
-        kuupäev: '11.03.2016',
-        veoseleht: 'Veoseleht 33gdsaryuae882',
-        kogus: '30',
-        summa: '7',
-    },
-    {
-        kuupäev: '11.03.2016',
-        veoseleht: 'Veoseleht 3gdsHRru3882',
-        kogus: '30',
-        summa: '1421',
-    },
-
-    {
-        kuupäev: '11.03.2016',
-        veoseleht: 'Veoseleht 3adsafas82',
-        kogus: '23',
-        summa: '1',
-    },
-    {
-        kuupäev: '11.03.2016',
-        veoseleht: 'Veoseleht 338fsafsadsa82',
-        kogus: '30',
-        summa: '41',
-    },
-    {
-        kuupäev: '11.03.2016',
-        veoseleht: 'Veoseleht 33fhsddjtkaj882',
-        kogus: '30',
-        summa: '7',
-    },
-];
