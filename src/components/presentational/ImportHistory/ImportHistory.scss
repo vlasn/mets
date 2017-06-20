@@ -1,15 +1,38 @@
 .ImportHistory__wrapper {
-
-
-  .ImportHistory__row {
-
-
+	
+	$pendingColor: #9bfcd3;
+	$rejectColor: #FFEAEA;
+	
+  	.ImportHistory__row {
+		box-sizing: border-box;
+		cursor: pointer;
+		border: 2px solid lightgrey;
+		display: flex;
+		width: 100%;
+		margin-bottom: 17px;
+		padding: 10px;
+		font-size: 18px;
+		flex-direction: row;
+		align-content: center;
     .ImportHistory__id {
-
+		flex: 1 0 0;
     }
 
     .ImportHistory__status {
-
+				
     }
   }
+	.reject:hover {
+		background: $rejectColor; 
+	}
+	
+	.pending:hover {
+		background: $pendingColor; 
+	}
+	.id {
+		
+	}
+.Big__button {
+	margin-bottom: 50px;
+}
 }
