@@ -7,6 +7,7 @@ export default function reducer( state = {
     conflictsResolved: false,
     foundOptionsByKeys: {},
     mismatches: {},
+    matches: [],
     meta: {
         _id: "",
         matches: 0,
@@ -14,17 +15,16 @@ export default function reducer( state = {
     },
     currentlyBeingEdited: false,
     currentlyEditedOpts: {
-        _id: false
+        _id: false,
     }
 }, action) {
     switch(action.type) {
         case "PRICELIST_LOADING" : {
             return {
                 ...state,
-                loading: action.payload
+                loading: action.payload,
             }
         }
-
         case "PRICELIST_MISMATCHES" : {
             let newMismatches = action.payload.data.unmatched.reduce((acc, val)=>{ acc[val._id] = val; return acc },{})
             return {
@@ -42,30 +42,36 @@ export default function reducer( state = {
             if(state.mismatches.hasOwnProperty(action.payload)) {
                 return {
                     ...state,
-                    currentlyBeingEdited: action.payload
+                    currentlyBeingEdited: action.payload,
+                    currentlyEditedOpts : {
+                        ...editableKeys
+                    },
+                    okToSubmitBundle: false
                 }
             } else {
                 return {...state}
             }
         }
         case "PRICEFORM_UPDATE_KEYS" : {
+
             return {
                 ...state,
                 foundOptionsByKeys: {
                     ...state.foundOptionsByKeys,
-                    [action.payload.key]: [...action.payload.options]
-                }
+                    [action.payload.key]: [...action.payload.options],
+                },
             }
         }
 
         case "PRICEFORM_EDITS_BUNDLE" : {
+
             if(state.currentlyEditedOpts._id === action.payload._id){
                 return {
                     ...state,
                     currentlyEditedOpts: {
                         ...state.currentlyEditedOpts,
                         [action.payload.key]: action.payload.value
-                    }
+                    },
                 }
             } else {
                 return {
@@ -74,10 +80,23 @@ export default function reducer( state = {
                         ...state.currentlyEditedOpts,
                         _id: action.payload._id,
                         [action.payload.key]: action.payload.value
-                    }
+                    },
                 }
             }
 
+        }
+
+        case "PRICELIST_MATCH_CONFIRMED" : {
+            //Had issues reducing object by it's keys, so hello ugly es5 syntax
+            let shCopy = Object.assign({}, state.mismatches)
+
+            delete shCopy[action.payload]
+
+            return {
+                ...state,
+                matches: [...state.matches, action.payload],
+                mismatches: shCopy
+            }
         }
 
         default : {
@@ -87,3 +106,6 @@ export default function reducer( state = {
         }
     }
 }
+
+import { cellKeys } from "../components/presentational/PriceListTable/PriceListForm"
+let editableKeys = Object.keys(cellKeys).reduce((acc,val)=>{acc[cellKeys[val]] = false; return acc},{})

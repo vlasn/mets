@@ -4,10 +4,9 @@
 import React, {Component} from "react"
 import { connect } from "react-redux"
 import { getOptions, addToBundle, submitBundle } from "../../../actions/priceListActions"
-
 //import {cellKeys} from "./PriceListTable"
 //Duplicate declaration because Webpack couldn't find the object from the other file. :|
-const cellKeys = {
+export const cellKeys = {
     tarnekoht: "tarnekoht",
     veoseleheNr: "Elvise VL nr",
     veoseleheKp: "veoselehe kuupäev",
@@ -29,18 +28,22 @@ const FormValueMap = [
     //from the price list -> impossible to use provided endpoint to populate dropdown values...
 
     {ownKey: "Tarnekoht", dbKey: cellKeys.tarnekoht, pListKey: "Sihtkoht", enum: true },
-    {ownKey: "Veoselehe nr", dbKey: cellKeys.veoseleheNr, pListKey: "Veoselehe Nr", enum: false },
-    {ownKey: "Veoselehe kp", dbKey: cellKeys.veoseleheKp, pListKey: "Veoselehe kuupäev", enum: false }, /*TODO - type date*/
+    {ownKey: "Veoselehe nr", dbKey: cellKeys.veoseleheNr, pListKey: "-", enum: false },
+    {ownKey: "Veoselehe kp", dbKey: cellKeys.veoseleheKp, pListKey: "-", enum: false }, /*TODO - type date*/
     {ownKey: "Puuliik", dbKey: cellKeys.puuliik, pListKey: "Puuliik", enum: true },
     {ownKey: "Kvaliteet", dbKey: cellKeys.kvaliteet, pListKey: "Kvaliteet", enum: true },
-    {ownKey: "Hinnagrupp (min)", dbKey: cellKeys.hinnagrupp, pListKey: "Diameeter_min", enum: true, extra:"priceGrpMin"  },
+    {ownKey: "Hinnagrupp (min)", dbKey: cellKeys.hinnagrupp, pListKey: "Diameeter_min", enum: true, extra:"priceGrpMin"},
     {ownKey: "Hinnagrupi (max)", dbKey: cellKeys.hinnagrupp, pListKey: "Diameeter_max", enum: true,  extra:"priceGrpMax"},
-    {ownKey: "Arvestusmaht", dbKey: cellKeys.maht, pListKey: "Arvestusmaht", enum: false },
-    {ownKey: "Katastritunnus", dbKey: cellKeys.katastritunnus, pListKey: "Katastritunnus", enum: false },
+    {ownKey: "Pikkus", dbKey: cellKeys.pikkus, pListKey: "-", enum: false },
+    {ownKey: "Hind", dbKey: cellKeys.hind, pListKey: "-", enum: false },
+    {ownKey: "Arvestusmaht", dbKey: cellKeys.maht, pListKey: "-", enum: false },
+    {ownKey: "Katastritunnus", dbKey: cellKeys.katastritunnus, pListKey: "-", enum: false },
 
 ]
 const AdditionalValueMap = [
     {ownKey: "Sortiment", dbKey: false, pListKey: "Sortiment", enum: true },
+    {ownKey: "Diameeter (min)", pListKey: "Diameeter_min", enum: true },
+    {ownKey: "Diameeter (max)", pListKey: "Diameeter_max", enum: true },
     {ownKey: "Pikkus min", dbKey: false, pListKey: "Pikkus_min", enum: true },
     {ownKey: "Pikkus max", dbKey: false, pListKey: "Pikkus_max", enum: true }
 ]
@@ -58,7 +61,8 @@ class PriceListForm extends Component {
     submitBundle() {
         this.props.submitBundle(
             this.props.mismatches[this.props.currentlyBeingEdited],
-            this.props.currentlyEditedOpts
+            this.props.currentlyEditedOpts,
+            this.props.okToSubmitBundle
         )
     }
 
@@ -111,7 +115,8 @@ const mapStateToProps = function(state){
         error: state.priceList.error,
         currentlyBeingEdited: state.priceList.currentlyBeingEdited,
         foundOpts: state.priceList.foundOptionsByKeys,
-        currentlyEditedOpts: state.priceList.currentlyEditedOpts
+        currentlyEditedOpts: state.priceList.currentlyEditedOpts,
+        okToSubmitBundle: state.priceList.okToSubmitBundle
     }
 }
 

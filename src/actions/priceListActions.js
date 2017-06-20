@@ -68,7 +68,6 @@ export const addToBundle = (_id, key, value) => {
             payload: {
                 _id, key, value
             }
-
         })
     }
 }
@@ -78,25 +77,40 @@ export const submitBundle = (prevValues, editedValues) => {
 
     let pgMin = editedValues.priceGrpMin || false
     let pgMax = editedValues.priceGrpMax || false
+    let bundledEdits = {
+        ...editedValues,
+        [priceGrpKey]:  pgMin && pgMax ? `${pgMin}-${pgMax}` : false
+    }
+
+    let missing = Object.keys(bundledEdits)
+            .map(key => {
+                return bundledEdits[key]
+            })
+            .indexOf(false) !== -1 //bool
+
 
     return (dispatch) => {
-        console.log(Object.keys(prevValues), Object.keys(editedValues))
-        let bundle = {
-            ...prevValues,
-            ...editedValues,
-            [priceGrpKey]:  pgMin && pgMax ? `${pgMin}-${pgMax}` : prevValues[priceGrpKey]
-        }
-        console.log(bundle)
-        axios.post('/api/import/xlsx/update', {
-            ...bundle
-        })
-            .then(({data}) => {
-                console.log(data);
-                if(data.status == 'accept') {
-
-                }
+        console.log(JSON.stringify({ ...prevValues, ...bundledEdits}), missing);
+        if(!missing) {
+            axios.post('/api/import/xlsx/update', {
+                ...prevValues,
+                ...bundledEdits
             })
-            .catch(console.log) // needs error handling
+                .then(({data}) => {
+                    if(data.status == 'accept') {
+                        dispatch({
+                            type: "PRICELIST_MATCH_CONFIRMED",
+                            payload: data.data
+                        })
+                    }
+                })
+                .catch(console.log) // needs error handling
+        } else {
+            dispatch({
+                type: "PRICELIST_SUBMIT_ERROR",
+                payload: "Osad väärtused on täitmata!"
+            })
+        }
     }
 }
 

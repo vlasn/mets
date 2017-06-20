@@ -2,7 +2,6 @@
  * Created by clstrfvck on 10/06/2017.
  */
 import React, { Component } from 'react'
-import TableRow from './TableRow'
 import Pagination from './Pagination'
 const css = require("./Table.scss");
 
@@ -11,28 +10,12 @@ export default class Table extends Component {
         super(props)
         this.tableMetaData = {kogus:0,summa:0}
         this.entriesPerPage = 5;
-        this.splitRows = this.splitRows.bind(this)
-        this.pages = [];
         this.state = {
-            currentPage: 1
+            currentPage: 1,
+            pages: []
         }
     }
 
-    componentWillMount() {
-        //Dynamically calculates the total sums of amounts + values in provided array
-        this.tableMetaData = this.props.tableData.reduce(
-            ({kogus, summa}, row)=>{
-                return {
-                    kogus: parseInt(kogus) + parseInt(row.kogus),
-                    summa: parseInt(summa) + parseInt(row.summa)
-                }
-            }, {kogus:0, summa:0});
-        this.splitRows();
-
-    }
-    numberClicked(number) {
-        this.setState({currentPage: number})
-    }
     arrowClicked(current, total, dir) {
         console.log(current,total,dir);
         let currentPage = current
@@ -43,26 +26,10 @@ export default class Table extends Component {
         }
     }
 
-    splitRows() {
-        let pageCount = Math.ceil(this.props.tableData.length/this.entriesPerPage)
-        for(let i=0;i<pageCount; i++){
-            let tableLength = this.props.tableData.length
-            let perPage = tableLength<this.entriesPerPage ? tableLength : this.entriesPerPage
-            let max = tableLength < (i+1)*perPage ? tableLength % (perPage*i) : perPage
-            let temp = this.props.tableData.slice(i*perPage, (i*perPage)+max)
-            this.pages.push(temp)
-        }
-    }
 
 
-    handleRowClick(id) {
-        //Receives click events from table rows with an ID (currently, name of veoseleht).
-        //Placeholder for Something Nice™
-        console.log(`row with the ID of "${id}" was clicked.`)
-    }
 
     render() {
-        console.log(this.pages.length);
         return(
             <div className="Table__wrapper">
                 <table className="Table" cellSpacing={0}>
@@ -77,24 +44,14 @@ export default class Table extends Component {
                     <tr className={`Table__header ${this.props.status ? this.props.status : 'default'}`}>
                         <td className="TableRow__column"> Kuupäev</td>
                         <td className="TableRow__column"/>
-                        <td className="TableRow__column">{this.tableMetaData.kogus}</td>
-                        <td className="TableRow__column">{this.tableMetaData.summa}</td></tr>
+                        <td className="TableRow__column">calcme</td>
+                        <td className="TableRow__column">calcme</td></tr>
                         {
-                            this.pages[this.state.currentPage-1].map((row, index) => {
-                            return (
-                                <TableRow
-                                    key={index}
-                                    kuupäev={row.kuupäev}
-                                    veoseleht={row.veoseleht}
-                                    kogus={row.kogus}
-                                    summa={row.summa}
-                                    handleClick={this.handleRowClick.bind(this)}
-                                />
-                            )
-                        })}
+                           this.props.pages ? this.props.pages.map(v=>JSON.stringify(v)):'puudu'
+                        }
                     </tbody>
                 </table>
-                {this.pages.length>1 ?
+                {this.state.pages.length>1 ?
                 <Pagination
                     totalCount={this.pages.length}
                     currentlyActive={this.state.currentPage}
@@ -105,3 +62,14 @@ export default class Table extends Component {
         )
     }
 }
+
+/**
+ <TableRow
+ key={index}
+ kuupäev={row.date}
+ veoseleht={row.name}
+ kogus={row.volume}
+ summa={row.price}
+ handleClick={this.handleRowClick.bind(this)}
+ />
+ */

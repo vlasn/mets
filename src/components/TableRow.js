@@ -8,7 +8,7 @@ const TableRow = (props) => {
         props.handleClick(props.veoseleht)
     }
     return(
-        <tr className="TableRow" key={props.index} onClick={handleClick}>
+        <tr className="TableRow" key={props.index}>
             <td className="TableRow__column">{props.kuupäev}</td>
             <td className="TableRow__column left">{props.veoseleht}</td>
             <td className="TableRow__column">{props.kogus}</td>

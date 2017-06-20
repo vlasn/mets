@@ -133,7 +133,7 @@ export default function reducer( state = {
         case "SEARCH_COMPLETE" : {
             return {
                 ...state,
-                contracts: action.payload,
+                contracts: action.payload.map(contract => ({...contract, cargoSheets: false})),
                 searchRequired: false
             }
         }
@@ -153,6 +153,13 @@ export default function reducer( state = {
             return({
                 ...state,
                 contracts: state.contracts.map(c => c._id === action.payload._id ? action.payload : c)
+            })
+        }
+        case "CARGO_PAGES_RECEIVED" : {
+            console.log('updated a thing')
+            return({
+                ...state,
+                contracts: state.contracts.map(c => c._id!==action.forId ? c : {...c, cargoSheets: action.payload})
             })
         }
 
