@@ -9,7 +9,7 @@ const css = require("./LoginForm.scss");
 
 const styles = {
     button: {
-        color: 'white'
+        color: 'black'
     },
 }
 
@@ -35,8 +35,8 @@ export default class LoginForm extends React.Component{
                         name = "email" type="text"
                         updateValue = {this.props.updateValue}
                         style={styles.button}
-                        backgroundColor= "#00CC33"
-                        hoverColor = "#009933"
+                        backgroundColor= "#9bfcd3"
+                        hoverColor = "#9bfcd3"
                         fullWidth={true}
                         floatingLabelText="Meiliaadress"
                     />
@@ -55,8 +55,8 @@ export default class LoginForm extends React.Component{
                             name = "button"
                             label="Logi sisse"
                             labelStyle ={styles.button}
-                            backgroundColor= "#00CC33"
-                            hoverColor = "#009933"
+                            backgroundColor= "#9bfcd3"
+                            hoverColor = "#9bfcd3"
                             submitHandler = {this.loginHandler.bind(this)}
                             fullWidth={true}
                         />

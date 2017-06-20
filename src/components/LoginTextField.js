@@ -4,7 +4,7 @@ import TextField from 'material-ui/TextField';
 
 const styles = {
     underlineStyle: {
-        borderColor: '#00CC33',
+        borderColor: '#9bfcd3',
     },
 
     floatingLabelFocusStyle:{
