@@ -1,13 +1,12 @@
 # Metsahaldur 
-:squirrel: :gun:
 
 <p align="center">
   <img src="http://www.tlu.ee/~kroots/Ekraanipilt.png"/ width="500px">
 </p>
 
-Projekt on loodud  Tallinna Ülikooli **Digitehnoloogiate instituudis**, tarkvaraarenduse praktika suvetöö raames. 
+Projekt on loodud Tallinna Ülikooli Digitehnoloogiate instituudis, tarkvaraarenduse praktika (IFI6213.DT) suvetöö raames. 
 
-Metsahalduri veebilehekülg on loodud Metsahaldur OÜ tarbeks ning mõeldud kasutamiseks Metsahaldur OÜ töötajatele ning klientidele. Veebilehestiku eesmärk on muuta metsa haldamine metsahalduri firma jaoks lihtsaks ja veebipõhiseks. Rakendus lihtsustab Metsahaldur OÜ klientide ja ettevõtte vahelist andmevahetust. Veebilehega kaotatakse ära vajadus käsitisi andmete  sisestamiseks ja haldamiseks. Rakendus hõlbustab suuresti metsahalduri töötajate töövoogu. 
+Metsahalduri veebilehekülg on loodud Metsahaldur OÜ tellimusel ning mõeldud kasutamiseks Metsahaldur OÜ töötajatele ning klientidele. Veebilehestiku eesmärk on muuta metsa haldamine metsahalduri firma jaoks lihtsaks ja veebipõhiseks. Rakendus lihtsustab Metsahaldur OÜ klientide ja ettevõtte vahelist andmevahetust ning seega hõlbustab suuresti metsahalduri töötajate töövoogu. 
 
 ## Kasutatud tehnoloogiad
 ### Front end
