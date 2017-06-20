@@ -137,6 +137,7 @@ export default function reducer( state = {
                 searchRequired: false
             }
         }
+
         case "SEARCH_TRIGGERED" : {
             return {
                 ...state,
@@ -152,7 +153,7 @@ export default function reducer( state = {
         case "REFRESH_CONTRACT" : {
             return({
                 ...state,
-                contracts: state.contracts.map(c => c._id === action.payload._id ? action.payload : c)
+                contracts: state.contracts.map(c => c._id === action.payload._id ? {...c, ...action.payload} : c)
             })
         }
         case "CARGO_PAGES_RECEIVED" : {
