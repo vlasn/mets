@@ -14,6 +14,7 @@ import NewClient from "./components/containers/NewClient"
 import NewContract from "./components/containers/NewContract"
 import Footer from "./components/Footer"
 import PList from "./components/presentational/PriceListTable"
+import ImportHistory from "./components/presentational/ImportHistory"
 
 import Filter from "./components/containers/Filter"
 
@@ -34,11 +35,12 @@ class App extends React.Component {
                                 <section>
                                     <Filter/>
                                     <Contracts/>
-                                    {/*<PList/>*/}
                                 </section>
                             )
                             }
                         />
+                        <Route exact path="/import/:id" component={PList}/>
+                        <Route exact path="/imports" component={ImportHistory}/>
                         <Route exact path="/new_client" component={NewClient}/>
                         <Route exact path="/add_contract" component={NewContract}/>
                     </Switch>
