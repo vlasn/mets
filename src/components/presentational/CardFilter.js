@@ -55,7 +55,9 @@ export default class Filter extends Component {
     render() {
         return(
         <MuiWrapper>
+        <div><h1>Lepingud</h1>
             <div className="Filter__wrapper">
+            
                 <section className="Filter__searchbar-wrapper">
                     <SearchBar
                         onChange={this.onSearch}
@@ -106,6 +108,7 @@ export default class Filter extends Component {
                         </Dropdown>
                     </div>
                 </section>
+            </div>
             </div>
         </MuiWrapper>
 
