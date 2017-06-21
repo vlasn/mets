@@ -1,0 +1,43 @@
+.AddContract__wrapper{
+  text-align: center;
+  .generalDetails {
+    padding-top: 40px;
+    text-align: center;
+    width: 390px;
+    margin: auto;
+    
+  }
+  .Heading {
+    display: flex;
+    flex-direction: row;
+    padding: 4px 0px 8px 0px;
+    font-size: 1.2rem;
+    border-bottom: 1px dashed grey;
+    margin-bottom: 5px;
+    margin-top: 50px;
+  }
+ 
+  .Calendar {
+    padding-top: 40px;
+    text-align: center;
+    width: 390px;
+    margin: auto;
+  }
+
+  .DocumentsHeading{
+    display: block;
+    //flex-direction: row;
+    padding: 4px 0px 8px 0px;
+    font-size: 1.2rem;
+    border-bottom: 1px dashed grey;
+    margin-bottom: 5px;
+    margin-top: 50px;
+  }
+  .Big__button{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    padding-left: 20px;
+    margin-bottom: 50px;
+  }
+}
