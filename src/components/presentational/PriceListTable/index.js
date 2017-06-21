@@ -24,7 +24,7 @@ class PriceListTable extends Component {
     render(){
         return(
             <div className="PriceListTable__wrapper">
-                <div className="PriceListTable__above">{this.props.meta.filename||"Faili nimi puudub"}</div>
+                <div className="PriceListTable__above"><h2>{this.props.meta.name||"Faili nimi puudub"}</h2></div>
                 <div className="PriceListTable__content">
                     <Table items = {this.props.mismatches}
                            currentlyBeingEdited = {this.props.currentlyBeingEdited}

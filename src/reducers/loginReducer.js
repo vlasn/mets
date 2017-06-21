@@ -1,7 +1,6 @@
 /**
  * Created by clstrfvck on 12/04/2017.
  */
-
 export default function reducer( state = {
     email: "",
     password: "",
@@ -16,7 +15,7 @@ export default function reducer( state = {
         case "LOG_IN_ATTEMPT": {
             return { ...state, loading:true, error: false}
         }
-        case "LOG_IN_FAILED": {
+        case "LOG_IN_FAILURE": {
             return { ...state, loading: false, error: action.payload}
         }
         case "LOG_IN_SUCCESSFUL": {
