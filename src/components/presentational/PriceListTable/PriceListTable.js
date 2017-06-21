@@ -60,7 +60,7 @@ class Table extends Component {
                         {tableHeaders.map((header, index) =>
                             <td
                                 className="PTable__header-cell"
-                                style={{width: `${percentages[index]}%`}}
+                                style={{width: `${percentages[index]}%`, overflow: "hidden"}}
                                 key={uuid()}
                             >
                                 {header}
@@ -103,7 +103,7 @@ const WideRow = (props) => (
         {Object.keys(cellKeys).map((key, index) => (
             <td
                 className="PTable__content-cell"
-                width={`${percentages[index]}%`}
+                style={{width:`${percentages[index]}%`, overflow:"hidden"}}
                 key={uuid()}
             >
                 {props[cellKeys[key]]}

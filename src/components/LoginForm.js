@@ -20,7 +20,7 @@ export default class LoginForm extends React.Component{
     }
 
     loginHandler() {
-        this.props.onSubmitLogin(
+        this.props.betterLogin(
             this.props.email,
             this.props.password
         )
@@ -33,7 +33,7 @@ export default class LoginForm extends React.Component{
                     <LoginTextField
                         hintText = "E-mail"
                         name = "email" type="text"
-                        updateValue = {this.props.updateValue}
+                        updateValue = {this.props.credentialChange}
                         style={styles.button}
                         backgroundColor= "#9bfcd3"
                         hoverColor = "#9bfcd3"
@@ -44,7 +44,7 @@ export default class LoginForm extends React.Component{
                         hintText = "Parool"
                         name = "password"
                         type = "password"
-                        updateValue = {this.props.updateValue}
+                        updateValue = {this.props.credentialChange}
                         fullWidth={true}
                         floatingLabelText="Parool uuesti"
 
