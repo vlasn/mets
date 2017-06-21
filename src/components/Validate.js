@@ -17,7 +17,7 @@ class Validate extends React.Component {
         super(props);
     }
     componentWillMount() {
-        if(!this.props.verified){this.props.verifyHash(this.props.match.params.hash); console.log('Verifyin\'')}
+        //if(!this.props.verified){this.props.verifyHash(this.props.match.params.hash); console.log('Verifyin\'')}
     }
 
     render() {

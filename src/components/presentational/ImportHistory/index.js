@@ -64,7 +64,7 @@ class ImportHistory extends Component{
                         className={`ImportHistory__row ${row.status}`}
                         onClick={()=>this.navigateToImport(row._id)}
                     >
-                        <div className="ImportHistory__id">{row._id}</div>
+                        <div className="ImportHistory__id">{row.filename||'Import ID '+row._id}</div>
                         <div className="ImportHistory__status">{row.status==='pending' ? 'Kinnitamata':'Vigadega'}</div>
 
                     </div>
