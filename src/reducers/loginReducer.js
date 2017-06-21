@@ -5,7 +5,6 @@
 export default function reducer( state = {
     email: "",
     password: "",
-    secondaryPass: "",
     loading: false,
     loggedIn: false,
     error: null,
@@ -22,7 +21,7 @@ export default function reducer( state = {
         }
         case "LOG_IN_SUCCESSFUL": {
             console.log("login successful!");
-            return { ...state, loading: false, loggedIn: true, error: null, details: action.payload, navigateToRoot:true}
+            return { ...state, loading: false, loggedIn: true, error: null, password: null, details: action.payload, navigateToRoot:true}
         }
         case "LOG_OUT": {
             return {loading: false, loggedIn: false, error: null, details: {}}

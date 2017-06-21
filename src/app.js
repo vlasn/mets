@@ -15,6 +15,7 @@ import NewContract from "./components/containers/NewContract"
 import Footer from "./components/Footer"
 import PList from "./components/presentational/PriceListTable"
 import ImportHistory from "./components/presentational/ImportHistory"
+import AuthCheck from "./components/AuthCheck"
 
 import Filter from "./components/containers/Filter"
 
@@ -26,27 +27,23 @@ class App extends React.Component {
             <Router history={History}>
                 <div className="main__wrapper">
                     <HeaderWrapper/>
-                    <Switch>
+                    {/*<AuthCheck history={History}/>*/}
+
                         <Route exact={true} path="/login" component={Login}/>
                         <Route exact path="/validate/:hash" component={Validate}/>
-                        <Route path="/"
-                            exact={true}
-                            render={()=>(
-                                <section>
-                                    <Filter/>
-                                    <Contracts/>
-                                </section>
-                            )
-                            }
-                        />
+                        <Route path="/" exact component={Filter}/>
+                        <Route path="/" exact component={Contracts}/>
+                        <Route exact path="/import/:id" component={PList}/>
+                        <Route exact path="/imports" component={ImportHistory}/>
                         <Route exact path="/new_client" component={NewClient}/>
                         <Route exact path="/add_contract" component={NewContract}/>
-                    </Switch>
+
                 </div>
             </Router>
         );
     }
 }
+
 ReactDOM.render(
     <Provider store={store}>
         <App/>

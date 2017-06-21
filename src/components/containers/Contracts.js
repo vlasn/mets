@@ -8,6 +8,9 @@ class Contracts extends Component {
     constructor(props){
         super(props)
     }
+    componentWillMount() {
+        !this.props.loggedIn ? this.props.history.push("/login") : null
+    }
     render(){
         return(<ContractCards {...this.props}/>)
     }
@@ -47,6 +50,7 @@ const mapStateToProps = (state) => {
         filter: state.clientManagement.cards.filter,
         data: state.clientManagement.contracts,
         searchRequired: state.clientManagement.searchRequired,
+        loggedIn: state.user.loggedIn
         // contractRowLoading: state.editContract.contractRowLoading
     }
 }

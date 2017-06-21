@@ -67,7 +67,7 @@ class PriceListForm extends Component {
         )
     }
     submitNewItem() {
-        this.props.addNewPriceListItem(this.props.currentlyEditedOpts, )
+        this.props.addNewPriceListItem(this.props.currentlyEditedOpts, this.props.currentParent)
     }
 
     render(){
