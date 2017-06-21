@@ -9,10 +9,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import DatePicker from './DatePicker';
 import FlatButton from 'material-ui/FlatButton';
 
-const css = require("./AddClient.scss");
+const css = require("./AddContract.scss");
 const labelStyles = {
     headerButton: {
-        color: 'white'
+        color: 'black'
     }
 }
 
@@ -25,11 +25,11 @@ const styles = {
         margin: "10px",
     },
     longbutton: {
-        float: 'left',
+        
         padding: '0px 50px 0px 50px',
         display:'inline-block',
         boarderRadius:'0px',
-        width: "400px",
+        width: "390px",
     }
 
 };
@@ -139,7 +139,9 @@ export default class AddContract extends React.Component {
         console.log(this.state)
         return(
 
-            <div className="AddClient__wrapper">
+            <div className="AddContract__wrapper">
+                <div className="Heading"><h1>Lisa kliendi andmed</h1></div>
+                <div className="generalDetails">
                     <InputField
                         floatingLabelText={"Kinnistu nimi"}
                         hintText={"Mingi Nimi"}
@@ -194,10 +196,12 @@ export default class AddContract extends React.Component {
                         errorText={this.props.errors.forestMaster}
 
                     />
+                </div>
+
                 <MuiThemeProvider>
-                    <div>
-                        <div>
-                        <div className="Heading">Lisa kuupäevad</div>
+                    
+                        <div className="dateDetails">
+                        <div className="Heading"><h1>Lisa kuupäevad</h1></div>
                         <div className="Calendar" >
                             <DatePicker
                                 floating="Raie"
@@ -224,20 +228,24 @@ export default class AddContract extends React.Component {
                                 errorText={this.props.errors.cutsExport}
                             />
                         </div>
-                        </div>
+
                         <AddDocuments
                             handleContractFiles= {this.handleContractFiles}
                             handleNoticeFiles= {this.handleNoticeFiles}
                         />
+                        {/*<div>{this.props.errors.contract}</div>*/}
+                        {/*<div>{this.props.errors.forestNotice}</div>*/}
+
                         <div className="Uploads__wrapper">
-                            {this.state.contract.map((row)=><span className="Uploads">{row.name}</span>)}
-                            {this.state.forestNotice.map((row)=><span className="Uploads">{row.name}</span>)}
+                            {this.state.contract.map((row)=><div className="Uploads">{row.name}</div>)}
+                            {this.state.forestNotice.map((row)=><div className="Uploads">{row.name}</div>)}
                         </div>
+                       
                         <div className="Big__button">
                             <FlatButton
                                 label='Loo leping'
-                                backgroundColor= "#00CC33"
-                                hoverColor = "#00CC33"
+                                backgroundColor= "#9bfcd3"
+                                hoverColor = "#9bfcd3"
                                 labelStyle ={labelStyles.headerButton}
                                 style={styles.longbutton}
                                 onClick={()=>this.props.onSubmit({
@@ -257,6 +265,7 @@ export default class AddContract extends React.Component {
                     </div>
                 </MuiThemeProvider>
             </div>
+
         )
     }
 }

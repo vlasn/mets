@@ -1,6 +1,13 @@
-.AddClient__wrapper{
-text-align: center;
-  .Heading{
+.AddContract__wrapper{
+  text-align: center;
+  .generalDetails {
+    padding-top: 40px;
+    text-align: center;
+    width: 390px;
+    margin: auto;
+    
+  }
+  .Heading {
     display: flex;
     flex-direction: row;
     padding: 4px 0px 8px 0px;
@@ -9,11 +16,14 @@ text-align: center;
     margin-bottom: 5px;
     margin-top: 50px;
   }
-  .Calendar{
-    flex: 1 0 0;
+ 
+  .Calendar {
+    padding-top: 40px;
     text-align: center;
-
+    width: 390px;
+    margin: auto;
   }
+
   .DocumentsHeading{
     display: block;
     //flex-direction: row;
@@ -24,9 +34,10 @@ text-align: center;
     margin-top: 50px;
   }
   .Big__button{
-    width: 500px;
+    width: 100%;
     margin: auto;
     text-align: center;
+    padding-left: 20px;
+    margin-bottom: 50px;
   }
-
 }

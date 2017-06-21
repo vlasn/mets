@@ -1,31 +1,29 @@
+
 .AddDocuments__wrapper{
   display: block;
+   height: 200px;
+
   .AddDocuments__buttons-wrapper {
     display: block;
     width: 100%;
-  }
-  .Heading{
-    //padding: 4px 0 8px 0;
-    //font-size: 1.2rem;
-    //border-bottom: 1px dashed grey;
-    //margin-bottom: 5px;
-    //margin-top: 50px;
-  }
-  .Big__button{
-    //display: block;
-    //width: 500px;
-    //margin: auto;
-    //text-align: center;
-  }
-  .Buttons{
-    display: block;
-  }
-  .Uploads__wrapper{
-    .Uploads{
-      display: block;
-    }
+   
   }
 
+  .Buttons{
+    padding-left: 20px;
+    display: block;
+  }
+  .Buttons:hover {
+    color: black !important;
+  }
+  
+  .Uploads__wrapper {
+    
+    .Uploads{
+      display: block;
+
+    }
+  }
 
 }
 

@@ -22,7 +22,9 @@ export default function reducer( state = {
             propertyName: "",
             projectManager: "",
             email:"",
-            cadastre:""
+            cadastre:"",
+            contract:"",
+            forestNotice:""
         }
     },
 
