@@ -51,7 +51,6 @@ export const fetchImportedPriceLists = () => {
                 }
             })
             .catch(error => {
-                console.log(error);
                 dispatch({
                     type: "PRICELIST_LOADING",
                     payload: false
@@ -76,17 +75,14 @@ export const fetchSinglePricelist = (importId) => {
                     type: "PRICELIST_LOADING",
                     payload: false
                 });
-                console.log(Object.keys(data.data));
                 if(data.status == 'accept' && data.data.unmatched.length>0) {
-                    console.log("fired import unmatches request for"+importId)
-
                     dispatch({
                         type: "PRICELIST_MISMATCHES",
                         payload: data.data
                     })
                 }
             })
-            .catch(console.log) // needs error handling
+            .catch(console.log) // TODO - error handling
     }
 }
 
@@ -139,6 +135,59 @@ export const submitXlsx = (formData) => {
     }
 }
 
+export const addNewPriceListItem = (bundle, parentId) =>{
+    return (dispatch) => {
+        dispatch({
+            type: "PRICELIST_LOADING",
+            payload: true
+        })
+        console.log(bundle)
+        let missing = false
+        let mapKeys = {
+            tarnekoht: "Sihtkoht",
+            priceGrpMin: "Diameeter_min",
+            priceGrpMax: "Diameeter_max",
+            puuliik: "Puuliik",
+            kvaliteet: "Kvaliteet",
+        }
+        //remap keys in bundle based on the above map..
+        Object.keys(mapKeys).map(key=>bundle.hasOwnProperty(key) ? bundle[mapKeys[key]] = bundle[key] : null)
+        let requiredIndices = [
+            "Sihtkoht","Puuliik","Sortiment","Diameeter_min",
+            "Diameeter_max","Pikkus_min","Pikkus_max","Kvaliteet","Hind"
+        ]
+        //...and check their presence.
+        requiredIndices.map(val => bundle.hasOwnProperty(val) ? console.log(val+' ok') : (missing = true))
+
+        if(!missing) {
+            axios.post('/api/pricelist/add', {...bundle, parentId})
+                .then(res => {
+                    console.log(bundle._id);
+                    dispatch({
+                        type: "PRICELIST_ADD_SUCCESSFUL",
+                        keyToRemove: bundle._id
+                    })
+                    dispatch({
+                        type: "PRICELIST_LOADING",
+                        payload: false
+                    })
+                    console.log(res);
+
+
+                })
+                .catch(err =>{
+                    dispatch({
+                        type: "PRICELIST_ADD_FAILED",
+                    })
+                })
+        }
+    }
+}
+
+export const transmitParent = (id) => {
+    return {type: "TRANSMIT_PARENT", payload: id}
+}
+
 export const submitBundle = (prevValues, editedValues) => {
     let priceGrpKey= "hinna gr  \"võti\""
 
@@ -157,7 +206,7 @@ export const submitBundle = (prevValues, editedValues) => {
 
 
     return (dispatch) => {
-        console.log(JSON.stringify({ ...prevValues, ...bundledEdits}), missing);
+        //console.log(JSON.stringify({ ...prevValues, ...bundledEdits}), missing);
         if(!missing) {
             axios.post('/api/import/xlsx/update', {
                 ...prevValues,
@@ -171,7 +220,13 @@ export const submitBundle = (prevValues, editedValues) => {
                         })
                     }
                 })
-                .catch(console.log) // needs error handling
+                .catch(err => {
+                    if(err.response.status === 500) {
+                        dispatch({
+                            type: "PRICELIST_MATCH_REJECTED"
+                        })
+                    }
+                })
         } else {
             dispatch({
                 type: "PRICELIST_SUBMIT_ERROR",

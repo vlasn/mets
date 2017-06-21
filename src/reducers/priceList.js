@@ -8,14 +8,18 @@ export default function reducer( state = {
     redirectToResolve: false,
     imports: [],
     foundOptionsByKeys: {},
+    currentlyEditedName: '',
+    currentParent: 0,
     mismatches: {},
     matches: [],
     meta: {
         _id: "",
         matches: 0,
         mismatches: 0,
+        filename: ''
     },
     currentlyBeingEdited: false,
+    allowNewPriceListItem: false,
     currentlyEditedOpts: {
         _id: false,
     }
@@ -37,6 +41,7 @@ export default function reducer( state = {
                     _id: action.payload._id,
                     matches: action.payload.matched.length,
                     mismatches: action.payload.unmatched.length,
+                    name: action.payload.filename || 'Failinimi puudub'
                 },
                 redirectToResolve: true
             }
@@ -99,7 +104,14 @@ export default function reducer( state = {
             return {
                 ...state,
                 matches: [...state.matches, action.payload],
-                mismatches: shCopy
+                mismatches: shCopy,
+            }
+        }
+
+        case "PRICELIST_MATCH_REJECTED" : {
+            return {
+                ...state,
+                    allowNewPriceListItem: true
             }
         }
 
@@ -116,6 +128,29 @@ export default function reducer( state = {
                 ...state,
                 currentlyBeingEdited: needsResolving ? action.payload._id : state.currentlyBeingEdited,
                 redirectToResolve: needsResolving
+            }
+        }
+        case "XLSX_UPLOAD_FAILED" : {
+            return {
+                ...state,
+                currentlyBeingEdited: false,
+            }
+        }
+
+        case "PRICELIST_ADD_SUCCESSFUL" : {
+            let shCopy = Object.assign({}, state.mismatches)
+            delete shCopy[state.currentlyBeingEdited]
+            return {
+                ...state,
+                currentlyBeingEdited: false,
+                mismatches: shCopy
+            }
+        }
+
+        case "TRANSMIT_PARENT" : {
+            return {
+                ...state,
+                currentParent: action.payload
             }
         }
 

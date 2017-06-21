@@ -11,9 +11,7 @@ import AddContract from '../AddContract'
 class NewContract extends React.Component {
     constructor(props){
         super(props)
-
     }
-
     render(){
         return(
             <AddContract{...this.props}/>
@@ -34,10 +32,77 @@ const mapDispatchToProps = (dispatch) => {
             })
         },
         onSubmit(contractDetails){
-            // console.log("kõik",contractDetails)
-            // console.log("kinnistu objekt",contractDetails.kinnistu)
-            console.log("uploads:",contractDetails.documents.forestNotice[0][0])
             let errors = {}
+            let emailValidation = /\S+@\S+\.\S+/
+            let nameValidation = /^[A-Za-z ]{3,20}$/
+            let cadastreValidation = /^[0-9:]{1,45}$/
+            let dateValdation = /^(?=\s*\S).*$/
+            if(!nameValidation.test(contractDetails.kinnistu.nimi))  {
+                errors.propertyName = 'Sisesta korrektne kinnistu nimi';
+            }else{
+                delete errors.propertyName}
+
+            if(!nameValidation.test(contractDetails.forestMaster))  {
+                errors.forestMaster = 'Sisesta korrektne metsameistri nimi';
+            }else{
+                delete errors.forestMaster}
+
+            if(!nameValidation.test(contractDetails.projectManager))  {
+                errors.projectManager = 'Sisesta korrektne projektijuhi nimi';
+            }else{
+                delete errors.projectManager}
+
+            if(!dateValdation.test(contractDetails.cuts))  {
+                errors.cuts = 'Sisesta korrektne kuupäev';
+            }else{
+                delete errors.cuts}
+
+            if(!dateValdation.test(contractDetails.export))  {
+                errors.export = 'Sisesta korrektne kuupäev';
+            }else{
+                delete errors.export}
+
+            if(!dateValdation.test(contractDetails.cutsExport))  {
+                errors.cutsExport = 'Sisesta korrektne kuupäev';
+            }else{
+                delete errors.cutsExport}
+
+            if(contractDetails.kinnistu.katastritunnused.length < 0){
+                errors.cadastre = 'Sisesta korrektne katastritunnus';
+            }else{
+                delete errors.cadastre
+            }
+
+            for (let i = 0; i < contractDetails.esindajad.length; i++) {
+                if(!emailValidation.test(contractDetails.esindajad[i])){
+                    errors.email = 'Sisesta korrektne email';
+                }else{
+                    delete errors.email
+                }
+            }
+
+            for (let i = 0; i < contractDetails.kinnistu.katastritunnused.length; i++) {
+                if(!cadastreValidation.test(contractDetails.kinnistu.katastritunnused[i])){
+                    errors.cadastre = 'Sisesta korrektne katastritunnus';
+                }else{
+                    delete errors.cadastre
+                }
+            }
+
+            if(contractDetails.documents.contract[0].length<1) {
+                errors.contract = 'Lisa leping';
+            }else{
+                delete errors.contract
+            }
+
+            if(contractDetails.documents.forestNotice[0].length<1) {
+                errors.contract = 'Lisa metsateatis';
+            }else{
+                delete errors.contract
+            }
+
+            console.log("all:",contractDetails)
+
             dispatch({type: 'CONTRACT_CREATION_ATTEMPT'})
             let object = {
                 email: contractDetails.esindajad,
@@ -57,8 +122,6 @@ const mapDispatchToProps = (dispatch) => {
                     nimi: contractDetails.kinnistu.nimi,
                     katastritunnused: contractDetails.kinnistu.katastritunnused
                 },
-                //leping:contractDetails.documents.contract[0][0],
-                //metsateatis:contractDetails.documents.forestNotice[0][0]
             };
             console.log("objekt",object)
 
@@ -72,8 +135,6 @@ const mapDispatchToProps = (dispatch) => {
                         } else {
                             formKey = property;
                         }
-                        // if the property is an object, but not a File,
-                        // use recursivity.
                         if(typeof obj[property] === 'object' && !(obj[property] instanceof File)) {
                             objectToFormData(obj[property], fd, property);
                         } else {
@@ -89,34 +150,33 @@ const mapDispatchToProps = (dispatch) => {
             formData.append('metsateatis', contractDetails.documents.forestNotice[0][0]);
             formData.append('leping', contractDetails.documents.contract[0][0]);
 
-            if(Object.keys(errors).length<1){
+            console.log("errorid",errors)
+             if(Object.keys(errors).length<1){
+                 console.log("erroreid ei olnud")
 
-                fetch('/api/contract/create', {
+                 fetch('/api/contract/create', {
                     method: 'POST',
                     body: formData
                 })
                     .then(r => r.json())
                     .then(data => {
-                        console.log(data)
+                        console.log(data.status)
+                        if(data.status === 'accept') {
+                                     dispatch({type: 'CONTRACT_CREATION_SUCCESS', payload: data.msg})
+                                 } else {
+                                     dispatch({type: 'CONTRACT_CREATION_FAILURE', payload: data.msg})
+                                 }
                     })
-                    // .then(({data})=>{
-                    //     if(data.status === 'accept') {
-                    //         dispatch({type: 'CONTRACT_CREATION_SUCCESS', payload: data.msg})
-                    //     } else {
-                    //         dispatch({type: 'CONTRACT_CREATION_FAILURE', payload: data.msg})
-                    //     }
-                    // })
-                    // .catch(error => {
-                    //     console.log(error);
-                    //     dispatch({type: 'CONTRACT_CREATION_FAILURE', payload: error})
-                    // })
-            } else {
-                console.log('dispatching')
+                    .catch(error => {
+                             console.log(error);
+                        dispatch({type: 'CONTRACT_CREATION_FAILURE', payload: error})
+                    })
+             } else {console.log('dispatching')
                 dispatch({
                     type: "CONTRACT_CREATION_FIELD_ERROR",
                     payload: errors
                 })
-            }
+             }
         }
     }
 };
@@ -127,7 +187,6 @@ const mapStateToProps = (state) => {
         submitted: state.contractManagement.creation.submitted,
         errors: state.contractManagement.creation.errors,
         contractDetails: state.contractManagement.creation.contractDetails
-
     };
 };
 

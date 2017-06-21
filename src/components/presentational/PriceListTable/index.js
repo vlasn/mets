@@ -3,7 +3,7 @@
  */
 import React, {Component} from "react"
 import { connect } from "react-redux"
-import { fetchSinglePricelist, selectEditable } from "../../../actions/priceListActions"
+import { fetchSinglePricelist, selectEditable, transmitParent } from "../../../actions/priceListActions"
 const css = require("./PriceList.scss")
 import Table from "./PriceListTable"
 
@@ -16,13 +16,14 @@ class PriceListTable extends Component {
             this.props.history.push("/")
         } else {
             this.props.fetchSinglePricelist(this.props.match.params.id)
+            this.props.transmitParent(this.props.match.params.id)
         }
 
     }
     render(){
         return(
             <div className="PriceListTable__wrapper">
-                <div className="PriceListTable__above">Siia tuleb tekst?</div>
+                <div className="PriceListTable__above">{this.props.meta.filename||"Faili nimi puudub"}</div>
                 <div className="PriceListTable__content">
                     <Table items = {this.props.mismatches}
                            currentlyBeingEdited = {this.props.currentlyBeingEdited}
@@ -43,8 +44,10 @@ const mapStateToProps = function(state, ownProps) {
         mismatches: state.priceList.mismatches,
         loading: state.priceList.loading,
         error: state.priceList.error,
-        currentlyBeingEdited: state.priceList.currentlyBeingEdited
+        currentlyBeingEdited: state.priceList.currentlyBeingEdited,
+        currentlyEditedName: state.priceList.currentlyEditedName,
+        meta: state.priceList.meta
     }
 }
 
-export default connect(mapStateToProps, { fetchSinglePricelist, selectEditable })(PriceListTable)
+export default connect(mapStateToProps, { fetchSinglePricelist, selectEditable, transmitParent })(PriceListTable)
