@@ -5,7 +5,7 @@
 
 import React from "react"
 import { connect } from 'react-redux'
-import { logIn, credentialChange } from '../actions/userActions'
+import { logIn, credentialChange, betterLogin } from '../actions/userActions'
 import LoginForm from './LoginForm'
 import axios from "axios"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -32,15 +32,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         updateValue: (key, data) => dispatch(credentialChange(key, data)),
         onSubmitLogin: (id, pass) => {
-            dispatch({type: "LOG_IN_ATTEMPT"});
 
-            let passhash = require('crypto').createHash('sha512').update(pass).digest('hex');
-
-            axios.post("/api/user/login", {email: id, password: passhash})
-                .then(response => {
-                    dispatch(logIn(response.data))
-                })
-                .catch(err => dispatch(logIn(err)))
         }
     }
 };
@@ -58,5 +50,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    { credentialChange, betterLogin}
     )(Login);

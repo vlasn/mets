@@ -33,7 +33,9 @@ const styles = {
     },
 };
 
+
 const CreateTable = () => (
+
 <MuiThemeProvider>
   <div>
       <div className="Heading">Loo hinnatabel</div>
@@ -60,6 +62,7 @@ const CreateTable = () => (
           floatingLabelText={"Katastritunnus"}
           underlineFocusStyle={styles.underlineStyle}
           floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+          updateValue={()=>{}}
         />
         <InputField
           floatingLabelText={"Külanimi"}
