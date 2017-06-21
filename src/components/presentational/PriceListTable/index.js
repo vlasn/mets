@@ -12,6 +12,7 @@ class PriceListTable extends Component {
         super(props)
     }
     componentWillMount() {
+        !this.props.loggedIn ? this.props.history.push("/login"): null
         if(!this.props.match.params.id) {
             this.props.history.push("/")
         } else {
@@ -46,7 +47,8 @@ const mapStateToProps = function(state, ownProps) {
         error: state.priceList.error,
         currentlyBeingEdited: state.priceList.currentlyBeingEdited,
         currentlyEditedName: state.priceList.currentlyEditedName,
-        meta: state.priceList.meta
+        meta: state.priceList.meta,
+        loggedIn: state.user.loggedIn
     }
 }
 

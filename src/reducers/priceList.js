@@ -32,7 +32,7 @@ export default function reducer( state = {
             }
         }
         case "PRICELIST_MISMATCHES" : {
-            console.log(action.payload);
+            //console.log(action.payload);
             let newMismatches = action.payload.unmatched.reduce((acc, val)=>{ acc[val._id] = val; return acc },{})
             return {
                 ...state,
@@ -143,7 +143,8 @@ export default function reducer( state = {
             return {
                 ...state,
                 currentlyBeingEdited: false,
-                mismatches: shCopy
+                mismatches: action.mismatches,
+                allowNewPriceListItem: false
             }
         }
 

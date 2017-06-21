@@ -162,20 +162,20 @@ export const addNewPriceListItem = (bundle, parentId) =>{
         if(!missing) {
             axios.post('/api/pricelist/add', {...bundle, parentId})
                 .then(res => {
-                    console.log(bundle._id);
+                    console.log(JSON.stringify({...bundle, parentId}))
+                    console.log(res)
                     dispatch({
                         type: "PRICELIST_ADD_SUCCESSFUL",
-                        keyToRemove: bundle._id
+                        keyToRemove: bundle._id,
+                        mismatches: res.data.data.mismatches
                     })
                     dispatch({
                         type: "PRICELIST_LOADING",
                         payload: false
                     })
-                    console.log(res);
-
-
                 })
                 .catch(err =>{
+                    console.log(err)
                     dispatch({
                         type: "PRICELIST_ADD_FAILED",
                     })
