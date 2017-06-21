@@ -14,7 +14,7 @@ class NewClient extends React.Component {
     }
 
     render(){
-        console.log("trakytll: ")
+        console.log("trakytll: "+source)
 
         return(
             <CreateClient{...this.props}/>

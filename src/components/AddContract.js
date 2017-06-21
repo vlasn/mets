@@ -233,6 +233,9 @@ export default class AddContract extends React.Component {
                             handleContractFiles= {this.handleContractFiles}
                             handleNoticeFiles= {this.handleNoticeFiles}
                         />
+                        {/*<div>{this.props.errors.contract}</div>*/}
+                        {/*<div>{this.props.errors.forestNotice}</div>*/}
+
                         <div className="Uploads__wrapper">
                             {this.state.contract.map((row)=><div className="Uploads">{row.name}</div>)}
                             {this.state.forestNotice.map((row)=><div className="Uploads">{row.name}</div>)}

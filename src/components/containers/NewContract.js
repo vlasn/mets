@@ -88,17 +88,16 @@ const mapDispatchToProps = (dispatch) => {
                     delete errors.cadastre
                 }
             }
-            //
+
             // if(contractDetails.documents.contract[0].length<1) {
             //     errors.contract = 'Lisa lepingu fail';
             // }else{
             //     delete errors.contract
             // }
-            //
             // if(contractDetails.documents.forestNotice[0].length<1) {
             //     errors.forestNotice = 'Lisa metsateatise fail';
             // }else{
-            //     errors.forestNotice = '';
+            //     delete errors.forestNotice
             // }
 
             //console.log("all:",contractDetails)
