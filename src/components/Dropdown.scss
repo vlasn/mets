@@ -4,5 +4,9 @@
 	float: right;
 	.Dropdown__dropdownContent{
 		height: 45px;
+		position: absolute;
+		width: 200px;
+		text-align: center;
+		right:0
 	}
 }
