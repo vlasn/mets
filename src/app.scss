@@ -36,10 +36,13 @@ body {
       color: black;
     }
   }
-  .FlatButton--hover {
-    background-color: #cacaca !important;
-    &:hover {
-      background-color: #7FFFC7 !important;
+
+  .Dropdown__wrapper {
+    .FlatButton--hover {
+      background-color: #e0e0e0 !important;
+      &:hover {
+        background-color: #7FFFC7 !important;
+      }
     }
   }
   //padding: 50px;
