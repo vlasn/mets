@@ -44,7 +44,7 @@ const mapDispatchToProps = (dispatch) => {
             let addressValidation = /^[A-Za-z0-9 ]{3,20}$/
             let contactValidation = /^[0-9]{5,20}$/
             let documentIdValidation = /^[0-9 ]{3,20}$/
-            let personalIdValidation = /^[0-9 ]{8,8}$/
+            let personalIdValidation = /^[0-9 ]{11,11}$/
             let companyRegistrationValidation = /^[0-9 ]{8,8}$/
             let vatDutyNumberValidation = /^[0-9 ]{14,14}$/
 
@@ -54,54 +54,55 @@ const mapDispatchToProps = (dispatch) => {
 
                 if(!nameValidation.test(details.name))  {
                     errors.name = 'Sisesta korrektne nimi';
-                }else {errors.name = '';}
+                }else {errors.name}
 
                 if(!personalIdValidation.test(details.personalId))  {
                       errors.personalId = 'Sisesta korrektne isikukood';
-                }else {errors.personalId = '';}
+                }else {errors.personalId}
 
                 if(!documentIdValidation.test(details.documentId))  {
                     errors.documentId = 'Sisesta korrektne dokumendi number';
-                }else {errors.documentId = '';}
+                }else {errors.documentId}
 
                 if(!emailValidation.test(details.email))  {
                     errors.email = 'Sisesta korrektne email';
-                }else {errors.email = '';}
+                }else {delete errors.email}
 
                 if(!contactValidation.test(details.contact))  {
                     errors.contact = 'Sisesta korrektne telefoninumber';
-                }else {errors.contact = '';}
+                }else {delete errors.contact}
 
                 if(!addressValidation.test(details.address))  {
                     errors.address = 'Sisesta korrektne aadress';
-                }else {errors.address = '';}
+                }else {delete errors.address}
             }
 
             if(details.type==='juridicalPerson') {
                 if(!nameValidation.test(details.name))  {
                     errors.name = 'Sisesta korrektne nimi';
-                }else {errors.name = '';}
+                }else {delete errors.name}
 
                 if (!companyRegistrationValidation.test(details.name)) {
                  errors.companyRegistration = 'Sisesta korrektne registrinumber';
-                }else {errors.companyRegistration = '';}
+                }else {delete errors.companyRegistration}
 
                 if (!vatDutyNumberValidation.test(details.name)) {
                  errors.vatDutyNumber = 'Sisesta korrektne käibemaksukohustuslase number';
-                }else {errors.vatDutyNumber = '';}
+                }else {delete errors.vatDutyNumber}
 
                 if(!emailValidation.test(details.email))  {
                     errors.email = 'Sisesta korrektne email';
-                }else {errors.email = '';}
+                }else {delete errors.email}
 
                 if(!contactValidation.test(details.contact))  {
                  errors.contact = 'Sisesta korrektne telefoninumber';
-                }else {errors.contact = '';}
+                }else {delete errors.contact}
 
                 if(!addressValidation.test(details.address))  {
                  errors.address = 'Sisesta korrektne aadress';
-                }else {errors.address = '';}
+                }else {delete errors.address}
             }
+            console.log("errorid",errors)
             if(Object.keys(errors).length<1){
                 axios.post('/api/user/create', {
                     email: details.email,
@@ -118,6 +119,7 @@ const mapDispatchToProps = (dispatch) => {
                     }
                 })
                     .then(({data})=>{
+                    console.log(data)
                         if(data.status === 'accept') {
                             dispatch({type: 'CREATION_SUCCESS', payload: data.msg})
                         } else {
