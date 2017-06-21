@@ -12,6 +12,9 @@ class NewContract extends React.Component {
     constructor(props){
         super(props)
     }
+    componentWillReceiveProps(newProps) {
+        newProps.submitted ? this.props.history.push("/") : null
+    }
     render(){
         return(
             <AddContract{...this.props}/>
