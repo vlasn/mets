@@ -27,10 +27,12 @@ const styles = {
     },
     dropdownButton: {
         display:'block',
-        color:'black',
+        color:'white',
         textDecoration:'none',
-        padding: '0px 20px 0px 20px',
-        height: '45px'
+        padding: '0px 10px 0px 10px',
+        height: '45px',
+        minWidth: '130px',
+        zIndex: '9999'
     },
 };
 
