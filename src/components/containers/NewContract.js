@@ -88,20 +88,20 @@ const mapDispatchToProps = (dispatch) => {
                     delete errors.cadastre
                 }
             }
+            //
+            // if(contractDetails.documents.contract[0].length<1) {
+            //     errors.contract = 'Lisa lepingu fail';
+            // }else{
+            //     delete errors.contract
+            // }
+            //
+            // if(contractDetails.documents.forestNotice[0].length<1) {
+            //     errors.forestNotice = 'Lisa metsateatise fail';
+            // }else{
+            //     errors.forestNotice = '';
+            // }
 
-            if(contractDetails.documents.contract[0].length<1) {
-                errors.contract = 'Lisa leping';
-            }else{
-                delete errors.contract
-            }
-
-            if(contractDetails.documents.forestNotice[0].length<1) {
-                errors.contract = 'Lisa metsateatis';
-            }else{
-                delete errors.contract
-            }
-
-            console.log("all:",contractDetails)
+            //console.log("all:",contractDetails)
 
             dispatch({type: 'CONTRACT_CREATION_ATTEMPT'})
             let object = {
@@ -123,7 +123,7 @@ const mapDispatchToProps = (dispatch) => {
                     katastritunnused: contractDetails.kinnistu.katastritunnused
                 },
             };
-            console.log("objekt",object)
+            //console.log("objekt",object)
 
             let objectToFormData = function(obj, form, namespace) {
                 let fd = form || new FormData();
@@ -150,15 +150,16 @@ const mapDispatchToProps = (dispatch) => {
             formData.append('metsateatis', contractDetails.documents.forestNotice[0][0]);
             formData.append('leping', contractDetails.documents.contract[0][0]);
 
-            console.log("errorid",errors)
+            //console.log("errorid",errors)
              if(Object.keys(errors).length<1){
-                 console.log("erroreid ei olnud")
+                // console.log("erroreid ei olnud")
 
                  fetch('/api/contract/create', {
                     method: 'POST',
                     body: formData
                 })
                     .then(r => r.json())
+
                     .then(data => {
                         console.log(data.status)
                         if(data.status === 'accept') {
@@ -166,9 +167,13 @@ const mapDispatchToProps = (dispatch) => {
                                  } else {
                                      dispatch({type: 'CONTRACT_CREATION_FAILURE', payload: data.msg})
                                  }
+                        if(data.status === 'reject') {
+                            console.log('Sellise emailiga kasutajat ei leitud')
+                        }
+
                     })
                     .catch(error => {
-                             console.log(error);
+                        console.log("catch",error);
                         dispatch({type: 'CONTRACT_CREATION_FAILURE', payload: error})
                     })
              } else {console.log('dispatching')
