@@ -3,6 +3,7 @@
  */
 import React, { Component } from "react"
 import { connect } from "react-redux"
+import { Link } from "react-router-dom"
 import { fetchImportedPriceLists, submitXlsx } from "../../../actions/priceListActions"
 const css = require("./ImportHistory.scss")
 
@@ -51,6 +52,11 @@ class ImportHistory extends Component{
     render() {
         return(
             <div className="ImportHistory__wrapper">
+                {this.props.loggedIn ? <div>
+                        <Link className="Main__nav" to="/new_client">Loo uus klient</Link>
+                        <Link className="Main__nav" to="/add_contract">Loo uus leping</Link>
+                    </div> : null }
+
                 <h1>Mõõteraportid</h1>
                 {this.props.imports.map(row =>
                     <div
@@ -83,7 +89,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
         imports: state.priceList.imports,
         redirectToResolve: state.priceList.redirectToResolve,
-        currentlyBeingEdited: state.priceList.currentlyBeingEdited
+        currentlyBeingEdited: state.priceList.currentlyBeingEdited,
+        loggedIn: state.user.loggedIn
     }
 }
 

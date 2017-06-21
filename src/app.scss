@@ -17,5 +17,17 @@ body {
       color: Black;
 
   }
+
+  .Main__nav {
+    background-color: #7FFFC7;
+    padding: 10px 10px;
+    text-decoration: none;
+    color: black;
+    margin-right: 3px;
+
+    &:hover {
+      background-color: #7cf7bb;
+    }
+  }
   //padding: 50px;
 }
