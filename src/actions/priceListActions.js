@@ -204,6 +204,10 @@ export const submitBundle = (prevValues, editedValues) => {
             })
             .indexOf(false) !== -1 //bool
 
+    console.log({
+        ...prevValues,
+        ...bundledEdits
+    })
 
     return (dispatch) => {
         //console.log(JSON.stringify({ ...prevValues, ...bundledEdits}), missing);

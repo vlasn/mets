@@ -29,14 +29,14 @@ class App extends React.Component {
                     <HeaderWrapper/>
                     {/*<AuthCheck history={History}/>*/}
 
-                        <Route exact={true} path="/login" component={Login}/>
-                        <Route exact path="/validate/:hash" component={Validate}/>
-                        <Route exact path="/" component={ImportHistory}/>
-                        <Route path="/" exact component={Filter}/>
-                        <Route path="/" exact component={Contracts}/>
-                        <Route exact path="/import/:id" component={PList}/>
-                        <Route exact path="/new_client" component={NewClient}/>
-                        <Route exact path="/add_contract" component={NewContract}/>
+                    <Route exact={true} path="/login" component={Login}/>
+                    <Route exact path="/validate/:hash" component={Validate}/>
+                    <Route exact path="/" component={ImportHistory}/>
+                    <Route path="/" exact component={Filter}/>
+                    <Route path="/" exact component={Contracts}/>
+                    <Route exact path="/import/:id" component={PList}/>
+                    <Route exact path="/new_client" component={NewClient}/>
+                    <Route exact path="/add_contract" component={NewContract}/>
 
                 </div>
             </Router>

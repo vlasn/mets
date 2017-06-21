@@ -31,7 +31,7 @@ const styles = {
         textDecoration:'none',
         padding: '0px 10px 0px 10px',
         height: '45px',
-        minWidth: '130px',
+        minWidth: '150px',
         zIndex: '9999'
     },
 };
