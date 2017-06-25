@@ -33,7 +33,6 @@
 * Linting:
     *kohustuslik*. Uuri `prettier.js`!
     
-    
 * Redux & you:
     1) selectorid                                   # reselect @ npm
     2) action creatorid & async actionid
