@@ -17,7 +17,6 @@ class Contracts extends Component {
 }
 
 const mapStateToProps = (state) => {
-    console.log(state.contract.clientManagement)
     return {
         filter: state.contract.filter,
         data: state.contract.clientManagement.contracts,

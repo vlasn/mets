@@ -12,7 +12,6 @@ class Filter extends React.Component {
         super(props)
     }
     render(){
-        console.log("filter:", this.props)
         return(
             <CardFilter {...this.props}/>
         )

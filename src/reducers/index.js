@@ -9,13 +9,8 @@ import clientManagement from "./clientManagement"
 import contractManagement from "./contractManagment"
 import priceList from "./priceList"
 import filter from "../components/Filter/filterReducer"
+import imports from "../components/ImportHistory/importReducer"
 
-/**
- * to be combined:
- * clientManagement {
- *    filter #done, to replace "cards"
- * }
- * */
 let contract = combineReducers({clientManagement, filter})
 
 export default combineReducers({
@@ -23,6 +18,7 @@ export default combineReducers({
     user,
     documents,
     validation,
+    imports,
     contract,
     contractManagement,
     priceList

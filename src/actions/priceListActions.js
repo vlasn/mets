@@ -3,22 +3,17 @@ import axios from "axios"
 export const PRICEFORM_FETCHING_KEY = "PRICEFORM_FETCHING_KEY "
 export const PRICEFORM_UPDATE_KEYS = "PRICEFORM_UPDATE_KEYS "
 export const PRICELIST_LOADING = "PRICELIST_LOADING "
-export const PRICELIST_ERROR = "PRICELIST_ERROR "
-export const PRICELIST_IMPORT_HISTORY = "PRICELIST_IMPORT_HISTORY "
 export const PRICELIST_MISMATCHES = "PRICELIST_MISMATCHES "
 export const PRICEFORM_EDITS_BUNDLE = "PRICEFORM_EDITS_BUNDLE "
 export const PRICELIST_SELECT_EDITABLE = "PRICELIST_SELECT_EDITABLE "
-
-export const XLSX_UPLOAD_ATTEMPT = "XLSX_UPLOAD_ATTEMPT "
-export const XLSX_UPLOAD_SUCCESSFUL = "XLSX_UPLOAD_SUCCESSFUL "
-export const XLSX_UPLOAD_REJECTED = "XLSX_UPLOAD_REJECTED"
-
 
 export const PRICELIST_ADD_SUCCESSFUL = "PRICELIST_ADD_SUCCESSFUL "
 export const PRICELIST_ADD_FAILED = "PRICELIST_ADD_FAILED "
 export const PRICELIST_MATCH_CONFIRMED = "PRICELIST_MATCH_CONFIRMED "
 export const PRICELIST_MATCH_REJECTED = "PRICELIST_MATCH_REJECTED "
 export const PRICELIST_SUBMIT_ERROR = "PRICELIST_SUBMIT_ERROR "
+
+export const TRANSMIT_PARENT = "TRANSMIT_PARENT"
 
 
 
@@ -51,40 +46,6 @@ export const getOptions = (fieldKey) => {
     }
 }
 
-export const fetchImportedPriceLists = () => {
-    return (dispatch) => {
-        dispatch({
-            type: PRICELIST_LOADING,
-            payload: true
-        })
-        axios.get("/api/import/fetch")
-            .then((response)=> {
-                dispatch({
-                    type: PRICELIST_LOADING,
-                    payload: false
-                })
-                if(response.data.status === 'accept'){
-                    console.log(response)
-
-                    dispatch({
-                        type: PRICELIST_IMPORT_HISTORY,
-                        payload: response.data.data
-                    })
-                }
-            })
-            .catch(error => {
-                dispatch({
-                    type: PRICELIST_LOADING,
-                    payload: false
-                })
-                dispatch({
-                    type: PRICELIST_ERROR,
-                    error: error
-                })
-            })
-    }
-}
-
 export const fetchSinglePricelist = (importId) => {
     return (dispatch) => {
         dispatch({
@@ -98,6 +59,7 @@ export const fetchSinglePricelist = (importId) => {
                     payload: false
                 });
                 if(data.status == 'accept' && data.data.unmatched.length>0) {
+                    console.log(data.data.unmatched)
                     dispatch({
                         type: PRICELIST_MISMATCHES,
                         payload: data.data
@@ -125,50 +87,12 @@ export const addToBundle = (_id, key, value) => {
     }
 }
 
-export const submitXlsx = (formData) => {
-    return (dispatch) => {
-        dispatch({
-            type: XLSX_UPLOAD_ATTEMPT,
-            payload: true
-        })
-        let headers =  new Headers();
-        headers.set('Accept', 'application/json');
-        let fetchOptions = {
-            method: 'POST',
-            headers,
-            body: formData
-        };
-
-        fetch('/api/import/xlsx/new', fetchOptions)
-            .then(res => res.json())
-            .then(res => {
-                dispatch({
-                    type: XLSX_UPLOAD_ATTEMPT,
-                    payload: false
-                })
-                if(res.status === 'accept') {
-                    dispatch({
-                        type: XLSX_UPLOAD_SUCCESSFUL,
-                        payload: res.data,
-                    })
-                }
-            })
-            .catch(err => {
-                dispatch({
-                    type: XLSX_UPLOAD_REJECTED,
-                    payload: err.response.data.msg
-                })
-            })
-    }
-}
-
 export const addNewPriceListItem = (bundle, parentId) =>{
     return (dispatch) => {
         dispatch({
             type: PRICELIST_LOADING,
             payload: true
         })
-        console.log(bundle)
         let missing = false
         let mapKeys = {
             tarnekoht: "Sihtkoht",

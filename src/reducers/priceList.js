@@ -8,7 +8,7 @@ export default function reducer( state = {
     loading: false,
     conflictsResolved: false,
     redirectToResolve: false,
-    imports: [],
+    //imports: [],
     foundOptionsByKeys: {},
     currentlyEditedName: '',
     currentParent: 0,
@@ -27,14 +27,14 @@ export default function reducer( state = {
     }
 }, action) {
     switch(action.type) {
-        case "PRICELIST_LOADING" : {
+        case actionTypes.PRICELIST_LOADING : {
             return {
                 ...state,
                 loading: action.payload,
             }
         }
-        case "PRICELIST_MISMATCHES" : {
-            //console.log(action.payload);
+        case actionTypes.PRICELIST_MISMATCHES : {
+            console.log('mm:',action.payload);
             let newMismatches = action.payload.unmatched.reduce((acc, val)=>{ acc[val._id] = val; return acc },{})
             return {
                 ...state,
@@ -45,11 +45,11 @@ export default function reducer( state = {
                     mismatches: action.payload.unmatched.length,
                     name: action.payload.filename || 'Failinimi puudub'
                 },
-                redirectToResolve: true
+                //redirectToResolve: true
             }
         }
 
-        case "PRICELIST_SELECT_EDITABLE" : {
+        case actionTypes.PRICELIST_SELECT_EDITABLE : {
             if(state.mismatches.hasOwnProperty(action.payload)) {
                 return {
                     ...state,
@@ -63,7 +63,7 @@ export default function reducer( state = {
                 return {...state}
             }
         }
-        case "PRICEFORM_UPDATE_KEYS" : {
+        case actionTypes.PRICEFORM_UPDATE_KEYS : {
 
             return {
                 ...state,
@@ -74,7 +74,7 @@ export default function reducer( state = {
             }
         }
 
-        case "PRICEFORM_EDITS_BUNDLE" : {
+        case actionTypes.PRICEFORM_EDITS_BUNDLE : {
 
             if(state.currentlyEditedOpts._id === action.payload._id){
                 return {
@@ -97,7 +97,7 @@ export default function reducer( state = {
 
         }
 
-        case "PRICELIST_MATCH_CONFIRMED" : {
+        case actionTypes.PRICELIST_MATCH_CONFIRMED : {
             //Had issues reducing object by it's keys, so hello ugly es5 syntax
             let shCopy = Object.assign({}, state.mismatches)
 
@@ -110,36 +110,14 @@ export default function reducer( state = {
             }
         }
 
-        case "PRICELIST_MATCH_REJECTED" : {
+        case actionTypes.PRICELIST_MATCH_REJECTED : {
             return {
                 ...state,
                     allowNewPriceListItem: true
             }
         }
 
-        case actionTypes.PRICELIST_IMPORT_HISTORY : {
-            return{
-                ...state,
-                imports: action.payload
-            }
-        }
-
-        case "XLSX_UPLOAD_SUCCESSFUL" : {
-            let needsResolving = action.payload.unmatched.length>0
-            return {
-                ...state,
-                currentlyBeingEdited: needsResolving ? action.payload._id : state.currentlyBeingEdited,
-                redirectToResolve: needsResolving
-            }
-        }
-        case "XLSX_UPLOAD_FAILED" : {
-            return {
-                ...state,
-                currentlyBeingEdited: false,
-            }
-        }
-
-        case "PRICELIST_ADD_SUCCESSFUL" : {
+        case actionTypes.PRICELIST_ADD_SUCCESSFUL : {
             let shCopy = Object.assign({}, state.mismatches)
             delete shCopy[state.currentlyBeingEdited]
             return {
@@ -150,7 +128,7 @@ export default function reducer( state = {
             }
         }
 
-        case "TRANSMIT_PARENT" : {
+        case actionTypes.TRANSMIT_PARENT : {
             return {
                 ...state,
                 currentParent: action.payload

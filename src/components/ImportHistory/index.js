@@ -4,7 +4,7 @@
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
-import { fetchImportedPriceLists, submitXlsx } from "../../actions/priceListActions"
+import { fetchImportedPriceLists, submitXlsx } from "./importActions"
 const css = require("./ImportHistory.scss")
 
 const styles = {
@@ -23,7 +23,6 @@ class ImportHistory extends Component {
     }
 
     componentWillMount() {
-        console.log("importhistory:", this.props)
         this.props.imports.length<1 ? this.props.fetchImportedPriceLists() : null
     }
 
@@ -34,7 +33,6 @@ class ImportHistory extends Component {
     }
 
     navigateToImport(id) {
-        console.log("navigating to import"+id)
         this.props.history.push("/import/"+id)
     }
 
@@ -87,10 +85,11 @@ class ImportHistory extends Component {
 }
 const mapStateToProps = (state, ownProps) => {
     return {
-        imports: state.priceList.imports,
-        redirectToResolve: state.priceList.redirectToResolve,
-        currentlyBeingEdited: state.priceList.currentlyBeingEdited,
-        loggedIn: state.user.loggedIn
+        imports: state.imports.imports,
+        loading: state.imports.loading
+        //redirectToResolve: state.priceList.redirectToResolve,
+        //currentlyBeingEdited: state.priceList.currentlyBeingEdited,
+        //loggedIn: state.user.loggedIn
     }
 }
 
