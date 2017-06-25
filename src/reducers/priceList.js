@@ -7,7 +7,7 @@ import * as actionTypes from "../actions/priceListActions"
 export default function reducer( state = {
     loading: false,
     conflictsResolved: false,
-    redirectToResolve: false,
+    //redirectToResolve: false,
     //imports: [],
     foundOptionsByKeys: {},
     currentlyEditedName: '',
