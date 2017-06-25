@@ -6,9 +6,8 @@
 
 import React from "react"
 import { connect } from 'react-redux'
-import { passwordChange, credentialChange, verify } from '../../actions/validationActions'
+import { resetPassword, credentialChange, verify } from './validationActions'
 import FirstPassword from './FirstPassword'
-import axios from "axios"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Redirect from 'react-router-dom'
 
@@ -17,7 +16,7 @@ class Validate extends React.Component {
         super(props);
     }
     componentWillMount() {
-        //if(!this.props.verified){this.props.verifyHash(this.props.match.params.hash); console.log('Verifyin\'')}
+        if(!this.props.verified){this.props.verify(this.props.match.params.hash); console.log('Verifyin\'')}
     }
 
     render() {
@@ -33,53 +32,6 @@ class Validate extends React.Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        credentialChange: (key, data) => dispatch(credentialChange(key, data)),
-
-        verifyHash: (hash) => {
-            dispatch({type:"VERIFICATION_ATTEMPT", payload: null});
-            if(hash.length>0) {
-                axios.get('/api/user/verify/'+hash)
-                    .then(response => {dispatch(verify(response.data))})
-                    .catch(err => {
-                        console.log(err);
-                        dispatch({type: "VERIFICATION_FAILURE", payload: "Something went wrong. Please try again."})
-                    })
-            } else {
-                dispatch({type: "VERIFICATION_FAILURE", payload: "Something went wrong. Please try again."})
-            }
-        },
-
-        resetPassword: (first, second, hash) => {
-            //console.log(first,second,hash);
-            dispatch({type: "VALIDATION_ATTEMPT"});
-
-            if(first && first === second) {
-                let crypto = require('crypto');
-                let passhash = crypto.createHash('sha512').update(first).digest('hex');
-                let cpasshash = crypto.createHash('sha512').update(second).digest('hex');
-
-                axios.post('/api/user/validate', {
-                    password: passhash,
-                    cpassword: cpasshash,
-                    hash: hash
-                })
-                    .then(response => {
-                        dispatch(passwordChange(response.data))
-                    })
-                    .catch(err => {
-                        console.log(err);
-                        dispatch({type: "VALIDATION_FAILURE", payload: "Something went wrong. Please try again"})
-                    })
-            } else {
-                dispatch({type: "VALIDATION_MISMATCH",
-                payload: "Palun tee kindlaks et sisestasid kaks identset parooli!"})
-            }
-
-        }
-    }
-};
 
 const mapStateToProps = (state) => {
     return {
@@ -94,5 +46,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    {credentialChange, resetPassword, verify}
 )(Validate);

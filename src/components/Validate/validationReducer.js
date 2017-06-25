@@ -2,6 +2,8 @@
  * Created by clstrfvck on 12/04/2017.
  */
 
+import * as actionTypes from "./validationActions"
+
 export default function reducer( state = {
     password: "",
     cpassword: "",
@@ -12,32 +14,32 @@ export default function reducer( state = {
     verified: false
 }, action) {
     switch(action.type) {
-        case "VALIDATION_CREDS" : {
+        case actionTypes.VALIDATION_CREDS : {
             let allowedKeys = ["password", "cpassword", "hash"];
             if (allowedKeys.indexOf(action.payload.key) >= 0) {
                 return {...state, [action.payload.key]: action.payload.data}
             }
             else break
         }
-        case "VERIFICATION_ATTEMPT" : {
+        case actionTypes.VERIFICATION_ATTEMPT : {
             return{...state, verified: false, navigateToRoot: false, validationError: null}
         }
-        case "VERIFICATION_SUCCESS" : {
+        case actionTypes.VERIFICATION_SUCCESS : {
             return{...state, verified: true}
         }
-        case "VERIFICATION_FAILURE" : {
+        case actionTypes.VERIFICATION_FAILURE : {
             return{...state, verified: false, validationError: action.payload, navigateToRoot: true}
         }
-        case "VALIDATION_ATTEMPT" : {
+        case actionTypes.VALIDATION_ATTEMPT : {
             return{...state, validationError: null, loading: true}
         }
-        case "VALIDATION_SUCCESS" : {
+        case actionTypes.VALIDATION_SUCCESS : {
             return {...state, loading: false, validationError: null, password: null, cpassword: null, navigateToRoot: true}
         }
-        case "VALIDATION_FAILURE" : {
+        case actionTypes.VALIDATION_FAILURE : {
             return {...state, loading: false, validationError: action.payload}
         }
-        case "VALIDATION_MISMATCH" : {
+        case actionTypes.VALIDATION_MISMATCH : {
             return {...state, loading: false, validationError: action.payload}
         }
         default: {

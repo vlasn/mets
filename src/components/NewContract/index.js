@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import axios from "axios"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Redirect from 'react-router-dom'
-import AddContract from '../NewContract/AddContract'
+import AddContract from './AddContract'
 
 class NewContract extends React.Component {
     constructor(props){

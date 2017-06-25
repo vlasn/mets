@@ -11,7 +11,7 @@ import HeaderWrapper from "./components/Header/HeaderWrapper"
 import History from './components/history'
 import Contracts from "./components/Contracts/Contracts"
 import NewClient from "./components/NewClient"
-import NewContract from "./components/containers/NewContract"
+import NewContract from "./components/NewContract"
 //import Footer from "./components/Footer"
 import PList from "./components/ResolveImport"
 import ImportHistory from "./components/ImportHistory"
