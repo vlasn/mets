@@ -3,7 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from '../InputFields/ClientCreationInput';
 
-const css = require("./../CreateClient.scss");
+const css = require("./CreateClient.scss");
 
 const labelStyles = {
     headerButton: {

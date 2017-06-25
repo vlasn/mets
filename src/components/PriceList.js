@@ -1,12 +1,13 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
-import TextField from 'material-ui/TextField';
 import InputFieldOptions from './InputFields/InputFieldOptions';
 import InputField from './InputFields/InputField';
-import Dropdown from './Header/Dropdown';
 
-const css = require("./CreateClient.scss");
+
+//TODO - separate folder for this as it is pretty much a stand-alone view? Also needs separate stylesheet
+
+const css = require("./NewClient/CreateClient.scss");
 
 const labelStyles = {
     headerButton: {

@@ -3,7 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 const css = require("./AddDocuments.scss");
 import ReactFileReader from 'react-file-reader';
-import {uuid} from "../Utilities"
+import {uuid} from "../../Utilities"
 
 
 const labelStyles = {

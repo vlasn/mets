@@ -2,7 +2,7 @@ import React, {Component} from "react"
 import { connect } from 'react-redux'
 import { search } from "../../actions/uiActions"
 import { updateContractRow } from "../../actions/contractActions"
-import ContractCards from "../ManageContracts"
+import ContractCards from "./ManageContracts"
 
 class Contracts extends Component {
     constructor(props){
