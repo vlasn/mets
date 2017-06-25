@@ -1,5 +1,5 @@
 import React from "react"
-import DetailsButton from "../DetailsButton"
+import DetailsButton from "../Buttons/DetailsButton"
 import FileRow from "./FileRow"
 const css = require("./DetailsWrapper.scss");
 

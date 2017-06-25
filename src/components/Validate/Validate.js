@@ -6,7 +6,7 @@
 
 import React from "react"
 import { connect } from 'react-redux'
-import { passwordChange, credentialChange, verify } from '../actions/validationActions'
+import { passwordChange, credentialChange, verify } from '../../actions/validationActions'
 import FirstPassword from './FirstPassword'
 import axios from "axios"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';

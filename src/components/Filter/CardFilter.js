@@ -4,7 +4,7 @@
 
 import React, {Component} from "react"
 import MuiWrapper from "material-ui/styles/MuiThemeProvider"
-import SearchBar from "../SearchBar"
+import SearchBar from "../../InputFields/SearchBar"
 import {Dropdown, DropdownOption} from "./FilterDropdown"
 
 const css = require('./CardFilter.scss')

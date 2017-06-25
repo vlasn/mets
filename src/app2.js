@@ -18,7 +18,7 @@ const store = createStore(
         routing: routerReducer
     })
 )
-import Login from "./components/Login"
+import Login from "./components/Login/Login"
 // Create an enhanced history that syncs navigation events with the store
 const history = syncHistoryWithStore(browserHistory, store)
 

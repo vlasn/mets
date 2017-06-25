@@ -2,8 +2,8 @@
  * Created by clstrfvck on 03/05/2017.
  */
 import React from "react"
-import DetailsWrapper from "./presentational/DetailsWrapper"
-import {CaretDown, CaretUp} from "./Icons"
+import DetailsWrapper from "./DetailsWrapper"
+import {CaretDown, CaretUp} from "../Icons"
 const css = require("./MetsCard.scss");
 
 export default class MetsCard extends React.Component {

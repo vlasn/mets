@@ -2,9 +2,9 @@ import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
-import InputFieldOptions from './InputFieldOptions';
-import InputField from './InputField';
-import Dropdown from './Dropdown';
+import InputFieldOptions from './InputFields/InputFieldOptions';
+import InputField from './InputFields/InputField';
+import Dropdown from './Header/Dropdown';
 
 const css = require("./CreateClient.scss");
 

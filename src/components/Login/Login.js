@@ -5,7 +5,7 @@
 
 import React from "react"
 import { connect } from 'react-redux'
-import { logIn, credentialChange, betterLogin } from '../actions/userActions'
+import { logIn, credentialChange, betterLogin } from '../../actions/userActions'
 import LoginForm from './LoginForm'
 import axios from "axios"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';

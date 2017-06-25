@@ -2,9 +2,9 @@
  * Created by clstrfvck on 29/03/2017.
  */
 import React from "react"
-import Error from "./Error"
-import LoginTextField from "./LoginTextField"
-import LoginButton from "./LoginButton"
+import Error from "../Error"
+import LoginTextField from "../InputFields/LoginTextField"
+import LoginButton from "../Buttons/LoginButton"
 const css = require("./LoginForm.scss");
 
 const styles = {

@@ -1,7 +1,7 @@
 import React from 'react';
 import FlatButton from 'material-ui/FlatButton';
-import Popover from 'material-ui/Popover';
-import Menu from 'material-ui/Menu';
+// import Popover from 'material-ui/Popover';
+// import Menu from 'material-ui/Menu';
 import { Link } from 'react-router-dom'
 import Dropdown from './Dropdown'
 const css = require("./Header.scss");

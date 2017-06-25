@@ -2,9 +2,9 @@
  * Created by henrysavi on 12/04/17.
  */
 import React from "react"
-import LoginTextField from "./LoginTextField"
-import LoginButton from "./LoginButton"
-import Error from "./Error"
+import LoginTextField from "../InputFields/LoginTextField"
+import LoginButton from "../Buttons/LoginButton"
+import Error from "../Error"
 const css = require("./FirstPassword.scss");
 
 const labelStyles = {

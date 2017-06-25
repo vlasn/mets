@@ -3,10 +3,10 @@
  */
 import React from "react"
 import { connect } from 'react-redux'
-import { toggleDropdown } from '../actions/uiActions'
+import { toggleDropdown } from '../../actions/uiActions'
 import { Redirect } from 'react-router-dom'
 import Header from "./Header"
-import history from './history'
+import history from '../history'
 
 class HeaderWrapper extends React.Component {
     constructor(props) {

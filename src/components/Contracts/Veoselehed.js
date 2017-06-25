@@ -4,7 +4,7 @@
 
 import React from "react"
 import { connect } from 'react-redux'
-import { fetchCargoPages } from "../actions/uiActions"
+import { fetchCargoPages } from "../../actions/uiActions"
 import Table from './Table'
 import TableRow from './TableRow'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';

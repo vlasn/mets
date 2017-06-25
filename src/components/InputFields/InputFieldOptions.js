@@ -5,7 +5,7 @@ const css = require("./InputFieldOptions.scss");
 import React from "react";
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import InputField from "./InputField"
-import {uuid} from "../Utilities"
+import {uuid} from "../../Utilities"
 
 
 export default class InputFieldOptions extends React.Component {

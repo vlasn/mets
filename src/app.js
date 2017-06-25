@@ -4,10 +4,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux"
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom/es"
-import Login from "./components/Login"
+import Login from "./components/Login/Login"
 import store from "./store"
-import Validate from "./components/Validate"
-import HeaderWrapper from "./components/HeaderWrapper"
+import Validate from "./components/Validate/Validate"
+import HeaderWrapper from "./components/Header/HeaderWrapper"
 import History from './components/history'
 import Contracts from "./components/containers/Contracts"
 import NewClient from "./components/containers/NewClient"
