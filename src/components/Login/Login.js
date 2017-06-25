@@ -12,17 +12,15 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
 class Login extends React.Component {
-    componentWillUpdate(){
+    componentWillReceiveProps(newProps){
+        newProps.navigateToRoot ? this.props.history.push('/') : null
     }
+
     render() {
-        this.props.navigateToRoot ? this.props.history.push('/') : null
         return (
-            <MuiThemeProvider>
                 <div className="login__wrapper">
                     <LoginForm {...this.props} />
                 </div>
-            </MuiThemeProvider>
-
         )
     }
 }

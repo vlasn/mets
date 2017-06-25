@@ -1,4 +1,4 @@
-import * as actionTypes from "../actions/contractActions"
+import * as actionTypes from "./contractActions"
 
 export default function reducer(state = {
     contractRowLoading: {

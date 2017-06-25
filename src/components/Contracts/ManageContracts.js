@@ -9,18 +9,16 @@ export default class ClientLanding extends React.Component {
         super(props);
     }
     componentDidMount(){
-        //mounted, searching..
         this.props.search(this.props.filter)
     }
     componentDidUpdate(){
         {this.props.searchRequired ? this.props.search(this.props.filter):null}
     }
     onContractRowUpdate(contractId, key, value){
-        this.props.contractRowUpdated(contractId,key,value)
+        this.props.updateContractRow(contractId,key,value)
     }
 
     render() {
-        console.log('renderist:', this.props.data)
         return(
             <div>
                 {this.props.data.map((data,index) => {
