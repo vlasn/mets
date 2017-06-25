@@ -79,7 +79,9 @@ export default function reducer( state = {
             }
         }
 
-        //Filter bits
+        // Filter bits
+        // Deprecated as soon as splitting this file is finished;
+        // decoupling filter logic from contract logic as it's a separate block
         case "TOGGLE_FILTER_DROPDOWN" : {
             return {
                 ...state,
@@ -129,9 +131,9 @@ export default function reducer( state = {
                 }
             }
         }
+        //Filter block ends
 
-
-        //search
+        //search - to be split
         case "SEARCH_COMPLETE" : {
             return {
                 ...state,
@@ -152,6 +154,8 @@ export default function reducer( state = {
                 searchRequired: true
             }
         }
+        //Search block ends
+
         case "REFRESH_CONTRACT" : {
             return({
                 ...state,

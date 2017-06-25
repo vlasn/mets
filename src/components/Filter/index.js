@@ -5,6 +5,8 @@ import React from "react"
 import { connect } from 'react-redux'
 import CardFilter from "./CardFilter"
 
+import { toggleDropdown, personFilterOption, statusFilterOption, updateSearchTerm } from "./filterActions"
+
 class Filter extends React.Component {
     constructor(props){
         super(props)
@@ -60,5 +62,7 @@ const mapStateToProps = (state) => {
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    {
+        ...mapDispatchToProps,// toggleDropdown, personFilterOption, statusFilterOption, updateSearchTerm
+    }
 )(Filter);

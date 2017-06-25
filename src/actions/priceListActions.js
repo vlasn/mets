@@ -1,21 +1,43 @@
 import axios from "axios"
 
+export const PRICEFORM_FETCHING_KEY = "PRICEFORM_FETCHING_KEY "
+export const PRICEFORM_UPDATE_KEYS = "PRICEFORM_UPDATE_KEYS "
+export const PRICELIST_LOADING = "PRICELIST_LOADING "
+export const PRICELIST_ERROR = "PRICELIST_ERROR "
+export const PRICELIST_IMPORT_HISTORY = "PRICELIST_IMPORT_HISTORY "
+export const PRICELIST_MISMATCHES = "PRICELIST_MISMATCHES "
+export const PRICEFORM_EDITS_BUNDLE = "PRICEFORM_EDITS_BUNDLE "
+export const PRICELIST_SELECT_EDITABLE = "PRICELIST_SELECT_EDITABLE "
+
+export const XLSX_UPLOAD_ATTEMPT = "XLSX_UPLOAD_ATTEMPT "
+export const XLSX_UPLOAD_SUCCESSFUL = "XLSX_UPLOAD_SUCCESSFUL "
+export const XLSX_UPLOAD_REJECTED = "XLSX_UPLOAD_REJECTED"
+
+
+export const PRICELIST_ADD_SUCCESSFUL = "PRICELIST_ADD_SUCCESSFUL "
+export const PRICELIST_ADD_FAILED = "PRICELIST_ADD_FAILED "
+export const PRICELIST_MATCH_CONFIRMED = "PRICELIST_MATCH_CONFIRMED "
+export const PRICELIST_MATCH_REJECTED = "PRICELIST_MATCH_REJECTED "
+export const PRICELIST_SUBMIT_ERROR = "PRICELIST_SUBMIT_ERROR "
+
+
+
 export const getOptions = (fieldKey) => {
     return (dispatch) => {
         dispatch({
-            type: "PRICEFORM_FETCHING_KEY",
+            type: PRICEFORM_FETCHING_KEY,
             payload: true
         })
         axios.get(`/api/import/fieldOpts/${fieldKey}`)
             .then(({data}) => {
                 dispatch({
-                    type: "PRICEFORM_FETCHING_KEY",
+                    type: PRICEFORM_FETCHING_KEY,
                     payload: false
                 })
                 if(data.status === 'accept' && data.data.length>0) {
                     if(typeof(data[0])==='number') data.data = data.data.map(v => v.toString())
                     dispatch({
-                        type: "PRICEFORM_UPDATE_KEYS",
+                        type: PRICEFORM_UPDATE_KEYS,
                         payload: {
                             key: fieldKey,
                             options: data.data.sort().map(v=>
@@ -32,31 +54,31 @@ export const getOptions = (fieldKey) => {
 export const fetchImportedPriceLists = () => {
     return (dispatch) => {
         dispatch({
-            type: "PRICELIST_LOADING",
+            type: PRICELIST_LOADING,
             payload: true
         })
         axios.get("/api/import/fetch")
             .then((response)=> {
                 dispatch({
-                    type: "PRICELIST_LOADING",
+                    type: PRICELIST_LOADING,
                     payload: false
                 })
                 if(response.data.status === 'accept'){
                     console.log(response)
 
                     dispatch({
-                        type: "PRICELIST_IMPORT_HISTORY",
+                        type: PRICELIST_IMPORT_HISTORY,
                         payload: response.data.data
                     })
                 }
             })
             .catch(error => {
                 dispatch({
-                    type: "PRICELIST_LOADING",
+                    type: PRICELIST_LOADING,
                     payload: false
                 })
                 dispatch({
-                    type: "PRICELIST_ERROR",
+                    type: PRICELIST_ERROR,
                     error: error
                 })
             })
@@ -66,18 +88,18 @@ export const fetchImportedPriceLists = () => {
 export const fetchSinglePricelist = (importId) => {
     return (dispatch) => {
         dispatch({
-            type: "PRICELIST_LOADING",
+            type: PRICELIST_LOADING,
             payload: true
         })
         axios.get("/api/import/fetch?id="+importId)
             .then(({data})=> {
                 dispatch({
-                    type: "PRICELIST_LOADING",
+                    type: PRICELIST_LOADING,
                     payload: false
                 });
                 if(data.status == 'accept' && data.data.unmatched.length>0) {
                     dispatch({
-                        type: "PRICELIST_MISMATCHES",
+                        type: PRICELIST_MISMATCHES,
                         payload: data.data
                     })
                 }
@@ -88,14 +110,14 @@ export const fetchSinglePricelist = (importId) => {
 
 export const selectEditable = (id) => {
     return (dispatch) => {
-        dispatch({type: "PRICELIST_SELECT_EDITABLE", payload: id})
+        dispatch({type: PRICELIST_SELECT_EDITABLE, payload: id})
     }
 }
 
 export const addToBundle = (_id, key, value) => {
     return (dispatch) => {
         dispatch({
-            type: "PRICEFORM_EDITS_BUNDLE",
+            type: PRICEFORM_EDITS_BUNDLE,
             payload: {
                 _id, key, value
             }
@@ -106,7 +128,7 @@ export const addToBundle = (_id, key, value) => {
 export const submitXlsx = (formData) => {
     return (dispatch) => {
         dispatch({
-            type: "XLSX_UPLOAD_ATTEMPT",
+            type: XLSX_UPLOAD_ATTEMPT,
             payload: true
         })
         let headers =  new Headers();
@@ -121,24 +143,29 @@ export const submitXlsx = (formData) => {
             .then(res => res.json())
             .then(res => {
                 dispatch({
-                    type: "XLSX_UPLOAD_ATTEMPT",
+                    type: XLSX_UPLOAD_ATTEMPT,
                     payload: false
                 })
                 if(res.status === 'accept') {
                     dispatch({
-                        type: "XLSX_UPLOAD_SUCCESSFUL",
+                        type: XLSX_UPLOAD_SUCCESSFUL,
                         payload: res.data,
                     })
                 }
             })
-            .catch(console.log)
+            .catch(err => {
+                dispatch({
+                    type: XLSX_UPLOAD_REJECTED,
+                    payload: err.response.data.msg
+                })
+            })
     }
 }
 
 export const addNewPriceListItem = (bundle, parentId) =>{
     return (dispatch) => {
         dispatch({
-            type: "PRICELIST_LOADING",
+            type: PRICELIST_LOADING,
             payload: true
         })
         console.log(bundle)
@@ -165,19 +192,19 @@ export const addNewPriceListItem = (bundle, parentId) =>{
                     console.log(JSON.stringify({...bundle, parentId}))
                     console.log(res)
                     dispatch({
-                        type: "PRICELIST_ADD_SUCCESSFUL",
+                        type: PRICELIST_ADD_SUCCESSFUL,
                         keyToRemove: bundle._id,
                         mismatches: res.data.data.mismatches
                     })
                     dispatch({
-                        type: "PRICELIST_LOADING",
+                        type: PRICELIST_LOADING,
                         payload: false
                     })
                 })
                 .catch(err =>{
                     console.log(err)
                     dispatch({
-                        type: "PRICELIST_ADD_FAILED",
+                        type: PRICELIST_ADD_FAILED,
                     })
                 })
         }
@@ -185,7 +212,7 @@ export const addNewPriceListItem = (bundle, parentId) =>{
 }
 
 export const transmitParent = (id) => {
-    return {type: "TRANSMIT_PARENT", payload: id}
+    return {type: TRANSMIT_PARENT, payload: id}
 }
 
 export const submitBundle = (prevValues, editedValues) => {
@@ -212,6 +239,7 @@ export const submitBundle = (prevValues, editedValues) => {
     return (dispatch) => {
         //console.log(JSON.stringify({ ...prevValues, ...bundledEdits}), missing);
         if(!missing) {
+            //TODO - needs to dispatch loader event here
             axios.post('/api/import/xlsx/update', {
                 ...prevValues,
                 ...bundledEdits
@@ -219,7 +247,7 @@ export const submitBundle = (prevValues, editedValues) => {
                 .then(({data}) => {
                     if(data.status == 'accept') {
                         dispatch({
-                            type: "PRICELIST_MATCH_CONFIRMED",
+                            type: PRICELIST_MATCH_CONFIRMED,
                             payload: data.data
                         })
                     }
@@ -227,13 +255,13 @@ export const submitBundle = (prevValues, editedValues) => {
                 .catch(err => {
                     if(err.response.status === 500) {
                         dispatch({
-                            type: "PRICELIST_MATCH_REJECTED"
+                            type: PRICELIST_MATCH_REJECTED
                         })
                     }
                 })
         } else {
             dispatch({
-                type: "PRICELIST_SUBMIT_ERROR",
+                type: PRICELIST_SUBMIT_ERROR,
                 payload: "Osad väärtused on täitmata!"
             })
         }

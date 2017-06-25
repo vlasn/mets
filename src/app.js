@@ -18,7 +18,6 @@ import ImportHistory from "./components/ImportHistory"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Filter from "./components/Filter"
 
-
 class App extends React.Component {
 
     render() {

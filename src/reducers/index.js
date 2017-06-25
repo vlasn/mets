@@ -9,7 +9,12 @@ import clientManagement from "./clientManagement"
 import contractManagement from "./contractManagment"
 import priceList from "./priceList"
 
-
+/**
+ * to be combined:
+ * clientManagement {
+ *    filter #done, to replace "cards"
+ * }
+ * */
 export default combineReducers({
     ui,
     user,

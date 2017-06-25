@@ -47,9 +47,8 @@
     
     
 * Värvid:
-    * Kõik vaja minevad värvid (eeldan et nende arv on ~5, v.a. staatusevärvid) defineeritakse  muutujatena app.scss kaustas, mida
-    teised scss failid importida saavad: `@import '../relative/path/app'`
-    
+    * Kõik vaja minevad värvid (eeldan et nende arv on ~5, v.a. staatusevärvid) defineeritakse  muutujatena colors.scss
+     või palette.scss kaustas, mida teised scss failid importida saavad: `@import '../relative/path/app'`
     
 * Muu?
    * Transition animatsioonid?
