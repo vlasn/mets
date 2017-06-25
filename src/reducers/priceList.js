@@ -2,6 +2,8 @@
  * Created by clstrfvck on 18/06/2017.
  */
 
+import * as actionTypes from "../actions/priceListActions"
+
 export default function reducer( state = {
     loading: false,
     conflictsResolved: false,
@@ -115,7 +117,7 @@ export default function reducer( state = {
             }
         }
 
-        case "PRICELIST_IMPORT_HISTORY" : {
+        case actionTypes.PRICELIST_IMPORT_HISTORY : {
             return{
                 ...state,
                 imports: action.payload

@@ -25,15 +25,6 @@ export default function reducer( state = {
             address: ""
         }
     },
-    cards: {
-        filter: {
-            statusFilterOpen: false,
-            personFilterOpen: false,
-            statusFilterOption: '',
-            personFilterOption: '',
-            searchTerm: ''
-        }
-    },
     contracts: [],
     searchRequired: false
 
@@ -78,60 +69,6 @@ export default function reducer( state = {
                 }
             }
         }
-
-        // Filter bits
-        // Deprecated as soon as splitting this file is finished;
-        // decoupling filter logic from contract logic as it's a separate block
-        case "TOGGLE_FILTER_DROPDOWN" : {
-            return {
-                ...state,
-                cards: {
-                    ...state.cards,
-                    filter: {
-                        ...state.cards.filter,
-                        [action.payload+'FilterOpen']: !state.cards.filter[action.payload+'FilterOpen']
-                    }
-                }
-            }
-        }
-        case "PERSON_FILTER_OPTION" : {
-            return{
-                ...state,
-                cards: {
-                    ...state.cards,
-                    filter: {
-                        ...state.cards.filter,
-                        personFilterOption: action.payload
-                    }
-                }
-            }
-        }
-        case "FILTER_SEARCH_TERM" : {
-            return{
-                ...state,
-                cards: {
-                    ...state.cards,
-                    filter: {
-                        ...state.cards.filter,
-                        searchTerm: action.payload
-                    }
-                }
-            }
-        }
-
-        case "STATUS_FILTER_OPTION" : {
-            return{
-                ...state,
-                cards: {
-                    ...state.cards,
-                    filter: {
-                        ...state.cards.filter,
-                        statusFilterOption: action.payload
-                    }
-                }
-            }
-        }
-        //Filter block ends
 
         //search - to be split
         case "SEARCH_COMPLETE" : {

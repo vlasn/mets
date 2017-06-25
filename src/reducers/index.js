@@ -8,6 +8,7 @@ import ui from "./uiReducer"
 import clientManagement from "./clientManagement"
 import contractManagement from "./contractManagment"
 import priceList from "./priceList"
+import filter from "../components/Filter/filterReducer"
 
 /**
  * to be combined:
@@ -15,12 +16,14 @@ import priceList from "./priceList"
  *    filter #done, to replace "cards"
  * }
  * */
+let contract = combineReducers({clientManagement, filter})
+
 export default combineReducers({
     ui,
     user,
     documents,
     validation,
-    clientManagement,
+    contract,
     contractManagement,
     priceList
 })

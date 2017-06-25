@@ -17,10 +17,11 @@ class Contracts extends Component {
 }
 
 const mapStateToProps = (state) => {
+    console.log(state.contract.clientManagement)
     return {
-        filter: state.clientManagement.cards.filter,
-        data: state.clientManagement.contracts,
-        searchRequired: state.clientManagement.searchRequired,
+        filter: state.contract.filter,
+        data: state.contract.clientManagement.contracts,
+        searchRequired: state.contract.clientManagement.searchRequired,
         loggedIn: state.user.loggedIn
         // contractRowLoading: state.editContract.contractRowLoading
     }

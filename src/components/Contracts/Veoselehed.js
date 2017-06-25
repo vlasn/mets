@@ -9,8 +9,6 @@ import Table from './Table'
 import TableRow from './TableRow'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-
-
 class Veoselehed extends React.Component {
     constructor(props){
         super(props)
@@ -116,7 +114,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         loading: state.user.loading,
         currentPage: state.ui.veoselehed.currentPage,
-        sheets: state.clientManagement.contracts.filter(v=>v._id===ownProps.contractId)[0].cargoSheets
+        sheets: state.contract.clientManagement.contracts.filter(v=>v._id===ownProps.contractId)[0].cargoSheets
     };
 };
 

@@ -17,9 +17,10 @@ export default function reducer( state = {
     switch(action.type) {
 
         case actionTypes.TOGGLE_FILTER_DROPDOWN : {
+            console.log(action);
             return {
                 ...state,
-                [action.payload + 'FilterOpen']: !state.cards.filter[action.payload + 'FilterOpen']
+                [action.payload + 'FilterOpen']: !state[action.payload + 'FilterOpen']
             }
         }
 

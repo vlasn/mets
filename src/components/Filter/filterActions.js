@@ -11,27 +11,33 @@ export const FILTER_SEARCH_TERM = "FILTER_SEARCH_TERM"
 
 export function toggleDropdown(label) {
     console.log('toggled '+label)
-    dispatch({
+    return {
         type: TOGGLE_FILTER_DROPDOWN, 
         payload: label
-    })
+    }
 
 }
 export function personFilterOption(person) {
-    dispatch({
+    return {
         type: PERSON_FILTER_OPTION, 
         payload: person
-    })
+    }
 }
 export function statusFilterOption(status) {
-    dispatch({
+    return {
         type: STATUS_FILTER_OPTION, 
         payload: status
-    })
+    }
 }
 export function updateSearchTerm(term) {
-    dispatch({
+    return {
         type: FILTER_SEARCH_TERM, 
         payload: term
-    })
+    }
+}
+
+export function queueSearch() {
+    return {
+        type: "SEARCH_QUEUED"
+    }
 }

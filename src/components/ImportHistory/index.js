@@ -16,7 +16,7 @@ const styles = {
     }
 }
 
-class ImportHistory extends Component{
+class ImportHistory extends Component {
     constructor(props) {
         super(props)
         this.navigateToImport = this.navigateToImport.bind(this)
