@@ -20,7 +20,7 @@ export default class LoginForm extends React.Component{
     }
 
     loginHandler() {
-        this.props.betterLogin(
+        this.props.login(
             this.props.email,
             this.props.password
         )

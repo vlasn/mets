@@ -5,9 +5,8 @@
 
 import React from "react"
 import { connect } from 'react-redux'
-import { logIn, credentialChange, betterLogin } from '../../actions/userActions'
+import { credentialChange, login } from './loginActions'
 import LoginForm from './LoginForm'
-import axios from "axios"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
@@ -28,15 +27,6 @@ class Login extends React.Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        updateValue: (key, data) => dispatch(credentialChange(key, data)),
-        onSubmitLogin: (id, pass) => {
-
-        }
-    }
-};
-
 const mapStateToProps = (state) => {
     return {
         loading: state.user.loading,
@@ -50,5 +40,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
     mapStateToProps,
-    { credentialChange, betterLogin}
+    { credentialChange, login }
     )(Login);
