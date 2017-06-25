@@ -8,7 +8,6 @@ module.exports = {
     entry:  {
         app: [
             path.resolve(__dirname, 'src/app.js'),
-            path.resolve(__dirname, 'src/components/Login.js')
         ],
         vendor: [
             'react', 'react-dom', 'react-router-dom', 'react-redux', 'redux', 'redux-thunk', 'material-ui'

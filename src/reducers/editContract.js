@@ -1,3 +1,5 @@
+import * as actionTypes from "../actions/contractActions"
+
 export default function reducer(state = {
     contractRowLoading: {
         created_timestamp: false,
@@ -8,8 +10,9 @@ export default function reducer(state = {
         raie_teostamine: false,
     }
 }, action){
+
     switch(action.type) {
-        case "UPDATE_CONTRACT_ROW_ATTEMPT": {
+        case actionTypes.UPDATE_CONTRACT_ROW_ATTEMPT: {
             if(state.contractRowLoading.hasOwnProperty(action.payload.key)){
                 return({...state, contractRowLoading:{
                     ...state.contractRowLoading,
@@ -21,7 +24,7 @@ export default function reducer(state = {
             }
         }
 
-        case "UPDATE_CONTRACT_ROW_SUCCESS": {
+        case actionTypes.UPDATE_CONTRACT_ROW_SUCCESS: {
             if(state.contractRowLoading.hasOwnProperty(action.payload.key)){
                 return({...state,
                     contractRowLoading:{
@@ -35,7 +38,7 @@ export default function reducer(state = {
             }
         }
 
-        case "UPDATE_CONTRACT_ROW_ERROR": {
+        case actionTypes.UPDATE_CONTRACT_ROW_ERROR: {
             if(state.contractRowLoading.hasOwnProperty(action.payload.key)){
                 return({...state,
                     contractRowLoading:{
@@ -48,6 +51,7 @@ export default function reducer(state = {
                 return {...state}
             }
         }
+
         default : {
             return {
                 ...state

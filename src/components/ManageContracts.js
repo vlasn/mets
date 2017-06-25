@@ -10,10 +10,10 @@ export default class ClientLanding extends React.Component {
     }
     componentDidMount(){
         //mounted, searching..
-        this.props.searchTriggered(this.props.filter)
+        this.props.search(this.props.filter)
     }
     componentDidUpdate(){
-        {this.props.searchRequired ? this.props.searchTriggered(this.props.filter):null}
+        {this.props.searchRequired ? this.props.search(this.props.filter):null}
     }
     onContractRowUpdate(contractId, key, value){
         this.props.contractRowUpdated(contractId,key,value)

@@ -78,6 +78,7 @@ export default function reducer( state = {
                 }
             }
         }
+
         //Filter bits
         case "TOGGLE_FILTER_DROPDOWN" : {
             return {
@@ -128,6 +129,7 @@ export default function reducer( state = {
                 }
             }
         }
+
 
         //search
         case "SEARCH_COMPLETE" : {

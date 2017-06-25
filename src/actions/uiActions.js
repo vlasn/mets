@@ -8,8 +8,19 @@ export function toggleDropdown(currentlyOpen, loggedIn) {
     return({type: "MAIN_DROPDOWN_TOGGLE", payload: payload})
 }
 
-export function search(opt) {
-    return axios.get(`/api/contract/fetch?cadastre=${opt.searchTerm}&metsameister=${opt.personFilterOption}&status=${opt.statusFilterOption}`)
+export function search(opts) {
+    return (dispatch) => {
+        dispatch({type: "SEARCH_TRIGGERED"});
+        axios.get(`/api/contract/fetch?cadastre=${opts.searchTerm}&metsameister=${opts.personFilterOption}&status=${opts.statusFilterOption}`)
+            .then(({data}) => {
+                if(data.status==='accept') {
+                    dispatch({type: "SEARCH_COMPLETE", payload: data.data})
+                } else {
+                    dispatch({type: "SEARCH_FAILED", payload: data.msg})
+                }
+            })
+            .catch(console.log)
+    }
 }
 
 export function fetchCargoPages(cadastres = [], forId) {

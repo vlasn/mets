@@ -23,6 +23,7 @@ class NewContract extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
+    //TODO - tõsta selle sisu eraldi actionsi faili @hensav. Vt. src/actions/contractActions for reference
     return {
         onFieldValueChange(source, value) {
             //console.log(arguments)

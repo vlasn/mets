@@ -12,12 +12,11 @@ import History from './components/history'
 import Contracts from "./components/containers/Contracts"
 import NewClient from "./components/containers/NewClient"
 import NewContract from "./components/containers/NewContract"
-import Footer from "./components/Footer"
+//import Footer from "./components/Footer"
 import PList from "./components/presentational/PriceListTable"
 import ImportHistory from "./components/presentational/ImportHistory"
-import AuthCheck from "./components/AuthCheck"
 
-import Filter from "./components/containers/Filter"
+import Filter from "./components/presentational/Filter"
 
 
 class App extends React.Component {
@@ -27,8 +26,6 @@ class App extends React.Component {
             <Router history={History}>
                 <div className="main__wrapper">
                     <HeaderWrapper/>
-                    {/*<AuthCheck history={History}/>*/}
-
                     <Route exact={true} path="/login" component={Login}/>
                     <Route exact path="/validate/:hash" component={Validate}/>
                     <Route exact path="/" component={ImportHistory}/>

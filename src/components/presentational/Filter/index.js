@@ -3,7 +3,7 @@
  */
 import React from "react"
 import { connect } from 'react-redux'
-import CardFilter from "../presentational/CardFilter"
+import CardFilter from "./CardFilter"
 
 class Filter extends React.Component {
     constructor(props){

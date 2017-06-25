@@ -16,35 +16,6 @@ class Contracts extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return{
-        searchTriggered(opt){
-            dispatch({type: "SEARCH_TRIGGERED"});
-            search(opt)
-                .then(({data}) => {
-                    if(data.status==='accept') {
-                        dispatch({type: "SEARCH_COMPLETE", payload: data.data})
-                    } else {
-                        dispatch({type: "SEARCH_FAILED", payload: data.msg})
-                    }
-                })
-                .catch(console.log)
-        },
-        contractRowUpdated(contractId,key,value,remove){
-            dispatch({type: "UPDATE_CONTRACT_ROW_ATTEMPT",payload: {key: key}})
-            updateContractRow(contractId,key,value)
-                .then(({data}) => {
-                    if(data.status==='accept') {
-                        dispatch({type:"UPDATE_CONTRACT_ROW_SUCCESS", payload: {key: key}})
-                        dispatch({type:"REFRESH_CONTRACT", payload: data.data})
-                    } else {
-                        dispatch({type:"UPDATE_CONTRACT_ROW_ERROR", payload: {key: key}})
-                    }
-                })
-        }
-    }
-}
-
 const mapStateToProps = (state) => {
     return {
         filter: state.clientManagement.cards.filter,
@@ -57,5 +28,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
     mapStateToProps,
-    mapDispatchToProps
+    { updateContractRow, search }
 )(Contracts);

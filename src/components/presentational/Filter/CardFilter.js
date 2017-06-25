@@ -4,7 +4,7 @@
 
 import React, {Component} from "react"
 import MuiWrapper from "material-ui/styles/MuiThemeProvider"
-import SearchBar from "./SearchBar"
+import SearchBar from "../SearchBar"
 import {Dropdown, DropdownOption} from "./FilterDropdown"
 
 const css = require('./CardFilter.scss')
@@ -34,12 +34,6 @@ export default class Filter extends Component {
     }
     toggleDropdown(label) {
         this.props.toggleDropdown(label);
-        // console.log('toggled '+label)
-        // let prevState = this.state;
-        // this.setState({
-        //     ...this.state,
-        //     [label+'FilterOpen']: !prevState[label+'FilterOpen']
-        // })
     }
     statusFilterOption(status){
         this.props.statusFilterOption(status)
