@@ -44,6 +44,13 @@
         selector name: get<Nimisõna>                # getContacts
     ```
     
+    
+    
+* Värvid:
+    * Kõik vaja minevad värvid (eeldan et nende arv on ~5, v.a. staatusevärvid) defineeritakse  muutujatena app.scss kaustas, mida
+    teised scss failid importida saavad: `@import '../relative/path/app'`
+    
+    
 * Muu?
    * Transition animatsioonid?
    * Loader/spinner?
