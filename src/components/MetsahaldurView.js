@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import DetailsWrapper from "./presentational/DetailsWrapper"
+import DetailsWrapper from "./Contracts/DetailsWrapper"
 const css = require("./MetsahaldurView.scss")
 
 

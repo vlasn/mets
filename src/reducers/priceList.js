@@ -163,5 +163,5 @@ export default function reducer( state = {
     }
 }
 
-import { cellKeys } from "../components/presentational/PriceListTable/PriceListForm"
+import { cellKeys } from "../components/ResolveImport/PriceListForm"
 let editableKeys = Object.keys(cellKeys).reduce((acc,val)=>{acc[cellKeys[val]] = false; return acc},{})

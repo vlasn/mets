@@ -9,14 +9,14 @@ import store from "./store"
 import Validate from "./components/Validate/Validate"
 import HeaderWrapper from "./components/Header/HeaderWrapper"
 import History from './components/history'
-import Contracts from "./components/containers/Contracts"
-import NewClient from "./components/containers/NewClient"
+import Contracts from "./components/Contracts/Contracts"
+import NewClient from "./components/NewClient"
 import NewContract from "./components/containers/NewContract"
 //import Footer from "./components/Footer"
-import PList from "./components/presentational/PriceListTable"
-import ImportHistory from "./components/presentational/ImportHistory"
+import PList from "./components/ResolveImport"
+import ImportHistory from "./components/ImportHistory"
 
-import Filter from "./components/presentational/Filter"
+import Filter from "./components/Filter"
 
 
 class App extends React.Component {

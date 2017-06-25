@@ -3,8 +3,8 @@
  */
 import React, {Component} from "react"
 import { connect } from "react-redux"
-import { getOptions, addToBundle, submitBundle,addNewPriceListItem } from "../../../actions/priceListActions"
-//import {cellKeys} from "./PriceListTable"
+import { getOptions, addToBundle, submitBundle,addNewPriceListItem } from "../../actions/priceListActions"
+//import {cellKeys} from "./ResolveImport"
 //Duplicate declaration because Webpack couldn't find the object from the other file. :|
 export const cellKeys = {
     tarnekoht: "tarnekoht",

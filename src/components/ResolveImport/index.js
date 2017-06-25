@@ -3,7 +3,7 @@
  */
 import React, {Component} from "react"
 import { connect } from "react-redux"
-import { fetchSinglePricelist, selectEditable, transmitParent } from "../../../actions/priceListActions"
+import { fetchSinglePricelist, selectEditable, transmitParent } from "../../actions/priceListActions"
 const css = require("./PriceList.scss")
 import Table from "./PriceListTable"
 
@@ -34,10 +34,6 @@ class PriceListTable extends Component {
             </div>
         )
     }
-}
-const samples = {
-    a: "Testin",
-    b: "Väärtusi"
 }
 
 const mapStateToProps = function(state, ownProps) {

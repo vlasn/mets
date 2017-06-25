@@ -2,7 +2,7 @@
  * Created by clstrfvck on 18/06/2017.
  */
 import React, {Component} from "react"
-import { uuid } from "../../../Utilities"
+import { uuid } from "../../Utilities"
 import PriceListForm from "./PriceListForm"
 const css = require("./PriceListTable.scss")
 
