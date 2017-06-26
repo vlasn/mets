@@ -1,3 +1,5 @@
+import { CARGO_PAGES_RECEIVED } from "../components/Contracts/contractActions"
+
 export default function reducer( state = {
     creation: {
         activeTab: 'privatePerson',
@@ -70,7 +72,6 @@ export default function reducer( state = {
             }
         }
 
-        //search - to be split
         case "SEARCH_COMPLETE" : {
             return {
                 ...state,
@@ -91,19 +92,11 @@ export default function reducer( state = {
                 searchRequired: true
             }
         }
-        //Search block ends
 
         case "REFRESH_CONTRACT" : {
             return({
                 ...state,
                 contracts: state.contracts.map(c => c._id === action.payload._id ? {...c, ...action.payload} : c)
-            })
-        }
-        case "CARGO_PAGES_RECEIVED" : {
-            console.log('updated a thing')
-            return({
-                ...state,
-                contracts: state.contracts.map(c => c._id!==action.forId ? c : {...c, cargoSheets: action.payload})
             })
         }
 

@@ -2,7 +2,7 @@
  * Created by clstrfvck on 10/06/2017.
  */
 import React, { Component } from 'react'
-import Pagination from '../Pagination'
+import Pagination from '../../Pagination'
 const css = require("./Table.scss");
 
 export default class Table extends Component {

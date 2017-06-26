@@ -1,7 +1,7 @@
 import React from "react"
 import MetsCard from "./MetsCard"
 import DetailsWrapper from "./DetailsWrapper";
-import VeoseTable from './Veoselehed'
+import VeoseTable from './CargoPages/Veoselehed'
 
 
 export default class ClientLanding extends React.Component {

@@ -4,10 +4,10 @@
 
 import React from "react"
 import { connect } from 'react-redux'
-import { fetchCargoPages } from "../../actions/uiActions"
-import Table from './Table'
+import { fetchCargoPages } from "./cargoPageActions"
 import TableRow from './TableRow'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+const css = require("./Table.scss")
 
 class Veoselehed extends React.Component {
     constructor(props){
@@ -112,9 +112,10 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        loading: state.user.loading,
+        loading: state.contract.cargoPage.loading,
+        error: state.contract.cargoPage.error,
         currentPage: state.ui.veoselehed.currentPage,
-        sheets: state.contract.clientManagement.contracts.filter(v=>v._id===ownProps.contractId)[0].cargoSheets
+        sheets: state.contract.cargoPage[ownProps.contractId],
     };
 };
 

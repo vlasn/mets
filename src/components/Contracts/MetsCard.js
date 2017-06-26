@@ -3,6 +3,7 @@
  */
 import React from "react"
 import DetailsWrapper from "./DetailsWrapper"
+
 import {CaretDown, CaretUp} from "../Icons"
 const css = require("./MetsCard.scss");
 
