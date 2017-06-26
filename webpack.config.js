@@ -45,10 +45,16 @@ module.exports = {
         ]
     },
     devServer: {
-        contentBase: path.join(__dirname, "dist"),
+        contentBase: path.join(__dirname, "src"),
         compress: true,
         stats: "errors-only",
-        open: true
+        open: true,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3080',
+                secure: false
+            }
+        }
     },
 
     plugins: [
