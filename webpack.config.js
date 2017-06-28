@@ -46,6 +46,8 @@ module.exports = {
     },
     devServer: {
         contentBase: path.join(__dirname, "src"),
+        publicPath: "/",
+        historyApiFallback: true,
         compress: true,
         stats: "errors-only",
         open: true,
@@ -71,6 +73,8 @@ module.exports = {
             disable: false,
             allChunks: true
         }),
+        new webpack.HotModuleReplacementPlugin(),
+
         new webpack.optimize.CommonsChunkPlugin({
             names: ["vendor","manifest"],
             minChunks: Infinity,
