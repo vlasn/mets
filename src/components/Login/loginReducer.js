@@ -25,7 +25,7 @@ export default function reducer( state = {
             console.log("login successful!");
             return { ...state, loading: false, loggedIn: true, error: null, password: null, details: action.payload, navigateToRoot:true}
         }
-        case "LOG_OUT": {
+        case actionTypes.LOG_OUT: {
             return {loading: false, loggedIn: false, error: null, details: {}}
         }
         case actionTypes.LOGIN_CREDS : {

@@ -1,4 +1,5 @@
 import axios from "axios"
+import { session } from "../Utilities" //{...session()}
 
 export const PRICEFORM_FETCHING_KEY = "PRICEFORM_FETCHING_KEY "
 export const PRICEFORM_UPDATE_KEYS = "PRICEFORM_UPDATE_KEYS "
@@ -23,7 +24,7 @@ export const getOptions = (fieldKey) => {
             type: PRICEFORM_FETCHING_KEY,
             payload: true
         })
-        axios.get(`/api/import/fieldOpts/${fieldKey}`)
+        axios.get(`/api/reports/fieldOpts/${fieldKey}`,{...session()})
             .then(({data}) => {
                 dispatch({
                     type: PRICEFORM_FETCHING_KEY,
@@ -52,7 +53,7 @@ export const fetchSinglePricelist = (importId) => {
             type: PRICELIST_LOADING,
             payload: true
         })
-        axios.get("/api/import/fetch?id="+importId)
+        axios.get("/api/reports?id="+importId,{...session()})
             .then(({data})=> {
                 dispatch({
                     type: PRICELIST_LOADING,
@@ -111,7 +112,7 @@ export const addNewPriceListItem = (bundle, parentId) =>{
         requiredIndices.map(val => bundle.hasOwnProperty(val) ? console.log(val+' ok') : (missing = true))
 
         if(!missing) {
-            axios.post('/api/pricelist/add', {...bundle, parentId})
+            axios.post('/api/pricelist/add', {...bundle, parentId},{...session()})
                 .then(res => {
                     console.log(JSON.stringify({...bundle, parentId}))
                     console.log(res)
@@ -167,7 +168,7 @@ export const submitBundle = (prevValues, editedValues) => {
             axios.post('/api/import/xlsx/update', {
                 ...prevValues,
                 ...bundledEdits
-            })
+            },{...session()})
                 .then(({data}) => {
                     if(data.status == 'accept') {
                         dispatch({

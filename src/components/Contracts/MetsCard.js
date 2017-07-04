@@ -53,7 +53,7 @@ export default class MetsCard extends React.Component {
                     <div className="MetsCard__header-button right">
                         <div className="MetsCard__header-button-flexwrap">
                             <div className="flex-button-large">
-                                {this.translateStatus(this.props.status).toUpperCase()}
+                                {this.translateStatus(this.props.status).toUpperCase()||"???"}
                             </div>
                             {this.props.caret ?
                                 <div className="flex-button-small">

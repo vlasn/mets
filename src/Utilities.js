@@ -25,3 +25,5 @@ export const uuid = () => {
 
     return uuid;
 }
+
+export const session = () => ({headers: {"x-auth-token": localStorage.getItem("session")}})

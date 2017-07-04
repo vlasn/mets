@@ -4,6 +4,7 @@
 import React from "react"
 import { connect } from 'react-redux'
 import { toggleDropdown } from '../../actions/uiActions'
+import { logOut } from "../Login/loginActions"
 import { Redirect } from 'react-router-dom'
 import Header from "./Header"
 import history from '../history'
@@ -19,8 +20,6 @@ class HeaderWrapper extends React.Component {
     }
     returnName() {
         if(this.props.loggedIn) {
-            console.log(this.props.details.personal_data)
-            return this.props.details.personal_data.nimi.split(" ")[0]
         } else {
             return('Valikud')
         }
@@ -39,7 +38,7 @@ class HeaderWrapper extends React.Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         logout: () => {
-            dispatch({type: "LOG_OUT"});
+            logOut()
         },
         toggleDropdown: (currentlyOpen, loggedIn) => {
             dispatch(toggleDropdown(currentlyOpen,loggedIn))

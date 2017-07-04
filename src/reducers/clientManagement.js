@@ -73,6 +73,8 @@ export default function reducer( state = {
         }
 
         case "SEARCH_COMPLETE" : {
+            console.log("searchcomplete")
+            console.log(action)
             return {
                 ...state,
                 contracts: action.payload.map(contract => ({...contract, cargoSheets: false})),

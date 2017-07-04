@@ -1,4 +1,5 @@
 import axios from "axios"
+import { session } from "../../Utilities"
 
 export const UPDATE_CONTRACT_ROW_ATTEMPT = "UPDATE_CONTRACT_ROW_ATTEMPT"
 export const UPDATE_CONTRACT_ROW_SUCCESS = "UPDATE_CONTRACT_ROW_SUCCESS"
@@ -13,6 +14,8 @@ export function updateContractRow (contractId, key, value) {
         axios.put('/api/contract/update/'+contractId, {
             key: key,
             value: value,
+        },{
+            ...session()
         })
             .then(({data}) => {
                 if(data.status==='accept') {

@@ -7,6 +7,7 @@ export const LOG_IN_SUCCESSFUL = "LOG_IN_SUCCESSFUL"
 export const LOG_IN_ATTEMPT = "LOG_IN_ATTEMPT"
 export const LOG_IN_FAILURE = "LOG_IN_FAILURE"
 export const LOGIN_CREDS = "LOGIN_CREDS"
+export const LOG_OUT = "LOG_OUT"
 
 
 export function login(id, pass) {
@@ -16,18 +17,30 @@ export function login(id, pass) {
 
         let passhash = require('crypto').createHash('sha512').update(pass).digest('hex');
 
-        axios.post("/api/user/login", {email: id, password: passhash})
+        axios.post("/api/auth", {email: id, password: passhash})
             .then(response => {
-                dispatch({
-                    type: LOG_IN_SUCCESSFUL, payload: response.data.data
-                })
+                if(response.data.data.token) {
+                    localStorage.setItem('session',response.data.data.token)
+                    dispatch({
+                        type: LOG_IN_SUCCESSFUL, payload: response.data.data.personal_data
+                    })
+                } else {
+                    return Promise.reject("Sisselogimine ei õnnestunud!")
+                }
+
             })
             .catch(err => {
                 console.log(err.response)
                 dispatch({type: LOG_IN_FAILURE, payload: err.response.data.msg})
             })
     }
+}
 
+export function logOut() {
+    localStorage.clear()
+    return({
+        type: LOG_OUT
+    })
 }
 
 export function credentialChange(key, data) {

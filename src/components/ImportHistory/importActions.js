@@ -3,6 +3,7 @@
  */
 
 import axios from "axios"
+import { session } from "../../Utilities"
 
 export const XLSX_UPLOAD_ATTEMPT = "XLSX_UPLOAD_ATTEMPT "
 export const XLSX_UPLOAD_SUCCESSFUL = "XLSX_UPLOAD_SUCCESSFUL "
@@ -53,7 +54,9 @@ export const fetchImportedPriceLists = () => {
         dispatch({
             type: IMPORT_HISTORY_LOADING,
         })
-        axios.get("/api/import/fetch")
+        axios.get("/api/reports", {
+            ...session()
+        })
             .then((response)=> {
                 if(response.data.status === 'accept'){
                     dispatch({

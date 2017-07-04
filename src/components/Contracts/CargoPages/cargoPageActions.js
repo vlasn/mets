@@ -1,4 +1,5 @@
 import axios from "axios"
+import { session } from "../../../Utilities" //{...session()}
 
 export const CARGO_PAGES_LOADING = "CARGO_PAGES_LOADING"
 export const CARGO_PAGES_RECEIVED = "CARGO_PAGES_RECEIVED"
@@ -11,7 +12,7 @@ export function fetchCargoPages(cadastres = [], forId) {
         dispatch({
             type: CARGO_PAGES_LOADING,
         })
-        axios.get(`/api/import/fetchCargoPages?cadastreid=${cadastres.join(",")}`)
+        axios.get(`/api/import/fetchCargoPages?cadastreid=${cadastres.join(",")}`, {...session()})
             .then(({data}) => {
                 if(data.status === 'accept') {
                     console.log(data.data)

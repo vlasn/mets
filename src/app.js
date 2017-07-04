@@ -26,7 +26,7 @@ class App extends React.Component {
                 <MuiThemeProvider>
                     <div className="main__wrapper">
                         <HeaderWrapper/>
-                        <Route exact={true} path="/login" component={Login}/>
+                        <Route path="/login" component={Login}/>
                         <Route exact path="/validate/:hash" component={Validate}/>
                         <Route exact path="/" component={ImportHistory}/>
                         <Route path="/" exact component={Filter}/>

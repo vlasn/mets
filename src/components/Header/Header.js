@@ -76,7 +76,7 @@ export default class Header extends React.Component {
                                     backgroundColor = {this.props.dropdownOpen ? 'black' : '#9BFCD3'}
                                     hoverColor = "black"
                                     onClick={this.toggle}>
-                                    {this.props.nameToDisplay()}
+                                    {this.props.details.nimi.split(" ")[0]}
                                 </FlatButton>
                                 ) : (
                                 <Link to="/login">
