@@ -34,7 +34,6 @@ class App extends React.Component {
                         <Route exact path="/import/:id" component={PList}/>
                         <Route exact path="/new_client" component={NewClient}/>
                         <Route exact path="/add_contract" component={NewContract}/>
-
                     </div>
                 </MuiThemeProvider>
             </Router>

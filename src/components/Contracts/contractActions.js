@@ -11,7 +11,7 @@ export function updateContractRow (contractId, key, value) {
 
     return (dispatch) => {
         dispatch({type: UPDATE_CONTRACT_ROW_ATTEMPT,payload: {key: key}})
-        axios.put('/api/contract/update/'+contractId, {
+        axios.put('/api/contracts/'+contractId, {
             key: key,
             value: value,
         },{

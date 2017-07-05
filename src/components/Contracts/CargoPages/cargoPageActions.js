@@ -8,11 +8,10 @@ export const CARGO_PAGES_ERROR = "CARGO_PAGES_ERROR"
 export function fetchCargoPages(cadastres = [], forId) {
 
     return (dispatch) => {
-        console.log('fetching for cadastres '+cadastres.toString(),forId)
         dispatch({
             type: CARGO_PAGES_LOADING,
         })
-        axios.get(`/api/import/fetchCargoPages?cadastreid=${cadastres.join(",")}`, {...session()})
+        axios.get(`/api/reports/fetchCargoPages?cadastreid=${cadastres.join(",")}`, {...session()})
             .then(({data}) => {
                 if(data.status === 'accept') {
                     console.log(data.data)

@@ -30,7 +30,7 @@ export function verify(hash) {
     return (dispatch) => {
         dispatch({type:VERIFICATION_ATTEMPT, payload: null});
         if(hash.length>0) {
-            axios.get('/api/user/verify/'+hash)
+            axios.get('/api/auth/'+hash)
                 .then(response => {dispatch(verify(response.data))})
                 .catch(err => {
                     console.log(err);
@@ -54,7 +54,7 @@ export function resetPassword(first, second, hash) {
             let passhash = crypto.createHash('sha512').update(first).digest('hex');
             let cpasshash = crypto.createHash('sha512').update(second).digest('hex');
 
-            axios.post('/api/user/validate', {
+            axios.patch('/api/auth', {
                 password: passhash,
                 cpassword: cpasshash,
                 hash: hash

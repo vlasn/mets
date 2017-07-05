@@ -112,7 +112,7 @@ export const addNewPriceListItem = (bundle, parentId) =>{
         requiredIndices.map(val => bundle.hasOwnProperty(val) ? console.log(val+' ok') : (missing = true))
 
         if(!missing) {
-            axios.post('/api/pricelist/add', {...bundle, parentId},{...session()})
+            axios.post('/api/pricelists', {...bundle, parentId},{...session()})
                 .then(res => {
                     console.log(JSON.stringify({...bundle, parentId}))
                     console.log(res)
@@ -165,7 +165,7 @@ export const submitBundle = (prevValues, editedValues) => {
         //console.log(JSON.stringify({ ...prevValues, ...bundledEdits}), missing);
         if(!missing) {
             //TODO - needs to dispatch loader event here
-            axios.post('/api/import/xlsx/update', {
+            axios.post('/api/import/xlsx/update', { //Needs path as /import has been deprecated
                 ...prevValues,
                 ...bundledEdits
             },{...session()})

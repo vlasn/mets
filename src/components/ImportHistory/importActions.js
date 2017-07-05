@@ -29,7 +29,7 @@ export const submitXlsx = (formData) => {
             body: formData
         };
 
-        fetch('/api/import/xlsx/new', fetchOptions)
+        fetch('/api/reports', fetchOptions)
             .then(res => res.json())
             .then(res => {
                 if(res.status === 'accept') {
