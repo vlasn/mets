@@ -72,8 +72,6 @@ export default class DetailsWrapper extends React.Component{
                            name: 'projektijuht'},
                        {key: "Metsameister: ", value: this.props.metsameister,
                            name: 'metsameister'},
-                    /*{key: "Kontakt: ", value: this.props.kontakt,
-                           name: 'eeee'}, //Puudu?!*/
 
                        {key: "E-post: ", value: this.props.esindajad.join(', '),
                            name: 'esindajad', editable: this.props.esindajad},

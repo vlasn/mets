@@ -10,7 +10,7 @@ import Validate from "./components/Validate"
 import HeaderWrapper from "./components/Header"
 import History from './components/history'
 import Contracts from "./components/Contracts"
-import NewClient from "./components/NewClient"
+import NewClient from "./components/NewClient/Temp"
 import NewContract from "./components/NewContract"
 //import Footer from "./components/Footer"
 import PList from "./components/ResolveImport"

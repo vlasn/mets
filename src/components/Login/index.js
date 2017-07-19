@@ -7,9 +7,6 @@ import React from "react"
 import { connect } from 'react-redux'
 import { credentialChange, login } from './loginActions'
 import LoginForm from './LoginForm'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
-
 
 class Login extends React.Component {
     componentWillReceiveProps(newProps){

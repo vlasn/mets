@@ -22,7 +22,6 @@ export default class InputField extends React.Component{
 
     render(){
         return(
-            <MuiThemeProvider>
                 <div className = "InputField__wrapper">
                     <TextField
                         name={this.props.name}
@@ -36,8 +35,6 @@ export default class InputField extends React.Component{
                         onChange={(event)=>this.props.change(this.props.name,event.target.value)}
                     />
                 </div>
-            </MuiThemeProvider>
-
         );
     }
 }

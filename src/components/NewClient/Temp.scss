@@ -1,0 +1,29 @@
+@import "../../palette";
+
+.NewClient__wrapper {
+  display: flex;
+  .NewClient {
+    margin: auto;
+    width: 500px;
+    box-shadow: $cardShadow;
+
+    .NewClient__header {
+      display: flex;
+      .NewClient__header-button {
+        background-color: $buttonGreen;
+        flex: 1 0 0;
+        text-align: center;
+        padding: 25px 0;
+        color: white;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $buttonGreenHover;
+        }
+      }
+    }
+    .NewClient__fields {
+      padding: 50px 55px;
+    }
+  }
+}

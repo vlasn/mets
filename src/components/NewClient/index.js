@@ -146,11 +146,11 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
-        activeTab: state.clientManagement.creation.activeTab,
-        loading: state.clientManagement.creation.loading,
-        submitted: state.clientManagement.creation.submitted,
-        errors: state.clientManagement.creation.errors,
-        details: state.clientManagement.creation.details
+        activeTab: state.contract.clientManagement.creation.activeTab,
+        loading: state.contract.clientManagement.creation.loading,
+        submitted: state.contract.clientManagement.creation.submitted,
+        errors: state.contract.clientManagement.creation.errors,
+        details: state.contract.clientManagement.creation.details
     };
 };
 
