@@ -1,8 +1,9 @@
-import React, {Component} from "react"
-import {connect} from "react-redux"
-import {Link, Redirect} from "react-router-dom"
+import React from "react"
+import { connect } from "react-redux"
+import PropTypes from "prop-types"
+import { Link } from "react-router-dom"
 import HeaderDropdown from "./HeaderDropdown"
-import { toggleDropdown } from '../../actions/uiActions'
+import { toggleDropdown } from "../../actions/uiActions"
 import { logOut } from "../Login/loginActions"
 import "./Header.scss"
 
@@ -46,6 +47,15 @@ const mapStateToProps = state => ({
     loggedIn: state.user.loggedIn,
     roles: state.user.roles,
     dropdownOpen: state.ui.dropdownOpen
-});
+})
+
+Header.propTypes = {
+    name: PropTypes.string.isRequired,
+    loggedIn: PropTypes.bool.isRequired,
+    roles: PropTypes.array.isRequired,
+    dropdownOpen: PropTypes.bool.isRequired,
+    toggleDropdown: PropTypes.func.isRequired,
+    logOut: PropTypes.func.isRequired
+}
 
 export default connect(mapStateToProps, {toggleDropdown, logOut})(Header)

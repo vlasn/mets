@@ -1,12 +1,12 @@
 import React from "react"
+import PropTypes from "prop-types"
 import "./HeaderDropdown.scss"
 
 
-const Dropdown = ({children, roles, open, toggle, logOut}) => {
+const HeaderDropdown = ({children, roles, open, toggle, logOut}) => {
     let clickLogOut = () => {
-        console.log("logout button clicked")
-        logOut();
-        toggle(false);
+        logOut()
+        toggle(false)
     }
     return(
         <div className="HeaderDropdown-wrapper">
@@ -29,4 +29,13 @@ const Dropdown = ({children, roles, open, toggle, logOut}) => {
     )
 }
 
-export default Dropdown
+HeaderDropdown.propTypes = {
+    children: PropTypes.obj,
+    loggedIn: PropTypes.bool.isRequired,
+    roles: PropTypes.array.isRequired,
+    open: PropTypes.bool.isRequired,
+    toggle: PropTypes.func.isRequired,
+    logOut: PropTypes.func.isRequired
+}
+
+export default HeaderDropdown
