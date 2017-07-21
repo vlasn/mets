@@ -4,8 +4,6 @@
 import React from "react"
 import { connect } from 'react-redux'
 import axios from "axios"
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Redirect from 'react-router-dom'
 import CreateClient from './CreateClient'
 
 class NewClient extends React.Component {

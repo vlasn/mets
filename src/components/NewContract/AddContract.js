@@ -115,24 +115,18 @@ export default class AddContract extends React.Component {
             ...this.state,
             [fromArray]: newArr
         });
-        //console.log("omg:"+JSON.stringify(this.state[fromArray]))
     }
 
     removeFromArray(name,arrayName) {
         let checkContent = (item)=>{
-            //console.log(item.name, name);
             return (item.name !== name)
         };
         let newArr = this.state[arrayName].filter((item)=>checkContent(item));
-        //console.log('V6rdlus remove:',this.state[arrayName], newArr)
 
         this.setState({
             ...this.state,
             [arrayName]: newArr
         })
-        //console.log("omg2:"+JSON.stringify(this.state[arrayName], newArr))
-
-
     }
 
     render() {
@@ -146,7 +140,7 @@ export default class AddContract extends React.Component {
                         floatingLabelText={"Kinnistu nimi"}
                         hintText={"Mingi Nimi"}
                         name="propertyName"
-                        change={this.props.onFieldValueChange}
+                        onChange={this.props.onFieldValueChange}
                         errorText={this.props.errors.propertyName}
                     />
 
@@ -159,7 +153,7 @@ export default class AddContract extends React.Component {
                             add={this.addToArray}
                             remove={this.removeFromArray}
                             fromArray={"Katastritunnus"}
-                            updateValue = {this.updateKatastritunnus}
+                            onChange = {this.updateKatastritunnus}
                             name={row.name}
                             value={row.value}
                             errorText={this.props.errors.cadastre}
@@ -183,7 +177,7 @@ export default class AddContract extends React.Component {
                     <InputField
                         floatingLabelText={"Projekti juht"}
                         hintText={"Projekti Juhan"}
-                        change={this.props.onFieldValueChange}
+                        onChange={this.props.onFieldValueChange}
                         name="projectManager"
                         errorText={this.props.errors.projectManager}
 
@@ -191,7 +185,7 @@ export default class AddContract extends React.Component {
                     <InputField
                         floatingLabelText={"Metsameister"}
                         hintText={"Meistri Mees"}
-                        change={this.props.onFieldValueChange}
+                        onChange={this.props.onFieldValueChange}
                         name="forestMaster"
                         errorText={this.props.errors.forestMaster}
 

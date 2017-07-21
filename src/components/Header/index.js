@@ -34,7 +34,7 @@ const Header = props => (
                         logOut={props.logOut}
                     >
                         { props.name }
-                    </HeaderDropdown>:
+                    </HeaderDropdown> :
                     <Link to="/login">Logi sisse</Link>
                 }
             </div>
@@ -50,7 +50,7 @@ const mapStateToProps = state => ({
 })
 
 Header.propTypes = {
-    name: PropTypes.string.isRequired,
+    name: PropTypes.string,
     loggedIn: PropTypes.bool.isRequired,
     roles: PropTypes.array.isRequired,
     dropdownOpen: PropTypes.bool.isRequired,

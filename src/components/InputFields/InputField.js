@@ -1,40 +1,24 @@
 import React from "react"
 import TextField from 'material-ui/TextField';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-const css = require("./InputField.scss");
+import "./InputField.scss"
 
+//FIXME - use const colors here
 
-const styles = {
-    underlineStyle: {
-        borderColor: '#9BFCD3',
-    },
+const InputField = props => (
+    <div className = "InputField__wrapper">
+        <TextField
+            name={props.name}
+            hintText={props.hintText}
+            fullWidth={true}
+            errorText = {props.errorText}
+            underlineFocusStyle={{borderColor: props.error?"#de2b31":"#3FD369"}}
+            floatingLabelText={props.floatingLabelText}
+            floatingLabelStyle={props.error?{color: "red"}:null}
+            floatingLabelFixed={true}
+            floatingLabelFocusStyle={{color: "black"}}
+            onChange={(event)=>props.onChange(props.name,event.target.value)}
+        />
+    </div>
+)
 
-    floatingLabelFocusStyle:{
-        color: 'black',
-    }
-};
-
-export default class InputField extends React.Component{
-    constructor(props) {
-        super(props);
-    }
-
-
-    render(){
-        return(
-                <div className = "InputField__wrapper">
-                    <TextField
-                        name={this.props.name}
-                        hintText={this.props.hintText}
-                        fullWidth={true}
-                        errorText = {this.props.errorText}
-                        underlineFocusStyle={styles.underlineStyle}
-                        floatingLabelText={this.props.floatingLabelText}
-                        floatingLabelFixed={true}
-                        floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                        onChange={(event)=>this.props.change(this.props.name,event.target.value)}
-                    />
-                </div>
-        );
-    }
-}
+export default InputField

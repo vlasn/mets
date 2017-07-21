@@ -1,0 +1,30 @@
+@import "../../palette";
+
+.FieldCard__wrapper {
+  display: flex;
+  .FieldCard {
+    margin: auto;
+    width: 500px;
+    box-shadow: $cardShadow;
+
+    .FieldCard__header {
+      display: flex;
+
+    }
+    .FieldCard__fields {
+      padding: 50px 55px;
+    }
+  }
+  .FieldCard__button {
+    background-color: $buttonGreen;
+    flex: 1 0 0;
+    text-align: center;
+    padding: 25px 0;
+    color: white;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $buttonGreenHover;
+    }
+  }
+}

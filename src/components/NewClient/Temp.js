@@ -1,35 +1,52 @@
 import React, {Component} from "react"
-import "./Temp.scss"
-
+import {Card,CardButton, CardHeader, CardFields} from "../FieldCard"
 import InputField from "../InputFields/InputField"
+import InputFieldWithRegex from "../InputFields/InputFieldWithRegex"
 
-export default class NewClient extends Component {
-    render() {
-        return(
-            <div className="NewClient__wrapper">
-                <div className="NewClient">
-                    <div className="NewClient__header">
-                        <div className="NewClient__header-button">
-                            tere
-                        </div>
-                        <div className="NewClient__header-button">
-                            tere
-                        </div>
-                    </div>
-                    <div className="NewClient__fields">
-                        {
-                            ["TestInput","eeeee","OKEI"]
-                                .map(w => (
-                                    <InputField
-                                        key={w}
-                                        floatingLabelText={w}
-                                        change={f=>f}
-                                    />
-                                ))
-                        }
-                    </div>
-                </div>
-            </div>
-        )
-    }
-}
+
+const juridicalPerson = [
+    {label: "Esindaja nimi", key: "name", required: true, regex: /^[A-Za-z ]{3,20}$/},
+    {label: "Esindaja isikukood", key: "personalId", required: true, regex: /^[0-9 ]{11,11}$/},
+    {label: "Ettevõtte nimi", key: "companyName", required: true, regex:/^[A-Za-z ]{3,50}$/},
+    {label: "Ettevõtte aadress", key:"address", required: true, regex: /^[A-Za-z0-9 ]{3,50}$/},
+    {label: "Reg. nr", key: "companyRegistration", required: true, regex: /^[0-9 ]{8,8}$/},
+    {label: "E-post", key: "email", required: true, regex: /\S+@\S+\.\S+/},
+    {label: "Telefon", key: "phone", required: true, regex: /^[0-9]{5,20}$/},
+    {label: "volituse alus", key: "???", required: true, regex: /^[A-Za-z ]{3,20}$/}, //FIXME - Is this a dropdown?
+    {label: "KMKNR", key: "vatDutyNumber", required: false, regex: /^[0-9 ]{14,14}$/},
+]
+const privatePerson = [
+    {label: "nimi", key: "name", required: true, regex: /^[A-Za-z ]{3,20}$/},
+    {label: "isikukood", key: "personalId", required: true, regex: /^[0-9 ]{11,11}$/},
+    {label: "aadress", key: "address", required: true, regex: /^[A-Za-z0-9 ]{3,20}$/},
+    {label: "e-post", key: "email", required: false, regex: /\S+@\S+\.\S+/},
+    {label: "telefon", key: "phone", required: false, regex: /^[0-9]{5,20}$/},
+    {label: "dok nr", key: "documentId", required: false, regex: /^[0-9 ]{3,20}$/},
+]
+
+const NewClient = props => (
+
+    <Card>
+        <CardHeader>
+            <CardButton callback={()=>props.changePersonType("privatePerson")} label="Eraisik"/>
+            <CardButton callback={()=>props.changePersonType("juridicalPerson")} label="Juriidiline isik"/>
+        </CardHeader>
+        <CardFields>
+            {
+                (props.activeTab==="privatePerson"? privatePerson : juridicalPerson)
+                    .map(w => (
+                        <InputFieldWithRegex
+                            key={w.key}
+                            name={w.key}
+                            floatingLabelText={w.label}
+                            regex={w.regex}
+                            onChange={f=>f}
+                        />
+                    ))
+            }
+        </CardFields>
+    </Card>
+)
+
+
+export default NewClient
