@@ -1,62 +1,51 @@
-/**
- * Created by clstrfvck on 09/06/2017.
- */
-import React from "react"
-import { connect } from 'react-redux'
+import React, {Component} from "react"
+import {connect} from "react-redux"
+import {Link, Redirect} from "react-router-dom"
+import HeaderDropdown from "./HeaderDropdown"
 import { toggleDropdown } from '../../actions/uiActions'
 import { logOut } from "../Login/loginActions"
-import { Redirect } from 'react-router-dom'
-import Header from "./Header"
-import history from '../history'
+import "./Header.scss"
 
-class HeaderWrapper extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-    logout() {
-        this.props.logout();
-        this.props.toggleDropdown(true,false);
-        history.push("/")
-    }
-    returnName() {
-        if(this.props.loggedIn) {
-        } else {
-            return('Valikud')
-        }
-    }
-    render() {
-        return (
-            <div className="login__wrapper">
-                <Header {...this.props} logout={this.logout.bind(this)}
-                        nameToDisplay={this.returnName.bind(this)} />
+
+const Header = props => (
+    <div className="Header__Wrapper">
+        <div className="Header__Third">
+            <div className="Header__link-wrapper">
+                <div className="Header__Link">
+                    {props.loggedIn && <Link to="/">Töölaud</Link>}
+                </div>
+                <div className="Header__Link">
+                    {props.loggedIn && <Link to="/archive">Arhiiv</Link>}
+                </div>
             </div>
-        )
-    }
 
-}
+        </div>
+        <div className="Header__Third wider">
+            <h1 className="Header__title">Metsahaldur 2.0</h1>
+        </div>
+        <div className="Header__Third">
+            <div className="Header__Link right">
+                {props.loggedIn ?
+                    <HeaderDropdown
+                        roles={props.roles}
+                        open={props.dropdownOpen}
+                        toggle={props.toggleDropdown}
+                        logOut={props.logOut}
+                    >
+                        { props.name }
+                    </HeaderDropdown>:
+                    <Link to="/login">Logi sisse</Link>
+                }
+            </div>
+        </div>
+    </div>
+)
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        logout: () => {
-            logOut()
-        },
-        toggleDropdown: (currentlyOpen, loggedIn) => {
-            dispatch(toggleDropdown(currentlyOpen,loggedIn))
-        }
-    }
-};
+const mapStateToProps = state => ({
+    name: state.user.details.nimi,
+    loggedIn: state.user.loggedIn,
+    roles: state.user.roles,
+    dropdownOpen: state.ui.dropdownOpen
+});
 
-const mapStateToProps = (state) => {
-    return {
-        loggedIn: state.user.loggedIn,
-        details: state.user.details,
-        navigateToRoot: state.user.navigateToRoot,
-        dropdownOpen: state.ui.dropdownOpen,
-        roles: state.user.roles
-    };
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(HeaderWrapper);
+export default connect(mapStateToProps, {toggleDropdown, logOut})(Header)

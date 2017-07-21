@@ -1,0 +1,23 @@
+@import "../../palette";
+
+.HeaderDropdown-wrapper {
+  width: 150px;
+  margin-left: 0;
+  float: right;
+  .HeaderDropdown-button {
+  }
+  .HeaderDropdown-options{
+    margin-top: 10px;
+    position: absolute;
+    width: 150px;
+    padding: 10px;
+    box-sizing: border-box;
+    box-shadow: $cardShadow;
+  }
+  .HeaderDropdown-option {
+    background-color: white;
+    &:hover {
+      background-color: $borderColor;
+    }
+  }
+}

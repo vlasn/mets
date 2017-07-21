@@ -4,9 +4,8 @@
 import axios from 'axios'
 import { session } from "../Utilities"
 
-export function toggleDropdown(currentlyOpen, loggedIn) {
-    let payload = !currentlyOpen && loggedIn ? true : false
-    return({type: "MAIN_DROPDOWN_TOGGLE", payload: payload})
+export function toggleDropdown(currentlyOpen) {
+    return({type: "MAIN_DROPDOWN_TOGGLE", payload: !currentlyOpen})
 }
 
 export function search(opts) {

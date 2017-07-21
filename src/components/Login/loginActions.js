@@ -38,9 +38,7 @@ export function login(id, pass) {
 
 export function logOut() {
     localStorage.clear()
-    return({
-        type: LOG_OUT
-    })
+    return {type: LOG_OUT}
 }
 
 export function credentialChange(key, data) {

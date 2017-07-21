@@ -1,13 +1,13 @@
-const css = require('./app.scss');
-
+import "./app.scss"
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux"
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom/es"
+import ProtectedRoute from "./components/ProtectedRoute"
 import Login from "./components/Login"
 import store from "./store"
 import Validate from "./components/Validate"
-import HeaderWrapper from "./components/Header"
+import Header from "./components/Header"
 import History from './components/history'
 import Contracts from "./components/Contracts"
 import NewClient from "./components/NewClient/Temp"
@@ -25,7 +25,7 @@ class App extends React.Component {
             <Router history={History}>
                 <MuiThemeProvider>
                     <div className="main__wrapper">
-                        <HeaderWrapper/>
+                        <Header history={History}/>
                         <Route path="/login" component={Login}/>
                         <Route exact path="/validate/:hash" component={Validate}/>
                         <Route exact path="/" component={ImportHistory}/>

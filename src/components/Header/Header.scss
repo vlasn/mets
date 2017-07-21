@@ -1,27 +1,32 @@
-a{
-	text-decoration: none;
+.Header__Wrapper {
+  display: flex;
+  .Header__Third {
+    flex: 1 0 0;
+    text-align: center;
+    &:last-child {
+      text-align: right;
+    }
+    &.wider {
+      flex: 1.5 0 0;
+    }
+  }
+  .Header__link-wrapper {
+    display: flex;
+  }
+  .Header__Link {
+    flex: 1 0 0;
+    text-align: left;
+    padding: 17px 0;
+    a {
+      text-decoration: none;
+      color: black;
+    }
+  }
+  .right {
+    text-align: right;
+  }
+  .Header__title {
+    padding: 0;
+    margin: 5px auto;
+  }
 }
-.Header__wrapper{
-  text-align: center;
-  width: 100%;
-  margin-bottom: 50px;
-}
-.FlatButton--hover {
-	transition: all 0ms !important;
-}
-.FlatButton--hover:hover {
-	color: black !important;
-	transition: all 0ms !important;
-}
-.HomeButton--hover {
-	color: white !important;
-	transition: all 0ms !important;
-}
-.HomeButton--hover:hover {
-	color: black !important;
-	transition: all 0ms !important;
-}
-.FlatButton--style:hover {
-	color: white !important;
-	transition: all 0ms !important;
-};
