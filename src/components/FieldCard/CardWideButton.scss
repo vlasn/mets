@@ -1,0 +1,14 @@
+@import "../../palette";
+@import "./FieldCard";
+.CardWideButton {
+  width: 500px;
+  box-sizing: border-box;
+  .CardWideButton__button {
+    @extend .FieldCard__button;
+    font-size: 1.1em;
+    outline: 0;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+  }
+}

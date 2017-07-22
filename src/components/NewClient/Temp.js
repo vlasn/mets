@@ -1,5 +1,6 @@
 import React, {Component} from "react"
 import {Card,CardButton, CardHeader, CardFields} from "../FieldCard"
+import {CardWideButton} from "../FieldCard/CardWideButton"
 import InputField from "../InputFields/InputField"
 import InputFieldWithRegex from "../InputFields/InputFieldWithRegex"
 
@@ -46,6 +47,7 @@ const NewClient = props => (
                     ))
             }
         </CardFields>
+        <CardWideButton/>
     </Card>
 )
 

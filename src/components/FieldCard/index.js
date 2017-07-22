@@ -1,6 +1,8 @@
 import React from "react"
-import { uuid } from "../../Utilities"
+import CardWideButton from "./CardWideButton"
 import "./FieldCard.scss"
+
+
 export const Card = ({children}) => (
     <div className="FieldCard__wrapper">
         <div className="FieldCard">
