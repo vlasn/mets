@@ -33,7 +33,7 @@ const NewClient = props => (
         </CardHeader>
         <CardFields>
             {
-                (props.activeTab==="privatePerson"? privatePerson : juridicalPerson)
+                (props.activeTab==="privatePerson" ? privatePerson : juridicalPerson)
                     .map(w => (
                         <InputFieldWithRegex
                             key={w.key}
