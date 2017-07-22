@@ -39,6 +39,7 @@ const NewClient = props => (
                             key={w.key}
                             name={w.key}
                             floatingLabelText={w.label}
+                            required={w.required}
                             regex={w.regex}
                             onChange={f=>f}
                         />
