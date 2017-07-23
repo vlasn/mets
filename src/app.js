@@ -10,9 +10,10 @@ import Validate from "./components/Validate"
 import Header from "./components/Header"
 import History from './components/history'
 import Contracts from "./components/Contracts"
-import NewClient from "./components/NewClient/Temp"
+import NewClient from "./components/NewClient"
 import NewContract from "./components/NewContract"
 //import Footer from "./components/Footer"
+import Navbar from "./components/Navbar"
 import PList from "./components/ResolveImport"
 import ImportHistory from "./components/ImportHistory"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
@@ -24,16 +25,21 @@ class App extends React.Component {
         return (
             <Router history={History}>
                 <MuiThemeProvider>
-                    <div className="main__wrapper">
-                        <Header history={History}/>
-                        <Route path="/login" component={Login}/>
-                        <Route exact path="/validate/:hash" component={Validate}/>
-                        <Route exact path="/" component={ImportHistory}/>
-                        <Route path="/" exact component={Filter}/>
-                        <Route path="/" exact component={Contracts}/>
-                        <Route exact path="/import/:id" component={PList}/>
-                        <Route exact path="/new_client" component={NewClient}/>
-                        <Route exact path="/add_contract" component={NewContract}/>
+                    <div className="Main__wrapper">
+                        <div className="Main__header">
+                            <Header history={History}/>
+                        </div>
+                        <Navbar/>
+                        <div className="Main__content">
+                            <Route path="/login" component={Login}/>
+                            <Route exact path="/validate/:hash" component={Validate}/>
+                            <Route exact path="/imports" component={ImportHistory}/>
+                            <Route exact path="/" component={Filter}/>
+                            <Route exact path="/" component={Contracts}/>
+                            <Route exact path="/import/:id" component={PList}/>
+                            <Route exact path="/new_client" component={NewClient}/>
+                            <Route exact path="/new_contract" component={NewContract}/>
+                        </div>
                     </div>
                 </MuiThemeProvider>
             </Router>

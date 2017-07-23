@@ -11,8 +11,8 @@ export const Card = ({children}) => (
     </div>
 )
 
-export const CardButton = ({label, callback}) => (
-    <div className="FieldCard__button" onClick={callback}>
+export const CardButton = ({label, callback, active}) => (
+    <div className={`FieldCard__button ${active&&"active"}`} onClick={callback}>
         {label}
     </div>
 )

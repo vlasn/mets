@@ -2,8 +2,7 @@
 body {
   
   font-family: 'Open Sans', sans-serif;
-  min-width: 960px;
-  max-width: 75vw;
+
   background-color: white;
   margin: 0 auto;
 
@@ -16,6 +15,29 @@ body {
       font-weight: 700;
       color: Black;
 
+  }
+  .Main__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+  .Main__header {
+    flex: 1 0 0;
+    margin: auto;
+    min-width: 960px;
+  }
+  .Main__content {
+    flex: 1 0 0;
+    width: 960px;
+    margin: auto;
+    padding-bottom: 40px;
+  }
+  .View__content {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
   }
 
   .Main__nav {

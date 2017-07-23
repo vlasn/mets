@@ -29,8 +29,16 @@ const NewClient = props => (
 
     <Card>
         <CardHeader>
-            <CardButton callback={()=>props.changePersonType("privatePerson")} label="Eraisik"/>
-            <CardButton callback={()=>props.changePersonType("juridicalPerson")} label="Juriidiline isik"/>
+            <CardButton
+                callback={()=>props.changePersonType("privatePerson")}
+                label="Eraisik"
+                active={props.activeTab === "privatePerson"}
+            />
+            <CardButton
+                callback={()=>props.changePersonType("juridicalPerson")}
+                label="Juriidiline isik"
+                active={props.activeTab === "juridicalPerson"}
+            />
         </CardHeader>
         <CardFields>
             {
@@ -42,12 +50,11 @@ const NewClient = props => (
                             floatingLabelText={w.label}
                             required={w.required}
                             regex={w.regex}
-                            onChange={f=>f}
+                            onChange={props.onFieldValueChange}
                         />
                     ))
             }
         </CardFields>
-        <CardWideButton/>
     </Card>
 )
 

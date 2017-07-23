@@ -1,9 +1,15 @@
 @import "../../palette";
 @import "./FieldCard";
 .CardWideButton {
-  width: 500px;
+  width: 100%;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+
   .CardWideButton__button {
+    margin: auto;
+    max-width: 500px;
     @extend .FieldCard__button;
     font-size: 1.1em;
     outline: 0;
