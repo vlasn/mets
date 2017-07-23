@@ -11,9 +11,10 @@ import priceList from "./priceList"
 import filter from "../components/Filter/filterReducer"
 import imports from "../components/ImportHistory/importReducer"
 import cargoPage from "../components/Contracts/CargoPages/cargoPageReducer"
+import clientCreation from "../components/NewClient/clientCreationReducer"
 
 let contract = combineReducers({clientManagement, filter, cargoPage})
-
+let creation = combineReducers({clientCreation})
 export default combineReducers({
     ui,
     user,
@@ -21,6 +22,7 @@ export default combineReducers({
     validation,
     imports,
     contract,
+    creation,
     contractManagement,
     priceList
 })

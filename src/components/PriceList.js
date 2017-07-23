@@ -7,7 +7,7 @@ import InputField from './InputFields/InputField';
 
 //TODO - separate folder for this as it is pretty much a stand-alone view? Also needs separate stylesheet
 
-const css = require("./NewClient/CreateClient.scss");
+const css = require("./NewClient/CreateClient_old.scss");
 
 const labelStyles = {
     headerButton: {
