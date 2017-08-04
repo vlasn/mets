@@ -17,7 +17,7 @@ export function login(id, pass) {
 
         let passhash = require('crypto').createHash('sha512').update(pass).digest('hex');
 
-        axios.post("/api/auth", {email: id, password: passhash})
+        axios.post("/api/auth/login", {email: id, password: passhash})
             .then(response => {
                 if(response.data.data.token) {
                     localStorage.setItem('session',response.data.data.token)
