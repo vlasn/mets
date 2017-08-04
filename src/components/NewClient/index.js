@@ -1,14 +1,14 @@
 /**
  * Created by clstrfvck on 13/06/2017.
  */
-import React from "react"
+import React,  { Component } from "react"
 import { connect } from 'react-redux'
 import axios from "axios"
 import CreateClient from './NewClient'
 import CardWideButton from "../FieldCard/CardWideButton"
 import { changePersonType, onFieldValueChange, onSubmitNewClient } from "./clientCreationActions"
 
-class NewClient extends React.Component {
+class NewClient extends Component {
     constructor(props){
         super(props)
     }
