@@ -1,0 +1,19 @@
+@import "../../palette";
+
+.Autocomplete__wrapper {
+  position: relative;
+  .Autocomplete__options-wrapper {
+    background-color: #f2f2f2; //FIXME - color should be in palette.scss
+    position: absolute;
+    width: 100%;
+    top: 64px;
+    z-index: 9;
+
+    .Autocomplete__option {
+      padding: 10px;
+      &:hover {
+        background-color: #d9d9d9; //FIXME - color should be in palette.scss
+      }
+    }
+  }
+}
