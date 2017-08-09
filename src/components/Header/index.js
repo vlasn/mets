@@ -19,7 +19,6 @@ const Header = props => (
                     {props.loggedIn && <Link to="/archive">Arhiiv</Link>}
                 </div>
             </div>
-
         </div>
         <div className="Header__Third wider">
             <h1 className="Header__title">Metsahaldur 2.0</h1>
@@ -52,7 +51,7 @@ const mapStateToProps = state => ({
 Header.propTypes = {
     name: PropTypes.string,
     loggedIn: PropTypes.bool.isRequired,
-    roles: PropTypes.array.isRequired,
+    roles: PropTypes.array,
     dropdownOpen: PropTypes.bool.isRequired,
     toggleDropdown: PropTypes.func.isRequired,
     logOut: PropTypes.func.isRequired

@@ -30,8 +30,11 @@ const HeaderDropdown = ({children, roles, open, toggle, logOut}) => {
 }
 
 HeaderDropdown.propTypes = {
-    children: PropTypes.obj,
-    loggedIn: PropTypes.bool.isRequired,
+    children: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+    ]),
+    loggedIn: PropTypes.bool,
     roles: PropTypes.array.isRequired,
     open: PropTypes.bool.isRequired,
     toggle: PropTypes.func.isRequired,
