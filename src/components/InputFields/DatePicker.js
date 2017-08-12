@@ -16,4 +16,3 @@ const DatePicker = ({floatingLabelText, errorText, onChange = console.log})=>(
 )
 
 export default DatePicker
-az
