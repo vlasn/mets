@@ -2,11 +2,11 @@
  * Created by henrysavi on 12/06/17.
  */
 import React from "react"
-import InputField from "../InputFields/InputField"
-import InputFieldOptions from "../InputFields/InputFieldOptions"
+import InputField from "../../InputFields/InputField"
+import InputFieldOptions from "../../InputFields/InputFieldOptions"
 import AddDocuments from "./AddDocuments"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import DatePicker from '../InputFields/DatePicker';
+import DatePicker from '../../InputFields/DatePicker';
 import FlatButton from 'material-ui/FlatButton';
 
 const css = require("./AddContract.scss");

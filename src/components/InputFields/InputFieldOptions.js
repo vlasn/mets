@@ -12,14 +12,10 @@ import "./InputFieldOptions.scss"
 const InputFieldOptions = props => (
     <div className="InputFieldOptions__wrapper">
         <div className="InputFieldOptions__parent" >
-             <InputField { ...props }/>
+            { props.children }
             <div className="InputFieldOptions__options">
-                <span onClick={ () => props.add(uuid(),props.fromArray) }>Lisa</span>
-                {props.name !== "Katastritunnus" && props.name !== "Kliendi_esindaja" ?
-                    <span onClick={ () => props.remove(props.name,props.fromArray) }> / kustuta</span>
-                    :
-                    null
-                }
+                {<span onClick={props.add}>Lisa</span>}
+                {props.count > 1 && <span onClick={props.remove}> / kustuta</span>}
             </div>
         </div>
     </div>

@@ -6,15 +6,17 @@ import documents from "./documentsReducer"
 import validation from "../components/Validate/validationReducer"
 import ui from "./uiReducer"
 import clientManagement from "./clientManagement"
-import contractManagement from "./contractManagment"
+//import contractManagement from "./contractManagment"
 import priceList from "./priceList"
 import filter from "../components/Filter/filterReducer"
 import imports from "../components/ImportHistory/importReducer"
 import cargoPage from "../components/Contracts/CargoPages/cargoPageReducer"
 import clientCreation from "../components/NewClient/clientCreationReducer"
+import contractCreation from "../components/NewContract/contractCreationReducer"
 
 let contract = combineReducers({clientManagement, filter, cargoPage})
-let creation = combineReducers({clientCreation})
+let creation = combineReducers({clientCreation, contractCreation})
+
 export default combineReducers({
     ui,
     user,
@@ -23,6 +25,6 @@ export default combineReducers({
     imports,
     contract,
     creation,
-    contractManagement,
+    //contractManagement,
     priceList
 })

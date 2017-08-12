@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import TextField from "material-ui/TextField"
-import "./InputAutocompleteWrapper.scss"
+import "./InputWithAutocomplete.scss"
 
 const sampleOptions = [
     { name: "Väino", id: 10 },
@@ -23,7 +23,7 @@ export default class InputAutocompleteWrapper extends Component {
     onChange(x, value) {
         this.setState(state => ({ trackedValue: value, optionsOpen: value.length>2 }))
         if(value.length>2) {
-            console.info(value, "| This should fetch against an API endpoint")
+            this.props.fetch(value)
         }
     }
     onFocus() {
@@ -35,6 +35,7 @@ export default class InputAutocompleteWrapper extends Component {
         console.log(id)
         this.setState(state => ({optionsOpen: false, trackedValue: value}))
         //this.props.onChange(this.props.name, value (or id) ) //=> Submit the option to Redux store
+        this.props.onChange(this.props.name, value, id)
     }
 
     render() {
@@ -54,23 +55,31 @@ export default class InputAutocompleteWrapper extends Component {
                     value={this.state.trackedValue}
                 />
                 { this.state.optionsOpen && <div className="Autocomplete__options-wrapper">
-                    { sampleOptions
+                    { this.props.options.length>0 ?
+                        this.props.options
                         .filter(f=>true) //TODO: consider filtering existing data as an optimistic UI update vs always waiting for server
                         .map(opt =>
-                        <AutocompleteOption
-                            name={opt.name}
-                            id={opt.id}
-                            key={opt.id}
-                            callback={this.onOptionClick}
-                        />) }
+                            <AutocompleteOption
+                                name={opt.name}
+                                id={opt.id}
+                                identityCode={opt.identityCode}
+                                key={opt.id}
+                                callback={this.onOptionClick}
+                            /> ) : (
+                            <AutocompleteOption
+                                name="Klienti ei leitud"
+                                id="0"
+                                callback={f=>f}
+                            />
+                        )}
                 </div> }
             </div>
         )
     }
 }
 
-const AutocompleteOption = ({ name, id, callback = console.log }) => (
+const AutocompleteOption = ({ name, id, identityCode ,callback = console.log }) => (
     <div className="Autocomplete__option" onClick={ () => callback(id, name) }>
-        { name }
+        { `${name} ${id!="0" ? "("+identityCode+")" : "" }` }
     </div>
 )
