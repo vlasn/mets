@@ -7,6 +7,9 @@ import CardWideButton from "../FieldCard/CardWideButton"
 import InputFieldWithOptions from "../InputFields/InputFieldOptions"
 import InputAutocompleteWrapper from "../InputFields/InputAutocompleteWrapper"
 import InputField from "../InputFields/InputField"
+import DatePicker from "../InputFields/DatePicker"
+import MuiThemeProvider from "material-ui/styles/MuiThemeProvider"
+
 import PropTypes from "prop-types"
 
 
@@ -25,11 +28,13 @@ const NewContract = (f) => (
 
         <h1>Lisa kuupäevad</h1>
         <Card>
+            <MuiThemeProvider>
             <CardFields>
-                <InputField floatingLabelText="Vajab Kuupäevasisendeid" name="tere" onChange={f=>f}/>
-                <InputField floatingLabelText="Vajab Kuupäevasisendeid" name="tere" onChange={f=>f}/>
-                <InputField floatingLabelText="Vajab Kuupäevasisendeid" name="tere" onChange={f=>f}/>
+                <DatePicker floatingLabelText="Raie" name="Raie"/>
+                <DatePicker floatingLabelText="Väljavedu" name="Transport"/>
+                <DatePicker floatingLabelText="Raidmete väljavedu" name="???"/>
             </CardFields>
+            </MuiThemeProvider>
         </Card>
 
         <h1>Lisa dokumendid</h1>

@@ -19,6 +19,7 @@ import PList from "./components/ResolveImport"
 import ImportHistory from "./components/ImportHistory"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Filter from "./components/Filter"
+const injectTapEventPlugin = require("react-tap-event-plugin")();
 
 class App extends React.Component {
 
