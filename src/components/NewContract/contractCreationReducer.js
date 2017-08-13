@@ -1,11 +1,26 @@
 import * as actionTypes from "./contractCreationActions"
 
-export default function reducer (state = {
+const defaultState = {
     loading: false,
     searchResults: [],
-    representatives: [{ key: "first", name: "", id: ""}]
-}, action) {
+    representatives: [{ key: "first", name: "", id: ""}],
+    details: {
+        kinnistu_nimi: "",
+        katastritunnus: "",
+        projektijuht: "",
+        metsameister: "",
+        raie_teostamine: null,
+        materjali_viimine: null,
+        raidmete_viimine: null,
+    }
+}
+
+export default function reducer (state = defaultState, action) {
     switch(action.type) {
+
+        case actionTypes.CONTRACT_CREATION_RESET : {
+            return defaultState
+        }
         case actionTypes.CONTRACT_PERSON_SEARCH_LOADING : {
             return {
                 ...state,
@@ -44,6 +59,20 @@ export default function reducer (state = {
                         rep
                     )
                 )
+            }
+        }
+
+        case actionTypes.CONTRACT_FIELD_CHANGE : {
+            if (state.details.hasOwnProperty(action.key)) {
+                return {
+                    ...state,
+                    details: {
+                        ...state.details,
+                        [action.key]: action.value
+                    }
+                }
+           } else {
+                return state
             }
         }
 

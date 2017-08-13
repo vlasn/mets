@@ -6,6 +6,8 @@ export const CONTRACT_PERSON_CLEAR_RESULTS = "CONTRACT_PERSON_CLEAR_RESULTS"
 export const CONTRACT_ADD_REP = "CONTRACT_ADD_REP"
 export const CONTRACT_REMOVE_REP = "CONTRACT_REMOVE_REP"
 export const CONTRACT_UPDATE_REP = "CONTRACT_UPDATE_REP"
+export const CONTRACT_FIELD_CHANGE = "CONTRACT_FIELD_CHANGE"
+export const CONTRACT_CREATION_RESET = "CONTRACT_CREATION_RESET"
 
 export const fetchPersonDropdownOptions = term => {
     return dispatch => {
@@ -30,6 +32,10 @@ export const fetchPersonDropdownOptions = term => {
     }
 }
 
+export const onDefaultFieldChange = (key, value) => {
+    return { type: CONTRACT_FIELD_CHANGE, key, value }
+}
+
 export const addRepresentative = () => {
     return { type: CONTRACT_ADD_REP, key: uuid() }
 }
@@ -41,3 +47,4 @@ export const removeRepresentative = key => {
 export const updateRepresentative = (key, name, id) => {
     return { type: CONTRACT_UPDATE_REP, key, name, id }
 }
+export const resetContractCreation = () => ({type: CONTRACT_CREATION_RESET})

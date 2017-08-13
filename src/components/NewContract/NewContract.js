@@ -19,8 +19,10 @@ const NewContract = props => (
         <h1>Lisa kinnistu andmed</h1>
         <Card>
             <CardFields>
-                <InputField floatingLabelText="Tere" name="propertyName" onChange={f=>f} required/>
-                <InputAutocompleteWrapper floatingLabelText="Testiväli (hiljem katastritunnus)" name="cadastral" onChange={f=>f} required/>
+                <InputField floatingLabelText="Kinnistu nimi" name="kinnistu_nimi"
+                            onChange={props.onDefaultFieldChange} required/>
+                <InputField floatingLabelText="Katastritunnus" name="katastritunnus"
+                            onChange={props.onDefaultFieldChange} required/>
                 {
                     props.representatives.map((rep,i) =>
                         <InputFieldWithOptions
@@ -41,17 +43,19 @@ const NewContract = props => (
                     )
                 }
                 {/*<InputFieldWithOptions floatingLabelText="Kliendi esindaja" required/>*/}
-                <InputField floatingLabelText="Projektijuht" name="projectManager" onChange={f=>f} required/>
-                <InputField floatingLabelText="Metsameister" name="???" onChange={f=>f} required/>
+                <InputField floatingLabelText="Projektijuht" name="projektijuht"
+                            onChange={props.onDefaultFieldChange} required/>
+                <InputField floatingLabelText="Metsameister" name="metsameister"
+                            onChange={props.onDefaultFieldChange} required/>
             </CardFields>
         </Card>
 
         <h1>Lisa kuupäevad</h1>
         <Card>
             <CardFields>
-                <DatePicker floatingLabelText="Raie" name="Raie"/>
-                <DatePicker floatingLabelText="Väljavedu" name="Transport"/>
-                <DatePicker floatingLabelText="Raidmete väljavedu" name="???"/>
+                <DatePicker floatingLabelText="Raie" name="raie_teostamine" onChange={props.onDefaultFieldChange} />
+                <DatePicker floatingLabelText="Väljavedu" name="materjali_viimine" onChange={props.onDefaultFieldChange} />
+                <DatePicker floatingLabelText="Raidmete väljavedu" name="raidmete_viimine" onChange={props.onDefaultFieldChange} />
             </CardFields>
         </Card>
 
