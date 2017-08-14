@@ -2,14 +2,13 @@
  * Created by clstrfvck on 08/08/2017.
  */
 import React from "react"
-import { Card, CardButton, CardFields, CardHeader } from "../FieldCard"
+import { Card, CardButton, CardUploadButton, CardFields, CardHeader } from "../FieldCard"
 import CardWideButton from "../FieldCard/CardWideButton"
 import InputFieldWithOptions from "../InputFields/InputFieldOptions"
 import InputAutocompleteWrapper from "../InputFields/InputWithAutocomplete"
 import InputField from "../InputFields/InputField"
 import DatePicker from "../InputFields/DatePicker"
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider"
-
+import ReactFileReader from 'react-file-reader';
 
 import PropTypes from "prop-types"
 
@@ -62,11 +61,19 @@ const NewContract = props => (
         <h1>Lisa dokumendid</h1>
         <Card>
             <CardHeader>
-                <CardButton label="Lisa leping *" callback={f=>f}/>
-                <CardButton label="Lisa metsateatis" callback={f=>f}/>
-                <CardButton label="Muu" callback={f=>f}/>
+                <CardUploadButton label="Lisa leping *" callback={props.uploadFile} type="contract"/>
+                <CardUploadButton label="Lisa metsateatis" callback={props.uploadFile} type="forestNotice"/>
+                <CardUploadButton label="muu" callback={props.uploadFile} type="other"/>
             </CardHeader>
             <CardFields>
+                {Object.values(props.documents)
+                    .reduce((acc,val)=>[...acc,...val],[])
+                    .map(file =>
+                        //FIXME - this needs an actual component that takes file and removal function as props...
+                        //...instead of the div and span visible here
+                        <div>{file.name} <span onClick={()=>props.removeFile(file.name)}>Eemalda</span></div>
+                    )
+                }
                 <InputField floatingLabelText="Failirida on ka puudu" name="tere" onChange={f=>f}/>
                 <InputField floatingLabelText="Mida 'muuda' nupp teeb?" name="tere" onChange={f=>f}/>
 

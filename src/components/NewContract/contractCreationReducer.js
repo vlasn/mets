@@ -12,6 +12,11 @@ const defaultState = {
         raie_teostamine: null,
         materjali_viimine: null,
         raidmete_viimine: null,
+    },
+    documents: {
+        contract: [],
+        forestNotice: [],
+        other: []
     }
 }
 
@@ -73,6 +78,34 @@ export default function reducer (state = defaultState, action) {
                 }
            } else {
                 return state
+            }
+        }
+
+        case actionTypes.CONTRACT_UPLOAD_FILE : {
+            if(state.documents.hasOwnProperty(action.fileType)) {
+                return {
+                    ...state,
+                    documents: {
+                        ...state.documents,
+                        [action.fileType]: [...state.documents[action.fileType], action.file]
+                    }
+                }
+            } else {
+                return state
+            }
+        }
+
+        case actionTypes.CONTRACT_REMOVE_FILE : {
+            return {
+                ...state,
+                documents: Object.keys(state.documents)
+                    .reduce(
+                        (acc,val) => {
+                            acc[val] = state.documents[val].filter(file => file.name != action.fileName)
+                            return acc
+                        }
+                        ,{}
+                    )
             }
         }
 

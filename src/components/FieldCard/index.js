@@ -1,6 +1,8 @@
 import React from "react"
 import CardWideButton from "./CardWideButton"
 import "./FieldCard.scss"
+import ReactFileReader from 'react-file-reader';
+
 
 
 export const Card = ({children}) => (
@@ -16,6 +18,14 @@ export const CardButton = ({label, callback, active}) => (
         {label}
     </div>
 )
+export const CardUploadButton = ({label, callback, type}) => (
+    <div className={`FieldCard__button`}>
+        <ReactFileReader handleFiles={f=>callback(f, type)} fileTypes={"application/pdf, image/*"}>
+            <div>{label}</div>
+        </ReactFileReader>
+    </div>
+)
+
 export const CardHeader = ({children}) => (
     <div className="FieldCard__header">
         {children}
