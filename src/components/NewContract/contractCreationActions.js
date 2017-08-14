@@ -8,7 +8,7 @@ export const CONTRACT_REMOVE_REP = "CONTRACT_REMOVE_REP"
 export const CONTRACT_UPDATE_REP = "CONTRACT_UPDATE_REP"
 export const CONTRACT_FIELD_CHANGE = "CONTRACT_FIELD_CHANGE"
 export const CONTRACT_CREATION_RESET = "CONTRACT_CREATION_RESET"
-export const CONTRACT_UPLOAD_FILE = "CONTRACT_UPLOAD_FILE"
+export const CONTRACT_ADD_FILE = "CONTRACT_ADD_FILE"
 export const CONTRACT_REMOVE_FILE = "CONTRACT_REMOVE_FILE"
 
 
@@ -52,6 +52,6 @@ export const updateRepresentative = (key, name, id) => {
 }
 export const resetContractCreation = () => ({type: CONTRACT_CREATION_RESET})
 
-export const uploadFile = (file, fileType)  => ({type: CONTRACT_UPLOAD_FILE, file: file.item(0), fileType})
+export const uploadFile = (file, fileType)  => ({type: CONTRACT_ADD_FILE, file: file.item(0), fileType})
 
 export const removeFile = fileName => ({type: CONTRACT_REMOVE_FILE, fileName})

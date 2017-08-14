@@ -81,7 +81,7 @@ export default function reducer (state = defaultState, action) {
             }
         }
 
-        case actionTypes.CONTRACT_UPLOAD_FILE : {
+        case actionTypes.CONTRACT_ADD_FILE : {
             if(state.documents.hasOwnProperty(action.fileType)) {
                 return {
                     ...state,
