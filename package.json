@@ -24,7 +24,7 @@
     "eslint-plugin-react": "^7.0.1",
     "extract-text-webpack-plugin": "^2.0.0-rc.0",
     "html-webpack-plugin": "^2.26.0",
-    "node-sass": "^4.4.0",
+    "node-sass": "^4.5.3",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.4",

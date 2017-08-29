@@ -12,7 +12,7 @@ export function search(opts) {
     return (dispatch) => {
         dispatch({type: "SEARCH_TRIGGERED"});
         axios.get(
-            `/api/contracts?cadastre=${opts.searchTerm}&metsameister=${opts.personFilterOption}&status=${opts.statusFilterOption}`,
+            `/api/contracts/filter?cadastre=${opts.searchTerm}&metsameister=${opts.personFilterOption}&status=${opts.statusFilterOption}`,
             {
                 ...session()
             })

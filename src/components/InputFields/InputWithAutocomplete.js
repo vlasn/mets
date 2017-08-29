@@ -80,6 +80,6 @@ export default class InputAutocompleteWrapper extends Component {
 
 const AutocompleteOption = ({ name, id, identityCode ,callback = console.log }) => (
     <div className="Autocomplete__option" onClick={ () => callback(id, name) }>
-        { `${name} ${id!="0" ? "("+identityCode+")" : "" }` }
+        { `${name} ${identityCode ? "("+identityCode+")" : "" }` }
     </div>
 )

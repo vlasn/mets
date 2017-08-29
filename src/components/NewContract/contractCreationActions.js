@@ -15,7 +15,7 @@ export const CONTRACT_REMOVE_FILE = "CONTRACT_REMOVE_FILE"
 export const fetchPersonDropdownOptions = term => {
     return dispatch => {
         dispatch({type: CONTRACT_PERSON_SEARCH_LOADING, loading: true})
-        axios.get("/api/users?key=nimi,isikukood&value="+term, session())
+        axios.get("/api/users/search?key=nimi,isikukood&value="+term, session())
             .then(response => {
                 dispatch({type: CONTRACT_PERSON_SEARCH_LOADING, loading: false})
                 if(response.data.data.length>0) {

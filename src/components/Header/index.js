@@ -15,9 +15,9 @@ const Header = props => (
                 <div className="Header__Link">
                     {props.loggedIn && <Link to="/">Töölaud</Link>}
                 </div>
-                <div className="Header__Link">
-                    {props.loggedIn && <Link to="/archive">Arhiiv</Link>}
-                </div>
+                {/*<div className="Header__Link">*/}
+                    {/*{props.loggedIn && <Link to="/archive">Arhiiv</Link>}*/}
+                {/*</div>*/}
             </div>
         </div>
         <div className="Header__Third wider">

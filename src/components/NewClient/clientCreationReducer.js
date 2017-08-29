@@ -50,6 +50,6 @@ export default function reducer( state = {
         }
 
 
-        default: {return {...state}}
+        default: return state
     }
 }

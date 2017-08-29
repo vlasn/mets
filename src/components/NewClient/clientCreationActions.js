@@ -27,7 +27,7 @@ export const onSubmitNewClient = (personType, details) => {
                 return acc
             },[])
         if (fieldsWithErrors.length === 0) {
-            axios.post('/api/users', {
+            axios.post('/api/user/create', {
                     email: details.email,
                     personal_data: {
                         nimi: details.name,
