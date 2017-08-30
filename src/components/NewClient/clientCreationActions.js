@@ -1,5 +1,5 @@
 import axios from "axios"
-import { session } from "../../Utilities"
+import { session, stripFalsyProperties } from "../../Utilities"
 
 export const CREATION_FIELD_ERROR = "CREATION_FIELD_ERROR"
 export const CREATION_SUCCESS = "CREATION_SUCCESS"
@@ -30,15 +30,17 @@ export const onSubmitNewClient = (personType, details) => {
             axios.post('/api/user/create', {
                     email: details.email,
                     personal_data: {
-                        nimi: details.name,
-                        tel_nr: details.contact,
-                        aadress: details.address,
-                        isikukood: details.personalId,
-                        dok_nr: details.documentId,
+                        ...stripFalsyProperties({
+                            nimi: details.name,
+                            tel_nr: details.contact,
+                            aadress: details.address,
+                            isikukood: details.personalId,
+                            dok_nr: details.documentId,
+                            reg_nr: details.companyRegistration,
+                            kmk_nr: details.vatDutyNumber
+                        }),
                         eraisik: (details.type==='privatePerson'),
-                        juriidiline_isik: (details.type==='juridicalPerson'),
-                        reg_nr: details.companyRegistration,
-                        kmk_nr: details.vatDutyNumber
+                        juriidiline_isik: (details.type==='juridicalPerson')
                         //FIXME - volituse väli?
                     }
                 },{

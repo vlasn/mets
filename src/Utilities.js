@@ -27,3 +27,8 @@ export const uuid = () => {
 }
 
 export const session = () => ({headers: {"x-auth-token": localStorage.getItem("session")}})
+
+export const stripFalsyProperties = obj =>
+    Object.keys(obj)
+        .filter(key => !!obj[key])
+        .reduce((acc, val) => ({...acc, [val]: obj[val]}), {})
