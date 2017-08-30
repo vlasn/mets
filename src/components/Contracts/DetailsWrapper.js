@@ -50,12 +50,6 @@ export default class DetailsWrapper extends React.Component{
                     active = {this.state.activeTab}
                 />
                 <DetailsButton
-                    name="teatis"
-                    label="Metsateatis"
-                    clicked = {this.switchTab}
-                    active = {this.state.activeTab}
-                />
-                <DetailsButton
                     name="koondakt"
                     label="Vaata koondakti"
                     clicked = {this.switchTab}
@@ -86,13 +80,10 @@ export default class DetailsWrapper extends React.Component{
                    ],false,this.updateRow) : null
                 }
                 {/*Lepinguvaade*/}
+                {/*FIXME: refactor all of this jazz*/}
                 {this.state.activeTab === 'leping' ?
                     this.props.documents && this.props.documents.contracts ?
                         this.props.documents.contracts.map(DetailsTab) : <EmptyTab/>
-                    : null}
-                {this.state.activeTab === 'teatis' ?
-                    this.props.documents.metsateatis ?
-                        this.props.documents.metsateatis.map(DetailsTab) : <EmptyTab/>
                     : null}
                 {this.state.activeTab === 'hinnatabel' ?
                     this.props.documents.hinnatabel ?
