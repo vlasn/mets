@@ -30,7 +30,7 @@ export default class LoginForm extends React.Component{
     render(){
         return(
             <div className = "LoginForm__wrapper">
-                <form onSubmit={e => this.loginHandler(e).bind(this)}>
+                <form onSubmit={e => this.loginHandler(e)}>
                     <LoginTextField
                         hintText = "E-mail"
                         name = "email" type="text"
@@ -51,7 +51,6 @@ export default class LoginForm extends React.Component{
 
                     />
                     {this.props.error ? <Error text = {this.props.error}/> : null}
-
                     <div className="FirstPassword__button">
                         <LoginButton
                             name = "button"
