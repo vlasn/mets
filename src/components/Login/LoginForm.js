@@ -4,7 +4,7 @@
 import React from "react"
 import Error from "../Error"
 import LoginTextField from "../InputFields/LoginTextField"
-import LoginButton from "../Buttons/LoginButton"
+import LoginButton from "../FieldCard/CardWideButton"
 const css = require("./LoginForm.scss");
 
 const styles = {
@@ -19,7 +19,8 @@ export default class LoginForm extends React.Component{
         this.state = {}
     }
 
-    loginHandler() {
+    loginHandler(e) {
+        e.preventDefault()
         this.props.login(
             this.props.email,
             this.props.password
@@ -29,7 +30,7 @@ export default class LoginForm extends React.Component{
     render(){
         return(
             <div className = "LoginForm__wrapper">
-                <form onSubmit={e=>e.preventDefault()}>
+                <form onSubmit={e => this.loginHandler(e).bind(this)}>
                     <LoginTextField
                         hintText = "E-mail"
                         name = "email" type="text"
@@ -50,15 +51,12 @@ export default class LoginForm extends React.Component{
 
                     />
                     {this.props.error ? <Error text = {this.props.error}/> : null}
+
                     <div className="FirstPassword__button">
                         <LoginButton
                             name = "button"
-                            label="Logi sisse"
-                            labelStyle ={styles.button}
-                            backgroundColor= "#9bfcd3"
-                            hoverColor = "#9bfcd3"
-                            submitHandler = {this.loginHandler.bind(this)}
-                            fullWidth={true}
+                            value="Logi sisse"
+                            callback = {f=>f}
                         />
                     </div>
                 </form>
