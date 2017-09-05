@@ -70,7 +70,7 @@ export default class DetailsWrapper extends React.Component{
                        {key: "E-post: ", value: this.props.esindajad.join(', '),
                            name: 'esindajad', editable: this.props.esindajad},
 
-                       {key: "Katastritunnus: ", value: this.props.kinnistu.katastritunnused.join(', '),
+                        {key: "Katastritunnus: ", value: this.props.kinnistu.katastritunnused.join(', '),
                             name: 'katastritunnused', editable: this.props.kinnistu.katastritunnused},
 
                        {key: "Raie teostamine: ", value: this.props.raie_teostamine},

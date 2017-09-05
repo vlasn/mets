@@ -24,12 +24,12 @@ export default class ClientLanding extends React.Component {
                 {this.props.data.map((data,index) => {
                     return(
                         <MetsCard {...data} key={data._id}>
-                            <DetailsWrapper {...data} updateRow={this.onContractRowUpdate.bind(this)} />
-                            <VeoseTable
-                                cadastral={data.kinnistu.katastritunnused}
-                                contractId={data._id}
-                                status={data.status}
-                            />
+                            {/*<DetailsWrapper {...data} updateRow={this.onContractRowUpdate.bind(this)} />*/}
+                            {/*<VeoseTable*/}
+                                {/*cadastral={data.kinnistu.katastritunnus || null}*/}
+                                {/*contractId={data._id}*/}
+                                {/*status={data.status}*/}
+                            {/*/>*/}
                         </MetsCard>
                     )
                     })

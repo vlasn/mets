@@ -1,13 +1,13 @@
 /**
  * Created by clstrfvck on 03/05/2017.
  */
-import React from "react"
+import React, { Component } from "react"
 import DetailsWrapper from "./DetailsWrapper"
 
-import {CaretDown, CaretUp} from "../Icons"
-const css = require("./MetsCard.scss");
+import { CaretDown, CaretUp } from "../Icons"
+import "./MetsCard.scss"
 
-export default class MetsCard extends React.Component {
+export default class MetsCard extends Component {
     constructor(props) {
         super(props)
         this.state = {open: false}
@@ -29,7 +29,7 @@ export default class MetsCard extends React.Component {
                 return 'Lõppenud'
             }
             case 'done': {
-                return 'tehtud'
+                return 'Tehtud'
             }
         }
     }
@@ -45,15 +45,23 @@ export default class MetsCard extends React.Component {
                     onClick={this.toggle.bind(this)}
                 >
                     <div className="MetsCard__header-button left">
-                        {this.props.esindajad[0]||'Esindaja nimi puudub!'}
+                        {this.props._id||'Esindaja nimi puudub!'}
                     </div>
                     <div className="MetsCard__header-button middle">
-                        {this.props.propertyName||this.props.kinnistu.nimi}
+                        {
+                            this.props.kinnistu && this.props.kinnistu.nimi ?
+                                this.props.kinnistu.nimi :
+                                "Kinnistu nimi puudub"
+                        }
                     </div>
                     <div className="MetsCard__header-button right">
                         <div className="MetsCard__header-button-flexwrap">
                             <div className="flex-button-large">
-                                {this.translateStatus(this.props.status).toUpperCase()||"???"}
+                                {
+                                    this.props.status ?
+                                      this.translateStatus(this.props.status).toUpperCase() :
+                                      "Staatus puudub"
+                                }
                             </div>
                             {this.props.caret ?
                                 <div className="flex-button-small">

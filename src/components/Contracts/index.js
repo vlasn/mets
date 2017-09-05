@@ -9,7 +9,7 @@ class Contracts extends Component {
         super(props)
     }
     componentWillMount() {
-        !this.props.loggedIn ? this.props.history.push("/login") : null
+        //!this.props.loggedIn ? this.props.history.push("/login") : null
     }
     render(){
         return(<ContractCards {...this.props}/>)
