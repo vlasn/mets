@@ -4,6 +4,7 @@
   width: 150px;
   margin-left: 0;
   float: right;
+  text-align: center;
   .HeaderDropdown-button {
     &:hover {
       cursor:pointer
@@ -15,7 +16,6 @@
     width: 150px;
     padding: 10px;
     box-sizing: border-box;
-    box-shadow: $cardShadow;
     background-color: white;
     &:hover {
       cursor:pointer;
