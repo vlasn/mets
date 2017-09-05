@@ -1,5 +1,6 @@
 import React from 'react';
 import _DatePicker from 'material-ui/DatePicker';
+
 //FIXME - needs styling
 
 const DatePicker = ({floatingLabelText, errorText, onChange = console.log, name, ...props})=> {

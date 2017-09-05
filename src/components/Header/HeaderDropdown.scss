@@ -5,6 +5,9 @@
   margin-left: 0;
   float: right;
   .HeaderDropdown-button {
+    &:hover {
+      cursor:pointer
+    }
   }
   .HeaderDropdown-options{
     margin-top: 10px;
@@ -14,11 +17,12 @@
     box-sizing: border-box;
     box-shadow: $cardShadow;
     background-color: white;
+    &:hover {
+      cursor:pointer;
+      background-color: $borderColor;
+    }
   }
   .HeaderDropdown-option {
     background-color: white;
-    &:hover {
-      background-color: $borderColor;
-    }
   }
 }

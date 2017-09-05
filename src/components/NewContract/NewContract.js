@@ -9,12 +9,19 @@ import InputAutocompleteWrapper from "../InputFields/InputWithAutocomplete"
 import InputField from "../InputFields/InputField"
 import DatePicker from "../InputFields/DatePicker"
 import ReactFileReader from 'react-file-reader';
+import NewContractRows from "../NewContract/NewContractRows"
+
 
 import PropTypes from "prop-types"
 
 
-const NewContract = props => (
-    <div>
+const NewContract = props => {
+
+    const files = Object.values(props.documents)
+        .reduce((acc,val)=>[...acc,...val],[])
+
+    return(
+        <div>
         <h1>Lisa kinnistu andmed</h1>
         <Card>
             <CardFields>
@@ -66,23 +73,20 @@ const NewContract = props => (
                 <CardUploadButton label="muu" callback={props.uploadFile} type="other"/>
             </CardHeader>
             <CardFields>
-                {Object.values(props.documents)
-                    .reduce((acc,val)=>[...acc,...val],[])
-                    .map(file =>
-                        //FIXME - this needs an actual component that takes file and removal function as props...
-                        //...instead of the div and span visible here
-                        <div>{file.name} <span onClick={()=>props.removeFile(file.name)}>Eemalda</span></div>
-                    )
-                }
-                <InputField floatingLabelText="Failirida on ka puudu" name="tere" onChange={f=>f}/>
-                <InputField floatingLabelText="Mida 'muuda' nupp teeb?" name="tere" onChange={f=>f}/>
+                {
+                    files.length>0 ?
+                    files.map(file =>
+                        <NewContractRows name = {file.name} remove = {()=>props.removeFile(file.name)}/>
+                    ) :
+                        "Lisa vähemalt üks fail"
 
+                }
             </CardFields>
         </Card>
         <CardWideButton value="Loo leping" callback={f=>f}/>
     </div>
-)
-
+    )
+}
 
 
 NewContract.propTypes = {
