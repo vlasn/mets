@@ -79,10 +79,10 @@ const NewContract = props => {
                         <NewContractRows name = {file.name} remove = {()=>props.removeFile(file.name)}/>
                     ) :
                         "Lisa vähemalt üks fail"
-
                 }
             </CardFields>
         </Card>
+
         <CardWideButton value="Loo leping" callback={f=>f}/>
     </div>
     )
