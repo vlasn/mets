@@ -10,6 +10,7 @@ import InputField from "../InputFields/InputField"
 import DatePicker from "../InputFields/DatePicker"
 import ReactFileReader from 'react-file-reader';
 import NewContractRows from "../NewContract/NewContractRows"
+import "./NewContract.scss"
 
 
 import PropTypes from "prop-types"
@@ -21,8 +22,8 @@ const NewContract = props => {
         .reduce((acc,val)=>[...acc,...val],[])
 
     return(
-        <div>
-        <h1>Lisa kinnistu andmed</h1>
+        <div className="NewContact__wrapper">
+        <h2>Lisa kinnistu andmed</h2>
         <Card>
             <CardFields>
                 <InputField floatingLabelText="Kinnistu nimi" name="kinnistu_nimi"
@@ -56,7 +57,7 @@ const NewContract = props => {
             </CardFields>
         </Card>
 
-        <h1>Lisa kuupäevad</h1>
+        <h2>Lisa kuupäevad</h2>
         <Card>
             <CardFields>
                 <DatePicker floatingLabelText="Raie" name="raie_teostamine" onChange={props.onDefaultFieldChange} />
@@ -65,7 +66,7 @@ const NewContract = props => {
             </CardFields>
         </Card>
 
-        <h1>Lisa dokumendid</h1>
+        <h2>Lisa dokumendid</h2>
         <Card>
             <CardHeader>
                 <CardUploadButton label="Lisa leping *" callback={props.uploadFile} type="contract"/>
