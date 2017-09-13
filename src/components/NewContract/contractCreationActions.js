@@ -11,6 +11,9 @@ export const CONTRACT_CREATION_RESET = "CONTRACT_CREATION_RESET"
 export const CONTRACT_ADD_FILE = "CONTRACT_ADD_FILE"
 export const CONTRACT_REMOVE_FILE = "CONTRACT_REMOVE_FILE"
 
+export const CONTRACT_SUBMIT_ATTEMPT = "CONTRACT_SUBMIT_ATTEMPT"
+export const CONTRACT_SUBMIT_SUCCESS = "CONTRACT_SUBMIT_SUCCESS"
+
 
 export const fetchPersonDropdownOptions = term => {
     return dispatch => {
@@ -32,6 +35,25 @@ export const fetchPersonDropdownOptions = term => {
 
             })
             .catch(console.log)
+    }
+}
+
+export const attemptNewContractSubmit = (details, reps, files) => {
+    //console.log(details, reps, files)
+    return dispatch => {
+        dispatch({type: CONTRACT_SUBMIT_ATTEMPT})
+        let fd = new FormData()
+        Object.keys(details)
+          .forEach(row => fd.append(row, details[row]))
+        Object.keys(reps)
+          .forEach((rep, index) => fd.append("esindajad", rep.id))
+        Object.keys(files)
+          .forEach(fileKey =>
+            files[fileKey]
+              .forEach(file => fd.append(fileKey, file))
+          )
+
+        console.log(fd.entries().next())
     }
 }
 

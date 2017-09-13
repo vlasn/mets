@@ -79,7 +79,9 @@ const NewContract = props => (
 
             </CardFields>
         </Card>
-        <CardWideButton value="Loo leping" callback={f=>f}/>
+        <CardWideButton value="Loo leping" callback={
+          () => props.attemptNewContractSubmit(props.details,props.representatives, props.documents)
+        }/>
     </div>
 )
 

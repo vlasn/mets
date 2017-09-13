@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import _NewContract from "./NewContract"
 import { fetchPersonDropdownOptions, addRepresentative, removeRepresentative,
     updateRepresentative, onDefaultFieldChange, resetContractCreation, uploadFile,
-    removeFile} from "./contractCreationActions"
+    removeFile, attemptNewContractSubmit} from "./contractCreationActions"
 
 class NewContract extends Component {
     constructor(props) {
@@ -22,11 +22,12 @@ const mapStateToProps = (state, ownProps) => ({
     representatives: state.creation.contractCreation.representatives,
     loading: state.creation.contractCreation.loading,
     searchResults: state.creation.contractCreation.searchResults,
-    documents: state.creation.contractCreation.documents
+    documents: state.creation.contractCreation.documents,
+    details: state.creation.contractCreation.details
 })
 
 export default connect(mapStateToProps, {
     fetchPersonDropdownOptions, addRepresentative, removeRepresentative,
     updateRepresentative, onDefaultFieldChange, resetContractCreation,
-    uploadFile, removeFile
+    uploadFile, removeFile, attemptNewContractSubmit
 })(NewContract)
