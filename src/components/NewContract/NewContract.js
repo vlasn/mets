@@ -9,13 +9,21 @@ import InputAutocompleteWrapper from "../InputFields/InputWithAutocomplete"
 import InputField from "../InputFields/InputField"
 import DatePicker from "../InputFields/DatePicker"
 import ReactFileReader from 'react-file-reader';
+import NewContractRows from "../NewContract/NewContractRows"
+import "./NewContract.scss"
+
 
 import PropTypes from "prop-types"
 
 
-const NewContract = props => (
-    <div>
-        <h1>Lisa kinnistu andmed</h1>
+const NewContract = props => {
+
+    const files = Object.values(props.documents)
+        .reduce((acc,val)=>[...acc,...val],[])
+
+    return(
+        <div className="NewContact__wrapper">
+        <h2>Lisa kinnistu andmed</h2>
         <Card>
             <CardFields>
                 <InputField floatingLabelText="Kinnistu nimi" name="kinnistu_nimi"
@@ -49,7 +57,7 @@ const NewContract = props => (
             </CardFields>
         </Card>
 
-        <h1>Lisa kuupäevad</h1>
+        <h2>Lisa kuupäevad</h2>
         <Card>
             <CardFields>
                 <DatePicker floatingLabelText="Raie" name="raie_teostamine" onChange={props.onDefaultFieldChange} />
@@ -58,7 +66,7 @@ const NewContract = props => (
             </CardFields>
         </Card>
 
-        <h1>Lisa dokumendid</h1>
+        <h2>Lisa dokumendid</h2>
         <Card>
             <CardHeader>
                 <CardUploadButton label="Lisa leping *" callback={props.uploadFile} type="contract"/>
@@ -66,25 +74,21 @@ const NewContract = props => (
                 <CardUploadButton label="muu" callback={props.uploadFile} type="other"/>
             </CardHeader>
             <CardFields>
-                {Object.values(props.documents)
-                    .reduce((acc,val)=>[...acc,...val],[])
-                    .map(file =>
-                        //FIXME - this needs an actual component that takes file and removal function as props...
-                        //...instead of the div and span visible here
-                        <div>{file.name} <span onClick={()=>props.removeFile(file.name)}>Eemalda</span></div>
-                    )
+                {
+                    files.length>0 ?
+                    files.map(file =>
+                        <NewContractRows name = {file.name} remove = {()=>props.removeFile(file.name)}/>
+                    ) :
+                        "Lisa vähemalt üks fail"
                 }
-                <InputField floatingLabelText="Failirida on ka puudu" name="tere" onChange={f=>f}/>
-                <InputField floatingLabelText="Mida 'muuda' nupp teeb?" name="tere" onChange={f=>f}/>
-
             </CardFields>
         </Card>
         <CardWideButton value="Loo leping" callback={
           () => props.attemptNewContractSubmit(props.details,props.representatives, props.documents)
         }/>
     </div>
-)
-
+    )
+}
 
 
 NewContract.propTypes = {

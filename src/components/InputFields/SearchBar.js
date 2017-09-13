@@ -4,9 +4,10 @@
 import React from "react"
 import TextField from "material-ui/TextField"
 
+
 const styles = {
     underlineStyle: {
-        borderColor: '#9bfcd3',
+        borderColor: '#55D67A',
     },
 
     floatingLabelFocusStyle:{

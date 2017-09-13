@@ -7,6 +7,8 @@ import axios from "axios"
 import CreateClient from './NewClient'
 import CardWideButton from "../FieldCard/CardWideButton"
 import { changePersonType, onFieldValueChange, onSubmitNewClient } from "./clientCreationActions"
+import "./NewClient.scss"
+
 
 class NewClient extends Component {
     constructor(props){
@@ -18,8 +20,8 @@ class NewClient extends Component {
 
     render(){
         return(
-            <div>
-                <h1>Uus klient</h1>
+            <div className="NewClient__wrapper">
+                <h2>Uus klient</h2>
                 <CreateClient{...this.props}/>
 
                 {this.props.error /*FIXME - @hensav @thetloffline this needs styling and probably a separate component*/}

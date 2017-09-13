@@ -1,0 +1,16 @@
+@import "../../palette";
+
+.NewContactRows__wrapper {
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid $materialGray;
+  padding:15px 0 15px 0;
+  .NewContactRows__name {
+    flex:3 0 0;
+  }
+  .NewContactRows__remove {
+    flex:1 0 0;
+    cursor:pointer;
+    color: #767676;
+  }
+}
