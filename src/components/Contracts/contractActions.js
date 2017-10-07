@@ -1,5 +1,5 @@
 import axios from "axios"
-import { session } from "../../Utilities"
+import { session } from "../../utils/Utilities"
 
 export const UPDATE_CONTRACT_ROW_ATTEMPT = "UPDATE_CONTRACT_ROW_ATTEMPT"
 export const UPDATE_CONTRACT_ROW_SUCCESS = "UPDATE_CONTRACT_ROW_SUCCESS"

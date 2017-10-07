@@ -3,7 +3,7 @@
  */
 import React from "react"
 import {Download} from "../../Icons"
-import { prettyPrint } from "../../../Utilities"
+import { prettyPrint } from "../../../utils/Utilities"
 import EditableValue from "./EditableValue"
 const css = require("./FileRow.scss")
 

@@ -13,6 +13,7 @@ import imports from "../components/ImportHistory/importReducer"
 import cargoPage from "../components/Contracts/CargoPages/cargoPageReducer"
 import clientCreation from "../components/NewClient/clientCreationReducer"
 import contractCreation from "../components/NewContract/contractCreationReducer"
+import notifiers from "../components/GlobalNotifier/ducks"
 
 let contract = combineReducers({clientManagement, filter, cargoPage})
 let creation = combineReducers({clientCreation, contractCreation})
@@ -26,5 +27,6 @@ export default combineReducers({
     contract,
     creation,
     //contractManagement,
-    priceList
+    priceList,
+    notifiers
 })

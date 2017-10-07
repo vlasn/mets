@@ -42,7 +42,7 @@ const Header = props => (
 )
 
 const mapStateToProps = state => ({
-    name: state.user.details.nimi,
+    name: state.user.details.name,
     loggedIn: state.user.loggedIn,
     roles: state.user.roles,
     dropdownOpen: state.ui.dropdownOpen
@@ -51,7 +51,7 @@ const mapStateToProps = state => ({
 Header.propTypes = {
     name: PropTypes.string,
     loggedIn: PropTypes.bool.isRequired,
-    roles: PropTypes.array,
+    //roles: PropTypes.array,
     dropdownOpen: PropTypes.bool.isRequired,
     toggleDropdown: PropTypes.func.isRequired,
     logOut: PropTypes.func.isRequired

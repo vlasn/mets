@@ -5,17 +5,19 @@ const defaultState = {
     searchResults: [],
     representatives: [{ key: "first", name: "", id: ""}],
     details: {
-        kinnistu_nimi: "",
-        katastritunnus: "",
-        projektijuht: "",
-        metsameister: "",
-        raie_teostamine: null,
-        materjali_viimine: null,
-        raidmete_viimine: null,
+        property: {
+            name: "",
+            cadastreId: ""
+        },
+        projectManager: "", //projektijuht
+        foreman: "", //metsameister
+        logging: null,
+        timberTransport: null,
+        wasteTransport: null,
     },
     documents: {
-        contract: [],
-        forestNotice: [],
+        contracts: [],
+        forestNotices: [],
         other: []
     }
 }
@@ -68,15 +70,47 @@ export default function reducer (state = defaultState, action) {
         }
 
         case actionTypes.CONTRACT_FIELD_CHANGE : {
-            if (state.details.hasOwnProperty(action.key)) {
-                return {
-                    ...state,
-                    details: {
-                        ...state.details,
-                        [action.key]: action.value
+            if (state.details.hasOwnProperty(action.key) ||
+                action.key === 'name' ||
+                action.key === 'cadastre' )
+            {
+                switch(action.key) {
+                    case "name" : {
+                        return {
+                            ...state,
+                            details: {
+                                ...state.details,
+                                kinnistu: {
+                                    ...state.details.kinnistu,
+                                    "name": action.value
+                                }
+                            }
+                        }
+                    }
+                    case "cadastreId" : {
+                        return {
+                            ...state,
+                            details: {
+                                ...state.details,
+                                kinnistu: {
+                                    ...state.details.kinnistu,
+                                    "cadastreId": action.value
+                                }
+                            }
+                        }
+                    }
+                    default: {
+                        return {
+                            ...state,
+                            details: {
+                                ...state.details,
+                                [action.key]: action.value
+                            }
+                        }
                     }
                 }
-           } else {
+
+            } else {
                 return state
             }
         }

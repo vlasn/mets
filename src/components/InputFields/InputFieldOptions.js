@@ -4,7 +4,7 @@
 
 import React from "react";
 import InputField from "./InputField"
-import { uuid } from "../../Utilities"
+import { uuid } from "../../utils/Utilities"
 
 import "./InputFieldOptions.scss"
 

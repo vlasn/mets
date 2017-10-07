@@ -2,6 +2,7 @@
  * Created by clstrfvck on 12/04/2017.
  */
 import axios from "axios"
+import Api from "../../utils/Api"
 
 export const LOG_IN_SUCCESSFUL = "LOG_IN_SUCCESSFUL"
 export const LOG_IN_ATTEMPT = "LOG_IN_ATTEMPT"
@@ -17,12 +18,12 @@ export function login(id, pass) {
 
         let passhash = require('crypto').createHash('sha512').update(pass).digest('hex');
 
-        axios.post("/api/auth/login", {email: id, password: passhash})
-            .then(response => {
-                if(response.data.data.token) {
-                    localStorage.setItem('session',response.data.data.token)
+        Api("POST","/auth/login", {email: id, password: passhash})
+            .then(data => {
+                if(data.token) {
+                    localStorage.setItem('session', data.token)
                     dispatch({
-                        type: LOG_IN_SUCCESSFUL, payload: response.data.data.personal_data
+                        type: LOG_IN_SUCCESSFUL, name: data.name
                     })
                 } else {
                     return Promise.reject("Sisselogimine ei õnnestunud!")

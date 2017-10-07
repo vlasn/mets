@@ -1,5 +1,5 @@
 import axios from "axios"
-import { session } from "../../../Utilities" //{...session()}
+import { session } from "../../../utils/Utilities" //{...session()}
 
 export const CARGO_PAGES_LOADING = "CARGO_PAGES_LOADING"
 export const CARGO_PAGES_RECEIVED = "CARGO_PAGES_RECEIVED"

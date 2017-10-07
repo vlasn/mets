@@ -18,6 +18,7 @@ import PList from "./components/ResolveImport"
 import ImportHistory from "./components/ImportHistory"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Filter from "./components/Filter"
+import GlobalNotifiers from "./components/GlobalNotifier"
 const injectTapEventPlugin = require("react-tap-event-plugin")();
 
 class App extends React.Component {
@@ -41,6 +42,7 @@ class App extends React.Component {
                             <Route exact path="/new_client" component={NewClient}/>
                             <Route exact path="/new_contract" component={NewContract}/>
                         </div>
+                        <GlobalNotifiers />
                     </div>
                 </MuiThemeProvider>
             </Router>

@@ -10,7 +10,9 @@ export default function reducer( state = {
     loading: false,
     loggedIn: false,
     error: null,
-    details: {},
+    details: {
+        name: ""
+    },
     navigateToRoot: false,
     roles: []
 }, action) {
@@ -23,7 +25,15 @@ export default function reducer( state = {
         }
         case actionTypes.LOG_IN_SUCCESSFUL: {
             console.log("login successful!");
-            return { ...state, loading: false, loggedIn: true, error: null, password: null, details: action.payload, navigateToRoot:true}
+            return {
+              ...state,
+              loading: false,
+              loggedIn: true,
+              error: null,
+              password: null,
+              details: { name: action.name},
+              navigateToRoot:true
+            }
         }
         case "LOG_OUT": {
             return {loading: false, loggedIn: false, error: null, details: {}}
