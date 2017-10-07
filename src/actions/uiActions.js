@@ -2,7 +2,7 @@
  * Created by clstrfvck on 09/06/2017.
  */
 import axios from 'axios'
-import { session } from "../Utilities"
+import { session } from "../utils/Utilities"
 
 export function toggleDropdown(currentlyOpen) {
     return({type: "MAIN_DROPDOWN_TOGGLE", payload: !currentlyOpen})

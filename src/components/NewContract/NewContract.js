@@ -26,9 +26,9 @@ const NewContract = props => {
         <h2>Lisa kinnistu andmed</h2>
         <Card>
             <CardFields>
-                <InputField floatingLabelText="Kinnistu nimi" name="kinnistu_nimi"
+                <InputField floatingLabelText="Kinnistu nimi" name="name"
                             onChange={props.onDefaultFieldChange} required/>
-                <InputField floatingLabelText="Katastritunnus" name="katastritunnus"
+                <InputField floatingLabelText="Katastritunnus" name="cadastreId"
                             onChange={props.onDefaultFieldChange} required/>
                 {
                     props.representatives.map((rep,i) =>
@@ -50,9 +50,9 @@ const NewContract = props => {
                     )
                 }
                 {/*<InputFieldWithOptions floatingLabelText="Kliendi esindaja" required/>*/}
-                <InputField floatingLabelText="Projektijuht" name="projektijuht"
+                <InputField floatingLabelText="Projektijuht" name="projectManager"
                             onChange={props.onDefaultFieldChange} required/>
-                <InputField floatingLabelText="Metsameister" name="metsameister"
+                <InputField floatingLabelText="Metsameister" name="foreman"
                             onChange={props.onDefaultFieldChange} required/>
             </CardFields>
         </Card>
@@ -60,17 +60,17 @@ const NewContract = props => {
         <h2>Lisa kuupäevad</h2>
         <Card>
             <CardFields>
-                <DatePicker floatingLabelText="Raie" name="raie_teostamine" onChange={props.onDefaultFieldChange} />
-                <DatePicker floatingLabelText="Väljavedu" name="materjali_viimine" onChange={props.onDefaultFieldChange} />
-                <DatePicker floatingLabelText="Raidmete väljavedu" name="raidmete_viimine" onChange={props.onDefaultFieldChange} />
+                <DatePicker floatingLabelText="Raie" name="logging" onChange={props.onDefaultFieldChange} />
+                <DatePicker floatingLabelText="Väljavedu" name="timberTransport" onChange={props.onDefaultFieldChange} />
+                <DatePicker floatingLabelText="Raidmete väljavedu" name="wasteTransport" onChange={props.onDefaultFieldChange} />
             </CardFields>
         </Card>
 
         <h2>Lisa dokumendid</h2>
         <Card>
             <CardHeader>
-                <CardUploadButton label="Lisa leping *" callback={props.uploadFile} type="contract"/>
-                <CardUploadButton label="Lisa metsateatis" callback={props.uploadFile} type="forestNotice"/>
+                <CardUploadButton label="Lisa leping *" callback={props.uploadFile} type="contracts"/>
+                <CardUploadButton label="Lisa metsateatis" callback={props.uploadFile} type="forestNotices"/>
                 <CardUploadButton label="muu" callback={props.uploadFile} type="other"/>
             </CardHeader>
             <CardFields>

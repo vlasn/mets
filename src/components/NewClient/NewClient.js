@@ -5,10 +5,10 @@ import InputFieldWithRegex from "../InputFields/InputFieldWithRegex"
 
 export const juridicalPerson = [
     {label: "Esindaja nimi", key: "name", required: true, regex: /^[A-Za-zöäõü ]{3,20}$/},
-    {label: "Esindaja isikukood", key: "personalId", required: true, regex: /^[0-9]{11,11}$/},
+    {label: "Esindaja isikukood", key: "idNumber", required: true, regex: /^[0-9]{11,11}$/},
     {label: "Ettevõtte nimi", key: "companyName", required: true, regex:/^[A-Za-zöäõü ]{3,50}$/},
     {label: "Ettevõtte aadress", key:"address", required: true, regex: /^(?![0-9])(.*?).*[A-Za-z0-9\/\- ]{3,50}$/},
-    {label: "Reg. nr", key: "companyRegistration", required: true, regex: /^[0-9]{8,8}$/},
+    {label: "Reg. nr", key: "companyId", required: true, regex: /^[0-9]{8,8}$/},
     {label: "E-post", key: "email", required: true, regex: /\S+@\S+\.\S+/},
     {label: "Telefon", key: "phone", required: true, regex: /^[0-9]{5,20}$/},
     {label: "volituse alus", key: "???", required: true, regex: /^[A-Za-z ]{3,20}$/}, //FIXME - Is this a dropdown?
@@ -16,11 +16,11 @@ export const juridicalPerson = [
 ]
 export const privatePerson = [
     {label: "Nimi", key: "name", required: true, regex: /^[A-Za-zöäõü ]{3,20}$/},
-    {label: "Isikukood", key: "personalId", required: true, regex: /^[0-9]{11,11}$/},
+    {label: "Isikukood", key: "idNumber", required: true, regex: /^[0-9]{11,11}$/},
     {label: "Aadress", key: "address", required: true, regex: /^(?![0-9])(.*?).*[A-Za-z0-9\/\- ]{3,50}$/},
     {label: "E-post", key: "email", required: false, regex: /\S+@\S+\.\S+/},
     {label: "Telefon", key: "phone", required: false, regex: /^[0-9]{5,20}$/},
-    {label: "Dokumendi nr", key: "documentId", required: false, regex: /^[0-9]{3,20}$/},
+    {label: "Dokumendi nr", key: "documentNumber", required: false, regex: /^[0-9]{3,20}$/},
 ]
 
 const NewClient = props => (

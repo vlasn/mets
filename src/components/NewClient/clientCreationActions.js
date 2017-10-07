@@ -1,5 +1,6 @@
 import axios from "axios"
-import { session, stripFalsyProperties } from "../../Utilities"
+import { session, stripFalsyProperties } from "../../utils/Utilities"
+import Api from "../../utils/Api"
 
 export const CREATION_FIELD_ERROR = "CREATION_FIELD_ERROR"
 export const CREATION_SUCCESS = "CREATION_SUCCESS"
@@ -27,32 +28,26 @@ export const onSubmitNewClient = (personType, details) => {
                 return acc
             },[])
         if (fieldsWithErrors.length === 0) {
-            axios.post('/api/user/create', {
+            Api('POST','/users', {
                     email: details.email,
-                    personal_data: {
+                    personalData: {
                         ...stripFalsyProperties({
-                            nimi: details.name,
-                            tel_nr: details.contact,
-                            aadress: details.address,
-                            isikukood: details.personalId,
-                            dok_nr: details.documentId,
-                            reg_nr: details.companyRegistration,
-                            kmk_nr: details.vatDutyNumber
+                            name: details.name,
+                            phone: details.contact,
+                            address: details.address,
+                            idNumber: details.idNumber,
+                            documentNumber: details.documentNumber,
+                            companyId: details.companyRegistration,
+                            vatDutyNumber: details.vatDutyNumber
                         }),
-                        eraisik: (details.type==='privatePerson'),
-                        juriidiline_isik: (details.type==='juridicalPerson')
+                        juridical: (details.type==='juridicalPerson')
                         //FIXME - volituse väli?
                     }
-                },{
-                    ...session()
                 })
-                    .then(({data})=>{
-                    console.log(data)
-                        if(data.status === 'accept') {
-                            dispatch({type: 'CREATION_SUCCESS', payload: data.msg})
-                        } else {
-                            dispatch({type: 'CREATION_FAILURE', payload: data.msg})
-                        }
+                    .then(data => {
+                        dispatch({ type: CREATION_SUCCESS })
+                        dispatch({ type: "GLOBAL_SUCCESS",
+                            payload: "Klient '" + data.personalData.name + "' loodi edukalt!"})
                     })
                     .catch(error => {
                         console.log(error);

@@ -3,7 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import FlatButton from 'material-ui/FlatButton';
 const css = require("./AddDocuments.scss");
 import ReactFileReader from 'react-file-reader';
-import {uuid} from "../../../Utilities"
+import { uuid } from "../../../utils/Utilities"
 
 
 const labelStyles = {
@@ -29,93 +29,48 @@ const styles = {
     },
 };
 
-export default class AddDocuments extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            // contract:[],
-            // forestNotice:[]
-        }
-        // this.handleContractFiles=this.handleContractFiles.bind(this)
-        // this.handleNoticeFiles=this.handleNoticeFiles.bind(this)
+const AddDocuments = (props) => (
+    <div className="AddDocuments__wrapper">
+        <div className="AddDocuments__buttons-wrapper">
+            <div className="Heading"><h1>Lisa dokumendid</h1></div>
+            <div className="Buttons">
+                <ReactFileReader
+                    handleFiles={props.handleContractFiles}
+                    multipleFiles={false}
+                    fileTypes=".pdf"
+                    name="leping"
+                >
+                    <FlatButton
+                        label='Leping'
+                        backgroundColor= "#868686"
+                        hoverColor = "#9bfcd3"
+                        labelStyle ={labelStyles.headerButton}
+                        style={styles.regularbutton}
+                        id={uuid()}
+                        name="leping"
+                    />
+                </ReactFileReader>
+                <ReactFileReader
+                    handleFiles={props.handleNoticeFiles}
+                    multipleFiles={false}
+                    id={uuid()}
+                    fileTypes=".pdf"
+                    name="metsateatis"
+                >
+                    <FlatButton
+                        className="buttonHover"
+                        label='Metsateatis'
+                        backgroundColor= "#868686"
+                        hoverColor = "#9bfcd3"
+                        labelStyle ={labelStyles.headerButton}
+                        style={styles.regularbutton}
+                        id={uuid()}
+                        name="metsateatis"
+                    />
+                </ReactFileReader>
+            </div>
+        </div>
+    </div>
+)
 
-    }
-
-    // //uplaodimine
-    // handleContractFiles = contract => {
-    //     console.log(contract)
-    //     let newFiles = []
-    //
-    //     for(let i = 0; i<contract.length; i++) {
-    //         newFiles.push(contract[i])
-    //     }
-    //     this.setState({
-    //         ...this.state,
-    //         contract:[...this.state.forestNotice, ...newFiles]
-    //     })
-    // }
-    // handleNoticeFiles = forestNotice => {
-    //     console.log(forestNotice)
-    //     let newFiles = []
-    //
-    //     for(let i = 0; i<forestNotice.length; i++) {
-    //         newFiles.push(forestNotice[i])
-    //     }
-    //     this.setState({
-    //         ...this.state,
-    //         forestNotice:[...this.state.forestNotice, ...newFiles]
-    //     })
-    // }
-
-
-    render() {
-        console.log(this.state)
-
-        return(
-                <div className="AddDocuments__wrapper">
-                    <div className="AddDocuments__buttons-wrapper">
-                        <div className="Heading"><h1>Lisa dokumendid</h1></div>
-                        <div className="Buttons">
-                            <ReactFileReader
-                                handleFiles={this.props.handleContractFiles}
-                                multipleFiles={false}
-                                fileTypes=".pdf"
-                                name="leping"
-                            >
-                                <FlatButton
-                                    label='Leping'
-                                    backgroundColor= "#868686"
-                                    hoverColor = "#9bfcd3"
-                                    labelStyle ={labelStyles.headerButton}
-                                    style={styles.regularbutton}
-                                    id={uuid()}
-                                    name="leping"
-                                />
-                            </ReactFileReader>
-                            <ReactFileReader
-                                handleFiles={this.props.handleNoticeFiles}
-                                multipleFiles={false}
-                                id={uuid()}
-                                fileTypes=".pdf"
-                                name="metsateatis"
-
-                            >
-                                <FlatButton
-                                className="buttonHover"
-                                    label='Metsateatis'
-                                    backgroundColor= "#868686"
-                                    hoverColor = "#9bfcd3"
-                                    labelStyle ={labelStyles.headerButton}
-                                    style={styles.regularbutton}
-                                    id={uuid()}
-                                    name="metsateatis"
-                                />
-                            </ReactFileReader>
-
-                        </div>
-                    </div>
-
-                </div>
-        )
-    }
-}
+export default AddDocuments

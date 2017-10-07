@@ -3,7 +3,7 @@
  */
 
 import axios from "axios"
-import { session } from "../../Utilities"
+import { session } from "../../utils/Utilities"
 
 export const XLSX_UPLOAD_ATTEMPT = "XLSX_UPLOAD_ATTEMPT "
 export const XLSX_UPLOAD_SUCCESSFUL = "XLSX_UPLOAD_SUCCESSFUL "

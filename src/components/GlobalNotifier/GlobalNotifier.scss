@@ -1,0 +1,33 @@
+@import "../../palette";
+
+.Notifiers-wrapper {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  height: 600px;
+  width: 300px;
+  display: flex;
+  pointer-events: none;
+  flex-direction: column-reverse;
+  margin-bottom: 40px;
+}
+
+.Notifier {
+  width: 200px;
+  border-radius: 10px;
+  height: 40px;
+  display: flex;
+  //FIXME: värv palette'i
+  background-color: lightgreen;
+  margin: 5px;
+  box-shadow: $cardShadow;
+  &.error {
+    background-color: tomato;
+  }
+}
+
+.Notifier-text {
+  margin: auto;
+  color: white;
+  font-weight: 600;
+}

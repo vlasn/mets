@@ -1,5 +1,7 @@
 import axios from "axios"
-import { session, uuid } from "../../Utilities"
+import { session, uuid } from "../../utils/Utilities"
+import Api from "../../utils/Api"
+
 export const CONTRACT_PERSON_SEARCH_LOADING = "CONTRACT_PERSON_SEARCH_LOADING"
 export const CONTRACT_PERSON_SEARCH_RESULTS = "CONTRACT_PERSON_SEARCH_RESULTS"
 export const CONTRACT_PERSON_CLEAR_RESULTS = "CONTRACT_PERSON_CLEAR_RESULTS"
@@ -11,50 +13,84 @@ export const CONTRACT_CREATION_RESET = "CONTRACT_CREATION_RESET"
 export const CONTRACT_ADD_FILE = "CONTRACT_ADD_FILE"
 export const CONTRACT_REMOVE_FILE = "CONTRACT_REMOVE_FILE"
 
+export const CONTRACT_VALIDATION_FAILURE = "CONTRACT_VALIDATION_FAILURE"
 export const CONTRACT_SUBMIT_ATTEMPT = "CONTRACT_SUBMIT_ATTEMPT"
 export const CONTRACT_SUBMIT_SUCCESS = "CONTRACT_SUBMIT_SUCCESS"
-
+export const CONTRACT_SUBMIT_FAILURE = "CONTRACT_SUBMIT_FAILURE"
 
 export const fetchPersonDropdownOptions = term => {
     return dispatch => {
         dispatch({type: CONTRACT_PERSON_SEARCH_LOADING, loading: true})
-        axios.get("/api/users/search?key=nimi,isikukood&value="+term, session())
-            .then(response => {
-                dispatch({type: CONTRACT_PERSON_SEARCH_LOADING, loading: false})
-                if(response.data.data.length>0) {
-                    let results = response.data.data.map(match => ({
+        Api("GET","/users?key=name,idNumber&value="+term)
+            .then(data => {
+                dispatch({ type: CONTRACT_PERSON_SEARCH_LOADING, loading: false })
+                if(data.length>0) {
+                    let results = data.map(match => ({
                         id: match._id,
-                        name: match.personal_data.nimi,
-                        identityCode: match.personal_data.isikukood
+                        name: match.personalData.name,
+                        identityCode: match.personalData.idNumber
                     }))
                     console.log(results)
                     dispatch({ type: CONTRACT_PERSON_SEARCH_RESULTS, results})
                 } else {
                     dispatch({ type: CONTRACT_PERSON_CLEAR_RESULTS })
                 }
-
             })
             .catch(console.log)
     }
 }
 
-export const attemptNewContractSubmit = (details, reps, files) => {
-    //console.log(details, reps, files)
-    return dispatch => {
-        dispatch({type: CONTRACT_SUBMIT_ATTEMPT})
-        let fd = new FormData()
-        Object.keys(details)
-          .forEach(row => fd.append(row, details[row]))
-        Object.keys(reps)
-          .forEach((rep, index) => fd.append("esindajad", rep.id))
-        Object.keys(files)
-          .forEach(fileKey =>
-            files[fileKey]
-              .forEach(file => fd.append(fileKey, file))
-          )
+const validateContractSubmission = (details, reps, files) => {
+    let errors = []
+    const validateOne = (value, regex) => regex.test(value)
 
-        console.log(fd.entries().next())
+    if(!validateOne(details['projectManager'], /^[A-Za-zöäõü ]{3,20}$/)) errors.push('projectManager')
+    if(!validateOne(details['foreman'], /^[A-Za-zöäõü ]{3,20}$/)) errors.push('foreman')
+    if(!validateOne(details.property['name'], /^[A-Za-zöäõü ]{3,20}$/)) errors.push('property_name')
+    if(!validateOne(details.property['cadastreID'], /^[0-9]{3,20}$/)) errors.push('property_cadastreID')
+    if (reps.length<1) {
+        errors.push("representatives")
     }
+    if (files.leping.length < 1) {
+        errors.push("contracts")
+    }
+    return errors
+}
+
+export const attemptNewContractSubmit = (details, reps, files) => {
+    const errors = validateContractSubmission(details, reps, files)
+        if (errors.length < 1) {
+            return dispatch => {
+                dispatch({ type: CONTRACT_SUBMIT_ATTEMPT })
+                let fd = new FormData()
+
+                let headers = new Headers()
+                headers.append("x-auth-token", session()["x-auth-token"])
+
+                Object.keys(details)
+                  .filter(key => key === 'property' ? details.property.name && details.property.cadastreId : true)
+                  //Review this - formdata object submission
+                  .forEach(row => fd.append(row, row === 'property' ? JSON.stringify(details[row]) : details[row]))
+
+                fd.append("representatives", JSON.stringify(reps.map(rep => rep.id)))
+
+                Object.keys(files)
+                  .forEach(fileKey =>
+                    files[fileKey]
+                      .forEach(file => fd.append(fileKey, file))
+                  )
+                fetch('/api/contract/create', {
+                  method: "POST",
+                  body: fd,
+                  headers
+                })
+                  .then(r => r.json())
+                  .then(console.log)
+                  .catch(console.log)
+            }
+        } else {
+            return { type: CONTRACT_VALIDATION_FAILURE, errors: errors }
+        }
 }
 
 export const onDefaultFieldChange = (key, value) => {

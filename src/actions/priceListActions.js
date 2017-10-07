@@ -1,5 +1,5 @@
 import axios from "axios"
-import { session } from "../Utilities" //{...session()}
+import { session } from "../utils/Utilities" //{...session()}
 
 export const PRICEFORM_FETCHING_KEY = "PRICEFORM_FETCHING_KEY "
 export const PRICEFORM_UPDATE_KEYS = "PRICEFORM_UPDATE_KEYS "

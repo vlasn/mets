@@ -10,10 +10,10 @@ export default function reducer( state = {
     error: false,
     details: {
         name: "",
-        personalId: "",
-        documentId: "",
+        idNumber: "",
+        documentNumber: "",
         companyName: "",
-        companyRegistration: "",
+        companyId: "",
         email: "",
         phone: "",
         vatDutyNumber: "",
