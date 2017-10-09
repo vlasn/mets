@@ -1,0 +1,36 @@
+@import "../../../palette";
+
+.ContractDetails {
+  padding: 0 40px;
+}
+
+.ContractDetailsRow {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 2px solid $borderColor;
+  height: 50px;
+  font-size: 18px;
+}
+
+.ContractDetailsRow__label {
+  flex: 2 0 0;
+  display: flex;
+  > span {
+    margin: auto 0;
+  }
+}
+.ContractDetailsRow__value {
+  flex: 4 0 0;
+  display: flex;
+  > span {
+    margin: auto 0;
+  }
+}
+.ContractDetailsRow__opts {
+  flex: 1 0 0;
+  display: flex;
+  > span {
+    margin: auto 0 auto auto;
+  }
+}
