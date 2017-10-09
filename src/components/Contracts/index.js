@@ -2,7 +2,7 @@ import React, {Component} from "react"
 import { connect } from 'react-redux'
 import { search } from "../../actions/uiActions"
 import { updateContractRow } from "./contractActions"
-import ContractCards from "./ManageContracts"
+import ManageContracts from "./ManageContracts"
 
 class Contracts extends Component {
     constructor(props){
@@ -12,7 +12,7 @@ class Contracts extends Component {
         //!this.props.loggedIn ? this.props.history.push("/login") : null
     }
     render(){
-        return(<ContractCards {...this.props}/>)
+        return(<ManageContracts {...this.props}/>)
     }
 }
 

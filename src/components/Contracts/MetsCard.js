@@ -49,8 +49,8 @@ export default class MetsCard extends Component {
                     </div>
                     <div className="MetsCard__header-button middle">
                         {
-                            this.props.kinnistu && this.props.kinnistu.nimi ?
-                                this.props.kinnistu.nimi :
+                            this.props.property && this.props.property.name ?
+                                this.props.property.name :
                                 "Kinnistu nimi puudub"
                         }
                     </div>
