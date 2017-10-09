@@ -44,14 +44,14 @@ const validateContractSubmission = (details, reps, files) => {
     let errors = []
     const validateOne = (value, regex) => regex.test(value)
 
-    if(!validateOne(details['projectManager'], /^[A-Za-zöäõü ]{3,20}$/)) errors.push('projectManager')
-    if(!validateOne(details['foreman'], /^[A-Za-zöäõü ]{3,20}$/)) errors.push('foreman')
-    if(!validateOne(details.property['name'], /^[A-Za-zöäõü ]{3,20}$/)) errors.push('property_name')
-    if(!validateOne(details.property['cadastreID'], /^[0-9]{3,20}$/)) errors.push('property_cadastreID')
-    if (reps.length<1) {
+    if(!validateOne(details['projectManager'], /^[A-Za-zöäõüÕÄÖÜ ]{3,20}$/)) errors.push('projectManager')
+    if(!validateOne(details['foreman'], /^[A-Za-zöäõüÕÄÖÜ ]{3,20}$/)) errors.push('foreman')
+    if(!validateOne(details.property.name, /^[A-Za-zöäõüÕÄÖÜ 0-9]{3,20}$/)) errors.push('property_name')
+    if(!validateOne(details.property.cadastreId, /^[0-9]{3,20}$/)) errors.push('property_cadastreID')
+    if (reps.length < 1) {
         errors.push("representatives")
     }
-    if (files.leping.length < 1) {
+    if (files.contracts.length < 1) {
         errors.push("contracts")
     }
     return errors
@@ -68,11 +68,13 @@ export const attemptNewContractSubmit = (details, reps, files) => {
                 headers.append("x-auth-token", session()["x-auth-token"])
 
                 Object.keys(details)
-                  .filter(key => key === 'property' ? details.property.name && details.property.cadastreId : true)
-                  //Review this - formdata object submission
-                  .forEach(row => fd.append(row, row === 'property' ? JSON.stringify(details[row]) : details[row]))
+                  .filter(key => key !== 'property')
+                  .forEach(key => fd.append([key], details[key]))
 
-                fd.append("representatives", JSON.stringify(reps.map(rep => rep.id)))
+                fd.append('property[name]', details.property.name)
+                fd.append('property[cadastreId]', details.property.cadastreId)
+
+                fd.append("representatives", reps.map(rep => rep.id).join())
 
                 Object.keys(files)
                   .forEach(fileKey =>
@@ -85,7 +87,10 @@ export const attemptNewContractSubmit = (details, reps, files) => {
                   headers
                 })
                   .then(r => r.json())
-                  .then(console.log)
+                  .then(data => {
+                      dispatch({ type: "GLOBAL_SUCCESS", text: "Leping loodud!" })
+                      dispatch({ type: CONTRACT_SUBMIT_SUCCESS })
+                  })
                   .catch(console.log)
             }
         } else {
