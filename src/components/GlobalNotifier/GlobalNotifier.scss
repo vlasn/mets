@@ -21,8 +21,15 @@
   background-color: lightgreen;
   margin: 5px;
   box-shadow: $cardShadow;
+  opacity: 0;
+  transform: translate(100px, 0);
+  transition: all 0.3s ease-in;
   &.error {
     background-color: tomato;
+  }
+  &.entered {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
 

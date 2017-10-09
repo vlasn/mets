@@ -1,0 +1,30 @@
+.InlineDatepicker {
+  //overriding MaterialUI default styles, hence the ugliness
+  div {
+    display: block;
+    height: 50px !important;
+    font-size: 18px !important;
+    max-width: 200px;
+    position: relative;
+    div {
+      display: none;
+      &:first-child {
+        display: block;
+        padding-top: 13px;
+        box-sizing: border-box;
+      }
+      position: absolute !important;
+      top: 0 !important;
+      hr {
+        display: none
+      }
+    }
+    input {
+      margin: 0 !important;
+      height: 50px !important;
+      width: 200px !important;
+      position: absolute !important;
+      top: 0 !important;
+    }
+  }
+}
