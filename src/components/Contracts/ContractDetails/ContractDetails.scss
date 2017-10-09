@@ -13,24 +13,23 @@
   font-size: 18px;
 }
 
-.ContractDetailsRow__label {
-  flex: 2 0 0;
+@mixin flex-and-margin-child($margin) {
   display: flex;
   > span {
-    margin: auto 0;
+    margin: $margin
   }
 }
+
+.ContractDetailsRow__label {
+  flex: 2 0 0;
+  @include flex-and-margin-child(auto 0)
+}
+
 .ContractDetailsRow__value {
+  @extend .ContractDetailsRow__label;
   flex: 4 0 0;
-  display: flex;
-  > span {
-    margin: auto 0;
-  }
 }
 .ContractDetailsRow__opts {
   flex: 1 0 0;
-  display: flex;
-  > span {
-    margin: auto 0 auto auto;
-  }
+  @include flex-and-margin-child(auto 0 auto auto)
 }

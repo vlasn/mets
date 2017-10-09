@@ -26,7 +26,7 @@ export default class ClientLanding extends React.Component {
                     return(
                         <MetsCard {...data} key={data._id}>
                             <DetailsWrapper {...data} updateRow={this.onContractRowUpdate.bind(this)}>
-                                <ContractDetails data={data}/>
+                                <ContractDetails updateRow={this.onContractRowUpdate.bind(this)} data={data}/>
                                 Siin on veel esindajate tabel lisaks. Veoselehtede oma ka.
                             </DetailsWrapper>
                             {/*<VeoseTable*/}

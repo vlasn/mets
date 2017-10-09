@@ -14,13 +14,23 @@ const Notifiers = ({notifiers, hideNotifier}) => {
 class Notifier extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+          entered: false
+        }
     }
     componentDidMount() {
       setTimeout(()=>this.props.callback(this.props.id), 3000)
+      setTimeout(()=>this.setState(p => ({entered: true})), 200)
     }
     render() {
+        console.log(this.state)
+        const classNames =
+          `Notifier ${
+            (this.props.type === "error" ? "error" : "") +
+            (this.state.entered ? " entered" : "")
+          }`
         return(
-            <div className={`Notifier ${this.props.type === "error" ? "error" : ""}`}>
+            <div className={classNames}>
                 <div className="Notifier-text">
                     {this.props.text}
                 </div>

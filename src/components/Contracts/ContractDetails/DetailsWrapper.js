@@ -27,7 +27,6 @@ export default class DetailsWrapper extends Component{
     }
 
     render() {
-        console.log('detailsview:', this.props)
         return(
             <div className="DetailsWrapper__wrapper">
             <div className="DetailsWrapper__button__background">
