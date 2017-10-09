@@ -47,7 +47,7 @@ export const onSubmitNewClient = (personType, details) => {
                     .then(data => {
                         dispatch({ type: CREATION_SUCCESS })
                         dispatch({ type: "GLOBAL_SUCCESS",
-                            payload: "Klient '" + data.personalData.name + "' loodi edukalt!"})
+                            payload: "Klient '" + data.personalData.name + "' loodud!"})
                     })
                     .catch(error => {
                         console.log(error);

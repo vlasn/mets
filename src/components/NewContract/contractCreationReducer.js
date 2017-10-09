@@ -2,6 +2,7 @@ import * as actionTypes from "./contractCreationActions"
 
 const defaultState = {
     loading: false,
+    submitted: false,
     searchResults: [],
     representatives: [{ key: "first", name: "", id: ""}],
     details: {
@@ -42,6 +43,10 @@ export default function reducer (state = defaultState, action) {
             }
         }
 
+        case actionTypes.CONTRACT_SUBMIT_SUCCESS: {
+          return { ...state, submitted: true, loading: false }
+        }
+
         case actionTypes.CONTRACT_PERSON_CLEAR_RESULTS : {
             return { ...state, searchResults: [] }
         }
@@ -72,7 +77,7 @@ export default function reducer (state = defaultState, action) {
         case actionTypes.CONTRACT_FIELD_CHANGE : {
             if (state.details.hasOwnProperty(action.key) ||
                 action.key === 'name' ||
-                action.key === 'cadastre' )
+                action.key === 'cadastreId' )
             {
                 switch(action.key) {
                     case "name" : {
@@ -80,8 +85,8 @@ export default function reducer (state = defaultState, action) {
                             ...state,
                             details: {
                                 ...state.details,
-                                kinnistu: {
-                                    ...state.details.kinnistu,
+                                property: {
+                                    ...state.details.property,
                                     "name": action.value
                                 }
                             }
@@ -92,8 +97,8 @@ export default function reducer (state = defaultState, action) {
                             ...state,
                             details: {
                                 ...state.details,
-                                kinnistu: {
-                                    ...state.details.kinnistu,
+                                property: {
+                                    ...state.details.property,
                                     "cadastreId": action.value
                                 }
                             }

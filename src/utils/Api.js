@@ -13,7 +13,7 @@ export default (method, url, data = {}) => {
 
   if (allowedMethods.indexOf(method.toUpperCase()) > -1) {
 
-    return instance({method, url, data})
+    return instance({ method, url, data })
       .then(response => response.data.data)
       .catch(error => {
         console.error(error) // and further error logging - db?

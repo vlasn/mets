@@ -22,8 +22,9 @@ export function login(id, pass) {
             .then(data => {
                 if(data.token) {
                     localStorage.setItem('session', data.token)
+                    console.log('data: ',data)
                     dispatch({
-                        type: LOG_IN_SUCCESSFUL, name: data.name
+                        type: LOG_IN_SUCCESSFUL, name: data.user.personalData.name
                     })
                 } else {
                     return Promise.reject("Sisselogimine ei õnnestunud!")
