@@ -1,6 +1,7 @@
 import React from "react"
 import MetsCard from "./MetsCard"
-import DetailsWrapper from "./DetailsWrapper";
+import ContractDetails from "./ContractDetails"
+import DetailsWrapper from "./ContractDetails/DetailsWrapper";
 import VeoseTable from './CargoPages/Veoselehed'
 
 
@@ -24,7 +25,10 @@ export default class ClientLanding extends React.Component {
                 {this.props.data.map((data,index) => {
                     return(
                         <MetsCard {...data} key={data._id}>
-                            <DetailsWrapper {...data} updateRow={this.onContractRowUpdate.bind(this)} />
+                            <DetailsWrapper {...data} updateRow={this.onContractRowUpdate.bind(this)}>
+                                <ContractDetails data={data}/>
+                                Siin on veel esindajate tabel lisaks. Veoselehtede oma ka.
+                            </DetailsWrapper>
                             {/*<VeoseTable*/}
                                 {/*cadastral={data.kinnistu.katastritunnus || null}*/}
                                 {/*contractId={data._id}*/}
