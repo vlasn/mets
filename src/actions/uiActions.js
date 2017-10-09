@@ -3,6 +3,7 @@
  */
 import axios from 'axios'
 import { session } from "../utils/Utilities"
+import Api from "../utils/Api"
 
 export function toggleDropdown(currentlyOpen) {
     return({type: "MAIN_DROPDOWN_TOGGLE", payload: !currentlyOpen})
@@ -11,19 +12,17 @@ export function toggleDropdown(currentlyOpen) {
 export function search(opts) {
     return (dispatch) => {
         dispatch({type: "SEARCH_TRIGGERED"});
-        axios.get(
-            `/api/contracts/filter?cadastre=${opts.searchTerm}&metsameister=${opts.personFilterOption}&status=${opts.statusFilterOption}`,
-            {
-                ...session()
+        Api(
+            "GET",
+            `/contracts?term=${opts.searchTerm}&foreman=${opts.personFilterOption}&status=${opts.statusFilterOption}`
+        )
+            .then(data => {
+                console.log("Search: ", data)
+                dispatch({type: "SEARCH_COMPLETE", payload: data})
             })
-            .then(response => {
-                console.log("action:", response)
-                if(response.data.status==='accept') {
-                    dispatch({type: "SEARCH_COMPLETE", payload: response.data.data})
-                } else {
-                    dispatch({type: "SEARCH_FAILED", payload: response.data.msg})
-                }
+            .catch(e => {
+                dispatch({ type: "SEARCH_FAILED", payload: response.data.msg })
+                dispatch({ type: "GLOBAL_ERROR", text: "Otsing ei õnnestunud" })
             })
-            .catch(console.log)
     }
 }

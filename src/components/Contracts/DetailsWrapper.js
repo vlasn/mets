@@ -60,18 +60,18 @@ export default class DetailsWrapper extends React.Component{
                 {/*Haldusvaade*/}
                 {this.state.activeTab === 'haldus' ?
                    DetailsTab([
-                       {key: "Loomise kuupäev: ", value: this.props.created_timestamp.split("T")[0],
-                           name: 'creation_date', protect: true},
-                       {key: "Projektijuht: ", value: this.props.projektijuht,
-                           name: 'projektijuht'},
-                       {key: "Metsameister: ", value: this.props.metsameister,
-                           name: 'metsameister'},
+                       {key: "Loomise kuupäev: ", value: this.props.createdAt.split("T")[0],
+                           name: 'createdAt', protect: true},
+                       {key: "Projektijuht: ", value: this.props.projectManager,
+                           name: 'projectManager'},
+                       {key: "Metsameister: ", value: this.props.foreman,
+                           name: 'foreman'},
 
-                       {key: "E-post: ", value: this.props.esindajad.join(', '),
-                           name: 'esindajad', editable: this.props.esindajad},
+                       {key: "E-post: ", value: this.props.representatives.map(r => r.personalData.name).join(", "),
+                           name: 'representatives', editable: this.props.esindajad},
 
-                        {key: "Katastritunnus: ", value: this.props.kinnistu.katastritunnused.join(', '),
-                            name: 'katastritunnused', editable: this.props.kinnistu.katastritunnused},
+                        {key: "Katastritunnus: ", value: this.props.property.cadastreIds.join(", "),
+                            name: 'katastritunnused', editable: this.props.property},
 
                        {key: "Raie teostamine: ", value: this.props.raie_teostamine},
                        {key: "Metsamaterjali väljaviimine: ", value: this.props.materjali_viimine},
