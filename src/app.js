@@ -3,7 +3,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux"
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom/es"
-import ProtectedRoute from "./components/ProtectedRoute"
 import Login from "./components/Login"
 import store from "./store"
 import Validate from "./components/Validate"
@@ -17,9 +16,8 @@ import Navbar from "./components/Navbar"
 import PList from "./components/ResolveImport"
 import ImportHistory from "./components/ImportHistory"
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import Filter from "./components/Filter"
 import GlobalNotifiers from "./components/GlobalNotifier"
-const injectTapEventPlugin = require("react-tap-event-plugin")();
+require("react-tap-event-plugin")();
 
 class App extends React.Component {
 
@@ -33,14 +31,15 @@ class App extends React.Component {
                         </div>
                         <Navbar/>
                         <div className="Main__content">
-                            <Route path="/login" component={Login}/>
-                            <Route exact path="/validate/:hash" component={Validate}/>
-                            <Route exact path="/imports" component={ImportHistory}/>
-                            <Route exact path="/" component={Filter}/>
-                            <Route exact path="/" component={Contracts}/>
-                            <Route exact path="/import/:id" component={PList}/>
-                            <Route exact path="/new_client" component={NewClient}/>
-                            <Route exact path="/new_contract" component={NewContract}/>
+                            <Switch>
+                                <Route exact path="/login" component={Login}/>
+                                <Route exact path="/validate/:hash" component={Validate}/>
+                                <Route exact path="/imports" component={ImportHistory}/>
+                                <Route exact path="/" component={Contracts}/>
+                                <Route exact path="/import/:id" component={PList}/>
+                                <Route exact path="/new_client" component={NewClient}/>
+                                <Route exact path="/new_contract" component={NewContract}/>
+                            </Switch>
                         </div>
                         <GlobalNotifiers />
                     </div>
