@@ -2,8 +2,6 @@
  * Created by clstrfvck on 25/06/2017.
  */
 
-//To be used as soon as I modularize clientManagement reducer
-
 import * as actionTypes from "./filterActions"
 
 export default function reducer( state = {

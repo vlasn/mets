@@ -21,7 +21,7 @@ export const CONTRACT_SUBMIT_FAILURE = "CONTRACT_SUBMIT_FAILURE"
 export const fetchPersonDropdownOptions = term => {
     return dispatch => {
         dispatch({type: CONTRACT_PERSON_SEARCH_LOADING, loading: true})
-        Api("GET","/users?key=name,idNumber&value="+term)
+        Api("GET",`/users?name=${term}&idNumber=${term}`)
             .then(data => {
                 dispatch({ type: CONTRACT_PERSON_SEARCH_LOADING, loading: false })
                 if(data.length>0) {

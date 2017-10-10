@@ -2,7 +2,9 @@ import React from "react"
 import MetsCard from "./MetsCard"
 import ContractDetails from "./ContractDetails"
 import DetailsWrapper from "./ContractDetails/DetailsWrapper";
+import Filter from "../Filter"
 import VeoseTable from './CargoPages/Veoselehed'
+import FileRow from './FileRow/index'
 
 
 export default class ClientLanding extends React.Component {
@@ -22,6 +24,7 @@ export default class ClientLanding extends React.Component {
     render() {
         return(
             <div>
+                <Filter/>
                 {this.props.data.map((data,index) => {
                     return(
                         <MetsCard {...data} key={data._id}>
