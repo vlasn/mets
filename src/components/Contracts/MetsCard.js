@@ -2,7 +2,7 @@
  * Created by clstrfvck on 03/05/2017.
  */
 import React, { Component } from "react"
-import DetailsWrapper from "./ContractDetails/DetailsWrapper"
+import DetailsWrapper from "./DetailsWrapper"
 
 import { CaretDown, CaretUp } from "../Icons"
 import "./MetsCard.scss"

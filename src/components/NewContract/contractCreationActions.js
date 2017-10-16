@@ -72,16 +72,18 @@ export const attemptNewContractSubmit = (details, reps, files) => {
                   .forEach(key => fd.append([key], details[key]))
 
                 fd.append('property[name]', details.property.name)
-                fd.append('property[cadastreId]', details.property.cadastreId)
-
-                fd.append("representatives", reps.map(rep => rep.id).join())
+                fd.append('property[cadastreIds]', details.property.cadastreId)
+                fd.append('representatives', reps.map(rep => rep.id).join())
+                fd.append('dates[logging]', details.logging)
+                fd.append('dates[timberTransport]', details.timberTransport)
+                fd.append('dates[wasteTransport]', details.wasteTransport)
 
                 Object.keys(files)
                   .forEach(fileKey =>
                     files[fileKey]
                       .forEach(file => fd.append(fileKey, file))
                   )
-                fetch('/api/contract/create', {
+                fetch('/api/contracts', {
                   method: "POST",
                   body: fd,
                   headers
