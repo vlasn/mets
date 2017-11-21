@@ -117,6 +117,6 @@ export const updateRepresentative = (key, name, id) => {
 }
 export const resetContractCreation = () => ({type: CONTRACT_CREATION_RESET})
 
-export const uploadFile = (file, fileType)  => ({type: CONTRACT_ADD_FILE, file: file.item(0), fileType})
+export const uploadFile = (file, fileType)  => ({type: CONTRACT_ADD_FILE, file: file.item(0), fileType, key: uuid()})
 
-export const removeFile = fileName => ({type: CONTRACT_REMOVE_FILE, fileName})
+export const removeFile = key => ({type: CONTRACT_REMOVE_FILE, key})

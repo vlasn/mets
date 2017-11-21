@@ -12,11 +12,12 @@ import ReactFileReader from 'react-file-reader';
 import NewContractRows from "../NewContract/NewContractRows"
 import "./NewContract.scss"
 
-
 import PropTypes from "prop-types"
 
 
 const NewContract = props => {
+
+    console.log("props" ,props.documents)
 
     const files = Object.values(props.documents)
         .reduce((acc,val)=>[...acc,...val],[])
@@ -77,7 +78,7 @@ const NewContract = props => {
                 {
                     files.length>0 ?
                     files.map(file =>
-                        <NewContractRows name = {file.name} remove = {()=>props.removeFile(file.name)}/>
+                        <NewContractRows key = {file.key} name = {file.name} remove = {()=>props.removeFile(file.key)}/>
                     ) :
                         "Lisa vähemalt üks fail"
                 }

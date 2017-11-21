@@ -1,9 +1,7 @@
 import React from "react"
 import CardWideButton from "./CardWideButton"
 import "./FieldCard.scss"
-import ReactFileReader from 'react-file-reader';
-
-
+import ReactFileReader from 'react-file-reader'
 
 export const Card = ({children}) => (
     <div className="FieldCard__wrapper">
