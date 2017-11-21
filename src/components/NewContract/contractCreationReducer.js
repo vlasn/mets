@@ -122,7 +122,6 @@ export default function reducer (state = defaultState, action) {
 
         case actionTypes.CONTRACT_ADD_FILE : {
             if(state.documents.hasOwnProperty(action.fileType)) {
-                console.log("action.file",action)
                 return {
                     ...state,
                     documents: {

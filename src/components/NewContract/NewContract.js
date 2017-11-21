@@ -16,9 +16,6 @@ import PropTypes from "prop-types"
 
 
 const NewContract = props => {
-
-    console.log("props" ,props.documents)
-
     const files = Object.values(props.documents)
         .reduce((acc,val)=>[...acc,...val],[])
 
