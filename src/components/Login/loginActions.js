@@ -16,10 +16,12 @@ export function login(id, pass) {
     return (dispatch) => {
         dispatch({type: LOG_IN_ATTEMPT});
 
-        let passhash = require('crypto').createHash('sha512').update(pass).digest('hex');
+        // let passhash = require('crypto').createHash('sha512').update(pass).digest('hex');
 
-        Api("POST","/auth/login", {email: id, password: passhash})
-            .then(data => {
+        // Api("POST","/auth/login", {email: id, password: passhash})
+        Api("POST","/auth/login", {email: id, password: pass})
+
+        .then(data => {
                 if(data.token) {
                     localStorage.setItem('session', data.token)
                     console.log('data: ',data)
