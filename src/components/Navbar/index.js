@@ -12,7 +12,7 @@ export const Navbar = ({loggedIn}) => (
             <NavbarLink to="/new_contract">Loo uus leping</NavbarLink>
             <NavbarLink to="/">Loo hinnapakkumine</NavbarLink>
             <NavbarLink to="/new_client">Loo uus klient</NavbarLink>
-            <NavbarLink to="update_pricelist">Uuenda hinnakirja</NavbarLink>
+            <NavbarLink to="/update_pricelist">Uuenda hinnakirja</NavbarLink>
         </div>
     </div> :
     null
