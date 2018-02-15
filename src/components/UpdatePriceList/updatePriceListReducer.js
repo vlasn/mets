@@ -10,7 +10,7 @@ export default function reducer( state = {
 }, action) {
 
   switch(action.type) {
-    case actionTypes.changePriceListType : {
+    case actionTypes.CHANGE_PRICELIST_TYPE: {
       return {...state, activeTab: action.payload}
     }
     default: return state

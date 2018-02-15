@@ -1,9 +1,12 @@
 import React,  { Component } from "react"
 import { connect } from 'react-redux'
 import _UpdatePriceList from './UpdatePriceList'
-import {changePriceListType} from "./updatePriceListActions"
-import "./UpdatePriceList.scss"
+import _AddNewProduct from './AddNewProduct'
+import _ChangeProductDescription from './ChangeProductDescription'
 
+import {changePriceListType} from "./updatePriceListActions"
+
+import "./UpdatePriceList.scss"
 
 class UpdatePriceList extends Component {
   constructor(props){
@@ -16,7 +19,12 @@ class UpdatePriceList extends Component {
   render(){
     return(
       <div className="UpdatePriceList__wrapper">
+        <h2>Uuenda hinnakirja</h2>
         <_UpdatePriceList{...this.props}/>
+        <h2>Lisa uus toode</h2>
+        <_AddNewProduct{...this.props}/>
+        <h2>Muuda toote kirjeldust</h2>
+        <_ChangeProductDescription{...this.props}/>
       </div>
     )
   }
@@ -24,8 +32,7 @@ class UpdatePriceList extends Component {
 
 const mapStateToProps = state => {
   return {
-    activeTab: state.creation.clientCreation.activeTab,
-
+    activeTab: state.updatePricelist.activeTab,
   };
 };
 
