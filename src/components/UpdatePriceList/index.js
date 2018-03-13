@@ -4,7 +4,7 @@ import _UpdatePriceList from './UpdatePriceList'
 import _AddNewProduct from './AddNewProduct'
 import _ChangeProductDescription from './ChangeProductDescription'
 
-import {changePriceListType} from "./updatePriceListActions"
+import {changePriceListType, attemptNewProductSubmit, onFieldValueChange} from "./updatePriceListActions"
 
 import "./UpdatePriceList.scss"
 
@@ -33,10 +33,12 @@ class UpdatePriceList extends Component {
 const mapStateToProps = state => {
   return {
     activeTab: state.updatePricelist.activeTab,
+    submitted: state.updatePricelist.submitted,
+    details:state.updatePricelist.details
   };
 };
 
 export default connect(
   mapStateToProps,
-  {changePriceListType}
+  {changePriceListType, attemptNewProductSubmit, onFieldValueChange}
 )(UpdatePriceList);

@@ -16,7 +16,6 @@ import contractCreation from "../components/NewContract/contractCreationReducer"
 import notifiers from "../components/GlobalNotifier/ducks"
 import updatePricelist from "../components/UpdatePriceList/updatePriceListReducer"
 
-
 let contract = combineReducers({clientManagement, filter, cargoPage})
 let creation = combineReducers({clientCreation, contractCreation})
 

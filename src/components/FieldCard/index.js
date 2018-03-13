@@ -10,7 +10,13 @@ export const Card = ({children}) => (
         </div>
     </div>
 )
-
+export const WideCard = ({children}) => (
+  <div className="FieldCard__wrapper">
+    <div className="FieldCardWide">
+      {children}
+    </div>
+  </div>
+)
 export const CardButton = ({label, callback, active}) => (
     <div className={`FieldCard__button ${active&&"active"}`} onClick={callback}>
         {label}
@@ -33,4 +39,9 @@ export const CardFields = ({children}) => (
     <div className="FieldCard__fields">
         {children}
     </div>
+)
+export const InlineFields = ({children}) => (
+  <div className="FieldCard__InlineFields">
+    {children}
+  </div>
 )
