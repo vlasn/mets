@@ -1,6 +1,5 @@
 
 body {
-  
   font-family: 'Open Sans', sans-serif;
 
   background-color: white;
@@ -66,6 +65,10 @@ body {
         background-color: #7FFFC7 !important;
       }
     }
+  }
+
+  #nprogress .bar {
+    background: #55D67A !important;
   }
   //padding: 50px;
 }
