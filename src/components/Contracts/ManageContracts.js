@@ -1,11 +1,12 @@
 import React from "react"
 import MetsCard from "./MetsCard"
 import ContractDetails from "./ContractDetails"
-import DetailsWrapper from "./ContractDetails/DetailsWrapper";
+import DetailsWrapper from "./DetailsWrapper";
 import Filter from "../Filter"
 import Representatives from "./Representatives"
 import VeoseTable from './CargoPages/Veoselehed'
 import FileRow from './FileRow/index'
+import Files from "./ContractDetails/Files"
 
 
 export default class ClientLanding extends React.Component {
@@ -29,10 +30,19 @@ export default class ClientLanding extends React.Component {
                 {this.props.data.map((data,index) => {
                     return(
                         <MetsCard {...data} key={data._id}>
-                            <DetailsWrapper {...data} updateRow={this.onContractRowUpdate.bind(this)}>
-                                <ContractDetails updateRow={this.onContractRowUpdate.bind(this)} data={data}/>
-                                <Representatives reps={data.representatives}/>
-                            </DetailsWrapper>
+                            <DetailsWrapper
+                                {...data}
+                                updateRow={this.onContractRowUpdate.bind(this)}
+                                details={
+                                    <div>
+                                        <ContractDetails updateRow={this.onContractRowUpdate.bind(this)} data={data}/>
+                                        <Representatives reps={data.representatives}/>
+                                    </div>
+                                }
+                                files={
+                                  <Files documents={data.documents}/>
+                                }
+                            />
                             {/*<VeoseTable*/}
                                 {/*cadastral={data.kinnistu.katastritunnus || null}*/}
                                 {/*contractId={data._id}*/}

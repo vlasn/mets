@@ -12,7 +12,7 @@ const InputField = props => (
             fullWidth={true}
             errorText = {props.errorText}
             underlineFocusStyle={{borderColor: props.error?"#de2b31":"#3FD369"}}
-            floatingLabelText={`${props.floatingLabelText}${props.required?" *":""}`}
+            floatingLabelText={`${props.floatingLabelText}${props.required && props.asterisk?" *":""}`}
             floatingLabelStyle={props.error?{color: "red"}:null}
             floatingLabelFocusStyle={{color: "black"}}
             onChange={(event)=>props.onChange(props.name,event.target.value)}

@@ -6,7 +6,7 @@
   .FieldCard {
     margin: auto;
     width: 500px;
-    
+
     box-shadow: $cardShadow;
 
     .FieldCard__header {
@@ -15,6 +15,31 @@
     }
     .FieldCard__fields {
       padding: 50px 55px;
+    }
+    .FieldCard__InlineFields {
+      padding: 50px 55px;
+      display: inline-flex;
+    }
+  }
+  .FieldCardWide {
+    margin: auto;
+    width: 1000px;
+
+    box-shadow: $cardShadow;
+
+    .FieldCard__header {
+      display: flex;
+
+    }
+    .FieldCard__fields {
+      padding: 50px 55px;
+      margin-left: 5px;
+      margin-right: 5px;
+
+    }
+    .FieldCard__InlineFields {
+      padding: 50px 55px;
+      display: inline-flex;
     }
   }
 }

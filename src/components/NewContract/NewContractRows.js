@@ -2,7 +2,6 @@
  * Created by henrysavi on 15/08/17.
  */
 import React, {Component} from "react"
-import InputField from "../InputFields/InputField"
 import "./NewContractRows.scss"
 
 const NewContractRows = props => (

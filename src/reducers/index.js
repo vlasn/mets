@@ -14,6 +14,7 @@ import cargoPage from "../components/Contracts/CargoPages/cargoPageReducer"
 import clientCreation from "../components/NewClient/clientCreationReducer"
 import contractCreation from "../components/NewContract/contractCreationReducer"
 import notifiers from "../components/GlobalNotifier/ducks"
+import updatePricelist from "../components/UpdatePriceList/updatePriceListReducer"
 
 let contract = combineReducers({clientManagement, filter, cargoPage})
 let creation = combineReducers({clientCreation, contractCreation})
@@ -28,5 +29,6 @@ export default combineReducers({
     creation,
     //contractManagement,
     priceList,
-    notifiers
+    notifiers,
+    updatePricelist
 })

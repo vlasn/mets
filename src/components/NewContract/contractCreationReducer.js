@@ -126,9 +126,10 @@ export default function reducer (state = defaultState, action) {
                     ...state,
                     documents: {
                         ...state.documents,
-                        [action.fileType]: [...state.documents[action.fileType], action.file]
+                        [action.fileType]: [...state.documents[action.fileType], Object.assign(action.file, {key: action.key})]
                     }
                 }
+
             } else {
                 return state
             }
@@ -140,7 +141,7 @@ export default function reducer (state = defaultState, action) {
                 documents: Object.keys(state.documents)
                     .reduce(
                         (acc,val) => {
-                            acc[val] = state.documents[val].filter(file => file.name != action.fileName)
+                            acc[val] = state.documents[val].filter(file => file.key !== action.key)
                             return acc
                         }
                         ,{}

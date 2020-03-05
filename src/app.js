@@ -11,6 +11,8 @@ import History from './components/history'
 import Contracts from "./components/Contracts"
 import NewClient from "./components/NewClient"
 import NewContract from "./components/NewContract"
+import UpdatePriceList from "./components/UpdatePriceList"
+
 //import Footer from "./components/Footer"
 import Navbar from "./components/Navbar"
 import PList from "./components/ResolveImport"
@@ -39,6 +41,7 @@ class App extends React.Component {
                                 <Route exact path="/import/:id" component={PList}/>
                                 <Route exact path="/new_client" component={NewClient}/>
                                 <Route exact path="/new_contract" component={NewContract}/>
+                                <Route exact path="/update_pricelist" component={UpdatePriceList}/>
                             </Switch>
                         </div>
                         <GlobalNotifiers />
